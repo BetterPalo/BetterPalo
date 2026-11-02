@@ -53,6 +53,7 @@ What else was considered, and why was it rejected?
   — Accepted.
 - [0002: License split for code, content, and data](0002-license-split.md) —
   Accepted.
+- [0004: Trunk-based development and squash merge](0004-trunk-based-development-and-squash-merge.md) — Accepted.
 
 ## Pending decisions
 

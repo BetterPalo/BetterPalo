@@ -56,6 +56,41 @@ When the stack exists:
 - Keep pull requests small enough for one review sitting.
 - Routine pull requests need one maintainer approval.
 
+## Workflow
+
+- Fork the repo (or branch directly if you are a core member), then branch from
+  `main`.
+- Name branches `type/short-description`, for example `data/add-barangay-list`.
+- One topic per PR, kept small. Open as a draft early if you want feedback.
+- Link the issue in the PR and follow the PR template.
+- CI must pass and one maintainer approval is required.
+- Maintainers squash-merge. Do not merge your own PR if it touches data or
+  licensing.
+- Do not push directly to `main`.
+
+## Commit messages
+
+Format: `type(scope): short summary` — imperative, lowercase, no period, under
+72 characters.
+
+| Type | Use for |
+| --- | --- |
+| `feat` | New page, feature, or component |
+| `fix` | Bug fix or broken link/typo fix |
+| `docs` | Documentation only |
+| `data` | Adding or updating datasets or content records |
+| `content` | Written page content |
+| `i18n` | Translations (Filipino, Waray) |
+| `style` | Formatting or CSS with no logic change |
+| `refactor` | Restructuring with no behavior change |
+| `test` | Adding or changing tests |
+| `ci` | Workflows and automation |
+| `chore` | Config, dependencies, housekeeping |
+
+Optional scopes: `services`, `government`, `legislation`, `transparency`,
+`search`, `a11y`, `deps`. Add `!` for breaking changes (`feat!:`), and use
+`Closes #12` in the PR body. See `docs/labels.md` for the full tables.
+
 ## Review and decisions
 
 Routine pull requests need one maintainer approval. License, charter,
@@ -63,6 +98,13 @@ governance, or data-policy changes need two approvals, or unanimous approval of
 active maintainers if fewer than two are active. Disputes get a written summary
 and a seven-day comment period, then a maintainer vote. Ties keep the status quo.
 See [docs/charter.md](docs/charter.md).
+
+## Labels and milestones
+
+Labels are grouped by area, type, and status; milestones track M0–M3. See
+[`docs/labels.md`](docs/labels.md) for the full tables, colors, and milestone
+descriptions. Labels and milestones are created in GitHub; the definitions live
+in `docs/labels.md` so they stay versioned.
 
 ## Licensing of contributions
 
