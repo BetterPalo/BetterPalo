@@ -1,3 +1,5 @@
+<!-- Thank you for contributing. Fill in the sections below and keep the checklist. -->
+
 ## Summary
 
 <!-- What does this change do, and why? -->

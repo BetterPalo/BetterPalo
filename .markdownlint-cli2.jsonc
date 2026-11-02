@@ -1,0 +1,7 @@
+{
+  "ignores": [
+    "docs/superpowers/**",
+    ".superpowers/**",
+    ".github/PULL_REQUEST_TEMPLATE.md"
+  ]
+}
