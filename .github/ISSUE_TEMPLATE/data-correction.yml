@@ -1,0 +1,62 @@
+name: Data correction
+description: Report a fact that is wrong, outdated, or missing a source.
+title: "[data] "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page or section
+      description: Which page or section is affected?
+      placeholder: Services / Business permit
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What the site currently says
+      description: Quote the current text or describe the current data.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What it should say
+      description: Give the corrected text or data.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official source URL
+      description:
+        The page or document that confirms the correction. It must support the
+        exact change.
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: verified
+    attributes:
+      label: Date verified
+      description: The date you checked the source.
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Relationship to Palo
+      options:
+        - Resident or business owner
+        - LGU employee or official
+        - Researcher or journalist
+        - Other
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I confirm this report contains no private personal information.
+          required: true

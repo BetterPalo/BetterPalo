@@ -1,0 +1,43 @@
+name: Feature request
+description: Suggest a change in behavior or content.
+title: "[feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What need is not met today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: The proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Does this fit v1 scope?
+      description:
+        See the [charter](https://github.com/BetterPalo/BetterPalo/blob/main/docs/charter.md)
+        for the v1 scope.
+      options:
+        - Yes
+        - No
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: help
+    attributes:
+      label: Willingness to help
+      description: Can you write, translate, design, test, or review this?
+    validations:
+      required: false

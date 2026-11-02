@@ -1,0 +1,45 @@
+name: Bug report
+description: Report something that is broken on the site.
+title: "[bug] "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: false
+  - type: input
+    id: device
+    attributes:
+      label: Browser and device
+      placeholder: Chrome on Android 14
+    validations:
+      required: false
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description:
+        Optional. Remove names, faces, addresses, and other private data before
+        uploading.
+    validations:
+      required: false

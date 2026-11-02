@@ -1,0 +1,8 @@
+# Review ownership
+#
+# Named leads and CODEOWNERS entries are added when GitHub handles exist.
+# Until then, the founding team owns all areas collectively (see docs/charter.md).
+#
+# Example (uncomment and fill in when handles exist):
+# * @your-handle
+# /docs/ @your-handle

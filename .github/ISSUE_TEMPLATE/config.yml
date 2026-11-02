@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contributing guide
+    url: https://github.com/BetterPalo/BetterPalo/blob/main/CONTRIBUTING.md
+    about: Read this before opening an issue.
+  - name: Data sources and rules
+    url: https://github.com/BetterPalo/BetterPalo/blob/main/docs/data-sources.md
+    about: How we verify and cite data.

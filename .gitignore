@@ -1,0 +1,11 @@
+# Local planning notes; never commit. CI rejects tracked files here.
+docs/superpowers/
+.superpowers/
+AGENTS.md
+.env
+.env.*
+!.env.example
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
