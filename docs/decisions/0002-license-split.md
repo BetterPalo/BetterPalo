@@ -28,8 +28,7 @@ for exploitation for profit. The project must not claim ownership of
 government-authored material.
 
 The full license map and the mixed-file rule live in
-[`docs/licensing.md`](../licensing.md). The design spec is
-`docs/superpowers/specs/2026-11-03-betterpalo-repo-skeleton-design.md`.
+[`docs/licensing.md`](../licensing.md).
 
 ## Decision
 
