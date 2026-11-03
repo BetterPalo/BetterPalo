@@ -6,15 +6,24 @@ A community-run, unofficial portal that makes Palo's government information and 
 
 ## What v1 will include
 
-- Department and office directory.
-- Service guides with requirements, steps, fees, and contacts.
-- Elected officials.
-- Barangay profiles and contacts.
-- Key municipal contacts.
+- Service guides (about 10 to 12), each fully verified: where to go, what to
+  bring, cost, and processing time.
+- Offices and officials: elected officials, departments, what each does, where
+  it is, and verified public contacts.
+- About Palo and barangays: municipal profile, the 33-barangay list, and PSA
+  2024 census figures labeled by census year.
+- Official resources: links to the LGU site, the Citizen's Charter, the SB
+  site, BPLS (once confirmed), PSA, and COMPASS.
+- Site basics: search (Pagefind), About, Accessibility, Contribute, Sitemap, an
+  "unofficial" banner, and a "report a wrong detail" link.
+- English and Filipino. Anything untranslated is marked `translation-pending`.
+- Printable one-page service sheets (PDF or print CSS).
 
 ## Not in v1
 
-Legislation, transparency dashboards, report forms, user accounts, and a CMS.
+Legislation, budget, COA and procurement views, project tracking, maps, citizen
+reports, user accounts, Waray, a CMS, and barangay official contacts unless
+officially published.
 
 ## Disclaimer
 

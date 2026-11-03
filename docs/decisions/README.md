@@ -54,6 +54,8 @@ What else was considered, and why was it rejected?
 - [0002: License split for code, content, and data](0002-license-split.md) —
   Accepted.
 - [0004: Trunk-based development and squash merge](0004-trunk-based-development-and-squash-merge.md) — Accepted.
+- [0005: Positioning and phased roadmap](0005-positioning-and-phased-roadmap.md) — Accepted.
+- [0006: Content format for service guides](0006-content-format-for-service-guides.md) — Accepted.
 
 ## Pending decisions
 
