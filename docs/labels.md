@@ -13,6 +13,7 @@ GitHub (UI or `gh`); this file keeps them versioned.
 | `design` | `#D93F0B` | UX, wireframes, visual design |
 | `dev` | `#1D76DB` | Code, tooling, infrastructure |
 | `content` | `#FBCA04` | Page copy and written information |
+| `service` | `#2EA44F` | A specific service guide |
 | `translation` | `#5319E7` | Filipino, Waray, or other languages |
 | `docs` | `#0075CA` | Project documentation |
 
@@ -34,6 +35,7 @@ GitHub (UI or `gh`); this file keeps them versioned.
 | `blocked` | `#B60205` | Waiting on something else |
 | `needs-source` | `#E99695` | Needs a verifiable public source |
 | `needs-decision` | `#FEF2C0` | Waiting on a decision (ADR) |
+| `needs-verification` | `#E99695` | A service or fact not yet verified |
 | `wontfix` | `#FFFFFF` | GitHub default; keep |
 | `duplicate` | `#FFFFFF` | GitHub default; keep |
 
@@ -42,12 +44,14 @@ and leave medium unlabeled.
 
 ## Milestones
 
-| Milestone | Description |
-| --- | --- |
-| **M0: Setup** | Org, repo, charter, licensing, CI, board, stack decision (ADR 0003), "hello Palo" deployed |
-| **M1: Static MVP launch** | Services, Government, About, Accessibility, Contribute, and Sitemap pages live on the custom domain with Pagefind search |
-| **M2: Legislation and transparency** | Ordinances, resolutions, budget, and COA reports, each with provenance |
-| **M3: Translations and polish** (optional) | Filipino/Waray, accessibility audit |
+| Milestone | Outcome | Rough effort |
+| --- | --- | --- |
+| **M0: Setup** | Org, repo pushed, branch protection, board, ADR for stack, ADR for content format, "hello Palo" deployed | Days |
+| **M1: Sources and pilot** | Citizen's Charter and office directory obtained. Three services published end to end (data, page, verification, print sheet) to prove the pipeline | 2 to 4 weeks |
+| **M2: MVP build** | Remaining launch services, offices and officials, barangays, search, EN/FIL, accessibility pass, custom domain | 4 to 8 weeks |
+| **M3: Soft launch** | LGU review, a handful of residents testing real tasks, fixes, QR sheets | 2 to 4 weeks |
+| **M4: Full charter coverage** | v1.1 scope and a maintenance workflow | Ongoing |
+| **M5+: Transparency links, legislation index** | v2 scope | After a scope vote |
 
 ## Conventional commits
 
