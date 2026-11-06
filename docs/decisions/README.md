@@ -56,12 +56,18 @@ What else was considered, and why was it rejected?
 - [0004: Trunk-based development and squash merge](0004-trunk-based-development-and-squash-merge.md) — Accepted.
 - [0005: Positioning and phased roadmap](0005-positioning-and-phased-roadmap.md) — Accepted.
 - [0006: Content format for service guides](0006-content-format-for-service-guides.md) — Accepted.
+- [0007: Service guide content model](0007-service-guide-content-model.md) —
+  Proposed.
+- [0008: Own stack and template, with BetterLGU as reference](0008-own-stack-with-betterlgu-as-reference.md)
+  — Proposed.
+- [0009: Additions from the November 2026 research review](0009-additions-from-november-2026-review.md)
+  — Proposed.
 
 ## Pending decisions
 
-- Technology stack.
+- Technology stack (approach proposed in ADR 0008).
 - Hosting.
-- Content format for data files.
+- Content format for data files (service guides proposed in ADR 0007).
 - Search.
 - Analytics.
 - External link monitoring.
