@@ -7,11 +7,7 @@
 
 The charter asks for a site that answers a resident's question on a phone, on a
 slow connection, without an account. Many Palo residents browse on mobile, some
-on low-end devices. The reference device is the **Huawei P20 Lite** (2018):
-Kirin 659 with eight Cortex-A53 cores, Mali-T830 GPU, 4 GB RAM, and a 2280 ×
-1080 screen. It shipped with Android 8 and was updated to at most Android 9.
-Chrome 138 is the last Chrome release for Android 8 and 9, so this device stays
-on Chrome 138 (mid-2025) or the Huawei Browser from now on.
+on low-end devices.
 
 v1 is almost entirely static content: service guides, offices and officials,
 About Palo, official resources, search, two languages, and print sheets
