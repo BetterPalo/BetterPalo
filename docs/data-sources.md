@@ -35,6 +35,7 @@ entries and nothing from them is published until it reaches the register.
 | Sangguniang Bayan of Palo | <https://palosb.com/official_website/> | 1 | Ordinance texts and COA report downloads; hotlines look like placeholders | Unverified |
 | DILG Province of Leyte, Palo profile | <https://sites.google.com/view/dilg-province-of-leyte/lgus/palo> | 3 | No visible update date; confirm officials and contacts with the LGU | Unverified |
 | PSA 2024 Census of Population | PSA release for Palo (exact table to be recorded) | 2 | Record the table title, release date, and reference date (July 1, 2024) | Headline total (80,291) matches a secondary source |
+| Palo Citizen's Charter (PDF) | <http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf> | 1 (once confirmed) | Cover says "2026 (2nd Edition)"; confirm the approval date with the LGU; see [the service inventory](research/citizens-charter-2026-inventory.md) | Downloaded and inventoried, 2026-11-06 |
 | Citizen's Charter announcement | LGU Facebook page (via Govserv mirror) | 4 / 5 | The linked download goes to a third-party PDFfiller page; do not use it | Rejected as a source |
 
 ## Rules
@@ -64,6 +65,8 @@ entries and nothing from them is published until it reaches the register.
   Permit and Working Permit lead to a login page, and Building Permit and
   Occupancy Permit are marked "Soon". Confirm with the permits office which
   transactions can be completed online before a service guide says so.
+  The Citizen's Charter's business permit service points to a different host,
+  `bpbc4.ibpls.com/paloleyte/`; test both and confirm which is current.
 - **Official website address.** The LGU site the team found is served from a
   bare IP address over plain HTTP. Addresses like this can change without
   notice and browsers may show a "not secure" warning. Confirm with the LGU that

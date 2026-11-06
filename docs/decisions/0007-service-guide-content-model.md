@@ -33,11 +33,13 @@ fields.
 | `name` | string | Service name as written in the source |
 | `category` | string | For example `business`, `civil-registry`, `social-welfare` |
 | `office` | string | Responsible office, as named in the source |
+| `classification` | string | `simple`, `complex`, or `highly_technical`, as stated in the Charter |
+| `transaction_type` | string | For example `G2C`, as stated in the Charter |
 | `description` | string | Plain-language summary |
 | `eligibility` | string or null | Only if the source states it |
 | `requirements` | list | `document`, `copies`, `form` (original, photocopy, certified true copy), `where_to_get`, `conditions` |
-| `steps` | list | `step`, `applicant_action`, `office_action`, `responsible`, `max_time` |
-| `fees` | list | `amount`, `purpose`, `where_to_pay`, `conditions` |
+| `steps` | list | `step`, `applicant_action`, `office_action`, `responsible` (office or position, never a staff member's name), `max_time` |
+| `fees` | list | `amount`, `purpose`, `where_to_pay`, `conditions`, `basis` (the ordinance or code an amount comes from; used alone when the source gives no amount) |
 | `processing_time` | string or null | Total maximum time, as stated in the source |
 | `application_channels` | list | `type` (`online` or `walk-in`), `url` or `location`, `supports`, `account_required`, `last_tested` |
 | `complaint_procedure` | string or null | As stated in the source |
@@ -56,6 +58,11 @@ Rules:
   a user can actually do (for example "log in and check status") and
   `last_tested` records when.
 - Amounts and times are copied as written in the source, not recalculated.
+- Staff names in the Charter's "person responsible" column are not published;
+  guides name the office or position.
+- When the source gives a fee only by reference (for example, "based on the
+  Municipal Tax and Revenue Code"), `amount` is `null` and `basis` names the
+  reference.
 
 Example (illustrative; values are intentionally empty):
 

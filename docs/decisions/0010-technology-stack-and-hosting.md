@@ -247,7 +247,7 @@ built.
 ## Alternatives
 
 - **No UI framework (vanilla TypeScript only):** considered. Lightest option,
-  but the team wants React for interactive parts and animations.
+  but React may be needed for interactive parts and animations.
 - **Preact instead of React:** smaller runtime with a similar API. Can be
   revisited if React islands push pages over budget.
 - **Next.js or another server-rendered React framework:** rejected. Server
