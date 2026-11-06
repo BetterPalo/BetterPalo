@@ -62,16 +62,13 @@ What else was considered, and why was it rejected?
   — Proposed.
 - [0009: Additions from the November 2026 research review](0009-additions-from-november-2026-review.md)
   — Proposed.
+- [0010: Technology stack and hosting](0010-technology-stack-and-hosting.md) —
+  Accepted.
 
 ## Pending decisions
 
-- Technology stack (approach proposed in ADR 0008).
-- Hosting.
 - Content format for data files (service guides proposed in ADR 0007).
-- Search.
-- Analytics.
 - External link monitoring.
 - `CODEOWNERS` and named leads.
 
-Until the tech-stack ADR is accepted, do not add framework-specific files,
-`package.json`, `src/`, `public/`, or hosting configuration.
+The tech stack is set in [ADR 0010](0010-technology-stack-and-hosting.md).

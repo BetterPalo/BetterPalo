@@ -25,6 +25,11 @@ Legislation, budget, COA and procurement views, project tracking, maps, citizen
 reports, user accounts, Waray, a CMS, and barangay official contacts unless
 officially published.
 
+## Contact
+
+Email <betterpalolgu@gmail.com>. To report a wrong detail on the site, use the
+data-correction issue form instead so the fix is tracked in public.
+
 ## Disclaimer
 
 BetterPalo is community-run and unofficial. It is not affiliated with or endorsed by the Palo local government. Verify information with official sources. The project provides no warranty.

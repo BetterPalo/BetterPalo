@@ -45,12 +45,42 @@ unpublished phone numbers. See [docs/data-sources.md](docs/data-sources.md).
 
 ## Development
 
-The technology stack is not chosen yet. Do not add framework-specific files,
-`package.json`, `src/`, `public/`, or hosting configuration until the tech-stack
-decision record is accepted.
+The stack is Astro 6, TypeScript, React islands, Tailwind CSS, and Cloudflare
+Workers with static assets. See
+[ADR 0010](docs/decisions/0010-technology-stack-and-hosting.md), including its
+performance budget.
 
-When the stack exists:
+### Set up
 
+1. Install Node.js 26.13.0 (the version in `.nvmrc`). With nvm: `nvm install`
+   then `nvm use`. On Windows, nvm-windows or fnm work too.
+2. Install pnpm: `npm install -g pnpm@12.18.0`.
+3. Clone the repository and run `pnpm install`.
+4. Start the dev server: `pnpm dev`, then open the address it prints.
+
+### Before you open a pull request
+
+Run these and fix anything they report:
+
+```sh
+pnpm format
+pnpm lint
+pnpm check
+pnpm test
+pnpm build
+```
+
+Run `pnpm test:e2e` too if you changed a page layout or a React component. CI
+runs everything, and Cloudflare posts a preview link on the pull request so you
+can check it on a phone.
+
+### Rules
+
+- Pages are `.astro` by default; use React only for interactive parts, and keep
+  within the performance budget in ADR 0010.
+- Add dependencies with `pnpm add`, which pins exact versions. Explain any new
+  dependency in the pull request.
+- Do not edit `pnpm-lock.yaml` by hand.
 - Use short-lived branches.
 - Write imperative commit subjects, for example `docs: fix barangay contact`.
 - Keep pull requests small enough for one review sitting.
