@@ -2,7 +2,8 @@
 
 A community-run, unofficial portal that makes Palo's government information and public services easier to find, understand, and verify.
 
-> **Status:** Planning Phase
+> **Status:** M0 Setup. The site scaffold is being built; no service guides are
+> published yet.
 
 ## What v1 will include
 
@@ -37,10 +38,18 @@ BetterPalo is community-run and unofficial. It is not affiliated with or endorse
 ## Repository map
 
 ```text
-docs/        charter, licensing, data sources, decision records
-.github/     issue forms, pull request template, docs CI
+src/         Astro site: content (service guide YAML), pages, layouts, schemas
+public/      static files copied as is (robots.txt, _headers)
+tests/       unit tests (Vitest) and end-to-end tests (Playwright)
+docs/        charter, team, architecture, licensing, data sources, decisions
+.github/     issue forms, pull request template, CI workflows, CODEOWNERS
 LICENSES/    CC BY-SA 4.0 and CC0 1.0 legal texts
 ```
+
+The stack is Astro, TypeScript, Tailwind CSS, and Cloudflare Workers; see
+[`docs/architecture.md`](docs/architecture.md). Set-up steps are in
+[`CONTRIBUTING.md`](CONTRIBUTING.md#set-up). The team and their roles are in
+[`docs/team.md`](docs/team.md).
 
 ## Licenses
 

@@ -9,6 +9,8 @@ contribute.
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Charter](docs/charter.md)
 - [Licensing](docs/licensing.md)
+- [Team and roles](docs/team.md)
+- [Architecture](docs/architecture.md)
 
 ## Ways to contribute
 
@@ -16,7 +18,7 @@ contribute.
 - **Translation.** Turn English content into Filipino, or the reverse.
 - **Design and accessibility.** Improve layout, contrast, keyboard use, and
   screen-reader support.
-- **Code.** Build the site once the stack is chosen.
+- **Code.** Build pages, components, search, and tooling for the site.
 - **Documentation.** Clarify a guide, fix a broken link, or record a decision.
 
 ## Data contributions
@@ -52,11 +54,26 @@ performance budget.
 
 ### Set up
 
+On Windows, pick one environment and stay in it:
+
+- **WSL:** clone the repository inside your Linux home folder (`~/BetterPalo`),
+  not under `/mnt/c/`. Installs on `/mnt/c/` are very slow and can break
+  symlinks.
+- **Native Windows:** use PowerShell, install Node with nvm-windows or fnm, and
+  keep the repository under `C:\Users\...`.
+
+Do not run WSL and Windows Node against the same folder.
+
 1. Install Node.js 26.13.0 (the version in `.nvmrc`). With nvm: `nvm install`
    then `nvm use`. On Windows, nvm-windows or fnm work too.
 2. Install pnpm: `npm install -g pnpm@12.18.0`.
 3. Clone the repository and run `pnpm install`.
-4. Start the dev server: `pnpm dev`, then open the address it prints.
+4. Install the test browser once: `pnpm exec playwright install chromium`.
+5. Start the dev server: `pnpm dev`, then open the address it prints.
+
+Where things live, and the rules for data access and secrets, are in
+[docs/architecture.md](docs/architecture.md). Local secrets go in `.dev.vars`
+(copy `.dev.vars.example`); v1 has none.
 
 ### Before you open a pull request
 
@@ -84,19 +101,44 @@ can check it on a phone.
 - Use short-lived branches.
 - Write imperative commit subjects, for example `docs: fix barangay contact`.
 - Keep pull requests small enough for one review sitting.
+- Pages and components get data only through `src/lib/data.ts`, never by
+  calling `getCollection()` directly.
 - Routine pull requests need one maintainer approval.
 
 ## Workflow
 
-- Fork the repo (or branch directly if you are a core member), then branch from
-  `main`.
+There is one long-lived branch, `main`. There is no `dev` or `develop` branch
+([ADR 0004](docs/decisions/0004-trunk-based-development-and-squash-merge.md)).
+Cloudflare preview links on each pull request are where changes are tested
+before merge.
+
+Core team members branch in the main repository. Everyone else forks first.
+
+```sh
+git switch main
+git pull
+git switch -c feat/service-page
+# ...work, commit...
+git push -u origin feat/service-page
+```
+
 - Name branches `type/short-description`, for example `data/add-barangay-list`.
+  Use the commit types below.
 - One topic per PR, kept small. Open as a draft early if you want feedback.
-- Link the issue in the PR and follow the PR template.
-- CI must pass and one maintainer approval is required.
-- Maintainers squash-merge. Do not merge your own PR if it touches data or
-  licensing.
-- Do not push directly to `main`.
+- Keep your branch current with `git fetch` then `git rebase origin/main` (or
+  the "Update branch" button on the pull request).
+- Fill in the PR template, add labels from [docs/labels.md](docs/labels.md),
+  set the milestone, and link the issue with `Closes #12`.
+- **The PR title must be a conventional commit** (see below). Pull requests are
+  squash-merged, so the title becomes the single commit on `main`. Commits
+  inside your branch should still be clear, but they do not need to be perfect.
+- CI must pass and one approval from a code owner is required. `CODEOWNERS`
+  requests the right reviewer automatically.
+- Only maintainers merge (see [docs/maintainers.md](docs/maintainers.md)). Do
+  not merge your own PR.
+- Do not push directly to `main`; branch protection blocks it.
+- Data changes are checked by someone other than the person who transcribed
+  them before `status` becomes `verified` (see [docs/team.md](docs/team.md)).
 
 ## Commit messages
 

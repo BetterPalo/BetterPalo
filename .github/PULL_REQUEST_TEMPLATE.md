@@ -1,8 +1,12 @@
-<!-- Thank you for contributing. Fill in the sections below and keep the checklist. -->
+<!-- Thank you for contributing. Fill in the sections below and keep the checklist.
+     PR title: a conventional commit, for example "feat(services): add cedula guide".
+     It becomes the commit on main when this is squash-merged. -->
 
 ## Summary
 
 <!-- What does this change do, and why? -->
+
+Closes #
 
 ## Type of change
 
@@ -27,6 +31,10 @@
 
 ## Checklist
 
+- [ ] The PR title follows the conventional commit format.
+- [ ] I added labels and a milestone, and linked the issue.
+- [ ] `pnpm format`, `pnpm lint`, `pnpm check`, `pnpm test`, and `pnpm build`
+      pass locally (code changes).
 - [ ] I have read the license terms in `docs/licensing.md`.
 - [ ] Every fact I added or changed has a cited official source and a
       verification date.

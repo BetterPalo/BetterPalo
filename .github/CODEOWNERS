@@ -1,8 +1,41 @@
-# Review ownership
+# Review ownership. See docs/team.md.
 #
-# Named leads and CODEOWNERS entries are added when GitHub handles exist.
-# Until then, the founding team owns all areas collectively (see docs/charter.md).
-#
-# Example (uncomment and fill in when handles exist):
-# * @your-handle
-# /docs/ @your-handle
+# The last matching line wins. Each line lists the lead plus the area owner,
+# so the lead's own pull requests can still be approved by someone else.
+# Translation and QA owner is not yet named; translation lines use the lead
+# and the frontend owner until one is.
+
+# Default: lead and second reviewer
+*                                   @Zyxary @STR4T-coder
+
+# Data and verification (second checker: @STR4T-coder)
+/src/content/                       @Zyxary @STR4T-coder
+/docs/data-sources.md               @Zyxary @STR4T-coder
+/docs/research/                     @Zyxary @STR4T-coder
+
+# Frontend
+/src/                               @khalmahi @Zyxary
+/astro.config.mjs                   @khalmahi @Zyxary
+
+# Design and accessibility
+/src/styles/                        @jaimedesu @khalmahi
+/public/                            @jaimedesu @khalmahi
+
+# Translation (owner TBD; interim reviewers)
+/src/i18n/                          @khalmahi @Zyxary
+
+# Infrastructure and CI
+/wrangler.jsonc                     @Rurur8 @STR4T-coder
+/public/_headers                    @Rurur8 @STR4T-coder
+/.github/workflows/                 @Rurur8 @STR4T-coder
+/playwright.config.ts               @Rurur8 @khalmahi
+/tests/e2e/                         @Rurur8 @khalmahi
+
+# Governance, licensing, decisions (two approvals required by the charter)
+/docs/charter.md                    @Zyxary @STR4T-coder
+/docs/licensing.md                  @Zyxary @STR4T-coder
+/docs/decisions/                    @Zyxary @STR4T-coder
+/docs/team.md                       @Zyxary @STR4T-coder
+/LICENSE                            @Zyxary @STR4T-coder
+/LICENSES/                          @Zyxary @STR4T-coder
+/.github/CODEOWNERS                 @Zyxary @STR4T-coder

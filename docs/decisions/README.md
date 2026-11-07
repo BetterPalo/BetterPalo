@@ -69,6 +69,6 @@ What else was considered, and why was it rejected?
 
 - Content format for data files (service guides proposed in ADR 0007).
 - External link monitoring.
-- `CODEOWNERS` and named leads.
 
 The tech stack is set in [ADR 0010](0010-technology-stack-and-hosting.md).
+Named leads and `CODEOWNERS` are recorded in [team.md](../team.md).
