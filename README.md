@@ -28,7 +28,7 @@ officially published.
 
 ## Contact
 
-Email <betterpalolgu@gmail.com>. To report a wrong detail on the site, use the
+Email <betterpalogov@gmail.com>. To report a wrong detail on the site, use the
 data-correction issue form instead so the fix is tracked in public.
 
 ## Disclaimer

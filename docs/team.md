@@ -66,7 +66,7 @@ checker for the lead's transcriptions. When they are unavailable, the designer
 | System | Owner | Others |
 | --- | --- | --- |
 | GitHub organisation | Lead (Owner) | Core team with Write on the repository |
-| Cloudflare account (`betterpalolgu@gmail.com`) | Lead (Super Administrator) | `@Rurur8` and `@STR4T-coder` invited as Administrators, each with their own login |
+| Cloudflare account (`betterpalogov@gmail.com`) | Lead (Super Administrator) | `@Rurur8` and `@STR4T-coder` invited as Administrators, each with their own login |
 | Domain and DNS | Lead | `@Rurur8` and `@STR4T-coder` |
 | Project Gmail | Lead | Not shared. Use invitations instead of the password |
 | Figma | Designer (`@jaimedesu`) | Team members as viewers or editors |

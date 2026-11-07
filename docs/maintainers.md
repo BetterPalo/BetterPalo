@@ -51,7 +51,7 @@ No one else merges into `main`.
 
 ## Cloudflare
 
-- The account belongs to the project address `betterpalolgu@gmail.com`, with
+- The account belongs to the project address `betterpalogov@gmail.com`, with
   the project lead as Super Administrator and two-factor authentication on.
 - The infrastructure members (`@Rurur8` and `@STR4T-coder`) are invited as
   **Administrators**, each with their own login and two-factor authentication. The project Gmail password is not shared.

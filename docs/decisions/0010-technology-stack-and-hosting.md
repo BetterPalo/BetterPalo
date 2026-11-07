@@ -2,6 +2,8 @@
 
 - Status: Accepted
 - Date: 2026-11-06
+- Revised: 2026-11-07. The public contact address was corrected to
+  `betterpalogov@gmail.com` (it was written as `betterpalolgu@gmail.com`).
 
 ## Context
 
@@ -100,7 +102,7 @@ cost is real, so:
 
 - **Domain:** `betterpalo.org`, registered through Cloudflare Registrar so
   DNS, hosting, and analytics stay in one account.
-- **Contact:** `betterpalolgu@gmail.com` is the public project address. No
+- **Contact:** `betterpalogov@gmail.com` is the public project address. No
   personal email of a team member is published.
 - **Print sheets:** a print stylesheet only (`@media print`), no generated PDFs.
   Each sheet shows the service name, office, requirements, fees, processing
