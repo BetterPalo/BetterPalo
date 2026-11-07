@@ -33,10 +33,10 @@ No one else merges into `main`.
 
 ## Merge rules
 
-- Squash-merge only. The pull request title becomes the commit on `main`, so
-  it must follow the conventional commit format in
-  [labels.md](labels.md#conventional-commits).
-- Default squash message: pull request title and description.
+- Rebase and merge only ([ADR 0011](decisions/0011-rebase-and-merge-keeps-branch-commits.md)).
+  Every commit in the pull request lands on `main`, so each one must follow the
+  conventional commit format in [labels.md](labels.md#conventional-commits).
+- Merge commits and squash merges are turned off in the repository settings.
 - Contributors do not merge their own pull requests. Maintainers do not merge
   their own pull requests that touch data or licensing without the required
   approvals.

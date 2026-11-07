@@ -108,7 +108,7 @@ can check it on a phone.
 ## Workflow
 
 There is one long-lived branch, `main`. There is no `dev` or `develop` branch
-([ADR 0004](docs/decisions/0004-trunk-based-development-and-squash-merge.md)).
+([ADR 0004](docs/decisions/0004-trunk-based-development-and-squash-merge.md)). Merges are rebase and merge, not squash ([ADR 0011](docs/decisions/0011-rebase-and-merge-keeps-branch-commits.md)).
 Cloudflare preview links on each pull request are where changes are tested
 before merge.
 
@@ -129,9 +129,11 @@ git push -u origin feat/service-page
   the "Update branch" button on the pull request).
 - Fill in the PR template, add labels from [docs/labels.md](docs/labels.md),
   set the milestone, and link the issue with `Closes #12`.
-- **The PR title must be a conventional commit** (see below). Pull requests are
-  squash-merged, so the title becomes the single commit on `main`. Commits
-  inside your branch should still be clear, but they do not need to be perfect.
+- **Every commit must be a conventional commit** (see below). Pull requests are
+  merged with rebase and merge, so each commit you push lands on `main` as-is.
+  Use as many commits as you need, but make each subject clear. Tidy messy
+  commits before you request review. The PR title must also be clear, because it
+  names the pull request.
 - CI must pass and one approval from a code owner is required. `CODEOWNERS`
   requests the right reviewer automatically.
 - Only maintainers merge (see [docs/maintainers.md](docs/maintainers.md)). Do
