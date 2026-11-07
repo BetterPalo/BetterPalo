@@ -1,0 +1,85 @@
+name: Project board
+
+# Keeps the BetterPalo Kanban (org project 3) in step with pull requests and
+# issues. Status mapping is in docs/maintainers.md#project-board.
+#
+# Needs the repository secret PROJECT_TOKEN: a token that can read and write
+# org projects. GITHUB_TOKEN cannot write to organisation projects.
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, converted_to_draft, closed]
+  issues:
+    types: [opened, reopened, closed]
+
+permissions:
+  contents: read
+
+env:
+  PROJECT_OWNER: BetterPalo
+  PROJECT_NUMBER: "3"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    # Pull requests from forks get no secrets, so skip them rather than fail.
+    if: >-
+      github.event_name == 'issues' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    concurrency:
+      group: project-board-${{ github.event.pull_request.number || github.event.issue.number }}
+      cancel-in-progress: false
+    steps:
+      - name: Work out the target status
+        id: target
+        env:
+          EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          MERGED: ${{ github.event.pull_request.merged }}
+          DRAFT: ${{ github.event.pull_request.draft }}
+        run: |
+          case "$EVENT:$ACTION" in
+            pull_request:opened|pull_request:reopened|pull_request:ready_for_review)
+              if [ "$DRAFT" = "true" ]; then status="In progress"; else status="In review"; fi ;;
+            pull_request:converted_to_draft) status="In progress" ;;
+            pull_request:closed)
+              if [ "$MERGED" = "true" ]; then status="Done"; else status="Backlog"; fi ;;
+            issues:opened|issues:reopened) status="Backlog" ;;
+            issues:closed) status="Done" ;;
+            *) status="" ;;
+          esac
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+
+      - name: Add to the project and set Status
+        if: steps.target.outputs.status != ''
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          URL: ${{ github.event.pull_request.html_url || github.event.issue.html_url }}
+          STATUS: ${{ steps.target.outputs.status }}
+        run: |
+          set -euo pipefail
+
+          project_id=$(gh project view "$PROJECT_NUMBER" --owner "$PROJECT_OWNER" --format json --jq .id)
+
+          item_id=$(gh project item-list "$PROJECT_NUMBER" --owner "$PROJECT_OWNER" \
+            --limit 1000 --format json \
+            --jq ".items[] | select(.content.url == \"$URL\") | .id")
+
+          if [ -z "$item_id" ]; then
+            item_id=$(gh project item-add "$PROJECT_NUMBER" --owner "$PROJECT_OWNER" \
+              --url "$URL" --format json --jq .id)
+          fi
+
+          fields=$(gh project field-list "$PROJECT_NUMBER" --owner "$PROJECT_OWNER" --format json)
+          field_id=$(jq -r '.fields[] | select(.name == "Status") | .id' <<<"$fields")
+          option_id=$(jq -r --arg s "$STATUS" \
+            '.fields[] | select(.name == "Status") | .options[] | select(.name == $s) | .id' <<<"$fields")
+
+          if [ -z "$option_id" ]; then
+            echo "::error::No Status option named '$STATUS' on project $PROJECT_NUMBER."
+            exit 1
+          fi
+
+          gh project item-edit --id "$item_id" --project-id "$project_id" \
+            --field-id "$field_id" --single-select-option-id "$option_id"
+          echo "Set $URL to $STATUS."
