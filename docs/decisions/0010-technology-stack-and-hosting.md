@@ -4,6 +4,10 @@
 - Date: 2026-11-06
 - Revised: 2026-11-07. The public contact address was corrected to
   `betterpalogov@gmail.com` (it was written as `betterpalolgu@gmail.com`).
+- Revised: 2026-11-07. Pinned versions updated: Astro 7.4.7, TypeScript 6.0.3,
+  ESLint 9.39.5 with `eslint-plugin-astro` 1.7.0. TypeScript 7 is not yet
+  supported by `typescript-eslint` or `@astrojs/check`, and `eslint-plugin-astro`
+  2.0 and later require ESLint 10. Revisit when those tools add support.
 
 ## Context
 
@@ -34,7 +38,7 @@ not run Worker code.
 | Area | Choice |
 | --- | --- |
 | Language | TypeScript, `strict` mode |
-| Framework | Astro 6, static output (`output: "static"`) |
+| Framework | Astro 7, static output (`output: "static"`) |
 | UI components | `.astro` components by default; React (with TypeScript) islands for interactive parts and animations that need state |
 | Content | Astro content collections with Zod schemas that implement ADR 0006 and ADR 0007 |
 | Styling | Tailwind CSS v4 through its Vite plugin, plus a print stylesheet; system font stack, no web fonts |
@@ -167,7 +171,8 @@ Versions checked on 2026-11-06.
 | Lockfile | `pnpm-lock.yaml`, committed; CI runs `pnpm install --frozen-lockfile` | Repository |
 | Dependency versions | Exact versions only (`save-exact=true`), `engine-strict=true` | `.npmrc` |
 | Updates | Renovate, weekly, grouped; Node, pnpm, Astro, and React majors reviewed by hand | `renovate.json` |
-| Linting | ESLint (flat config) with `typescript-eslint`, `eslint-plugin-astro`, `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y` | `eslint.config.js` |
+| Type checking | TypeScript 6.0.3 (TypeScript 7 is not yet supported by the tools below) | `typescript` in `package.json` |
+| Linting | ESLint 9.39.5 (flat config) with `typescript-eslint`, `eslint-plugin-astro` 1.7.0, `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y` | `eslint.config.js` |
 | Formatting | Prettier with `prettier-plugin-astro` and `prettier-plugin-tailwindcss` | `.prettierrc` |
 | Unit tests | Vitest, using Astro's `getViteConfig()`; covers content schemas, the publishing gate, and helpers | `vitest.config.ts` |
 | End-to-end and accessibility | Playwright with `@axe-core/playwright`, mobile viewport | `playwright.config.ts` |

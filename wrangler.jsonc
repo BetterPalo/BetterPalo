@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "betterpalo",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+  },
+  // Future backend: add "main" (a Worker script) and bindings here, each with
+  // its own ADR. Examples: "d1_databases", "kv_namespaces", "r2_buckets".
+  // See docs/architecture.md.
+}
