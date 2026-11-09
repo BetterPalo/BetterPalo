@@ -2,6 +2,10 @@
   "ignores": [
     "docs/superpowers/**",
     ".superpowers/**",
-    ".github/PULL_REQUEST_TEMPLATE.md"
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    "node_modules/**",
+    "dist/**",
+    ".astro/**",
+    "playwright-report/**"
   ]
 }

@@ -47,7 +47,7 @@ unpublished phone numbers. See [docs/data-sources.md](docs/data-sources.md).
 
 ## Development
 
-The stack is Astro 6, TypeScript, React islands, Tailwind CSS, and Cloudflare
+The stack is Astro 7, TypeScript, React islands, Tailwind CSS, and Cloudflare
 Workers with static assets. See
 [ADR 0010](docs/decisions/0010-technology-stack-and-hosting.md), including its
 performance budget.
