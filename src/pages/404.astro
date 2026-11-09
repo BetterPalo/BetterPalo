@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { t } from '../i18n/ui';
+---
+
+<Base title={t('en', 'notFound.title')} lang="en">
+  <h1 class="text-2xl font-bold">{t('en', 'notFound.title')}</h1>
+  <p class="mt-2">{t('en', 'notFound.body')}</p>
+  <p class="mt-2" lang="fil">
+    {t('fil', 'notFound.body')}
+  </p>
+  <p class="mt-4">
+    <a class="underline" href="/">
+      {t('en', 'notFound.home')}
+    </a>
+  </p>
+</Base>

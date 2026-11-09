@@ -1,6 +1,6 @@
 name: Data correction
 description: Report a fact that is wrong, outdated, or missing a source.
-title: "[data] "
+title: '[data] '
 body:
   - type: input
     id: page
@@ -28,8 +28,7 @@ body:
     id: source
     attributes:
       label: Official source URL
-      description:
-        The page or document that confirms the correction. It must support the
+      description: The page or document that confirms the correction. It must support the
         exact change.
       placeholder: https://
     validations:

@@ -5,9 +5,15 @@
 - Revised: 2026-11-07. The public contact address was corrected to
   `betterpalogov@gmail.com` (it was written as `betterpalolgu@gmail.com`).
 - Revised: 2026-11-07. Pinned versions updated: Astro 7.4.7, TypeScript 6.0.3,
-  ESLint 9.39.5 with `eslint-plugin-astro` 1.7.0. TypeScript 7 is not yet
-  supported by `typescript-eslint` or `@astrojs/check`, and `eslint-plugin-astro`
-  2.0 and later require ESLint 10. Revisit when those tools add support.
+  ESLint 10.14.0 with `eslint-plugin-astro` 3.2.1 and `eslint-plugin-jsx-a11y-x`
+  0.2.0 (the maintained fork of `eslint-plugin-jsx-a11y`, which has not been
+  updated since 2024 and does not support ESLint 10). TypeScript 7 is not yet
+  supported by `typescript-eslint` or `@astrojs/check`. Revisit when those
+  tools add support.
+- Revised: 2026-11-09. The `betterpalo.org` domain is not registered yet, so the
+  site is served from `https://betterpalo.betterpalogov.workers.dev`. `site` in
+  `astro.config.mjs` and the `Sitemap:` line in `public/robots.txt` use that URL
+  until the domain exists.
 
 ## Context
 
@@ -104,7 +110,7 @@ cost is real, so:
 
 ### Site basics
 
-- **Domain:** `betterpalo.org`, registered through Cloudflare Registrar so
+- **Domain:** `betterpalo.org` (planned, not registered yet), to be registered through Cloudflare Registrar so
   DNS, hosting, and analytics stay in one account.
 - **Contact:** `betterpalogov@gmail.com` is the public project address. No
   personal email of a team member is published.
@@ -172,7 +178,7 @@ Versions checked on 2026-11-06.
 | Dependency versions | Exact versions only (`save-exact=true`), `engine-strict=true` | `.npmrc` |
 | Updates | Renovate, weekly, grouped; Node, pnpm, Astro, and React majors reviewed by hand | `renovate.json` |
 | Type checking | TypeScript 6.0.3 (TypeScript 7 is not yet supported by the tools below) | `typescript` in `package.json` |
-| Linting | ESLint 9.39.5 (flat config) with `typescript-eslint`, `eslint-plugin-astro` 1.7.0, `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y` | `eslint.config.js` |
+| Linting | ESLint 10.14.0 (flat config) with `typescript-eslint`, `eslint-plugin-astro` 3.2.1, `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y-x` | `eslint.config.js` |
 | Formatting | Prettier with `prettier-plugin-astro` and `prettier-plugin-tailwindcss` | `.prettierrc` |
 | Unit tests | Vitest, using Astro's `getViteConfig()`; covers content schemas, the publishing gate, and helpers | `vitest.config.ts` |
 | End-to-end and accessibility | Playwright with `@axe-core/playwright`, mobile viewport | `playwright.config.ts` |
