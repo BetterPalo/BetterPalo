@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  lang?: Lang;
+  description?: string;
+}
+
+const { title, lang = 'en', description } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {t(lang, 'site.name')}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body class="bg-white font-sans text-slate-900">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:p-2"
+    >
+      {t(lang, 'site.skip')}
+    </a>
+    <div role="note" class="no-print bg-notice px-4 py-2 text-sm text-notice-ink">
+      {t(lang, 'site.banner')}
+    </div>
+    <header class="border-b border-slate-200 px-4 py-3">
+      <a href={lang === 'en' ? '/' : `/${lang}/`} class="font-bold">
+        {t(lang, 'site.name')}
+      </a>
+    </header>
+    <main id="main" class="mx-auto max-w-2xl px-4 py-6">
+      <slot />
+    </main>
+    <footer class="no-print border-t border-slate-200 px-4 py-6 text-sm text-slate-600">
+      <p>{t(lang, 'site.banner')}</p>
+    </footer>
+  </body>
+</html>

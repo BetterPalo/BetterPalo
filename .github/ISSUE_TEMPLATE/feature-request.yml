@@ -1,6 +1,6 @@
 name: Feature request
 description: Suggest a change in behavior or content.
-title: "[feature] "
+title: '[feature] '
 body:
   - type: textarea
     id: problem

@@ -1,0 +1,42 @@
+# Copy this file to <id>.yaml (for example cedula.yaml) and fill it in.
+# null means "the official source does not say". Never guess.
+# Field rules: docs/decisions/0007-service-guide-content-model.md
+id: example-service
+name: Example Service
+category: civil-registry
+office: null
+classification: null
+transaction_type: null
+description: >
+  One or two plain-language sentences about what this service is for.
+eligibility: null
+requirements: []
+#  - document: Valid government-issued ID
+#    copies: 1
+#    form: original
+#    where_to_get: Issuing agency
+#    conditions: null
+steps: []
+#  - step: 1
+#    applicant_action: Submit requirements at the window
+#    office_action: Checks the documents
+#    responsible: Clerk, Office of the Municipal Civil Registrar
+#    max_time: 5 minutes
+fees: []
+#  - amount: "PHP 50.00"
+#    purpose: Certification fee
+#    where_to_pay: Office of the Municipal Treasurer
+#    conditions: null
+#    basis: null
+processing_time: null
+application_channels: []
+complaint_procedure: null
+effective_date: null
+notes: null
+
+source: null
+edition: null
+retrieved: null
+verified_by: null
+last_verified: null
+status: needs_confirmation

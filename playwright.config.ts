@@ -11,7 +11,7 @@ export default defineConfig({
   },
   projects: [{ name: 'mobile-chrome', use: { ...devices['Pixel 5'] } }],
   webServer: {
-    command: 'pnpm build && pnpm astro preview --port 4321',
+    command: 'pnpm build && pnpm astro preview --port 4321 --ignore-lock',
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
