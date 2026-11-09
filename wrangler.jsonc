@@ -9,6 +9,9 @@
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash",
   },
+  // Required by `wrangler preview` (used for branch and pull request previews).
+  // Assets and compatibility settings stay at the top level.
+  "previews": {},
   // Future backend: add "main" (a Worker script) and bindings here, each with
   // its own ADR. Examples: "d1_databases", "kv_namespaces", "r2_buckets".
   // See docs/architecture.md.
