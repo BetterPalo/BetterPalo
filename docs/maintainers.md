@@ -73,26 +73,19 @@ No one else merges into `main`.
 ## Project board
 
 The Kanban is the org project at <https://github.com/orgs/BetterPalo/projects/3>.
-The `Project board` workflow (`.github/workflows/project-board.yml`) keeps its
-Status in step with the repository:
+Move cards by hand as work progresses:
 
 | Event | Status |
 | --- | --- |
-| Issue opened or reopened | Backlog |
-| Issue closed | Done |
-| Pull request opened or reopened (ready) | In review |
-| Pull request opened as draft, or converted to draft | In progress |
-| Pull request merged | Done |
-| Pull request closed without merging | Backlog |
+| New idea or unscheduled issue | Backlog |
+| Issue is clear and someone can start | Ready |
+| Work has started, or a pull request is a draft | In progress |
+| Pull request is open and ready for review | In review |
+| Pull request merged, or issue closed | Done |
 
-Each new issue and pull request is added to the project automatically. Pull
-requests from forks are skipped because they get no secrets.
-
-The workflow needs a repository secret named `PROJECT_TOKEN`. It must be a token
-that can read and write organisation projects: a fine-grained token with
-Projects read and write on the BetterPalo organisation, or a classic token with
-the `project` scope. Store it under Settings → Secrets and variables → Actions.
-Use a token from a maintainer account, and rotate it if that person leaves.
+You can also turn on the project's built-in workflows (project menu, then
+Workflows) to add new issues and pull requests automatically and to set Done
+when they close. They need no token or repository secret.
 
 The `PR title` workflow (`.github/workflows/pr-title.yml`) fails a pull request
 whose title is not a conventional commit. It warns when the title is over 72
