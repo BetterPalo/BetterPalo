@@ -18,22 +18,22 @@
 /astro.config.mjs                   @khalmahi @Zyxavy
 
 # Design and accessibility
-/src/styles/                        @jaimedesu @khalmahi
-/public/                            @jaimedesu @khalmahi
+/src/styles/                        @jaimedesu @khalmahi @Zyxavy
+/public/                            @jaimedesu @khalmahi @Zyxavy
 
 # Translation (owner TBD; interim reviewers)
 /src/i18n/                          @khalmahi @Zyxavy
 
 # Infrastructure and CI. Workflow and CI changes need @Rurur8 as first reviewer,
 # @STR4T-coder as second reviewer; the project lead merges.
-/wrangler.jsonc                     @Rurur8 @STR4T-coder
-/public/_headers                    @Rurur8 @STR4T-coder
-/.github/workflows/                 @Rurur8 @STR4T-coder
-/.github/actions/                   @Rurur8 @STR4T-coder
-/renovate.json                      @Rurur8 @STR4T-coder
-/lighthouserc.json                  @Rurur8 @STR4T-coder
-/playwright.config.ts               @Rurur8 @khalmahi
-/tests/e2e/                         @Rurur8 @khalmahi
+/wrangler.jsonc                     @Rurur8 @STR4T-coder @Zyxavy
+/public/_headers                    @Rurur8 @STR4T-coder @Zyxavy
+/.github/workflows/                 @Rurur8 @STR4T-coder @Zyxavy
+/.github/actions/                   @Rurur8 @STR4T-coder @Zyxavy
+/renovate.json                      @Rurur8 @STR4T-coder @Zyxavy
+/lighthouserc.json                  @Rurur8 @STR4T-coder @Zyxavy
+/playwright.config.ts               @Rurur8 @khalmahi @Zyxavy
+/tests/e2e/                         @Rurur8 @khalmahi @Zyxavy
 
 # Governance, licensing, decisions (two approvals required by the charter)
 /docs/charter.md                    @Zyxavy @STR4T-coder
