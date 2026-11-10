@@ -115,7 +115,7 @@ preview link on the pull request so you can check it on a phone.
 ## Workflow
 
 There is one long-lived branch, `main`. There is no `dev` or `develop` branch
-([ADR 0004](docs/decisions/0004-trunk-based-development-and-squash-merge.md)). Merges are rebase and merge, not squash ([ADR 0011](docs/decisions/0011-rebase-and-merge-keeps-branch-commits.md)).
+([ADR 0004](docs/decisions/0004-trunk-based-development-and-squash-merge.md)). Pull requests are squash merged.
 Cloudflare preview links on each pull request are where changes are tested
 before merge.
 
@@ -132,15 +132,15 @@ git push -u origin feat/service-page
 - Name branches `type/short-description`, for example `data/add-barangay-list`.
   Use the commit types below.
 - One topic per PR, kept small. Open as a draft early if you want feedback.
-- Keep your branch current with `git fetch` then `git rebase origin/main` (or
-  the "Update branch" button on the pull request).
+- Keep your branch current with the "Update branch" button on the pull request,
+  or `git fetch` then `git merge origin/main`. Either is fine, because the pull
+  request is squash merged.
 - Fill in the PR template, add labels from [docs/labels.md](docs/labels.md),
   set the milestone, and link the issue with `Closes #12`.
-- **Every commit must be a conventional commit** (see below). Pull requests are
-  merged with rebase and merge, so each commit you push lands on `main` as-is.
-  Use as many commits as you need, but make each subject clear. Tidy messy
-  commits before you request review. The PR title must also be clear, because it
-  names the pull request.
+- **The PR title must be a conventional commit** (see below). Pull requests
+  are squash merged, so the title becomes the one commit on `main`. Commit on
+  your branch as often as you like; branch commits are not checked and do not
+  reach `main`.
 - CI must pass and one approval from a code owner is required. `CODEOWNERS`
   requests the right reviewer automatically.
 - Only maintainers merge (see [docs/maintainers.md](docs/maintainers.md)). Do

@@ -90,10 +90,11 @@ Monday, Asia/Manila time.
 
 ## Merge rules
 
-- Rebase and merge only ([ADR 0011](decisions/0011-rebase-and-merge-keeps-branch-commits.md)).
-  Every commit in the pull request lands on `main`, so each one must follow the
-  conventional commit format in [labels.md](labels.md#conventional-commits).
-- Merge commits and squash merges are turned off in the repository settings.
+- Squash merge only ([ADR 0004](decisions/0004-trunk-based-development-and-squash-merge.md)).
+  The pull request title becomes the commit subject on `main`, so it must
+  follow the conventional commit format in
+  [labels.md](labels.md#conventional-commits). Fix a bad title before merging.
+- Merge commits and rebase merges are turned off in the repository settings.
 - Contributors do not merge their own pull requests. Maintainers do not merge
   their own pull requests that touch data or licensing without the required
   approvals.

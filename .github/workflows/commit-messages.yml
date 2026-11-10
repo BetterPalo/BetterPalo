@@ -1,8 +1,9 @@
 name: Commit messages
 
-# Pull requests are merged by rebase and merge (ADR 0011), so every commit in
-# a pull request lands on main unchanged. Each commit subject must therefore be
-# a conventional commit. See CONTRIBUTING.md#commit-messages.
+# Pull requests are squash merged (ADR 0004), so the pull request title becomes
+# the one commit subject on main. The title must therefore be a conventional
+# commit. Branch commits never reach main and are not checked.
+# See CONTRIBUTING.md#commit-messages.
 
 on:
   pull_request:
@@ -15,32 +16,17 @@ jobs:
   conventional-commits:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-
-      - name: Check the title and every commit subject
+      - name: Check the pull request title
         env:
           TITLE: ${{ github.event.pull_request.title }}
-          BASE: ${{ github.event.pull_request.base.sha }}
-          HEAD: ${{ github.event.pull_request.head.sha }}
         run: |
           pattern='^(feat|fix|docs|data|content|i18n|style|refactor|test|ci|chore)(\([a-z0-9/,-]+\))?!?: [a-z].+$'
-          status=0
 
           if ! [[ "$TITLE" =~ $pattern ]]; then
             echo "::error::PR title must be a conventional commit, for example 'feat(services): add cedula guide'. Got: $TITLE"
-            status=1
+            exit 1
           fi
 
-          # Merge commits are skipped: rebase and merge does not keep them.
-          while IFS= read -r subject; do
-            if ! [[ "$subject" =~ $pattern ]]; then
-              echo "::error::Commit subject is not a conventional commit: $subject"
-              status=1
-            elif [ "${#subject}" -gt 72 ]; then
-              echo "::warning::Commit subject is ${#subject} characters; keep it under 72: $subject"
-            fi
-          done < <(git log --no-merges --format=%s "$BASE..$HEAD")
-
-          exit "$status"
+          if [ "${#TITLE}" -gt 72 ]; then
+            echo "::warning::PR title is ${#TITLE} characters; keep it under 72: $TITLE"
+          fi

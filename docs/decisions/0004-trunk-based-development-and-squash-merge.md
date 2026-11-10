@@ -1,6 +1,6 @@
 # 0004: Trunk-based development and squash merge
 
-- Status: Accepted (merge method superseded by [ADR 0011](0011-rebase-and-merge-keeps-branch-commits.md))
+- Status: Accepted (squash merge kept; [ADR 0011](0011-rebase-and-merge-keeps-branch-commits.md) was rejected)
 - Date: 2026-11-03
 
 ## Context
@@ -17,7 +17,9 @@ Use trunk-based development on a single `main` branch:
   `type/short-description`.
 - One topic per pull request, kept small; drafts are encouraged for early
   feedback.
-- Maintainers merge pull requests into `main` by rebase and merge (ADR 0011 replaced squash merge).
+- Maintainers merge pull requests into `main` by squash merge. The pull
+  request title becomes the commit subject, so it must be a conventional
+  commit.
 - No direct pushes to `main`; branch protection enforces review and CI.
 - Branches are deleted after merge.
 

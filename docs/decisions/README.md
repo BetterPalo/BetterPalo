@@ -53,8 +53,8 @@ What else was considered, and why was it rejected?
   — Accepted.
 - [0002: License split for code, content, and data](0002-license-split.md) —
   Accepted.
-- [0004: Trunk-based development and squash merge](0004-trunk-based-development-and-squash-merge.md) — Accepted; its squash-merge part is superseded by 0011.
-- [0011: Rebase and merge keeps branch commits on main](0011-rebase-and-merge-keeps-branch-commits.md) — Proposed.
+- [0004: Trunk-based development and squash merge](0004-trunk-based-development-and-squash-merge.md) — Accepted.
+- [0011: Rebase and merge keeps branch commits on main](0011-rebase-and-merge-keeps-branch-commits.md) — Rejected; squash merge stays.
 - [0005: Positioning and phased roadmap](0005-positioning-and-phased-roadmap.md) — Accepted.
 - [0006: Content format for service guides](0006-content-format-for-service-guides.md) — Accepted.
 - [0007: Service guide content model](0007-service-guide-content-model.md) —
