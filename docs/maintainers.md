@@ -171,6 +171,8 @@ smoke test as the deploy workflow every hour against
 - A failure opens a GitHub issue titled "Production smoke test failed", or adds
   a comment to the one already open. The issue carries the run link and the
   rollback commands.
+- The issue is labelled `incident`, assigned to the infrastructure members, and
+  closed automatically when the check passes again.
 - The check covers both languages, the stylesheet and its cache header,
   `robots.txt`, the sitemap, the favicon, the security headers, and the custom
   404.
