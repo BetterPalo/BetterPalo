@@ -17,6 +17,9 @@
 - Revised: 2026-11-10. Production deploys moved from Cloudflare Workers Builds to
   GitHub Actions after CI passes ([ADR 0012](0012-deploy-after-ci.md)). Workers
   Builds keeps building pull request previews.
+- Revised: 2026-11-10. Added an hourly scheduled smoke test as the "monitor"
+  stage of the pipeline (`monitor.yml`). Cloudflare Web Analytics stays the
+  traffic analytics.
 
 ## Context
 
@@ -124,7 +127,10 @@ cost is real, so:
   links between the language versions of each page (plus `x-default` pointing
   to English), and a static share image per service page built at deploy time
   (ADR 0009).
-- **Analytics:** Cloudflare Web Analytics only. No uptime monitor.
+- **Analytics and monitoring:** Cloudflare Web Analytics for traffic. A scheduled
+  smoke test (`monitor.yml`) checks the live site every hour and opens a GitHub
+  issue when it stops answering. See [ADR 0012](0012-deploy-after-ci.md) for the
+  deploy side of the same check.
 - **Content editing:** no CMS. Contributors edit content files through GitHub,
   including its web editor, or report problems through the issue forms.
 

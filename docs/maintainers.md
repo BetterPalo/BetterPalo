@@ -161,6 +161,23 @@ all follow it.
 Rotate `CLOUDFLARE_API_TOKEN` the same day a member with access to it leaves the
 team.
 
+## Monitoring
+
+`.github/workflows/monitor.yml` is the "monitor" stage of the pipeline
+([ADR 0010](decisions/0010-technology-stack-and-hosting.md)). It runs the same
+smoke test as the deploy workflow every hour against
+`https://betterpalo.betterpalogov.workers.dev` (or `PRODUCTION_URL`).
+
+- A failure opens a GitHub issue titled "Production smoke test failed", or adds
+  a comment to the one already open. The issue carries the run link and the
+  rollback commands.
+- The check covers both languages, the stylesheet and its cache header,
+  `robots.txt`, the sitemap, the favicon, the security headers, and the custom
+  404.
+- It can be run by hand from the **Actions** tab (`workflow_dispatch`).
+- Cloudflare Web Analytics stays the traffic analytics; this is an uptime and
+  correctness check, not traffic analytics.
+
 ## Cloudflare
 
 - The account belongs to the project address `betterpalogov@gmail.com`, with
