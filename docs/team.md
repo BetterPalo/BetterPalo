@@ -9,7 +9,7 @@ allowed to touch it". Anyone can contribute anywhere.
 
 | Role | Person | GitHub | Owns |
 | --- | --- | --- | --- |
-| Project lead, maintainer, and data and verification | Project lead | `@Zyxary` | Architecture, ADRs, review and merge to `main`, LGU contact, releases; service guide YAML, the source register in `docs/data-sources.md`, test calls, the demand check, letters to the LGU |
+| Project lead, maintainer, and data and verification | Project lead | `@Zyxavy` | Architecture, ADRs, review and merge to `main`, LGU contact, releases; service guide YAML, the source register in `docs/data-sources.md`, test calls, the demand check, letters to the LGU |
 | Frontend development | Frontend developer | `@khalmahi` | Astro pages and components, content collections and schemas, Pagefind search, EN/FIL routing |
 | Design and accessibility | Designer | `@jaimedesu` | Figma wireframes, design tokens for Tailwind, print sheet with QR code, WCAG 2.1 AA checks, visual identity |
 | Infrastructure and DevOps | Infrastructure | `@Rurur8` | Cloudflare (Workers, DNS, analytics), Workers Builds previews, GitHub Actions, Playwright, Lighthouse CI, Renovate |

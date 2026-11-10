@@ -6,23 +6,23 @@
 # and the frontend owner until one is.
 
 # Default: lead and second reviewer
-*                                   @Zyxary @STR4T-coder
+*                                   @Zyxavy @STR4T-coder
 
 # Data and verification (second checker: @STR4T-coder)
-/src/content/                       @Zyxary @STR4T-coder
-/docs/data-sources.md               @Zyxary @STR4T-coder
-/docs/research/                     @Zyxary @STR4T-coder
+/src/content/                       @Zyxavy @STR4T-coder
+/docs/data-sources.md               @Zyxavy @STR4T-coder
+/docs/research/                     @Zyxavy @STR4T-coder
 
 # Frontend
-/src/                               @khalmahi @Zyxary
-/astro.config.mjs                   @khalmahi @Zyxary
+/src/                               @khalmahi @Zyxavy
+/astro.config.mjs                   @khalmahi @Zyxavy
 
 # Design and accessibility
 /src/styles/                        @jaimedesu @khalmahi
 /public/                            @jaimedesu @khalmahi
 
 # Translation (owner TBD; interim reviewers)
-/src/i18n/                          @khalmahi @Zyxary
+/src/i18n/                          @khalmahi @Zyxavy
 
 # Infrastructure and CI. Workflow and CI changes need @Rurur8 as first reviewer,
 # @STR4T-coder as second reviewer; the project lead merges.
@@ -36,10 +36,10 @@
 /tests/e2e/                         @Rurur8 @khalmahi
 
 # Governance, licensing, decisions (two approvals required by the charter)
-/docs/charter.md                    @Zyxary @STR4T-coder
-/docs/licensing.md                  @Zyxary @STR4T-coder
-/docs/decisions/                    @Zyxary @STR4T-coder
-/docs/team.md                       @Zyxary @STR4T-coder
-/LICENSE                            @Zyxary @STR4T-coder
-/LICENSES/                          @Zyxary @STR4T-coder
-/.github/CODEOWNERS                 @Zyxary @STR4T-coder
+/docs/charter.md                    @Zyxavy @STR4T-coder
+/docs/licensing.md                  @Zyxavy @STR4T-coder
+/docs/decisions/                    @Zyxavy @STR4T-coder
+/docs/team.md                       @Zyxavy @STR4T-coder
+/LICENSE                            @Zyxavy @STR4T-coder
+/LICENSES/                          @Zyxavy @STR4T-coder
+/.github/CODEOWNERS                 @Zyxavy @STR4T-coder
