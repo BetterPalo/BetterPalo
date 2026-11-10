@@ -34,6 +34,7 @@
 /lighthouserc.json                  @Rurur8 @STR4T-coder @Zyxavy
 /playwright.config.ts               @Rurur8 @khalmahi @Zyxavy
 /tests/e2e/                         @Rurur8 @khalmahi @Zyxavy
+/scripts/                           @Rurur8 @STR4T-coder @Zyxavy
 
 # Governance, licensing, decisions (two approvals required by the charter)
 /docs/charter.md                    @Zyxavy @STR4T-coder

@@ -65,6 +65,8 @@ What else was considered, and why was it rejected?
   — Proposed.
 - [0010: Technology stack and hosting](0010-technology-stack-and-hosting.md) —
   Accepted.
+- [0012: Production deploys follow CI from GitHub Actions](0012-deploy-after-ci.md)
+  — Proposed.
 
 ## Pending decisions
 

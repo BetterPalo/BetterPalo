@@ -107,15 +107,69 @@ Monday, Asia/Manila time.
 - The second reviewer has **Maintain** on the repository.
 - The project lead is an organisation **Owner**.
 
+## Deploying
+
+Production is deployed by `.github/workflows/deploy.yml`, not by Cloudflare
+Workers Builds ([ADR 0012](decisions/0012-deploy-after-ci.md)).
+
+- A merge to `main` starts the `CI` workflow. When all four jobs pass, the
+  `Deploy` workflow starts by itself, downloads the `site` artifact from that
+  run, and runs `pnpm exec wrangler deploy` against the `production`
+  environment. The bytes CI tested are the bytes that deploy.
+- The job is skipped until someone sets the repository variable
+  `DEPLOY_ENABLED` to `true`. Leave it unset while the Cloudflare setup below is
+  incomplete.
+- After the deploy, `pnpm smoke` checks `https://betterpalo.betterpalogov.workers.dev`:
+  `/` and `/fil/`, the stylesheet and its immutable cache header, `robots.txt`,
+  the sitemap, the favicon, the security headers from `public/_headers`, and the
+  custom 404. It retries for about 30 seconds before failing.
+- Two merges in a row queue instead of overlapping; a deploy in progress is not
+  cancelled.
+- A deploy that fails is not rolled back automatically. Roll back from the
+  `Deploy` run's summary, or by hand:
+
+  ```sh
+  pnpm exec wrangler deployments list
+  pnpm exec wrangler rollback <version-id>
+  ```
+
+- Pull request previews still come from Cloudflare Workers Builds. They are not
+  production deploys.
+
+### Cloudflare setup for deploys
+
+Only a repository administrator can do this, once:
+
+1. Create the `production` environment under **Settings** → **Environments**.
+   Under **Deployment branches and tags**, allow `main` only. Add required
+   reviewers if the project wants a human gate.
+2. Create a Cloudflare API token scoped to **Workers Scripts: Edit** on the
+   `betterpalo` Worker, and copy the account ID from the Cloudflare dashboard.
+3. Add them as **environment secrets** of `production`: `CLOUDFLARE_API_TOKEN`
+   and `CLOUDFLARE_ACCOUNT_ID`. Do not add them as repository secrets;
+   environment secrets reach only the deploy job.
+4. In Cloudflare, open the `betterpalo` Worker's **Builds** settings and stop it
+   from deploying the production branch. Keep builds for pull request branches.
+   Workers Builds cannot wait for GitHub checks, which is why production moved.
+5. Set the repository variable `DEPLOY_ENABLED` to `true` and merge a trivial
+   change to confirm the first deploy.
+
+When the domain is registered, set the repository variable `PRODUCTION_URL` to
+the new address. The deploy workflow, the environment link, and the smoke test
+all follow it.
+
+Rotate `CLOUDFLARE_API_TOKEN` the same day a member with access to it leaves the
+team.
+
 ## Cloudflare
 
 - The account belongs to the project address `betterpalogov@gmail.com`, with
   the project lead as Super Administrator and two-factor authentication on.
 - The infrastructure members (`@Rurur8` and `@STR4T-coder`) are invited as
   **Administrators**, each with their own login and two-factor authentication. The project Gmail password is not shared.
-- Deploys run through Cloudflare Workers Builds from the GitHub repository.
-  `main` deploys to production; other branches get preview versions linked on
-  the pull request. Nobody deploys from a laptop.
+- Cloudflare Workers hosts the site and Workers Builds builds the pull request
+  previews. Production deploys run from GitHub Actions after CI
+  (see [Deploying](#deploying)). Nobody deploys from a laptop.
 - The Cloudflare GitHub app is installed on the organisation for this
   repository only.
 - Domain and DNS changes are made only by the project lead or the
