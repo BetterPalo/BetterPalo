@@ -1,8 +1,7 @@
 <!-- Thank you for contributing. Fill in the sections below and keep the checklist.
      PR title: clear and in the conventional commit format, for example
-     "feat(services): add cedula guide". Every commit in the pull request
-     must also be a conventional commit, because the pull request is merged
-     by rebase and merge (ADR 0011). -->
+     "feat(services): add cedula guide". The pull request is squash merged
+     (ADR 0004), so the title becomes the commit on main. -->
 
 ## Summary
 

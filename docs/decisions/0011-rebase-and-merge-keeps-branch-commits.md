@@ -1,7 +1,24 @@
 # 0011: Rebase and merge keeps branch commits on main
 
-- Status: Proposed
+- Status: Rejected (2026-11-10); squash merge stays, as in
+  [ADR 0004](0004-trunk-based-development-and-squash-merge.md)
 - Date: 2026-11-07
+
+## Why it was rejected
+
+Trying rebase and merge on the CI and deploy pull requests (#15 to #17) showed
+costs that outweigh seeing every branch commit on `main`:
+
+- A branch that merged `main` in, as this ADR told shared branches to do, could
+  no longer be rebased onto `main` without conflicts.
+- Stacked pull requests had to be rebased and force-pushed after each merge,
+  and every force push dismissed the approvals already given.
+- Every commit subject had to be tidy before review, which is a lot to ask of
+  a volunteer team with mixed experience.
+
+Squash merge needs only a clear pull request title, gives one commit per pull
+request to revert if a deploy breaks, and does not care how a branch was kept
+current. The work inside a branch stays visible on the closed pull request.
 
 ## Context
 
