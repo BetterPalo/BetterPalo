@@ -37,6 +37,8 @@ Closes #
 - [ ] I added labels and a milestone, and linked the issue.
 - [ ] `pnpm format`, `pnpm lint`, `pnpm check`, `pnpm test`, and `pnpm build`
       pass locally (code changes).
+- [ ] For page, style, font, or script changes, `pnpm test:e2e` and
+      `pnpm test:lighthouse` pass locally.
 - [ ] I have read the license terms in `docs/licensing.md`.
 - [ ] Every fact I added or changed has a cited official source and a
       verification date.

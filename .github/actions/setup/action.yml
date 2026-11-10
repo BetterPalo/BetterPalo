@@ -1,0 +1,27 @@
+name: Set up the toolchain
+description: >-
+  Install the Node.js version from .nvmrc, the pnpm version from the
+  packageManager field in package.json, and the dependencies from the lockfile.
+
+inputs:
+  install:
+    description: Run `pnpm install --frozen-lockfile` after setting up.
+    required: false
+    default: 'true'
+
+runs:
+  using: composite
+  steps:
+    - name: Install pnpm
+      uses: pnpm/action-setup@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version-file: .nvmrc
+        cache: pnpm
+
+    - name: Install dependencies
+      if: inputs.install == 'true'
+      shell: bash
+      run: pnpm install --frozen-lockfile

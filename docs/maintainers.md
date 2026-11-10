@@ -24,12 +24,66 @@ No one else merges into `main`.
 - Require review from code owners (see `.github/CODEOWNERS`).
 - Dismiss stale approvals when new commits are pushed.
 - Require conversation resolution before merging.
-- Require status checks to pass and the branch to be up to date: `docs` (Docs
-  workflow), and `build` and `e2e` (CI workflow).
+- Require status checks to pass and the branch to be up to date: `quality`,
+  `build`, `e2e`, and `lighthouse` (CI workflow), `docs` (Docs workflow), and
+  `conventional-commits` (Commit messages workflow).
 - Restrict who can update `main` to the project lead and the backup
   maintainer once one is named.
 - Block force pushes and deletions.
 - Do not allow bypassing the above rules, including for administrators.
+
+The ruleset that enforces this is called `protect-main`. Required status checks
+are set on the ruleset, not in the repository's legacy branch protection, and
+a new check can only be added once its workflow has run at least once:
+
+```sh
+# Project lead (organisation owner) only.
+gh api repos/BetterPalo/BetterPalo/rulesets \
+  --jq '.[] | select(.name == "protect-main") | .id'
+```
+
+## Continuous integration
+
+`.github/workflows/ci.yml` runs four jobs on every pull request and on `main`.
+All share Node.js and pnpm with `.github/actions/setup`, which reads `.nvmrc`
+and the `packageManager` field.
+
+| Job | What it does | Fails the pull request |
+| --- | --- | --- |
+| `quality` | `format:check`, `lint`, `check`, `test` | yes |
+| `build` | `build`, then uploads `dist/` for the next two jobs | yes |
+| `e2e` | Playwright against the uploaded `dist/`, Chromium only | yes |
+| `lighthouse` | Lighthouse CI against ADR 0010's performance budget | yes |
+
+- A pull request push cancels the run already in progress for that branch.
+  Runs on `main` are never cancelled.
+- `e2e` uploads `playwright-report/` and `test-results/` when a test fails;
+  `lighthouse` uploads `.lighthouseci/` on every run. Both are kept for seven
+  days under the run's **Artifacts**.
+- Lighthouse serves the uploaded `dist/` with its own static server, so it makes
+  no network calls to Cloudflare and needs no secrets. It checks `/` and
+  `/fil/`, with three runs per page and the median asserted.
+- No job needs a repository secret. `permissions` is `contents: read`.
+- Workflow changes need `@Rurur8` as first reviewer and `@STR4T-coder` as
+  second reviewer; the project lead merges.
+
+## Dependency updates
+
+Renovate (`renovate.json` at the repository root) runs weekly, before 06:00 on
+Monday, Asia/Manila time.
+
+- Minor and patch updates arrive as one grouped pull request.
+- Node.js, pnpm, Astro, React, and TypeScript majors wait on the Dependency
+  Dashboard until someone approves them, then arrive as one grouped pull
+  request. See ADR 0010's tooling table.
+- Security advisories open their own pull request as soon as Renovate sees
+  them, outside the weekly schedule.
+- New versions must be at least three days old before Renovate proposes them.
+- The labels `major` and `security` must exist in the repository; Renovate
+  applies them and cannot create them. Create them once under **Issues** →
+  **Labels**.
+- Renovate needs the Renovate GitHub App installed on the repository, with
+  access to this repository only. It needs no repository secret.
 
 ## Merge rules
 
@@ -87,6 +141,6 @@ You can also turn on the project's built-in workflows (project menu, then
 Workflows) to add new issues and pull requests automatically and to set Done
 when they close. They need no token or repository secret.
 
-The `PR title` workflow (`.github/workflows/pr-title.yml`) fails a pull request
-whose title is not a conventional commit. It warns when the title is over 72
-characters. Add it to the required checks once it has run once.
+The `Commit messages` workflow (`.github/workflows/commit-messages.yml`) fails
+a pull request whose title or commit subjects are not conventional commits, and
+warns when a subject is over 72 characters. It is a required check.

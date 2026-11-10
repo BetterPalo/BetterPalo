@@ -24,10 +24,14 @@
 # Translation (owner TBD; interim reviewers)
 /src/i18n/                          @khalmahi @Zyxary
 
-# Infrastructure and CI
+# Infrastructure and CI. Workflow and CI changes need @Rurur8 as first reviewer,
+# @STR4T-coder as second reviewer; the project lead merges.
 /wrangler.jsonc                     @Rurur8 @STR4T-coder
 /public/_headers                    @Rurur8 @STR4T-coder
 /.github/workflows/                 @Rurur8 @STR4T-coder
+/.github/actions/                   @Rurur8 @STR4T-coder
+/renovate.json                      @Rurur8 @STR4T-coder
+/lighthouserc.json                  @Rurur8 @STR4T-coder
 /playwright.config.ts               @Rurur8 @khalmahi
 /tests/e2e/                         @Rurur8 @khalmahi
 
