@@ -87,9 +87,16 @@ pnpm test
 pnpm build
 ```
 
-Run `pnpm test:e2e` too if you changed a page layout or a React component. CI
-runs everything, and Cloudflare posts a preview link on the pull request so you
-can check it on a phone.
+Run `pnpm test:e2e` too if you changed a page layout or a React component. Run
+`pnpm test:lighthouse` if you changed a page's markup, styles, fonts, or
+scripts: it audits the built `dist/` against [ADR 0010](docs/decisions/0010-technology-stack-and-hosting.md#performance-budget)'s
+performance budget and needs Chrome installed.
+
+CI runs `quality`, `build`, `e2e`, and `lighthouse` on every pull request, and
+all four must pass before merge. When `e2e` fails, download the
+`playwright-report` artifact from the run; when `lighthouse` fails, download
+`lighthouse-report` for the HTML and JSON results. Cloudflare also posts a
+preview link on the pull request so you can check it on a phone.
 
 ### Rules
 
