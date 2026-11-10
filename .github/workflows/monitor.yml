@@ -1,0 +1,123 @@
+name: Monitor
+
+# The "monitor" stage of the pipeline in ADR 0010: lint -> tests -> deploy ->
+# monitor. Runs the same smoke test as the deploy workflow on a schedule against
+# the live site and opens a GitHub issue when it stops answering.
+#
+# Workflow changes need @Rurur8 as first reviewer, @STR4T-coder as second
+# reviewer; the lead merges (docs/team.md#review-routing).
+
+on:
+  schedule:
+    # Hourly, off the top of the hour to avoid GitHub's busy minute.
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: monitor-production
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    name: monitor
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      # smoke-test.mjs has no dependencies; only Node is needed.
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: Check production
+        id: smoke
+        run: node scripts/smoke-test.mjs
+        env:
+          SMOKE_BASE_URL: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}
+          SMOKE_ATTEMPTS: '3'
+          SMOKE_DELAY_MS: '10000'
+
+      - name: Open or update an issue if the site is down
+        if: failure()
+        uses: actions/github-script@v7
+        env:
+          SMOKE_BASE_URL: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}
+        with:
+          script: |
+            const title = 'Production smoke test failed';
+            const baseUrl = process.env.SMOKE_BASE_URL;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+            const { data: openIssues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+            const existing = openIssues.find((issue) => issue.title === title);
+
+            const body = [
+              `The hourly smoke test against \`${baseUrl}\` failed.`,
+              '',
+              `Run: ${runUrl}`,
+              '',
+              'Roll back if needed:',
+              '```sh',
+              'pnpm exec wrangler deployments list',
+              'pnpm exec wrangler rollback <version-id>',
+              '```',
+            ].join('\n');
+
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: `Still failing.\n\n${body}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['incident'],
+                assignees: ['Rurur8', 'STR4T-coder'],
+              });
+            }
+
+      - name: Close the issue when the site is back
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = 'Production smoke test failed';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const { data: openIssues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+            for (const issue of openIssues.filter((i) => i.title === title && !i.pull_request)) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `The smoke test passes again: ${runUrl}`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+                state_reason: 'completed',
+              });
+            }
