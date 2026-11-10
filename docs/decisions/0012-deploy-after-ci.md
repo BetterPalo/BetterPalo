@@ -50,7 +50,7 @@ in the repository.
 
 - A red `main` cannot reach production. The cost is one more wait: the deploy
   starts only after CI, about three to four minutes after a merge.
-- The deploy needs two repository secrets, a repository variable, and a
+- The deploy needs two environment secrets, a repository variable, and a
   Cloudflare setting change that only an administrator can make. Until then the
   job is skipped and the notice in `docs/maintainers.md` applies.
 - The deploy can be approved by hand, which is the only manual step; it is
