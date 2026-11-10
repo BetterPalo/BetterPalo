@@ -6,7 +6,7 @@ are listed in [team.md](team.md).
 
 ## Who merges
 
-- **Project lead** (`@Zyxary`): reviews and merges into `main`.
+- **Project lead** (`@Zyxavy`): reviews and merges into `main`.
 - **Second reviewer** (`@STR4T-coder`): gives the second approval on charter,
   licence, governance, and data-policy changes, and checks the lead's data.
   Does not merge unless named as a backup maintainer below.

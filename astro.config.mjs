@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  // TODO(@Zyxary, @Rurur8): change to https://betterpalo.org once the domain is
+  // TODO(@Zyxavy, @Rurur8): change to https://betterpalo.org once the domain is
   // registered, and update the Sitemap line in public/robots.txt too.
   site: 'https://betterpalo.betterpalogov.workers.dev',
   output: 'static',
