@@ -115,10 +115,14 @@ ADR 0010 under "Future direction".
 
 ## Deployment
 
-- Cloudflare Workers Builds builds every push. `main` deploys to production;
-  other branches upload a preview version and comment the link on the pull
-  request.
-- Build command `pnpm build`; deploy command `npx wrangler deploy`; preview
-  command `npx wrangler versions upload`.
+- Production deploys from the `Deploy` workflow after the `CI` workflow
+  succeeds on `main`, using the `dist/` artifact CI built
+  ([ADR 0012](decisions/0012-deploy-after-ci.md)). Nobody deploys from a laptop.
+- Cloudflare Workers Builds still builds every pull request branch as a preview
+  version and comments the link on the pull request.
+- Build command `pnpm build`; deploy command `pnpm exec wrangler deploy`;
+  preview command `npx wrangler versions upload`.
+- After a deploy, `pnpm smoke` checks the live site, its security headers, the
+  stylesheet, `robots.txt`, the sitemap, and the custom 404.
 - Security and cache headers come from `public/_headers`. Missing pages are
   served by `404.html` through `not_found_handling` in `wrangler.jsonc`.

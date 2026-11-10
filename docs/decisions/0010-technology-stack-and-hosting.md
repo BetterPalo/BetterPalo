@@ -14,6 +14,9 @@
   site is served from `https://betterpalo.betterpalogov.workers.dev`. `site` in
   `astro.config.mjs` and the `Sitemap:` line in `public/robots.txt` use that URL
   until the domain exists.
+- Revised: 2026-11-10. Production deploys moved from Cloudflare Workers Builds to
+  GitHub Actions after CI passes ([ADR 0012](0012-deploy-after-ci.md)). Workers
+  Builds keeps building pull request previews.
 
 ## Context
 

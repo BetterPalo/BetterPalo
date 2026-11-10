@@ -146,6 +146,9 @@ git push -u origin feat/service-page
 - Only maintainers merge (see [docs/maintainers.md](docs/maintainers.md)). Do
   not merge your own PR.
 - Do not push directly to `main`; branch protection blocks it.
+- After merge, production deploys by itself once CI passes on `main`; no one
+  runs a deploy command. See [Deploying](docs/maintainers.md#deploying) and
+  [ADR 0012](docs/decisions/0012-deploy-after-ci.md) if a deploy fails.
 - Data changes are checked by someone other than the person who transcribed
   them before `status` becomes `verified` (see [docs/team.md](docs/team.md)).
 
