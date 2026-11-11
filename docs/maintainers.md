@@ -62,10 +62,7 @@ gh api --method PUT repos/BetterPalo/BetterPalo/rulesets/26378152 \
     }},
     { "type": "required_status_checks", "parameters": {
         "required_status_checks": [
-          { "context": "quality" },
-          { "context": "build" },
-          { "context": "e2e" },
-          { "context": "lighthouse" },
+          { "context": "ci" },
           { "context": "docs" },
           { "context": "conventional-commits" }
         ],
