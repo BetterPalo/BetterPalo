@@ -115,8 +115,8 @@ ADR 0010 under "Future direction".
 
 ## Deployment
 
-- Production deploys from the `Deploy` workflow after the `CI` workflow
-  succeeds on `main`, using the `dist/` artifact CI built
+- Production deploys from the `deploy` job in `.github/workflows/ci-cd.yml`,
+  after `quality`, `build`, `e2e`, and `lighthouse` pass in the same run
   ([ADR 0012](decisions/0012-deploy-after-ci.md)). Nobody deploys from a laptop.
 - Cloudflare Workers Builds still builds every pull request branch as a preview
   version and comments the link on the pull request.

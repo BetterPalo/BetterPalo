@@ -1,0 +1,246 @@
+name: CI/CD
+
+# Quality gates for every pull request and for `main`, plus the production deploy
+# that follows a green run on `main`. One workflow so the deploy waits for the
+# exact jobs above instead of a separate `workflow_run`.
+#
+# The heavy jobs run only when the frontend changes (see the `changes` job).
+# `changes` itself always runs, so a required status check never hangs when a
+# pull request touches only documentation or configuration.
+#
+# Workflow changes need @Rurur8 as first reviewer and @STR4T-coder as second
+# reviewer; the project lead merges (docs/team.md#review-routing).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-cd-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  changes:
+    name: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      frontend: ${{ steps.filter.outputs.frontend }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'src/**'
+              - 'public/**'
+              - 'astro.config.mjs'
+              - 'package.json'
+              - 'pnpm-lock.yaml'
+              - 'tsconfig.json'
+              - 'tests/**'
+              - 'playwright.config.ts'
+              - 'lighthouserc.json'
+              - 'wrangler.jsonc'
+              - 'scripts/**'
+              - '.nvmrc'
+              - '.github/actions/**'
+              - '.github/workflows/ci-cd.yml'
+
+  quality:
+    name: quality
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+      - name: Check formatting
+        run: pnpm format:check
+      - name: Lint
+        run: pnpm lint
+      - name: Type-check Astro and TypeScript
+        run: pnpm check
+      - name: Unit tests
+        run: pnpm test
+
+  build:
+    name: build
+    needs: [changes, quality]
+    if: needs.changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+      - name: Build the site
+        run: pnpm build
+      # `e2e` and `lighthouse` test this exact artifact instead of building
+      # again, so what they check is what would deploy.
+      - name: Upload the built site
+        uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  e2e:
+    name: e2e
+    needs: [changes, build]
+    if: needs.changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+      - name: Install the test browser
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Download the built site
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: dist
+      - name: Run end-to-end tests
+        run: pnpm test:e2e
+        env:
+          # Playwright serves the artifact above instead of rebuilding it.
+          PLAYWRIGHT_SERVE_PREBUILT: '1'
+      - name: Upload the Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  lighthouse:
+    name: lighthouse
+    needs: [changes, build]
+    if: needs.changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+      - name: Download the built site
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: dist
+      - name: Run Lighthouse CI
+        run: pnpm exec lhci autorun
+        env:
+          # Chrome is preinstalled on GitHub's Ubuntu runners.
+          CHROME_PATH: /usr/bin/google-chrome
+      - name: Upload the Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-report
+          path: .lighthouseci/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  deploy:
+    name: deploy
+    needs: [changes, quality, build, e2e, lighthouse]
+    if: >-
+      always() &&
+      needs.changes.outputs.frontend == 'true' &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      vars.DEPLOY_ENABLED == 'true' &&
+      needs.quality.result == 'success' &&
+      needs.build.result == 'success' &&
+      needs.e2e.result == 'success' &&
+      needs.lighthouse.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: production
+      url: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: ./.github/actions/setup
+
+      - name: Download the site CI tested
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: dist
+
+      - name: Check the artifact is complete
+        shell: bash
+        run: test -s dist/index.html && test -s dist/fil/index.html
+
+      - name: Deploy to production
+        run: pnpm exec wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Check production
+        run: pnpm smoke
+        env:
+          SMOKE_BASE_URL: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}
+
+      - name: Record the deployment
+        if: always()
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          {
+            echo "### Production deploy"
+            echo
+            echo "- Commit: \`${{ github.sha }}\`"
+            echo "- Site: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}"
+            echo
+            echo '```text'
+            pnpm exec wrangler deployments list 2>&1 | head -20
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Explain how to roll back
+        if: failure()
+        shell: bash
+        run: |
+          {
+            echo "### Deploy failed"
+            echo
+            echo "Production may be serving the previous version or a broken one."
+            echo "Roll back with the project lead:"
+            echo
+            echo '```sh'
+            echo 'pnpm exec wrangler deployments list'
+            echo 'pnpm exec wrangler rollback <version-id>'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

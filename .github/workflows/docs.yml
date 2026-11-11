@@ -1,5 +1,12 @@
 name: Docs
 
+# Markdown lint and link check. Runs on every pull request and on `main`, but the
+# expensive steps run only when documentation changes. The `docs` job itself
+# always runs so a required status check never hangs on a skipped workflow.
+#
+# Workflow changes need @Rurur8 as first reviewer and @STR4T-coder as second
+# reviewer; the project lead merges (docs/team.md#review-routing).
+
 on:
   push:
     branches: [main]
@@ -8,16 +15,38 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: docs-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   docs:
+    name: docs
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            docs:
+              - 'docs/**'
+              - '**/*.md'
+              - '.github/workflows/docs.yml'
+
       - name: Lint Markdown
+        if: steps.filter.outputs.docs == 'true'
         uses: DavidAnson/markdownlint-cli2-action@v25
         with:
           globs: '**/*.md'
+
       - name: Check relative links
+        if: steps.filter.outputs.docs == 'true'
         uses: lycheeverse/lychee-action@v2
         with:
           args: --offline --no-progress --include-fragments './**/*.md'

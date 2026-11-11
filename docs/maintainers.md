@@ -24,9 +24,11 @@ No one else merges into `main`.
 - Require review from code owners (see `.github/CODEOWNERS`).
 - Dismiss stale approvals when new commits are pushed.
 - Require conversation resolution before merging.
-- Require status checks to pass and the branch to be up to date: `quality`,
-  `build`, `e2e`, and `lighthouse` (CI workflow), `docs` (Docs workflow), and
-  `conventional-commits` (Commit messages workflow).
+- Require status checks to pass and the branch to be up to date: `ci`
+  (CI/CD workflow, always runs), `docs` (Docs workflow, always runs), and
+  `conventional-commits` (Commit messages workflow). The heavy CI/CD jobs
+  (`quality`, `build`, `e2e`, `lighthouse`) are conditional on the frontend
+  changing, so they must not be required.
 - Restrict who can update `main` to the project lead and the backup
   maintainer once one is named.
 - Block force pushes and deletions.
@@ -44,16 +46,20 @@ gh api repos/BetterPalo/BetterPalo/rulesets \
 
 ## Continuous integration
 
-`.github/workflows/ci.yml` runs four jobs on every pull request and on `main`.
-All share Node.js and pnpm with `.github/actions/setup`, which reads `.nvmrc`
-and the `packageManager` field.
+`.github/workflows/ci-cd.yml` runs the `changes` gate plus four jobs on every
+pull request and on `main`. The heavy jobs run only when the frontend changes
+(see the path list in the workflow); `changes` itself always runs, so a required
+status check never hangs on a skipped workflow. All share Node.js and pnpm with
+`.github/actions/setup`, which reads `.nvmrc` and the `packageManager` field.
 
-| Job | What it does | Fails the pull request |
+| Job | What it does | Runs when |
 | --- | --- | --- |
-| `quality` | `format:check`, `lint`, `check`, `test` | yes |
-| `build` | `build`, then uploads `dist/` for the next two jobs | yes |
-| `e2e` | Playwright against the uploaded `dist/`, Chromium only | yes |
-| `lighthouse` | Lighthouse CI against ADR 0010's performance budget | yes |
+| `changes` | Reports whether the frontend changed | always |
+| `quality` | `format:check`, `lint`, `check`, `test` | frontend changed |
+| `build` | `build`, then uploads `dist/` for the next jobs | frontend changed |
+| `e2e` | Playwright against the uploaded `dist/`, Chromium only | frontend changed |
+| `lighthouse` | Lighthouse CI against ADR 0010's performance budget | frontend changed |
+| `deploy` | Deploys `dist/` to production (main only, gated on `DEPLOY_ENABLED`) | frontend changed and merged to `main` |
 
 - A pull request push cancels the run already in progress for that branch.
   Runs on `main` are never cancelled.
@@ -109,12 +115,12 @@ Monday, Asia/Manila time.
 
 ## Deploying
 
-Production is deployed by `.github/workflows/deploy.yml`, not by Cloudflare
-Workers Builds ([ADR 0012](decisions/0012-deploy-after-ci.md)).
+Production is deployed by the `deploy` job in `.github/workflows/ci-cd.yml`,
+not by Cloudflare Workers Builds ([ADR 0012](decisions/0012-deploy-after-ci.md)).
 
-- A merge to `main` starts the `CI` workflow. When all four jobs pass, the
-  `Deploy` workflow starts by itself, downloads the `site` artifact from that
-  run, and runs `pnpm exec wrangler deploy` against the `production`
+- A merge to `main` starts the `CI/CD` workflow. When `quality`, `build`, `e2e`,
+  and `lighthouse` pass in that same run, the `deploy` job downloads the `site`
+  artifact and runs `pnpm exec wrangler deploy` against the `production`
   environment. The bytes CI tested are the bytes that deploy.
 - The job is skipped until someone sets the repository variable
   `DEPLOY_ENABLED` to `true`. Leave it unset while the Cloudflare setup below is
