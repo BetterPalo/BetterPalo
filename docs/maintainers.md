@@ -35,43 +35,37 @@ No one else merges into `main`.
 The ruleset that enforces this is called `protect-main`. Required status checks
 are set on the ruleset, not in the repository's legacy branch protection, and
 a new check can only be added once its workflow has run at least once. Adding
-them needs organisation-owner rights; the lead runs:
+them needs organisation-owner rights. The command below fetches the live
+ruleset and changes only what we intend, so the bypass list and any other
+current settings are kept. It also enforces squash merge only
+([ADR 0004](decisions/0004-trunk-based-development-and-squash-merge.md)) and
+conversation resolution, and pins the checks to GitHub Actions (app ID 15368).
+Run it right after the CI/CD workflow, which creates the always-running `ci`
+check, is on `main`. Running it earlier leaves a required check that never
+reports, and no pull request can merge.
 
 ```sh
 # Project lead (organisation owner) only.
-gh api --method PUT repos/BetterPalo/BetterPalo/rulesets/26378152 \
-  --input <(cat <<'JSON'
-{
-  "name": "protect-main",
-  "target": "branch",
-  "enforcement": "active",
-  "conditions": { "ref_name": { "include": ["refs/heads/main"], "exclude": [] } },
-  "rules": [
-    { "type": "deletion" },
-    { "type": "non_fast_forward" },
-    { "type": "pull_request", "parameters": {
-        "required_approving_review_count": 1,
-        "dismiss_stale_reviews_on_push": true,
-        "required_reviewers": [],
-        "require_code_owner_review": true,
-        "dismissal_restriction": { "enabled": true, "allowed_actors": [{ "id": 5, "type": "RepositoryRole" }] },
-        "require_last_push_approval": true,
-        "required_review_thread_resolution": false,
-        "require_extra_approval_for_unattributed_changes": true,
-        "allowed_merge_methods": ["merge", "squash", "rebase"]
-    }},
-    { "type": "required_status_checks", "parameters": {
-        "required_status_checks": [
-          { "context": "ci" },
-          { "context": "docs" },
-          { "context": "conventional-commits" }
-        ],
-        "strict_required_status_checks_policy": true
-    }}
-  ]
-}
-JSON
-)
+id=$(gh api repos/BetterPalo/BetterPalo/rulesets \
+  --jq '.[] | select(.name == "protect-main") | .id')
+
+gh api "repos/BetterPalo/BetterPalo/rulesets/$id" \
+  | jq '{name, target, enforcement, conditions, bypass_actors,
+         rules: (
+           [.rules[] | select(.type != "required_status_checks")
+             | if .type == "pull_request" then
+                 .parameters.allowed_merge_methods = ["squash"]
+                 | .parameters.required_review_thread_resolution = true
+               else . end]
+           + [{type: "required_status_checks", parameters: {
+                 strict_required_status_checks_policy: true,
+                 required_status_checks: [
+                   {context: "ci", integration_id: 15368},
+                   {context: "docs", integration_id: 15368},
+                   {context: "conventional-commits", integration_id: 15368}
+                 ]}}]
+         )}' \
+  | gh api --method PUT "repos/BetterPalo/BetterPalo/rulesets/$id" --input -
 ```
 
 ## Continuous integration
