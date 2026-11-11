@@ -34,12 +34,44 @@ No one else merges into `main`.
 
 The ruleset that enforces this is called `protect-main`. Required status checks
 are set on the ruleset, not in the repository's legacy branch protection, and
-a new check can only be added once its workflow has run at least once:
+a new check can only be added once its workflow has run at least once. Adding
+them needs organisation-owner rights; the lead runs:
 
 ```sh
 # Project lead (organisation owner) only.
-gh api repos/BetterPalo/BetterPalo/rulesets \
-  --jq '.[] | select(.name == "protect-main") | .id'
+gh api --method PUT repos/BetterPalo/BetterPalo/rulesets/26378152 \
+  --input <(cat <<'JSON'
+{
+  "name": "protect-main",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": { "ref_name": { "include": ["refs/heads/main"], "exclude": [] } },
+  "rules": [
+    { "type": "deletion" },
+    { "type": "non_fast_forward" },
+    { "type": "pull_request", "parameters": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "required_reviewers": [],
+        "require_code_owner_review": true,
+        "dismissal_restriction": { "enabled": true, "allowed_actors": [{ "id": 5, "type": "RepositoryRole" }] },
+        "require_last_push_approval": true,
+        "required_review_thread_resolution": false,
+        "require_extra_approval_for_unattributed_changes": true,
+        "allowed_merge_methods": ["merge", "squash", "rebase"]
+    }},
+    { "type": "required_status_checks", "parameters": {
+        "required_status_checks": [
+          { "context": "ci" },
+          { "context": "docs" },
+          { "context": "conventional-commits" }
+        ],
+        "strict_required_status_checks_policy": true
+    }}
+  ]
+}
+JSON
+)
 ```
 
 ## Continuous integration
