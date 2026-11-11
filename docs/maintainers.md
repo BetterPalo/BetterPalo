@@ -33,7 +33,12 @@ No one else merges into `main`.
 - Restrict who can update `main` to the project lead and the backup
   maintainer once one is named.
 - Block force pushes and deletions.
-- Do not allow bypassing the above rules, including for administrators.
+- Only repository administrators can bypass the above rules. The bypass is
+  for emergencies: a broken required check that blocks every merge, or a fix
+  production needs before CI can finish. Everything else goes through a pull
+  request, including the lead's own changes. After a bypass, say what was
+  pushed and why in the team channel, and open a pull request for anything that
+  still needs review.
 
 The ruleset that enforces this is called `protect-main`. Required status checks
 are set on the ruleset, not in the repository's legacy branch protection, and
@@ -43,33 +48,42 @@ ruleset and changes only what we intend, so the bypass list and any other
 current settings are kept. It also enforces squash merge only
 ([ADR 0004](decisions/0004-trunk-based-development-and-squash-merge.md)) and
 conversation resolution, and pins the checks to GitHub Actions (app ID 15368).
-Run it right after the CI/CD workflow, which creates the always-running `ci`
-check, is on `main`. Running it earlier leaves a required check that never
-reports, and no pull request can merge.
+The lead applied it on 2026-11-11. Run it again only to change the required
+checks, and never name a check before its workflow is on `main`: a required
+check that never reports blocks every pull request. It needs only `gh`, which
+has `jq` built in.
 
 ```sh
 # Project lead (organisation owner) only.
 id=$(gh api repos/BetterPalo/BetterPalo/rulesets \
   --jq '.[] | select(.name == "protect-main") | .id')
 
-gh api "repos/BetterPalo/BetterPalo/rulesets/$id" \
-  | jq '{name, target, enforcement, conditions, bypass_actors,
-         rules: (
-           [.rules[] | select(.type != "required_status_checks")
-             | if .type == "pull_request" then
-                 .parameters.allowed_merge_methods = ["squash"]
-                 | .parameters.required_review_thread_resolution = true
-               else . end]
-           + [{type: "required_status_checks", parameters: {
-                 strict_required_status_checks_policy: true,
-                 required_status_checks: [
-                   {context: "ci", integration_id: 15368},
-                   {context: "docs", integration_id: 15368},
-                   {context: "conventional-commits", integration_id: 15368}
-                 ]}}]
-         )}' \
-  | gh api --method PUT "repos/BetterPalo/BetterPalo/rulesets/$id" --input -
+# Keep a copy to restore with: gh api --method PUT ... --input protect-main.backup.json
+gh api "repos/BetterPalo/BetterPalo/rulesets/$id" > protect-main.backup.json
+
+gh api "repos/BetterPalo/BetterPalo/rulesets/$id" --jq '
+  {name, target, enforcement, conditions, bypass_actors,
+   rules: (
+     [.rules[] | select(.type != "required_status_checks")
+       | if .type == "pull_request" then
+           .parameters.allowed_merge_methods = ["squash"]
+           | .parameters.required_review_thread_resolution = true
+         else . end]
+     + [{type: "required_status_checks", parameters: {
+           strict_required_status_checks_policy: true,
+           required_status_checks: [
+             {context: "ci", integration_id: 15368},
+             {context: "docs", integration_id: 15368},
+             {context: "conventional-commits", integration_id: 15368}
+           ]}}]
+   )}' > protect-main.new.json
+
+# Read protect-main.new.json, then apply it.
+gh api --method PUT "repos/BetterPalo/BetterPalo/rulesets/$id" \
+  --input protect-main.new.json
 ```
+
+Keep both JSON files out of the repository.
 
 ## Continuous integration
 

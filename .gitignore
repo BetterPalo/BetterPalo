@@ -27,3 +27,6 @@ playwright-report/
 test-results/
 coverage/
 .lighthouseci/
+
+# Ruleset backups from docs/maintainers.md (never commit)
+protect-main.*.json
