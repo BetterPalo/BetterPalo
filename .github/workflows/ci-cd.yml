@@ -4,9 +4,11 @@ name: CI/CD
 # that follows a green run on `main`. One workflow so the deploy waits for the
 # exact jobs above instead of a separate `workflow_run`.
 #
-# The heavy jobs run only when the frontend changes (see the `changes` job).
-# `changes` itself always runs, so a required status check never hangs when a
-# pull request touches only documentation or configuration.
+# The heavy jobs are skipped when a change touches only documentation (see the
+# `changes` job). The `ci` job at the end always runs and fails if any job
+# above failed or was cancelled, so it is the one required status check for
+# this workflow: it never hangs on a docs-only pull request and never passes
+# when a test failed.
 #
 # Workflow changes need @Rurur8 as first reviewer and @STR4T-coder as second
 # reviewer; the project lead merges (docs/team.md#review-routing).
@@ -25,40 +27,35 @@ concurrency:
 
 jobs:
   changes:
-    name: ci
+    name: changes
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
-      frontend: ${{ steps.filter.outputs.frontend }}
+      code: ${{ steps.filter.outputs.code }}
     steps:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: false
+      # `code` is true when at least one changed file is outside the
+      # documentation. A new file anywhere else runs the full pipeline by
+      # default, so a config change can never skip the checks it affects.
+      # Markdown under `src/` is site content, so only top-level and
+      # `.github/` Markdown counts as documentation.
       - uses: dorny/paths-filter@v3
         id: filter
         with:
+          predicate-quantifier: every
           filters: |
-            frontend:
-              - 'src/**'
-              - 'public/**'
-              - 'astro.config.mjs'
-              - 'package.json'
-              - 'pnpm-lock.yaml'
-              - 'tsconfig.json'
-              - 'tests/**'
-              - 'playwright.config.ts'
-              - 'lighthouserc.json'
-              - 'wrangler.jsonc'
-              - 'scripts/**'
-              - '.nvmrc'
-              - '.github/actions/**'
-              - '.github/workflows/ci-cd.yml'
+            code:
+              - '!docs/**'
+              - '!*.md'
+              - '!.github/**/*.md'
 
   quality:
     name: quality
     needs: changes
-    if: needs.changes.outputs.frontend == 'true'
+    if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -78,7 +75,7 @@ jobs:
   build:
     name: build
     needs: [changes, quality]
-    if: needs.changes.outputs.frontend == 'true'
+    if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -101,7 +98,7 @@ jobs:
   e2e:
     name: e2e
     needs: [changes, build]
-    if: needs.changes.outputs.frontend == 'true'
+    if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -135,7 +132,7 @@ jobs:
   lighthouse:
     name: lighthouse
     needs: [changes, build]
-    if: needs.changes.outputs.frontend == 'true'
+    if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -162,12 +159,32 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
+  # The required status check. Skipped jobs (docs-only changes) count as a
+  # pass; a failed or cancelled job fails `ci`.
+  ci:
+    name: ci
+    needs: [changes, quality, build, e2e, lighthouse]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check the results of the jobs above
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+        run: |
+          echo "One or more jobs failed or were cancelled:"
+          echo "$RESULTS"
+          exit 1
+      - name: All jobs passed or were skipped
+        run: echo "ci passed"
+
   deploy:
     name: deploy
     needs: [changes, quality, build, e2e, lighthouse]
     if: >-
       always() &&
-      needs.changes.outputs.frontend == 'true' &&
+      needs.changes.outputs.code == 'true' &&
       github.event_name == 'push' &&
       github.ref == 'refs/heads/main' &&
       vars.DEPLOY_ENABLED == 'true' &&

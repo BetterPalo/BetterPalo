@@ -5,8 +5,9 @@
 - Revised: 2026-11-11. CI and deploy moved into one workflow,
   `.github/workflows/ci-cd.yml`. The deploy is now the `deploy` job, which
   needs `quality`, `build`, `e2e`, and `lighthouse`, instead of a separate
-  workflow triggered by `workflow_run`. The `changes` job keeps the workflow
-  triggered on every pull request so required checks never hang.
+  workflow triggered by `workflow_run`. The heavy jobs are skipped when a
+  change touches only documentation; the always-running `ci` job reports the
+  combined result, so it is the required check and never hangs.
 - Supersedes: the production-deploy part of ADR 0010. Pull request previews stay
   on Cloudflare Workers Builds.
 
