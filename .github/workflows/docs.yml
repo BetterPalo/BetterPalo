@@ -1,5 +1,12 @@
 name: Docs
 
+# Markdown lint and link check on every pull request and on `main`. It runs on
+# every change, not only documentation changes: it takes seconds, and a code
+# change that renames or moves a file can break a link in the docs.
+#
+# Workflow changes need @Rurur8 as first reviewer and @STR4T-coder as second
+# reviewer; the project lead merges (docs/team.md#review-routing).
+
 on:
   push:
     branches: [main]
@@ -8,15 +15,25 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: docs-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   docs:
+    name: docs
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
       - name: Lint Markdown
         uses: DavidAnson/markdownlint-cli2-action@v25
         with:
           globs: '**/*.md'
+
       - name: Check relative links
         uses: lycheeverse/lychee-action@v2
         with:

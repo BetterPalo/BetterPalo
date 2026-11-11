@@ -1,7 +1,7 @@
 name: Monitor
 
 # The "monitor" stage of the pipeline in ADR 0010: lint -> tests -> deploy ->
-# monitor. Runs the same smoke test as the deploy workflow on a schedule against
+# monitor. Runs the same smoke test as the `deploy` job on a schedule against
 # the live site and opens a GitHub issue when it stops answering.
 #
 # Workflow changes need @Rurur8 as first reviewer, @STR4T-coder as second

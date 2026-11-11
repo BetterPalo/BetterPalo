@@ -24,9 +24,12 @@ No one else merges into `main`.
 - Require review from code owners (see `.github/CODEOWNERS`).
 - Dismiss stale approvals when new commits are pushed.
 - Require conversation resolution before merging.
-- Require status checks to pass and the branch to be up to date: `quality`,
-  `build`, `e2e`, and `lighthouse` (CI workflow), `docs` (Docs workflow), and
-  `conventional-commits` (Commit messages workflow).
+- Require status checks to pass and the branch to be up to date: `ci`
+  (CI/CD workflow), `docs` (Docs workflow), and `conventional-commits`
+  (Commit messages workflow). All three always run. `ci` fails if any CI/CD
+  job failed or was cancelled. The jobs it summarises (`quality`, `build`,
+  `e2e`, `lighthouse`) are skipped on documentation-only changes, so they must
+  not be required themselves.
 - Restrict who can update `main` to the project lead and the backup
   maintainer once one is named.
 - Block force pushes and deletions.
@@ -70,16 +73,23 @@ gh api "repos/BetterPalo/BetterPalo/rulesets/$id" \
 
 ## Continuous integration
 
-`.github/workflows/ci.yml` runs four jobs on every pull request and on `main`.
-All share Node.js and pnpm with `.github/actions/setup`, which reads `.nvmrc`
-and the `packageManager` field.
+`.github/workflows/ci-cd.yml` runs on every pull request and on `main`. The
+heavy jobs are skipped when every changed file is documentation (`docs/**`, a
+top-level `.md` file, or a `.md` file under `.github/`); any other change,
+including configuration, runs them all. The `ci`
+job always runs and reports the combined result, so the required check never
+hangs and never passes when a test failed. All jobs share Node.js and pnpm with
+`.github/actions/setup`, which reads `.nvmrc` and the `packageManager` field.
 
-| Job | What it does | Fails the pull request |
+| Job | What it does | Runs when |
 | --- | --- | --- |
-| `quality` | `format:check`, `lint`, `check`, `test` | yes |
-| `build` | `build`, then uploads `dist/` for the next two jobs | yes |
-| `e2e` | Playwright against the uploaded `dist/`, Chromium only | yes |
-| `lighthouse` | Lighthouse CI against ADR 0010's performance budget | yes |
+| `changes` | Reports whether anything besides documentation changed | always |
+| `quality` | `format:check`, `lint`, `check`, `test` | not docs-only |
+| `build` | `build`, then uploads `dist/` for the next jobs | not docs-only |
+| `e2e` | Playwright against the uploaded `dist/`, Chromium only | not docs-only |
+| `lighthouse` | Lighthouse CI against ADR 0010's performance budget | not docs-only |
+| `ci` | Fails if any job above failed or was cancelled (required check) | always |
+| `deploy` | Deploys `dist/` to production (gated on `DEPLOY_ENABLED`) | push to `main`, not docs-only |
 
 - A pull request push cancels the run already in progress for that branch.
   Runs on `main` are never cancelled.
@@ -135,12 +145,12 @@ Monday, Asia/Manila time.
 
 ## Deploying
 
-Production is deployed by `.github/workflows/deploy.yml`, not by Cloudflare
-Workers Builds ([ADR 0012](decisions/0012-deploy-after-ci.md)).
+Production is deployed by the `deploy` job in `.github/workflows/ci-cd.yml`,
+not by Cloudflare Workers Builds ([ADR 0012](decisions/0012-deploy-after-ci.md)).
 
-- A merge to `main` starts the `CI` workflow. When all four jobs pass, the
-  `Deploy` workflow starts by itself, downloads the `site` artifact from that
-  run, and runs `pnpm exec wrangler deploy` against the `production`
+- A merge to `main` starts the `CI/CD` workflow. When `quality`, `build`, `e2e`,
+  and `lighthouse` pass in that same run, the `deploy` job downloads the `site`
+  artifact and runs `pnpm exec wrangler deploy` against the `production`
   environment. The bytes CI tested are the bytes that deploy.
 - The job is skipped until someone sets the repository variable
   `DEPLOY_ENABLED` to `true`. Leave it unset while the Cloudflare setup below is
@@ -152,7 +162,7 @@ Workers Builds ([ADR 0012](decisions/0012-deploy-after-ci.md)).
 - Two merges in a row queue instead of overlapping; a deploy in progress is not
   cancelled.
 - A deploy that fails is not rolled back automatically. Roll back from the
-  `Deploy` run's summary, or by hand:
+  `deploy` job's summary in the CI/CD run, or by hand:
 
   ```sh
   pnpm exec wrangler deployments list
@@ -181,7 +191,7 @@ Only a repository administrator can do this, once:
    change to confirm the first deploy.
 
 When the domain is registered, set the repository variable `PRODUCTION_URL` to
-the new address. The deploy workflow, the environment link, and the smoke test
+the new address. The `deploy` job, the environment link, and the smoke test
 all follow it.
 
 Rotate `CLOUDFLARE_API_TOKEN` the same day a member with access to it leaves the
@@ -191,7 +201,7 @@ team.
 
 `.github/workflows/monitor.yml` is the "monitor" stage of the pipeline
 ([ADR 0010](decisions/0010-technology-stack-and-hosting.md)). It runs the same
-smoke test as the deploy workflow every hour against
+smoke test as the `deploy` job every hour against
 `https://betterpalo.betterpalogov.workers.dev` (or `PRODUCTION_URL`).
 
 - A failure opens a GitHub issue titled "Production smoke test failed", or adds
