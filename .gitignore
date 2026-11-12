@@ -26,6 +26,7 @@ dist/
 playwright-report/
 test-results/
 coverage/
+.impeccable/
 .lighthouseci/
 
 # Ruleset backups from docs/maintainers.md (never commit)
