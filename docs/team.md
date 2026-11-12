@@ -12,7 +12,7 @@ allowed to touch it". Anyone can contribute anywhere.
 | Project lead, maintainer, and data and verification | Project lead | `@Zyxavy` | Architecture, ADRs, review and merge to `main`, LGU contact, releases; service guide YAML, the source register in `docs/data-sources.md`, test calls, the demand check, letters to the LGU |
 | Frontend development | Frontend developer | `@khalmahi` | Astro pages and components, content collections and schemas, Pagefind search, EN/FIL routing |
 | Design and accessibility | Designer | `@jaimedesu` | Figma wireframes, design tokens for Tailwind, print sheet with QR code, WCAG 2.1 AA checks, visual identity |
-| Infrastructure and DevOps | Infrastructure | `@Rurur8` | Cloudflare (Workers, DNS, analytics), Workers Builds previews, GitHub Actions, Playwright, Lighthouse CI, Renovate |
+| Infrastructure and DevOps | Infrastructure | `@Rurur8` | Cloudflare (Workers, DNS, analytics), Workers Builds previews, GitHub Actions and the production deploy job, Playwright, Lighthouse CI, Renovate |
 | Infrastructure, second reviewer, and second checker | Infrastructure | `@STR4T-coder` | Co-owns infrastructure and CI; second approval on charter, licence, governance, and data-policy changes; second check of every transcribed guide |
 | Translation and QA | Not yet assigned | TBD | Filipino (and Waray pilot) translation, phone and browser testing. Until assigned, the lead asks the frontend developer or designer for translation review |
 
@@ -71,8 +71,10 @@ checker for the lead's transcriptions. When they are unavailable, the designer
 | Project Gmail | Lead | Not shared. Use invitations instead of the password |
 | Figma | Designer (`@jaimedesu`) | Team members as viewers or editors |
 
-Nobody deploys from a laptop. Production deploys come from `main` through
-Cloudflare Workers Builds. Secrets never go into the repository; see
+Nobody deploys from a laptop. Production deploys come from `main` through the
+`deploy` job in GitHub Actions, after CI passes
+([ADR 0012](decisions/0012-deploy-after-ci.md)). Cloudflare Workers Builds
+only builds pull request previews. Secrets never go into the repository; see
 [architecture.md](architecture.md#secrets).
 
 ## Joining the team

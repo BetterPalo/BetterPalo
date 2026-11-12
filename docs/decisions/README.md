@@ -58,19 +58,24 @@ What else was considered, and why was it rejected?
 - [0005: Positioning and phased roadmap](0005-positioning-and-phased-roadmap.md) — Accepted.
 - [0006: Content format for service guides](0006-content-format-for-service-guides.md) — Accepted.
 - [0007: Service guide content model](0007-service-guide-content-model.md) —
-  Proposed.
+  Accepted.
 - [0008: Own stack and template, with BetterLGU as reference](0008-own-stack-with-betterlgu-as-reference.md)
-  — Proposed.
+  — Accepted.
 - [0009: Additions from the November 2026 research review](0009-additions-from-november-2026-review.md)
-  — Proposed.
+  — Accepted.
 - [0010: Technology stack and hosting](0010-technology-stack-and-hosting.md) —
   Accepted.
 - [0012: Production deploys follow CI from GitHub Actions](0012-deploy-after-ci.md)
-  — Proposed.
+  — Accepted.
+
+Number 0003 was reserved for the technology stack decision, which was later
+recorded as [ADR 0010](0010-technology-stack-and-hosting.md). No 0003 file was
+ever written, and the number is not reused.
 
 ## Pending decisions
 
-- Content format for data files (service guides proposed in ADR 0007).
+- Content format for data files other than service guides (service guides are
+  set in ADR 0007).
 - External link monitoring.
 
 The tech stack is set in [ADR 0010](0010-technology-stack-and-hosting.md).

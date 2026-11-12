@@ -1,6 +1,6 @@
 # 0008: Own stack and template, with BetterLGU as reference
 
-- Status: Proposed
+- Status: Accepted (2026-11-12)
 - Date: 2026-11-06
 
 ## Context

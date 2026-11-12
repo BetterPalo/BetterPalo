@@ -30,13 +30,14 @@ entries and nothing from them is published until it reaches the register.
 | Lead | Location | Level | What to check | Status |
 | --- | --- | --- | --- | --- |
 | Official LGU of Palo website | <http://210.213.142.34/home/?page=home> | 1 (once confirmed) | Whether it hosts the current Citizen's Charter, officials, offices, and hotlines; confirm with the LGU that this address is official | Reported by the team, 2026-11-06 |
-| `palo-leyte.gov.ph` | <https://www.palo-leyte.gov.ph> | 1 (once confirmed) | Listed on Wikipedia as the official site; check whether it is live or replaced by the address above | Unchecked |
+| `palo-leyte.gov.ph` | <https://www.palo-leyte.gov.ph> | 1 (once confirmed) | Listed on Wikipedia as the official site; check whether it is live or replaced by the address above | Did not resolve in an automated check, 2026-11-12; recheck from a normal connection before dropping it |
 | Palo BPLS (iBPLS) | <https://bpbc.ibpls.com/paloleyte/> | 1 (once confirmed) | Which transactions work end to end; see the BPLS caution below | Page identifies as Palo, 2026-11-06 |
 | Sangguniang Bayan of Palo | <https://palosb.com/official_website/> | 1 | Ordinance texts and COA report downloads; hotlines look like placeholders | Unverified |
 | DILG Province of Leyte, Palo profile | <https://sites.google.com/view/dilg-province-of-leyte/lgus/palo> | 3 | No visible update date; confirm officials and contacts with the LGU | Unverified |
 | PSA 2024 Census of Population | PSA release for Palo (exact table to be recorded) | 2 | Record the table title, release date, and reference date (July 1, 2024) | Headline total (80,291) matches a secondary source |
-| Palo Citizen's Charter (PDF) | <http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf> | 1 (once confirmed) | Cover says "2026 (2nd Edition)"; confirm the approval date with the LGU; see [the service inventory](research/citizens-charter-2026-inventory.md) | Downloaded and inventoried, 2026-11-06 |
+| Palo Citizen's Charter (PDF) | <http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf> | 1 | Cover says "2026 (2nd Edition)"; approval date still unconfirmed by the LGU; see [the service inventory](research/citizens-charter-2026-inventory.md) and [Verifying without an LGU reply](#verifying-without-an-lgu-reply) | Downloaded and inventoried, 2026-11-06; accepted as the source for service guides, 2026-11-12 |
 | Citizen's Charter announcement | LGU Facebook page (via Govserv mirror) | 4 / 5 | The linked download goes to a third-party PDFfiller page; do not use it | Rejected as a source |
+| Scribd upload "PALO-Leyte" | <https://www.scribd.com/document/566303202/PALO-Leyte> | 5 | Unknown content and date; open it to see whether it is an older Charter edition. Research lead only | Found in web search, 2026-11-12; not opened |
 
 ## Rules
 
@@ -55,6 +56,31 @@ entries and nothing from them is published until it reaches the register.
   an edition or effective date, and a last-verified date. Unverified items are
   not published.
 - A missing page is better than a wrong one.
+
+## Verifying without an LGU reply
+
+Decided 2026-11-12 in issue #24. The LGU of Palo has not answered the team's
+letter, so M1 does not wait for a reply.
+
+- A service guide may be marked `verified` when a second checker, who did not
+  transcribe it, has compared it page by page against the Citizen's Charter PDF
+  published on the LGU's own server (the 2026, 2nd Edition entry in the source
+  leads). `verified` means "matches the published official source", not
+  "confirmed by the LGU".
+- Each guide's `notes` says that the Charter's approval date has not been
+  confirmed by the LGU.
+- The unofficial-site banner and the "report a wrong detail" link stay on every
+  page.
+- These still need confirmation and stay unpublished until they get it:
+  - office phone numbers and hotlines, until a test call confirms them;
+  - claims that a transaction can be completed online through the BPLS, until
+    the permits office or an end-to-end test confirms it;
+  - anything the Charter does not state, which stays `null`.
+- If the LGU replies, record the confirmed approval date and official website
+  address here and in the source leads, and recheck published guides against
+  any newer Charter edition.
+- Keep following up with the LGU (issue #24). A reply is still wanted, but it no
+  longer blocks publishing.
 
 ## Verification cautions
 

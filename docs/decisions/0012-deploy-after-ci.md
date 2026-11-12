@@ -1,6 +1,6 @@
 # 0012: Production deploys follow CI from GitHub Actions
 
-- Status: Proposed
+- Status: Accepted (2026-11-12)
 - Date: 2026-11-10
 - Revised: 2026-11-11. CI and deploy moved into one workflow,
   `.github/workflows/ci-cd.yml`. The deploy is now the `deploy` job, which

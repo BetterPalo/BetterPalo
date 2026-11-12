@@ -1,6 +1,6 @@
 # 0007: Service guide content model
 
-- Status: Proposed
+- Status: Accepted (2026-11-12)
 - Date: 2026-11-06
 
 ## Context

@@ -1,6 +1,6 @@
 # 0009: Additions from the November 2026 research review
 
-- Status: Proposed
+- Status: Accepted (2026-11-12)
 - Date: 2026-11-06
 
 ## Context
