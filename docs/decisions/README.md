@@ -67,6 +67,8 @@ What else was considered, and why was it rejected?
   Accepted.
 - [0012: Production deploys follow CI from GitHub Actions](0012-deploy-after-ci.md)
   — Accepted.
+- [0013: One self-hosted display font for headlines](0013-display-web-font.md)
+  — Proposed.
 
 Number 0003 was reserved for the technology stack decision, which was later
 recorded as [ADR 0010](0010-technology-stack-and-hosting.md). No 0003 file was

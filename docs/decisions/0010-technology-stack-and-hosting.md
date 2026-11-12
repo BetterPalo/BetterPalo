@@ -20,6 +20,9 @@
 - Revised: 2026-11-10. Added an hourly scheduled smoke test as the "monitor"
   stage of the pipeline (`monitor.yml`). Cloudflare Web Analytics stays the
   traffic analytics.
+- Revised: 2026-11-12. Total transfer per page is a target, not a hard cap.
+  Aim for 150 KB or less; the hard ceiling is 1 MB. Lighthouse CI warns above
+  150 KB and fails above 1 MB.
 
 ## Context
 
@@ -160,10 +163,16 @@ slowdown) and checked on a real P20 Lite or similar device before each release:
 | JavaScript on pages with React islands | At most 90 KB compressed, including the React runtime |
 | JavaScript on search or map pages | At most 100 KB compressed, loaded on interaction or when visible |
 | HTML + CSS per page | At most 60 KB compressed |
-| Total transfer for a service guide | At most 150 KB |
+| Total transfer per page | Target 150 KB or less; never more than 1 MB |
 | Largest Contentful Paint | At most 2.5 s |
 | Interaction to Next Paint | At most 200 ms |
 | Cumulative Layout Shift | At most 0.1 |
+
+The 150 KB total-transfer figure is the ideal, not a hard limit. A page may go
+over it when the content needs it, but the pull request says why, and no page
+exceeds 1 MB. Lighthouse CI warns above 150 KB
+(`resource-summary:total:size`) and fails above 1 MB (`total-byte-weight`).
+The other rows stay hard limits.
 
 ### Browser support
 

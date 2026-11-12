@@ -9,8 +9,10 @@ web
 ## Stack
 
 Astro 7 (static output), TypeScript, Tailwind CSS v4, Pagefind search,
-hosted on Cloudflare Workers static assets. System font stack, no web fonts.
-See `docs/decisions/0010-technology-stack-and-hosting.md`.
+hosted on Cloudflare Workers static assets. System font stack for body text;
+one self-hosted display font (Inter Tight 800, Latin subset) for headlines.
+See `docs/decisions/0010-technology-stack-and-hosting.md` and
+`docs/decisions/0013-display-web-font.md`. Visual system: `DESIGN.md`.
 
 ## Users
 

@@ -1,15 +1,200 @@
 @import 'tailwindcss';
+/* Display face: Inter Tight 800, Latin subset only (~23 KB woff2). Body text stays on the
+   system stack. See DESIGN.md "Typography" and the ADR 0010 font amendment. */
+@import '@fontsource/inter-tight/latin-800.css';
 
-/* Design tokens. The designer (`@jaimedesu`) replaces these from Figma. */
+/* White Portal design tokens. DESIGN.md is the normative spec; change both together. */
+
 @theme {
-  --color-brand: #1d4ed8;
-  --color-brand-ink: #ffffff;
-  --color-notice: #fef3c7;
-  --color-notice-ink: #78350f;
+  /* Square-edged system: no rounded corners anywhere. */
+  --radius-*: initial;
+
+  /* Palette primitives (fixed across themes). */
+  --color-flag: #0038a8;
+  --color-flag-dark: #002b82;
+  --color-flag-deep: #00226e;
+  --color-flag-bright: #0096ff;
+  --color-sun: #fcd116;
+  --color-sun-light: #ffe066;
+  --color-ink: #0a0a0a;
+  --color-ink-raised: #161718;
+  --color-ink-alt: #111214;
+  --color-ink-line: #2a2b2e;
+  --color-paper: #ffffff;
+  --color-wash: #f4f7fc;
+  --color-mist: #e8f1ff;
+  --color-line: #d1d8e6;
+  --color-muted: #5a5a58;
+  --color-stone: #b4b4b0;
+  --color-sky-ink: #dbe6ff;
+
+  /* Type. */
+  --font-display:
+    'Inter Tight', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
   --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+  --tracking-display: -0.04em;
+  --tracking-headline: -0.035em;
+  --tracking-title: -0.025em;
+  --tracking-label: 0.12em;
+
+  /* Layout. */
+  --container-wrap: 90rem;
+  --spacing-gutter: clamp(1rem, 5vw, 5.375rem);
+  --spacing-section: clamp(3.5rem, 7vw, 5.5rem);
+
+  /* Motion. */
+  --ease-lift: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Theme roles. Components use these, never the primitives, for anything that flips
+   between light, dark, and an inverted band. */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-canvas-alt: var(--canvas-alt);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
+  --color-edge: var(--edge);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-icon-bg: var(--icon-bg);
+  --color-icon: var(--icon);
+  --color-chip-bg: var(--chip-bg);
+  --color-chip-fg: var(--chip-fg);
+  --color-placeholder: var(--placeholder);
+  --color-frame: var(--frame);
+  --shadow-lift: var(--lift);
+}
+
+:root {
+  color-scheme: light;
+  --canvas: var(--color-paper);
+  --canvas-alt: var(--color-wash);
+  --surface: var(--color-paper);
+  --fg: var(--color-ink);
+  --fg-soft: var(--color-muted);
+  --edge: var(--color-line);
+  --accent: var(--color-flag);
+  --on-accent: var(--color-paper);
+  --icon-bg: var(--color-mist);
+  --icon: var(--color-flag);
+  --chip-bg: var(--color-mist);
+  --chip-fg: var(--color-flag-deep);
+  --placeholder: #6b6b66;
+  /* Top rule on the search card and other framed cards. */
+  --frame: var(--color-flag);
+  --lift: 0 18px 40px -26px rgb(0 34 110 / 0.35);
+}
+
+/* Night: the dark theme follows the device setting. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --canvas: var(--color-ink);
+    --canvas-alt: var(--color-ink-alt);
+    --surface: var(--color-ink-raised);
+    --fg: var(--color-paper);
+    --fg-soft: var(--color-stone);
+    --edge: var(--color-ink-line);
+    --accent: var(--color-flag-bright);
+    --on-accent: var(--color-ink);
+    --icon-bg: rgb(0 150 255 / 0.12);
+    --icon: var(--color-flag-bright);
+    --chip-bg: rgb(255 255 255 / 0.08);
+    --chip-fg: var(--color-paper);
+    --placeholder: #9a9a94;
+    --frame: var(--color-sun);
+    --lift: 0 18px 40px -20px rgb(0 0 0 / 0.7);
+  }
+}
+
+/* Inverted band: an ink section on the white page, or a white section in the dark theme.
+   Put `inv` on a section and everything inside follows. */
+.inv {
+  color-scheme: dark;
+  --canvas: var(--color-ink);
+  --canvas-alt: var(--color-ink);
+  --surface: var(--color-ink-raised);
+  --fg: var(--color-paper);
+  --fg-soft: var(--color-stone);
+  --edge: var(--color-ink-line);
+  --accent: var(--color-flag-bright);
+  --on-accent: var(--color-ink);
+  --icon-bg: rgb(0 150 255 / 0.12);
+  --icon: var(--color-flag-bright);
+  --chip-bg: rgb(255 255 255 / 0.08);
+  --chip-fg: var(--color-paper);
+  --placeholder: #9a9a94;
+  --frame: var(--color-sun);
+  --lift: 0 18px 40px -20px rgb(0 0 0 / 0.7);
+}
+@media (prefers-color-scheme: dark) {
+  .inv {
+    color-scheme: light;
+    --canvas: var(--color-paper);
+    --canvas-alt: var(--color-paper);
+    --surface: var(--color-wash);
+    --fg: var(--color-ink);
+    --fg-soft: var(--color-muted);
+    --edge: var(--color-line);
+    --accent: var(--color-flag);
+    --on-accent: var(--color-paper);
+    --icon-bg: var(--color-mist);
+    --icon: var(--color-flag);
+    --chip-bg: var(--color-mist);
+    --chip-fg: var(--color-flag-deep);
+    --placeholder: #6b6b66;
+    --frame: var(--color-flag);
+    --lift: 0 18px 40px -26px rgb(0 34 110 / 0.35);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--canvas);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    caret-color: var(--accent);
+    accent-color: var(--accent);
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-flag-bright);
+    outline-offset: 3px;
+  }
+  ::placeholder {
+    color: var(--placeholder);
+  }
+  a {
+    text-underline-offset: 0.3em;
+  }
+  table,
+  data,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
@@ -18,7 +203,22 @@
   }
 }
 
+/* Printed service sheets are always black on white, whatever the device theme. */
 @media print {
+  :root,
+  .inv {
+    color-scheme: light;
+    --canvas: var(--color-paper);
+    --canvas-alt: var(--color-paper);
+    --surface: var(--color-paper);
+    --fg: var(--color-ink);
+    --fg-soft: var(--color-muted);
+    --edge: var(--color-line);
+    --accent: var(--color-flag);
+    --on-accent: var(--color-paper);
+    --frame: var(--color-flag);
+    --lift: none;
+  }
   .no-print {
     display: none !important;
   }
