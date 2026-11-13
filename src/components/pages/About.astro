@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const stats = [
+  ['80,291', t(lang, 'about.stat.pop'), t(lang, 'about.stat.pop.src')],
+  ['33', t(lang, 'about.stat.brgy'), t(lang, 'about.stat.brgy.src')],
+  ['112', t(lang, 'about.stat.services'), t(lang, 'about.stat.services.src')],
+  ['20', t(lang, 'about.stat.offices'), t(lang, 'about.stat.offices.src')],
+];
+---
+
+<Base title={t(lang, 'about.title')} lang={lang} description={t(lang, 'about.lead')}>
+  <section class="page-width py-section">
+    <p class="text-sm font-bold tracking-label text-flag uppercase">{t(lang, 'about.eyebrow')}</p>
+    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
+      {t(lang, 'about.title')}
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'about.lead')}</p>
+  </section>
+
+  <section class="border-y border-edge bg-canvas-alt py-section">
+    <div class="page-width">
+      <h2 class="font-display text-3xl tracking-headline">{t(lang, 'about.factsTitle')}</h2>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map(([n, label, src]) => (
+          <div class="border border-edge bg-canvas p-5">
+            <strong class="block font-display text-4xl tabular-nums">{n}</strong>
+            <span class="mt-1 block text-sm">
+              {label}
+              <br />
+              <small class="text-fg-soft">{src}</small>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-width py-section">
+    <h2 class="font-display text-3xl tracking-headline">{t(lang, 'about.barangaysTitle')}</h2>
+    <p class="mt-3 max-w-2xl text-fg-soft">{t(lang, 'about.barangaysBody')}</p>
+  </section>
+
+  <section class="border-t border-edge bg-canvas-alt py-section">
+    <div class="page-width max-w-3xl">
+      <h2 class="font-display text-3xl tracking-headline">{t(lang, 'about.sourcesTitle')}</h2>
+      <p class="mt-3 text-fg-soft">{t(lang, 'about.sourcesBody')}</p>
+      <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
+        <li>{t(lang, 'about.sources.li1')}</li>
+        <li>{t(lang, 'about.sources.li2')}</li>
+      </ul>
+    </div>
+  </section>
+</Base>
