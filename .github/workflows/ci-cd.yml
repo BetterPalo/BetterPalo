@@ -33,7 +33,7 @@ jobs:
     outputs:
       code: ${{ steps.filter.outputs.code }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -42,7 +42,7 @@ jobs:
       # default, so a config change can never skip the checks it affects.
       # Markdown under `src/` is site content, so only top-level and
       # `.github/` Markdown counts as documentation.
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@0e4a8c6effa4802afeda77dc8d303f8176d7dfad # v3
         id: filter
         with:
           predicate-quantifier: every
@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - uses: ./.github/actions/setup
@@ -72,14 +72,17 @@ jobs:
       - name: Unit tests
         run: pnpm test
 
+  # Runs beside `quality` instead of after it: the build does not need the
+  # checks to finish, and e2e and lighthouse wait for `build` only. `ci` and
+  # `deploy` still wait for every job.
   build:
     name: build
-    needs: [changes, quality]
+    needs: changes
     if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - uses: ./.github/actions/setup
@@ -88,7 +91,7 @@ jobs:
       # `e2e` and `lighthouse` test this exact artifact instead of building
       # again, so what they check is what would deploy.
       - name: Upload the built site
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: site
           path: dist/
@@ -102,14 +105,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - uses: ./.github/actions/setup
-      - name: Install the test browser
-        run: pnpm exec playwright install --with-deps chromium
       - name: Download the built site
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: site
           path: dist
@@ -118,9 +119,12 @@ jobs:
         env:
           # Playwright serves the artifact above instead of rebuilding it.
           PLAYWRIGHT_SERVE_PREBUILT: '1'
+          # Use the Chrome already on GitHub's Ubuntu runners (playwright.config.ts)
+          # instead of downloading a browser on every run.
+          PLAYWRIGHT_CHANNEL: chrome
       - name: Upload the Playwright report
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: playwright-report
           path: |
@@ -136,12 +140,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - uses: ./.github/actions/setup
       - name: Download the built site
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: site
           path: dist
@@ -152,15 +156,17 @@ jobs:
           CHROME_PATH: /usr/bin/google-chrome
       - name: Upload the Lighthouse reports
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: lighthouse-report
           path: .lighthouseci/
           if-no-files-found: ignore
           retention-days: 7
 
-  # The required status check. Skipped jobs (docs-only changes) count as a
-  # pass; a failed or cancelled job fails `ci`.
+  # The required status check. When the change touches code, every job above
+  # must have finished as `success`; a job that was skipped by mistake does not
+  # count as a pass. When the change is documentation only, every heavy job must
+  # have been skipped. A failed or cancelled job always fails `ci`.
   ci:
     name: ci
     needs: [changes, quality, build, e2e, lighthouse]
@@ -169,21 +175,40 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Check the results of the jobs above
-        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
         env:
-          RESULTS: ${{ toJSON(needs) }}
+          CODE: ${{ needs.changes.outputs.code }}
+          CHANGES: ${{ needs.changes.result }}
+          QUALITY: ${{ needs.quality.result }}
+          BUILD: ${{ needs.build.result }}
+          E2E: ${{ needs.e2e.result }}
+          LIGHTHOUSE: ${{ needs.lighthouse.result }}
         run: |
-          echo "One or more jobs failed or were cancelled:"
-          echo "$RESULTS"
-          exit 1
-      - name: All jobs passed or were skipped
-        run: echo "ci passed"
+          expected=skipped
+          if [ "$CODE" = "true" ]; then expected=success; fi
+
+          failed=0
+          if [ "$CHANGES" != "success" ]; then
+            echo "::error::changes finished as '$CHANGES', expected 'success'"
+            failed=1
+          fi
+          for pair in "quality=$QUALITY" "build=$BUILD" "e2e=$E2E" "lighthouse=$LIGHTHOUSE"; do
+            job="${pair%%=*}"
+            result="${pair#*=}"
+            if [ "$result" != "$expected" ]; then
+              echo "::error::$job finished as '$result', expected '$expected'"
+              failed=1
+            fi
+          done
+
+          if [ "$failed" -ne 0 ]; then exit 1; fi
+          echo "ci passed (code changed: ${CODE:-false})"
 
   deploy:
     name: deploy
     needs: [changes, quality, build, e2e, lighthouse]
     if: >-
       always() &&
+      needs.changes.result == 'success' &&
       needs.changes.outputs.code == 'true' &&
       github.event_name == 'push' &&
       github.ref == 'refs/heads/main' &&
@@ -201,21 +226,25 @@ jobs:
       group: deploy-production
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
 
       - uses: ./.github/actions/setup
 
       - name: Download the site CI tested
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: site
           path: dist
 
       - name: Check the artifact is complete
         shell: bash
-        run: test -s dist/index.html && test -s dist/fil/index.html
+        run: |
+          test -s dist/index.html
+          test -s dist/fil/index.html
+          test -s dist/404.html
+          test -d dist/pagefind
 
       - name: Deploy to production
         run: pnpm exec wrangler deploy
@@ -234,12 +263,14 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          COMMIT_SHA: ${{ github.sha }}
+          SITE_URL: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}
         run: |
           {
             echo "### Production deploy"
             echo
-            echo "- Commit: \`${{ github.sha }}\`"
-            echo "- Site: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}"
+            echo "- Commit: \`$COMMIT_SHA\`"
+            echo "- Site: $SITE_URL"
             echo
             echo '```text'
             pnpm exec wrangler deployments list 2>&1 | head -20

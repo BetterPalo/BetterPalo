@@ -15,7 +15,14 @@ export default defineConfig({
     baseURL: 'http://localhost:4321',
     trace: 'on-first-retry',
   },
-  projects: [{ name: 'mobile-chrome', use: { ...devices['Pixel 5'] } }],
+  projects: [
+    {
+      name: 'mobile-chrome',
+      // CI sets PLAYWRIGHT_CHANNEL=chrome to use the Chrome on the runner.
+      // Locally this is unset, so Playwright uses its own Chromium.
+      use: { ...devices['Pixel 5'], channel: process.env.PLAYWRIGHT_CHANNEL || undefined },
+    },
+  ],
   webServer: {
     command: servePrebuilt ? preview : `pnpm build && ${preview}`,
     url: 'http://localhost:4321',
