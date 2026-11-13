@@ -1,0 +1,24 @@
+---
+// Thin strip under the nav with source, counts, and languages (DESIGN.md
+// "Navigation" → Infobar). Pass real figures from the data; never hard-code
+// counts. Place it with <InfoBar slot="below-header" … /> inside <Base>.
+import Icon from './Icon.astro';
+import type { IconName } from './icons';
+
+interface Props {
+  items: { icon: IconName; text: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="bg-flag text-[0.8125rem] text-sky-ink [color-scheme:dark]" data-pagefind-ignore>
+  <div class="mx-auto flex max-w-wrap flex-wrap justify-end gap-x-7 gap-y-1 px-gutter py-2">
+    {items.map((item) => (
+      <span class="inline-flex items-center gap-1.5">
+        <Icon name={item.icon} class="size-3.75 text-sun" />
+        {item.text}
+      </span>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,16 @@
+---
+// Home page content for both languages. The full White Portal home is #36.
+import Base from '../../layouts/Base.astro';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<Base title={t(lang, 'home.title')} lang={lang} description={t(lang, 'home.lead')}>
+  <h1 class="text-4xl tracking-headline">{t(lang, 'home.title')}</h1>
+  <p class="mt-3 text-fg-soft">{t(lang, 'home.lead')}</p>
+</Base>

@@ -1,0 +1,93 @@
+---
+// Ink footer on every page (DESIGN.md "Navigation" → Footer). Always dark.
+import Icon from './Icon.astro';
+import Sun from './Sun.astro';
+import { t, type Lang } from '../i18n/ui';
+import { localizedPath, routeExists } from '../lib/routes';
+import { BETTERGOV_URL, REPO_URL, REPORT_URL, navItems, officialLinks } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const guideLinks = navItems
+  .filter((item) => routeExists(item.path))
+  .map((item) => ({ href: localizedPath(lang, item.path), label: t(lang, item.key) }));
+
+const linkClass =
+  'inline-flex items-center gap-1 font-semibold text-paper underline decoration-paper/45 hover:decoration-sun';
+const headingClass = 'mb-4 text-[0.8125rem] font-bold tracking-label text-stone uppercase';
+---
+
+<footer
+  class="no-print bg-ink pt-[clamp(3.5rem,7vw,5rem)] text-stone [color-scheme:dark]"
+  data-pagefind-ignore
+>
+  <div class="mx-auto grid max-w-wrap gap-10 px-gutter min-[60rem]:grid-cols-[1.4fr_0.8fr_0.8fr]">
+    <div>
+      <p class="flex items-center gap-2 font-display text-[1.6rem] font-extrabold tracking-display text-paper">
+        <Sun mark class="size-10.5 text-sun" />
+        {t(lang, 'site.name')}
+      </p>
+      <p class="mt-5 mb-3 font-display text-[1.3rem] font-extrabold tracking-headline text-flag-bright">
+        {t(lang, 'footer.tag')}
+      </p>
+      <p class="mb-4 max-w-xl">{t(lang, 'footer.about')}</p>
+      <p>
+        <span class="text-paper">{t(lang, 'footer.found')}</span>{' '}
+        <a href={REPORT_URL} class="font-semibold text-flag-bright underline">
+          {t(lang, 'report.link')}
+        </a>
+      </p>
+    </div>
+
+    <nav aria-labelledby="footer-guide">
+      <h2 id="footer-guide" class={headingClass}>
+        {t(lang, 'footer.guide')}
+      </h2>
+      <ul class="grid gap-3.5">
+        {guideLinks.map((link) => (
+          <li>
+            <a href={link.href} class={linkClass}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={REPO_URL} rel="external" class={linkClass}>
+            {t(lang, 'footer.source')}
+            <Icon name="ne" class="size-3.5" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav aria-labelledby="footer-official">
+      <h2 id="footer-official" class={headingClass}>
+        {t(lang, 'footer.official')}
+      </h2>
+      <ul class="grid gap-3.5">
+        {officialLinks.map((link) => (
+          <li>
+            <a href={link.href} rel="external" class={linkClass}>
+              {t(lang, link.key)}
+              <Icon name="ne" class="size-3.5" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="mt-14 border-t border-ink-line">
+    <div class="mx-auto flex max-w-wrap flex-wrap justify-between gap-x-8 gap-y-3 px-gutter py-5.5 text-[0.8125rem] font-bold tracking-[0.06em]">
+      <span>{t(lang, 'footer.bar.community')}</span>
+      <span>{t(lang, 'footer.bar.unofficial')}</span>
+      <a href={BETTERGOV_URL} rel="external" class="text-paper underline">
+        {t(lang, 'footer.bar.bettergov')}
+      </a>
+    </div>
+  </div>
+</footer>

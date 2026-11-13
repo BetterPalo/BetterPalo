@@ -23,15 +23,16 @@ test('the sitemap only links to pages that exist', async ({ page }) => {
 
 test('the sitemap groups pages by area', async ({ page }) => {
   await page.goto('/sitemap/');
+  const main = page.getByRole('main');
   for (const area of ['Services', 'Offices', 'About', 'Site pages']) {
-    await expect(page.getByRole('heading', { level: 2, name: area })).toBeVisible();
+    await expect(main.getByRole('heading', { level: 2, name: area })).toBeVisible();
   }
-  await expect(page.getByRole('link', { name: 'Home', exact: true })).toHaveAttribute('href', '/');
-  await expect(page.getByRole('link', { name: 'Sitemap', exact: true })).toHaveAttribute(
+  await expect(main.getByRole('link', { name: 'Home', exact: true })).toHaveAttribute('href', '/');
+  await expect(main.getByRole('link', { name: 'Sitemap', exact: true })).toHaveAttribute(
     'href',
     '/sitemap/',
   );
-  await expect(page.getByRole('link', { name: 'Filipino', exact: true }).first()).toHaveAttribute(
+  await expect(main.getByRole('link', { name: 'Filipino', exact: true }).first()).toHaveAttribute(
     'href',
     '/fil/sitemap/',
   );
@@ -39,13 +40,14 @@ test('the sitemap groups pages by area', async ({ page }) => {
 
 test('the Filipino sitemap links to the Filipino pages', async ({ page }) => {
   await page.goto('/fil/sitemap/');
+  const main = page.getByRole('main');
   await expect(page.locator('html')).toHaveAttribute('lang', 'fil');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Sitemap');
-  await expect(page.getByRole('link', { name: 'Home', exact: true })).toHaveAttribute(
+  await expect(main.getByRole('link', { name: 'Home', exact: true })).toHaveAttribute(
     'href',
     '/fil/',
   );
-  await expect(page.getByRole('link', { name: 'English', exact: true }).first()).toHaveAttribute(
+  await expect(main.getByRole('link', { name: 'English', exact: true }).first()).toHaveAttribute(
     'href',
     '/sitemap/',
   );
@@ -66,10 +68,7 @@ test('the sitemap has no accessibility violations', async ({ page }) => {
   for (const path of ['/sitemap/', '/fil/sitemap/']) {
     await page.goto(path);
     const results = await new AxeBuilder({ page })
-      // WCAG 2.1 A and AA, the level the site is reviewed against. The
-      // best-practice "region" rule fails on every page today because the
-      // site-wide notice in Base.astro sits above the landmarks; moving it is
-      // part of the shared layout kit in #35, not this page.
+      // WCAG 2.1 A and AA, the level the site is reviewed against.
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
       .analyze();
     expect(results.violations, `${path} passes axe`).toEqual([]);

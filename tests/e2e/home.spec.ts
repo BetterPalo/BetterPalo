@@ -8,7 +8,5 @@ test('home page renders a heading', async ({ page }) => {
 
 // TODO(@khalmahi, @jaimedesu): add tests for the cases below. @jaimedesu owns
 // the accessibility checks; @Rurur8 owns the Playwright setup.
-// - /fil/ renders with lang="fil"
-// - the "unofficial site" banner is visible on every page
 // - no accessibility violations (use AxeBuilder from '@axe-core/playwright')
 // - a service page renders once there is a verified service to show

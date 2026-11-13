@@ -111,9 +111,10 @@ hangs and never passes when a test failed. All jobs share Node.js and pnpm with
 - Lighthouse serves the uploaded `dist/` with its own static server, so it makes
   no network calls to Cloudflare and needs no secrets. It checks `/` and
   `/fil/`, with three runs per page and the median asserted.
-- The zero-JavaScript budget in `lighthouserc.json` covers `/` and `/fil/`
-  only. A pull request that adds JavaScript to either page must raise
-  `resource-summary:script:size` to ADR 0010's island budget in the same change.
+- The JavaScript budget in `lighthouserc.json` covers `/` and `/fil/` only. It
+  is a target of under 50 KB and only warns above that. A pull request that
+  adds an island to either page must raise `resource-summary:script:size` to
+  ADR 0010's island budget in the same change.
 - No job needs a repository secret. `permissions` is `contents: read`.
 - Workflow changes need `@Rurur8` as first reviewer and `@STR4T-coder` as
   second reviewer; the project lead merges.

@@ -182,7 +182,7 @@ except the flag sun, and one web font.
 - One sun-yellow action per view; flag blue for every other action.
 - Thin 1px borders do the layering; a single soft shadow lifts the cards you can act on.
 - The Philippine flag sun is the only ornament, drawn in `currentColor` at low opacity.
-- Light by default, with a matching dark theme (Night) that follows the device setting.
+- Light only, whatever the device setting is. A dark theme (Night) is a possible future improvement; it was built once with a header toggle and then removed (see commit `c840a1c`).
 
 ## Colors
 
@@ -376,14 +376,16 @@ on blue.
 
 - **Notice bar (every page):** an ink strip, 0.8125rem stone text,
   "**Unofficial.**" in sun, and a white "Report a wrong detail" link on the
-  right.
+  right. It is an `<aside>` landmark labelled "Site notice".
 - **Nav:** sticky, deep flag blue at 96% opacity with a light blur, 4.25rem tall.
   The sun mark and Inter Tight wordmark sit on the left, with a sun-colored
   "Palo, Leyte" subtitle from 40rem up. 600-weight links at 82% white, full
   white on hover. On the right: an EN/FIL segmented switch (current language
-  filled white) and a sun "Find a service" button that shrinks to its icon
-  under 30rem. Below 66rem the links fold into a `<details>` menu with no
-  JavaScript.
+  filled white) and a sun "Find a service" button, hidden under 30rem. Below
+  66rem the links fold into a native popover menu (a button with
+  `popovertarget`), which needs no JavaScript and closes on Escape or an
+  outside tap. Nav links show only for pages that exist; the Find button shows
+  once the search page exists.
 - **Infobar:** a thin flag-blue strip under the nav that shows the source
   edition, service and office counts, and languages, with sun icons.
 - **Footer:** an ink background. On the left, the brand, a bright-blue tagline,

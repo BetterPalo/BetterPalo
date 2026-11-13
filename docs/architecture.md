@@ -99,8 +99,11 @@ ADR 0010 under "Future direction".
   `.dev.vars.example` lists the names with empty values and is committed.
 - Production secrets are set in the Cloudflare dashboard (or with
   `wrangler secret put`) by the infrastructure lead, never in a file.
-- If a GitHub Actions job ever needs a credential, it is a scoped Cloudflare
-  API token stored as a repository secret, not a personal password.
+- The deploy job's credentials, `CLOUDFLARE_API_TOKEN` and
+  `CLOUDFLARE_ACCOUNT_ID`, are secrets of the `production` GitHub environment,
+  which only the `main` branch can use. They are not repository secrets. Any
+  other job that needs a credential gets a scoped Cloudflare API token the same
+  way, never a personal password.
 - Never commit a token, password, or `.dev.vars`. If one is committed by
   mistake, tell the lead at once so it can be revoked; deleting the commit is
   not enough.
@@ -120,8 +123,11 @@ ADR 0010 under "Future direction".
   ([ADR 0012](decisions/0012-deploy-after-ci.md)). Nobody deploys from a laptop.
 - Cloudflare Workers Builds still builds every pull request branch as a preview
   version and comments the link on the pull request.
-- Build command `pnpm build`; deploy command `pnpm exec wrangler deploy`;
-  preview command `npx wrangler versions upload`.
+- Workers Builds settings: build command `pnpm build`, preview command
+  `npx wrangler preview` (the `"previews": {}` block in `wrangler.jsonc` is
+  what it needs). Workers Builds does not deploy production.
+- The production deploy command, `pnpm exec wrangler deploy`, runs in the
+  `deploy` job, not in Workers Builds.
 - After a deploy, `pnpm smoke` checks the live site, its security headers, the
   stylesheet, `robots.txt`, the sitemap, and the custom 404.
 - Security and cache headers come from `public/_headers`. Missing pages are
