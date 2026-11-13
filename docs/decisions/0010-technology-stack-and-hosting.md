@@ -23,6 +23,11 @@
 - Revised: 2026-11-12. Total transfer per page is a target, not a hard cap.
   Aim for 150 KB or less; the hard ceiling is 1 MB. Lighthouse CI warns above
   150 KB and fails above 1 MB.
+- Revised: 2026-11-13. JavaScript on content pages without islands is a target
+  of under 50 KB, not a ban. The header's light/dark toggle needs a small inline
+  script, and other small enhancements may follow. Lighthouse CI warns above
+  50 KB (`resource-summary:script:size`). Every page must still be readable with
+  JavaScript turned off.
 
 ## Context
 
@@ -159,7 +164,7 @@ slowdown) and checked on a real P20 Lite or similar device before each release:
 
 | Metric | Budget |
 | --- | --- |
-| JavaScript on content pages without islands | 0 KB |
+| JavaScript on content pages without islands | Target under 50 KB |
 | JavaScript on pages with React islands | At most 90 KB compressed, including the React runtime |
 | JavaScript on search or map pages | At most 100 KB compressed, loaded on interaction or when visible |
 | HTML + CSS per page | At most 60 KB compressed |
