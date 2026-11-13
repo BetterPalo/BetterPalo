@@ -14,7 +14,7 @@ const { lang } = Astro.props;
   lang={lang}
   description={t(lang, 'accessibility.lead')}
 >
-  <section class="page-width py-section">
+  <section class="wrap py-section">
     <p class="text-sm font-bold tracking-label text-flag uppercase">
       {t(lang, 'accessibility.eyebrow')}
     </p>
@@ -25,7 +25,7 @@ const { lang } = Astro.props;
   </section>
 
   <section class="border-y border-edge bg-canvas-alt py-section">
-    <div class="page-width max-w-3xl">
+    <div class="wrap max-w-3xl">
       <h2 class="font-display text-3xl tracking-headline">
         {t(lang, 'accessibility.standardTitle')}
       </h2>
@@ -38,7 +38,7 @@ const { lang } = Astro.props;
     </div>
   </section>
 
-  <section class="page-width py-section">
+  <section class="wrap py-section">
     <h2 class="font-display text-3xl tracking-headline">
       {t(lang, 'accessibility.featuresTitle')}
     </h2>
@@ -69,7 +69,7 @@ const { lang } = Astro.props;
   </section>
 
   <section class="border-t border-edge bg-canvas-alt py-section">
-    <div class="page-width max-w-2xl">
+    <div class="wrap max-w-2xl">
       <h2 class="font-display text-3xl tracking-headline">
         {t(lang, 'accessibility.feedbackTitle')}
       </h2>

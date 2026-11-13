@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 ---
 
 <Base title={t(lang, 'contribute.title')} lang={lang} description={t(lang, 'contribute.lead')}>
-  <section class="page-width py-section">
+  <section class="wrap py-section">
     <p class="text-sm font-bold tracking-label text-flag uppercase">
       {t(lang, 'contribute.eyebrow')}
     </p>
@@ -21,7 +21,7 @@ const { lang } = Astro.props;
   </section>
 
   <section class="border-y border-edge bg-canvas-alt py-section">
-    <div class="page-width">
+    <div class="wrap">
       <h2 class="font-display text-3xl tracking-headline">{t(lang, 'contribute.waysTitle')}</h2>
       <div class="mt-8 grid gap-4 sm:grid-cols-2">
         {[
@@ -39,7 +39,7 @@ const { lang } = Astro.props;
     </div>
   </section>
 
-  <section class="page-width py-section">
+  <section class="wrap py-section">
     <h2 class="font-display text-3xl tracking-headline">{t(lang, 'contribute.dataTitle')}</h2>
     <p class="mt-3 max-w-2xl text-fg-soft">{t(lang, 'contribute.dataBody')}</p>
     <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
@@ -59,7 +59,7 @@ const { lang } = Astro.props;
   </section>
 
   <section class="border-t border-edge bg-canvas-alt py-section">
-    <div class="page-width max-w-2xl">
+    <div class="wrap max-w-2xl">
       <h2 class="font-display text-3xl tracking-headline">{t(lang, 'contribute.workflowTitle')}</h2>
       <p class="mt-3 text-fg-soft">{t(lang, 'contribute.workflowBody')}</p>
       <ol class="mt-4 list-decimal pl-5 text-sm text-fg-soft">

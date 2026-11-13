@@ -17,7 +17,7 @@ const services = (await getCollection('services'))
 ---
 
 <Base title={t(lang, 'servicesDir.title')} lang={lang} description={t(lang, 'servicesDir.lead')}>
-  <section class="page-width py-section">
+  <section class="wrap py-section">
     <p class="text-sm font-bold tracking-label text-flag uppercase">
       {t(lang, 'servicesDir.eyebrow')}
     </p>
@@ -27,7 +27,7 @@ const services = (await getCollection('services'))
     <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'servicesDir.lead')}</p>
   </section>
 
-  <section class="page-width pb-section">
+  <section class="wrap pb-section">
     {services.length === 0 ? (
       <div class="border border-edge bg-canvas-alt p-8 text-center">
         <p class="font-display text-xl">{t(lang, 'servicesDir.empty')}</p>

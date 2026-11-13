@@ -87,7 +87,7 @@ test('the home page has no accessibility violations on a phone and a laptop', as
   for (const [width, height] of [
     [360, 720],
     [1280, 800],
-  ]) {
+  ] as [number, number][]) {
     await page.setViewportSize({ width, height });
     for (const path of ['/', '/fil/']) {
       await page.goto(path);

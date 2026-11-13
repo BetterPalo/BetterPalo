@@ -56,7 +56,7 @@ const principles = [
 ---
 
 <Base title={t(lang, 'howItWorks.title')} lang={lang} description={t(lang, 'howItWorks.lead')}>
-  <section class="page-width py-section">
+  <section class="wrap py-section">
     <p class="text-sm font-bold tracking-label text-flag uppercase">
       {t(lang, 'howItWorks.eyebrow')}
     </p>
@@ -67,7 +67,7 @@ const principles = [
   </section>
 
   <section class="border-y border-edge bg-canvas-alt py-section">
-    <div class="page-width">
+    <div class="wrap">
       <h2 class="font-display text-3xl tracking-headline">{t(lang, 'howItWorks.stepsTitle')}</h2>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {steps.map(([step, title, body]) => (
@@ -81,7 +81,7 @@ const principles = [
     </div>
   </section>
 
-  <section class="page-width py-section">
+  <section class="wrap py-section">
     <h2 class="font-display text-3xl tracking-headline">{t(lang, 'howItWorks.principlesTitle')}</h2>
     <div class="mt-8 grid gap-4 sm:grid-cols-2">
       {principles.map(([icon, title, body]) => (
@@ -99,7 +99,7 @@ const principles = [
   </section>
 
   <section class="border-t border-edge bg-canvas-alt py-section">
-    <div class="page-width max-w-2xl">
+    <div class="wrap max-w-2xl">
       <h2 class="font-display text-3xl tracking-headline">
         {t(lang, 'howItWorks.volunteerTitle')}
       </h2>
