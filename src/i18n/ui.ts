@@ -197,6 +197,175 @@ const en = {
     'Volunteers read the Charter, write each service in plain language, and check each other\u2019s work.',
   'home.volunteer.cta': 'Volunteer with us',
   'home.volunteer.notice': 'Volunteer interest noted. We will show you the contribution guide.',
+
+  // How it works (/how-it-works/)
+  'howItWorks.title': 'How a guide gets made',
+  'howItWorks.eyebrow': 'Behind the scenes',
+  'howItWorks.lead':
+    'Every guide on BetterPalo follows the same four steps, so you can trust what you read.',
+  'howItWorks.stepsTitle': 'The four steps',
+  'howItWorks.principlesTitle': 'The principles behind them',
+  'howItWorks.volunteerTitle': 'Help write the next guide',
+  'howItWorks.volunteerBody':
+    'Volunteers read the Charter, write each service in plain language, and check each other\u2019s work. No coding needed.',
+  'howItWorks.volunteerCta': 'Volunteer on GitHub',
+  'howItWorks.step.1': 'Step 1',
+  'howItWorks.step.1.title': 'Find the Charter page',
+  'howItWorks.step.1.body': "Each service starts from its page in the Palo Citizen's Charter 2026.",
+  'howItWorks.step.2': 'Step 2',
+  'howItWorks.step.2.title': 'Write it in plain words',
+  'howItWorks.step.2.body': 'A volunteer transcribes it by hand, in English and Filipino.',
+  'howItWorks.step.3': 'Step 3',
+  'howItWorks.step.3.title': 'Check it twice',
+  'howItWorks.step.3.body':
+    'A second person reads the same page and confirms every requirement, fee, and step.',
+  'howItWorks.step.4': 'Step 4',
+  'howItWorks.step.4.title': 'Publish with dates',
+  'howItWorks.step.4.body':
+    'The guide shows its Charter edition and the date it was last verified.',
+  'howItWorks.principle.accuracy.icon': '\u{1F3AF}',
+  'howItWorks.principle.accuracy.title': 'Accuracy first',
+  'howItWorks.principle.accuracy.body':
+    'A missing page is better than a wrong one. Unconfirmed details stay off the site.',
+  'howItWorks.principle.source.icon': '\u{1F517}',
+  'howItWorks.principle.source.title': 'Cite the source',
+  'howItWorks.principle.source.body':
+    'Every fact links or cites from the official document it came from.',
+  'howItWorks.principle.plain.icon': '\u{1F4AC}',
+  'howItWorks.principle.plain.title': 'Plain language',
+  'howItWorks.principle.plain.body':
+    'Written for someone in a hurry, on a phone, on a slow connection.',
+  'howItWorks.principle.open.icon': '\u{1F310}',
+  'howItWorks.principle.open.title': 'Open and community-built',
+  'howItWorks.principle.open.body': 'Anyone can contribute. The code and the data are open.',
+
+  // Contribute (/contribute/)
+  'contribute.title': 'Contribute',
+  'contribute.eyebrow': 'Get involved',
+  'contribute.lead': 'BetterPalo is community-built. You do not need to write code to contribute.',
+  'contribute.waysTitle': 'Ways to contribute',
+  'contribute.way.data.title': 'Data correction',
+  'contribute.way.data.body': 'Fix a wrong office, service, fee, official, or contact.',
+  'contribute.way.translation.title': 'Translation',
+  'contribute.way.translation.body': 'Turn English content into Filipino, or the reverse.',
+  'contribute.way.design.title': 'Design and accessibility',
+  'contribute.way.design.body':
+    'Improve layout, contrast, keyboard use, and screen-reader support.',
+  'contribute.way.code.title': 'Code',
+  'contribute.way.code.body': 'Build pages, components, search, and tooling for the site.',
+  'contribute.dataTitle': 'Data contributions',
+  'contribute.dataBody':
+    'Every fact needs an official source URL, a retrieval date, and a verification date.',
+  'contribute.data.li1': 'an official source URL',
+  'contribute.data.li2': 'a retrieval date',
+  'contribute.data.li3': 'a verification date',
+  'contribute.data.cta': 'Read the contributing guide',
+  'contribute.workflowTitle': 'The workflow',
+  'contribute.workflowBody':
+    'One topic per pull request, kept small. CI must pass and one code-owner approval is required.',
+  'contribute.workflow.1': 'Branch from main and make your change.',
+  'contribute.workflow.2': 'Run pnpm format, lint, check, test, and build.',
+  'contribute.workflow.3': 'Open a pull request and fill in the template.',
+  'contribute.workflow.4': 'A maintainer reviews and merges.',
+
+  // Accessibility (/accessibility/)
+  'accessibility.title': 'Accessibility statement',
+  'accessibility.eyebrow': 'Accessibility',
+  'accessibility.lead':
+    'BetterPalo aims to be usable by everyone, on any device, on a slow connection.',
+  'accessibility.standardTitle': 'Our standard',
+  'accessibility.standardBody':
+    'We target WCAG 2.1 AA as the floor, and test with keyboard and screen readers.',
+  'accessibility.standard.li1': 'Semantic HTML and landmarks on every page.',
+  'accessibility.standard.li2': 'Sufficient contrast and visible focus states.',
+  'accessibility.standard.li3': 'Works without JavaScript where possible.',
+  'accessibility.featuresTitle': 'What we do',
+  'accessibility.feature.skip.title': 'Skip link',
+  'accessibility.feature.skip.body':
+    'A skip link at the top of every page moves focus to the main content.',
+  'accessibility.feature.contrast.title': 'Contrast',
+  'accessibility.feature.contrast.body': 'Text and controls meet WCAG AA contrast ratios.',
+  'accessibility.feature.keyboard.title': 'Keyboard',
+  'accessibility.feature.keyboard.body':
+    'All interactive elements are reachable and operable by keyboard.',
+  'accessibility.feature.motion.title': 'Motion',
+  'accessibility.feature.motion.body': 'Animations respect prefers-reduced-motion.',
+  'accessibility.feature.lang.title': 'Language',
+  'accessibility.feature.lang.body':
+    'Pages are marked up with the correct lang attribute, and Filipino is available.',
+  'accessibility.feature.print.title': 'Print',
+  'accessibility.feature.print.body': 'Service sheets print cleanly as a single page.',
+  'accessibility.feedbackTitle': 'Feedback',
+  'accessibility.feedbackBody': 'Found an accessibility problem? Tell us and we will fix it.',
+  'accessibility.feedbackCta': 'Report an issue',
+
+  // Resources (/resources/)
+  'resources.title': 'Official resources',
+  'resources.eyebrow': 'Official sources',
+  'resources.lead': 'The documents and sites behind every guide on BetterPalo.',
+  'resources.officialTitle': 'Official resources',
+  'resources.officialBody':
+    'These are the sources we cite. BetterPalo complements them; it does not replace them.',
+  'resources.open': 'Open',
+  'resources.r1.name': 'Palo LGU website',
+  'resources.r1.desc': 'Official announcements',
+  'resources.r2.name': "Citizen's Charter 2026 (PDF)",
+  'resources.r2.desc': 'The source for every guide',
+  'resources.r3.name': 'Sangguniang Bayan of Palo',
+  'resources.r3.desc': 'Ordinances and sessions',
+  'resources.r4.name': 'Philippine Statistics Authority',
+  'resources.r4.desc': 'Population and census data',
+  'resources.r5.name': 'PhilHealth',
+  'resources.r5.desc': 'Health insurance',
+  'resources.r6.name': 'SSS',
+  'resources.r6.desc': 'Social security',
+  'resources.notHandledTitle': 'Not handled by the municipality',
+  'resources.notHandledBody': 'Some services people expect from the LGU are run by other agencies.',
+  'resources.notHandled.1': 'National ID registration (PSA)',
+  'resources.notHandled.2': 'Passport applications (DFA)',
+  'resources.notHandled.3': 'Driver\u2019s licences (LTO)',
+  'resources.notHandled.4': 'Voter registration (COMELEC)',
+
+  // About (/about/)
+  'about.title': 'About Palo',
+  'about.eyebrow': 'About',
+  'about.lead': 'Palo, Leyte: facts from the official sources, not guesses.',
+  'about.factsTitle': 'Palo at a glance',
+  'about.stat.pop': 'Population',
+  'about.stat.pop.src': 'PSA 2024 Census',
+  'about.stat.brgy': 'Barangays',
+  'about.stat.brgy.src': 'Full list on About Palo',
+  'about.stat.services': 'Public services',
+  'about.stat.services.src': "Citizen's Charter, 2nd Edition",
+  'about.stat.offices': 'Offices and units',
+  'about.stat.offices.src': "Citizen's Charter, 2nd Edition",
+  'about.barangaysTitle': 'The 33 barangays',
+  'about.barangaysBody':
+    'The full list of the 33 barangays is being transcribed from the official source.',
+  'about.sourcesTitle': 'Sources',
+  'about.sourcesBody': 'Every fact on this page is cited to an official document.',
+  'about.sources.li1': 'PSA 2024 Census, reference date July 1, 2024',
+  'about.sources.li2': "Palo Citizen's Charter 2026, 2nd Edition",
+
+  // Offices (/offices/)
+  'offices.title': 'Offices',
+  'offices.eyebrow': 'Offices',
+  'offices.lead': 'Where to go for the services of the Municipality of Palo.',
+  'offices.place': 'Palo, Leyte',
+  'offices.placeSub': 'Municipal services are listed by office in the Citizen\u2019s Charter.',
+  'offices.brgy': 'Barangays',
+  'offices.charter': 'Offices in the Charter',
+  'offices.noteTitle': 'About this list',
+  'offices.noteBody':
+    'Office names are taken verbatim from the Citizen\u2019s Charter. Only verified details are published.',
+
+  // Services directory (/services/)
+  'servicesDir.title': 'Services',
+  'servicesDir.eyebrow': 'Services',
+  'servicesDir.lead': 'Every verified service guide, grouped by office.',
+  'servicesDir.empty': 'No verified service guides yet.',
+  'servicesDir.emptyBody':
+    'Guides are published only after they pass the verified-only gate. Check back soon.',
 } as const;
 
 export type Key = keyof typeof en;

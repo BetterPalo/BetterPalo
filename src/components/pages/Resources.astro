@@ -1,0 +1,96 @@
+---
+import Base from '../../layouts/Base.astro';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const resources = [
+  {
+    name: t(lang, 'resources.r1.name'),
+    desc: t(lang, 'resources.r1.desc'),
+    href: 'http://210.213.142.34/home/?page=home',
+  },
+  {
+    name: t(lang, 'resources.r2.name'),
+    desc: t(lang, 'resources.r2.desc'),
+    href: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf',
+  },
+  {
+    name: t(lang, 'resources.r3.name'),
+    desc: t(lang, 'resources.r3.desc'),
+    href: 'http://210.213.142.34/home/?page=home',
+  },
+  {
+    name: t(lang, 'resources.r4.name'),
+    desc: t(lang, 'resources.r4.desc'),
+    href: 'https://psa.gov.ph',
+  },
+  {
+    name: t(lang, 'resources.r5.name'),
+    desc: t(lang, 'resources.r5.desc'),
+    href: 'https://www.philhealth.gov.ph',
+  },
+  {
+    name: t(lang, 'resources.r6.name'),
+    desc: t(lang, 'resources.r6.desc'),
+    href: 'https://www.sss.gov.ph',
+  },
+];
+
+const notHandled = [
+  t(lang, 'resources.notHandled.1'),
+  t(lang, 'resources.notHandled.2'),
+  t(lang, 'resources.notHandled.3'),
+  t(lang, 'resources.notHandled.4'),
+];
+---
+
+<Base title={t(lang, 'resources.title')} lang={lang} description={t(lang, 'resources.lead')}>
+  <section class="page-width py-section">
+    <p class="text-sm font-bold tracking-label text-flag uppercase">
+      {t(lang, 'resources.eyebrow')}
+    </p>
+    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
+      {t(lang, 'resources.title')}
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'resources.lead')}</p>
+  </section>
+
+  <section class="page-width py-section">
+    <h2 class="font-display text-3xl tracking-headline">{t(lang, 'resources.officialTitle')}</h2>
+    <p class="mt-2 text-fg-soft">{t(lang, 'resources.officialBody')}</p>
+    <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+      {resources.map((r) => (
+        <li>
+          <a
+            href={r.href}
+            rel="external"
+            class="flex h-full flex-col border border-edge bg-canvas p-4 no-underline hover:border-flag"
+          >
+            <b class="font-display tracking-title">{r.name}</b>
+            <small class="mt-1 text-sm text-fg-soft">{r.desc}</small>
+            <span class="mt-3 text-xs text-flag">{t(lang, 'resources.open')} →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="border-t border-edge bg-canvas-alt py-section">
+    <div class="page-width max-w-3xl">
+      <h2 class="font-display text-3xl tracking-headline">
+        {t(lang, 'resources.notHandledTitle')}
+      </h2>
+      <p class="mt-3 text-fg-soft">{t(lang, 'resources.notHandledBody')}</p>
+      <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
+        {notHandled.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

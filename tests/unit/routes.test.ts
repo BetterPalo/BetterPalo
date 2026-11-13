@@ -108,7 +108,7 @@ describe('routeExists', () => {
   });
 
   it('does not treat a dynamic template or a missing page as a page', () => {
-    expect(routeExists('/services/')).toBe(false);
+    expect(routeExists('/services/a-service-that-does-not-exist/')).toBe(false);
     expect(routeExists('/no-such-page/')).toBe(false);
   });
 });

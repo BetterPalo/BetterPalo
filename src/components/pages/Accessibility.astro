@@ -1,0 +1,88 @@
+---
+import Base from '../../layouts/Base.astro';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<Base
+  title={t(lang, 'accessibility.title')}
+  lang={lang}
+  description={t(lang, 'accessibility.lead')}
+>
+  <section class="page-width py-section">
+    <p class="text-sm font-bold tracking-label text-flag uppercase">
+      {t(lang, 'accessibility.eyebrow')}
+    </p>
+    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
+      {t(lang, 'accessibility.title')}
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'accessibility.lead')}</p>
+  </section>
+
+  <section class="border-y border-edge bg-canvas-alt py-section">
+    <div class="page-width max-w-3xl">
+      <h2 class="font-display text-3xl tracking-headline">
+        {t(lang, 'accessibility.standardTitle')}
+      </h2>
+      <p class="mt-3 text-fg-soft">{t(lang, 'accessibility.standardBody')}</p>
+      <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
+        <li>{t(lang, 'accessibility.standard.li1')}</li>
+        <li>{t(lang, 'accessibility.standard.li2')}</li>
+        <li>{t(lang, 'accessibility.standard.li3')}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="page-width py-section">
+    <h2 class="font-display text-3xl tracking-headline">
+      {t(lang, 'accessibility.featuresTitle')}
+    </h2>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {[
+        [t(lang, 'accessibility.feature.skip.title'), t(lang, 'accessibility.feature.skip.body')],
+        [
+          t(lang, 'accessibility.feature.contrast.title'),
+          t(lang, 'accessibility.feature.contrast.body'),
+        ],
+        [
+          t(lang, 'accessibility.feature.keyboard.title'),
+          t(lang, 'accessibility.feature.keyboard.body'),
+        ],
+        [
+          t(lang, 'accessibility.feature.motion.title'),
+          t(lang, 'accessibility.feature.motion.body'),
+        ],
+        [t(lang, 'accessibility.feature.lang.title'), t(lang, 'accessibility.feature.lang.body')],
+        [t(lang, 'accessibility.feature.print.title'), t(lang, 'accessibility.feature.print.body')],
+      ].map(([title, body]) => (
+        <article class="border border-edge bg-canvas p-5">
+          <h3 class="font-display text-lg">{title}</h3>
+          <p class="mt-1 text-sm text-fg-soft">{body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-edge bg-canvas-alt py-section">
+    <div class="page-width max-w-2xl">
+      <h2 class="font-display text-3xl tracking-headline">
+        {t(lang, 'accessibility.feedbackTitle')}
+      </h2>
+      <p class="mt-3 text-fg-soft">{t(lang, 'accessibility.feedbackBody')}</p>
+      <p class="mt-4">
+        <a
+          href="https://github.com/BetterPalo/BetterPalo/issues/new"
+          rel="external"
+          class="font-semibold text-flag underline"
+        >
+          {t(lang, 'accessibility.feedbackCta')} →
+        </a>
+      </p>
+    </div>
+  </section>
+</Base>

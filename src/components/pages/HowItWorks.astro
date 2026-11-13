@@ -1,0 +1,118 @@
+---
+import Base from '../../layouts/Base.astro';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const steps = [
+  [
+    t(lang, 'howItWorks.step.1'),
+    t(lang, 'howItWorks.step.1.title'),
+    t(lang, 'howItWorks.step.1.body'),
+  ],
+  [
+    t(lang, 'howItWorks.step.2'),
+    t(lang, 'howItWorks.step.2.title'),
+    t(lang, 'howItWorks.step.2.body'),
+  ],
+  [
+    t(lang, 'howItWorks.step.3'),
+    t(lang, 'howItWorks.step.3.title'),
+    t(lang, 'howItWorks.step.3.body'),
+  ],
+  [
+    t(lang, 'howItWorks.step.4'),
+    t(lang, 'howItWorks.step.4.title'),
+    t(lang, 'howItWorks.step.4.body'),
+  ],
+];
+
+const principles = [
+  [
+    t(lang, 'howItWorks.principle.accuracy.icon'),
+    t(lang, 'howItWorks.principle.accuracy.title'),
+    t(lang, 'howItWorks.principle.accuracy.body'),
+  ],
+  [
+    t(lang, 'howItWorks.principle.source.icon'),
+    t(lang, 'howItWorks.principle.source.title'),
+    t(lang, 'howItWorks.principle.source.body'),
+  ],
+  [
+    t(lang, 'howItWorks.principle.plain.icon'),
+    t(lang, 'howItWorks.principle.plain.title'),
+    t(lang, 'howItWorks.principle.plain.body'),
+  ],
+  [
+    t(lang, 'howItWorks.principle.open.icon'),
+    t(lang, 'howItWorks.principle.open.title'),
+    t(lang, 'howItWorks.principle.open.body'),
+  ],
+];
+---
+
+<Base title={t(lang, 'howItWorks.title')} lang={lang} description={t(lang, 'howItWorks.lead')}>
+  <section class="page-width py-section">
+    <p class="text-sm font-bold tracking-label text-flag uppercase">
+      {t(lang, 'howItWorks.eyebrow')}
+    </p>
+    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
+      {t(lang, 'howItWorks.title')}
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'howItWorks.lead')}</p>
+  </section>
+
+  <section class="border-y border-edge bg-canvas-alt py-section">
+    <div class="page-width">
+      <h2 class="font-display text-3xl tracking-headline">{t(lang, 'howItWorks.stepsTitle')}</h2>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {steps.map(([step, title, body]) => (
+          <article class="border border-edge bg-canvas p-5">
+            <b class="text-xs font-bold tracking-label text-flag uppercase">{step}</b>
+            <h3 class="mt-2 font-display text-lg">{title}</h3>
+            <p class="mt-1 text-sm text-fg-soft">{body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-width py-section">
+    <h2 class="font-display text-3xl tracking-headline">{t(lang, 'howItWorks.principlesTitle')}</h2>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {principles.map(([icon, title, body]) => (
+        <article class="flex gap-4 border border-edge bg-canvas p-5">
+          <span class="text-2xl" aria-hidden="true">
+            {icon}
+          </span>
+          <div>
+            <h3 class="font-display text-lg">{title}</h3>
+            <p class="mt-1 text-sm text-fg-soft">{body}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-edge bg-canvas-alt py-section">
+    <div class="page-width max-w-2xl">
+      <h2 class="font-display text-3xl tracking-headline">
+        {t(lang, 'howItWorks.volunteerTitle')}
+      </h2>
+      <p class="mt-3 text-fg-soft">{t(lang, 'howItWorks.volunteerBody')}</p>
+      <p class="mt-4">
+        <a
+          href="https://github.com/BetterPalo/BetterPalo"
+          rel="external"
+          class="font-semibold text-flag underline"
+        >
+          {t(lang, 'howItWorks.volunteerCta')} →
+        </a>
+      </p>
+    </div>
+  </section>
+</Base>
