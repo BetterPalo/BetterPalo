@@ -25,8 +25,7 @@ No one else merges into `main`.
 - Dismiss stale approvals when new commits are pushed.
 - Require conversation resolution before merging.
 - Require status checks to pass and the branch to be up to date: `ci`
-  (CI/CD workflow), `docs` (Docs workflow), and `conventional-commits`
-  (Commit messages workflow). All three always run. `ci` fails if any CI/CD
+  (CI/CD workflow) and `docs` (Docs workflow). Both always run. `ci` fails if any CI/CD
   job failed or was cancelled. The jobs it summarises (`quality`, `build`,
   `e2e`, `lighthouse`) are skipped on documentation-only changes, so they must
   not be required themselves.
@@ -73,8 +72,7 @@ gh api "repos/BetterPalo/BetterPalo/rulesets/$id" --jq '
            strict_required_status_checks_policy: true,
            required_status_checks: [
              {context: "ci", integration_id: 15368},
-             {context: "docs", integration_id: 15368},
-             {context: "conventional-commits", integration_id: 15368}
+             {context: "docs", integration_id: 15368}
            ]}}]
    )}' > protect-main.new.json
 
@@ -141,9 +139,10 @@ Monday, Asia/Manila time.
 ## Merge rules
 
 - Squash merge only ([ADR 0004](decisions/0004-trunk-based-development-and-squash-merge.md)).
-  The pull request title becomes the commit subject on `main`, so it must
+  The pull request title becomes the commit subject on `main`, so it should
   follow the conventional commit format in
-  [labels.md](labels.md#conventional-commits). Fix a bad title before merging.
+  [labels.md](labels.md#conventional-commits). Nothing checks it automatically,
+  so fix a bad title before merging.
 - Merge commits and rebase merges are turned off in the repository settings.
 - Contributors do not merge their own pull requests. Maintainers do not merge
   their own pull requests that touch data or licensing without the required
@@ -267,7 +266,3 @@ Move cards by hand as work progresses:
 You can also turn on the project's built-in workflows (project menu, then
 Workflows) to add new issues and pull requests automatically and to set Done
 when they close. They need no token or repository secret.
-
-The `Commit messages` workflow (`.github/workflows/commit-messages.yml`) fails
-a pull request whose title or commit subjects are not conventional commits, and
-warns when a subject is over 72 characters. It is a required check.

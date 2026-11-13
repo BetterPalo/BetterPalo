@@ -1,5 +1,5 @@
 <!-- Thank you for contributing. Fill in the sections below and keep the checklist.
-     PR title: clear and in the conventional commit format, for example
+     PR title: clear and, ideally, in the conventional commit format, for example
      "feat(services): add cedula guide". The pull request is squash merged
      (ADR 0004), so the title becomes the commit on main. -->
 
@@ -32,7 +32,7 @@ Closes #
 
 ## Checklist
 
-- [ ] The PR title follows the conventional commit format.
+- [ ] The PR title follows the conventional commit format (not checked automatically).
 - [ ] I added labels and a milestone, and linked the issue.
 - [ ] `pnpm format`, `pnpm lint`, `pnpm check`, `pnpm test`, and `pnpm build`
       pass locally (code changes).

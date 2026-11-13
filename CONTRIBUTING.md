@@ -137,10 +137,11 @@ git push -u origin feat/service-page
   request is squash merged.
 - Fill in the PR template, add labels from [docs/labels.md](docs/labels.md),
   set the milestone, and link the issue with `Closes #12`.
-- **The PR title must be a conventional commit** (see below). Pull requests
-  are squash merged, so the title becomes the one commit on `main`. Commit on
-  your branch as often as you like; branch commits are not checked and do not
-  reach `main`.
+- **The PR title should be a conventional commit** (see below). Pull requests
+  are squash merged, so the title becomes the one commit on `main`. No
+  automated check enforces it; a maintainer fixes a bad title before merging.
+  Commit on your branch as often as you like; branch commits do not reach
+  `main`.
 - CI must pass and one approval from a code owner is required. `CODEOWNERS`
   requests the right reviewer automatically.
 - Only maintainers merge (see [docs/maintainers.md](docs/maintainers.md)). Do
