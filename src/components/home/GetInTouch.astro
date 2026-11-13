@@ -1,0 +1,63 @@
+---
+// Three ways to help or reach out. Inverted band.
+import Icon from '../Icon.astro';
+import SectionHead from '../SectionHead.astro';
+import IconWell from './IconWell.astro';
+import { t, type Lang } from '../../i18n/ui';
+import { localizedPath, routeExists } from '../../lib/routes';
+import { REPORT_URL, REPO_URL, officialLinks } from '../../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const contributeHref = routeExists('/contribute/') ? localizedPath(lang, '/contribute/') : REPO_URL;
+
+const cards = [
+  { icon: 'flag', key: 'fix', href: REPORT_URL, external: true },
+  { icon: 'code', key: 'build', href: contributeHref, external: contributeHref === REPO_URL },
+  { icon: 'building', key: 'lgu', href: officialLinks[1]!.href, external: true },
+] as const;
+---
+
+<section id="help" class="inv py-section" aria-labelledby="help-title">
+  <div class="wrap">
+    <SectionHead
+      id="help-title"
+      title={t(lang, 'home.help.a')}
+      highlight={t(lang, 'home.help.b')}
+      more={{ href: REPO_URL, label: t(lang, 'home.help.github') }}
+    />
+    <div class="grid gap-4 min-[52rem]:grid-cols-3 min-[52rem]:gap-5">
+      {cards.map((card) => (
+        <article class="flex gap-4 border border-edge bg-surface p-6">
+          <IconWell name={card.icon} tone="flag" />
+          <div class="min-w-0">
+            <p class="text-xs font-bold tracking-label text-fg-soft uppercase">
+              {t(lang, `home.help.${card.key}.k` as Parameters<typeof t>[1])}
+            </p>
+            <h3 class="mt-1 mb-1.5 text-[1.3rem] tracking-title">
+              {t(lang, `home.help.${card.key}.title` as Parameters<typeof t>[1])}
+            </h3>
+            <p class="mb-3 text-[0.9375rem] text-fg-soft">
+              {t(lang, `home.help.${card.key}.body` as Parameters<typeof t>[1])}
+            </p>
+            <a
+              href={card.href}
+              rel={card.external ? 'external' : undefined}
+              class="group inline-flex min-h-6 items-center gap-2 font-bold text-accent underline underline-offset-[0.3em]"
+            >
+              {t(lang, `home.help.${card.key}.link` as Parameters<typeof t>[1])}
+              <Icon
+                name={card.external ? 'ne' : 'right'}
+                class="size-4 transition-transform duration-160 ease-out group-hover:translate-x-0.5"
+              />
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

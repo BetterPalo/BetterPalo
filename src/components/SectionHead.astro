@@ -12,12 +12,12 @@ interface Props {
   /** Second part, in the accent colour. */
   highlight: string;
   sub?: string;
-  /** Rendered only when `href` is a page that exists. */
+  /** Rendered only when `href` is an external link or a page that exists. */
   more?: { href: string; label: string };
 }
 
 const { id, title, highlight, sub, more } = Astro.props;
-const showMore = more !== undefined && routeExists(more.href);
+const showMore = more !== undefined && (/^https?:/.test(more.href) || routeExists(more.href));
 ---
 
 <div class="mb-[clamp(1.75rem,3.5vw,2.5rem)] flex flex-wrap items-end justify-between gap-x-8 gap-y-3">

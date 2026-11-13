@@ -1,0 +1,80 @@
+---
+// Service tiles. The numbers are Charter service counts, not published guides,
+// and the section says so.
+import SectionHead from '../SectionHead.astro';
+import IconWell from './IconWell.astro';
+import { t, type Lang } from '../../i18n/ui';
+import { localizedPath, routeExists } from '../../lib/routes';
+import { charter, formatNumber, servicesOf } from '../../lib/site-facts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const href = routeExists('/services/') ? localizedPath(lang, '/services/') : undefined;
+const Tag = href ? 'a' : 'div';
+
+const tiles = [
+  { icon: 'doc', key: 'certificates', count: servicesOf('civil-registry') },
+  { icon: 'store', key: 'business', count: servicesOf('business-permits') },
+  { icon: 'home', key: 'property', count: servicesOf('assessor', 'treasurer') },
+  { icon: 'users', key: 'social', count: servicesOf('social-welfare', 'senior-citizens') },
+  { icon: 'pulse', key: 'health', count: servicesOf('health', 'health-shop') },
+] as const;
+
+const base =
+  'group flex h-full items-center gap-4 border px-6 py-[1.4rem] no-underline transition duration-200 ease-lift motion-reduce:transition-none';
+const plain = 'border-edge bg-surface text-fg';
+const hover = 'hover:-translate-y-0.5 hover:border-accent hover:shadow-lift';
+const feat =
+  'border-flag bg-flag text-paper hover:-translate-y-0.5 hover:border-flag-deep hover:bg-flag-deep';
+---
+
+<section id="services" class="py-section" aria-labelledby="pop-title">
+  <div class="wrap">
+    <SectionHead
+      id="pop-title"
+      title={t(lang, 'home.popular.a')}
+      highlight={t(lang, 'home.popular.b')}
+      sub={t(lang, 'home.popular.sub')}
+    />
+    <ul class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-4 min-[66rem]:gap-5">
+      {tiles.map((tile) => (
+        <li>
+          <Tag href={href} class:list={[base, plain, href && hover]}>
+            <IconWell name={tile.icon} />
+            <span class="min-w-0">
+              <h3 class="text-[1.35rem] leading-[1.1] tracking-title">
+                {t(lang, `home.tile.${tile.key}` as Parameters<typeof t>[1])}
+              </h3>
+              <span class="mt-1 block text-[0.9375rem] text-fg-soft">
+                {t(lang, `home.tile.${tile.key}.d` as Parameters<typeof t>[1])}
+              </span>
+            </span>
+            <span class="ml-auto self-start text-[0.9375rem] font-extrabold text-accent tabular-nums">
+              {tile.count}
+              <span class="sr-only"> {t(lang, 'home.tile.count')}</span>
+            </span>
+          </Tag>
+        </li>
+      ))}
+      <li>
+        <Tag href={href} class:list={[base, feat]}>
+          <IconWell name="grid" tone="onFlag" />
+          <span class="min-w-0">
+            <h3 class="text-[1.35rem] leading-[1.1] tracking-title">{t(lang, 'home.tile.all')}</h3>
+            <span class="mt-1 block text-[0.9375rem] text-sky-ink">
+              {t(lang, 'home.tile.all.d')}
+            </span>
+          </span>
+          <span class="ml-auto self-start text-[0.9375rem] font-extrabold text-sun tabular-nums">
+            {formatNumber(charter.services)}
+            <span class="sr-only"> {t(lang, 'home.tile.count')}</span>
+          </span>
+        </Tag>
+      </li>
+    </ul>
+  </div>
+</section>

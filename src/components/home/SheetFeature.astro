@@ -1,0 +1,93 @@
+---
+// Printable-sheet feature: a drawn sample sheet beside the pitch. The sheet
+// uses placeholder bars, never invented fees or times.
+import Button from '../Button.astro';
+import Icon from '../Icon.astro';
+import SectionHead from '../SectionHead.astro';
+import Sun from '../Sun.astro';
+import { t, type Lang } from '../../i18n/ui';
+import { localizedPath, routeExists } from '../../lib/routes';
+
+interface Props {
+  lang: Lang;
+  /** Link to a published guide, or undefined until one exists (hides the button). */
+  sampleHref?: string;
+}
+
+const { lang, sampleHref } = Astro.props;
+const servicesHref = routeExists('/services/') ? localizedPath(lang, '/services/') : '#services';
+
+const questions = [
+  { icon: 'pin', key: 'home.q.where', bars: 0 },
+  { icon: 'doc', key: 'home.q.bring', bars: 2 },
+  { icon: 'peso', key: 'home.q.cost', bars: 1 },
+  { icon: 'clock', key: 'home.q.time', bars: 1 },
+] as const;
+---
+
+<section class="overflow-hidden bg-canvas-alt py-section" aria-labelledby="sheet-title">
+  <div class="wrap grid items-center gap-x-[4.5rem] gap-y-12 min-[58rem]:grid-cols-[0.8fr_1.2fr]">
+    <div class="relative isolate mx-auto w-full max-w-88" aria-hidden="true">
+      <span class="absolute inset-0 -z-10 translate-x-4 translate-y-[1.2rem] rotate-3 bg-flag"></span>
+      <div class="relative -rotate-[2.5deg] border border-line bg-paper px-5 pt-5 pb-4 text-ink shadow-[0_30px_60px_-30px_rgb(0_0_0/0.5)] motion-reduce:rotate-0">
+        <span class="absolute -top-3.5 -right-2.5 rotate-4 bg-sun px-2 py-0.5 text-[0.8125rem] font-bold tracking-[0.08em] text-flag-deep">
+          {t(lang, 'home.sheet.printable')}
+        </span>
+        <div class="flex items-center justify-between gap-4 border-b-2 border-ink pb-2.5 font-display font-extrabold tracking-title">
+          <span class="flex items-center gap-1.5 text-flag">
+            <Sun mark class="size-5" />
+            {t(lang, 'site.name')}
+          </span>
+          <span class="font-sans text-[0.6875rem] font-bold tracking-[0.1em] text-muted uppercase">
+            {t(lang, 'home.sheet.label')}
+          </span>
+        </div>
+        <p class="mt-3.5 mb-3 font-display text-[1.6rem] leading-tight font-extrabold tracking-title">
+          {t(lang, 'home.sheet.example')}
+        </p>
+        <dl class="grid gap-2.5">
+          {questions.map((q) => (
+            <div>
+              <dt class="flex items-center gap-1.5 text-xs font-bold tracking-[0.06em] text-flag uppercase">
+                <Icon name={q.icon} class="size-[0.95rem]" />
+                {t(lang, q.key)}
+              </dt>
+              <dd class="mt-1.5 grid gap-1.5">
+                {q.bars === 0 ? (
+                  <b class="text-sm">{t(lang, 'home.sheet.where.val')}</b>
+                ) : (
+                  Array.from({ length: q.bars }, (_, i) => (
+                    <i class:list={['block h-[0.45rem] bg-mist', i === 1 && 'w-[72%]']} />
+                  ))
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <div class="mt-3.5 flex justify-between gap-2 border-t border-dashed border-line pt-2.5 text-[0.6875rem] text-muted">
+          <span>{t(lang, 'home.sheet.foot')}</span>
+          <span>{t(lang, 'home.sheet.page')}</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <SectionHead
+        id="sheet-title"
+        title={t(lang, 'home.sheet.a')}
+        highlight={t(lang, 'home.sheet.b')}
+        sub={t(lang, 'home.sheet.body')}
+      />
+      <div class="flex flex-wrap gap-3">
+        {sampleHref && (
+          <Button href={sampleHref} variant="flag" icon="print" class="max-[30rem]:w-full">
+            {t(lang, 'home.sheet.sample')}
+          </Button>
+        )}
+        <Button href={servicesHref} variant="line" icon="right" class="max-[30rem]:w-full">
+          {t(lang, 'home.sheet.pick')}
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

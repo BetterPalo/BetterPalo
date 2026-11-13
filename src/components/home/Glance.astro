@@ -1,0 +1,70 @@
+---
+// "Palo at a glance": four stat cards, each with its source. Inverted band.
+import SectionHead from '../SectionHead.astro';
+import IconWell from './IconWell.astro';
+import { t, type Lang } from '../../i18n/ui';
+import { census, charter, formatNumber } from '../../lib/site-facts';
+import { localizedPath, routeExists } from '../../lib/routes';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const more = routeExists('/about/')
+  ? { href: localizedPath(lang, '/about/'), label: t(lang, 'nav.about') }
+  : undefined;
+
+const stats = [
+  {
+    icon: 'users',
+    num: formatNumber(census.population),
+    label: t(lang, 'home.glance.population'),
+    src: census.source,
+  },
+  {
+    icon: 'pin',
+    num: String(census.barangays),
+    label: t(lang, 'home.glance.barangays'),
+    src: t(lang, 'home.glance.barangays.src'),
+  },
+  {
+    icon: 'doc',
+    num: String(charter.services),
+    label: t(lang, 'home.glance.services'),
+    src: t(lang, 'home.glance.src.charter'),
+  },
+  {
+    icon: 'building',
+    num: String(charter.offices),
+    label: t(lang, 'home.glance.offices'),
+    src: t(lang, 'home.glance.src.charter'),
+  },
+] as const;
+---
+
+<section id="palo" class="inv py-section" aria-labelledby="glance-title">
+  <div class="wrap">
+    <SectionHead
+      id="glance-title"
+      title={t(lang, 'home.glance.a')}
+      highlight={t(lang, 'home.glance.b')}
+      more={more}
+    />
+    <div class="grid gap-4 min-[40rem]:grid-cols-2 min-[72rem]:grid-cols-4 min-[72rem]:gap-5">
+      {stats.map((stat) => (
+        <div class="flex gap-4 border border-edge bg-surface p-6">
+          <IconWell name={stat.icon} />
+          <div class="min-w-0">
+            <span class="block font-display text-[clamp(2.2rem,3.4vw,2.9rem)] leading-none font-extrabold tracking-display text-accent tabular-nums">
+              {stat.num}
+            </span>
+            <span class="mt-1.5 block font-bold">{stat.label}</span>
+            <span class="mt-0.5 block text-[0.8125rem] text-fg-soft">{stat.src}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

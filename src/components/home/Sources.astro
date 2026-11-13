@@ -1,0 +1,78 @@
+---
+// Official sources: what the guides rest on, and where to check them.
+import Button from '../Button.astro';
+import Icon from '../Icon.astro';
+import SectionHead from '../SectionHead.astro';
+import { t, type Lang } from '../../i18n/ui';
+import { officialLinks } from '../../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const checks = [
+  'home.sources.check.charter',
+  'home.sources.check.census',
+  'home.sources.check.lgu',
+] as const;
+---
+
+<section id="sources" class="py-section" aria-labelledby="src-title">
+  <div class="wrap grid items-center gap-x-16 gap-y-10 min-[62rem]:grid-cols-2">
+    <div>
+      <SectionHead
+        id="src-title"
+        title={t(lang, 'home.sources.a')}
+        highlight={t(lang, 'home.sources.b')}
+        sub={t(lang, 'home.sources.sub')}
+      />
+      <ul class="grid gap-3.5">
+        {checks.map((key) => (
+          <li class="flex items-start gap-3">
+            <Icon name="check" class="mt-0.5 size-5 text-accent" />
+            {t(lang, key)}
+          </li>
+        ))}
+      </ul>
+      <Button
+        href={officialLinks[0]!.href}
+        rel="external"
+        variant="flag"
+        icon="ne"
+        class="mt-8 max-[30rem]:w-full"
+      >
+        {t(lang, 'home.sources.read')}
+      </Button>
+    </div>
+
+    <div class="border border-t-[6px] border-edge border-t-sun bg-surface shadow-lift">
+      <h3 class="border-b border-edge px-6 py-5 text-[0.8125rem] font-bold tracking-label text-fg-soft uppercase">
+        {t(lang, 'home.sources.card')}
+      </h3>
+      <ul>
+        {officialLinks.map((link) => (
+          <li class="border-b border-edge last:border-b-0">
+            <a
+              href={link.href}
+              rel="external"
+              class="group flex items-center gap-4 px-6 py-5 text-fg no-underline"
+            >
+              <span class="min-w-0">
+                <b class="block font-display text-[1.2rem] tracking-title group-hover:text-accent">
+                  {t(lang, link.key)}
+                </b>
+                <span class="text-[0.9rem] text-fg-soft">{t(lang, link.noteKey)}</span>
+              </span>
+              <Icon
+                name="ne"
+                class="ml-auto size-[1.1rem] text-accent transition-transform duration-160 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

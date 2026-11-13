@@ -1,0 +1,132 @@
+---
+// Hero: kicker, two-tone headline, two actions, and the "Find a service" card.
+// Without a search page the card links to the directory instead of showing a
+// form that would lead nowhere.
+import Button from '../Button.astro';
+import Chip from '../Chip.astro';
+import Icon from '../Icon.astro';
+import Sun from '../Sun.astro';
+import { t, type Lang } from '../../i18n/ui';
+import { localizedPath, routeExists } from '../../lib/routes';
+import { REPORT_URL, SEARCH_PATH } from '../../lib/site';
+
+interface Props {
+  lang: Lang;
+  /** Published guides to suggest as shortcuts; empty until there are some. */
+  popular: { href: string; label: string }[];
+}
+
+const { lang, popular } = Astro.props;
+
+const hasSearch = routeExists(SEARCH_PATH);
+const searchHref = localizedPath(lang, SEARCH_PATH);
+const servicesHref = routeExists('/services/') ? localizedPath(lang, '/services/') : '#services';
+---
+
+<section
+  aria-labelledby="hero-title"
+  class="hero-grid relative overflow-hidden border-b border-edge py-[clamp(3.5rem,8vw,6.5rem)]"
+>
+  <Sun class="pointer-events-none absolute -bottom-[30rem] -left-80 w-[min(56rem,120vw)] text-flag opacity-[0.06]" />
+  <div class="wrap relative grid items-center gap-x-16 gap-y-10 min-[62rem]:grid-cols-[1.1fr_0.9fr]">
+    <div>
+      <p class="mb-5 text-[0.8125rem] font-bold tracking-label text-accent uppercase">
+        {t(lang, 'home.eyebrow')}
+      </p>
+      <h1
+        id="hero-title"
+        class="text-[clamp(2.5rem,6.2vw,5.25rem)] leading-[0.95] tracking-display"
+      >
+        <span class="block">{t(lang, 'home.hero.line1')}</span>
+        <span class="block text-accent">{t(lang, 'home.hero.line2')}</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-[clamp(1.05rem,1.5vw,1.3rem)] text-fg-soft">
+        {t(lang, 'home.lead')} {t(lang, 'home.hero.ledeMore')}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button href={servicesHref} variant="sun" icon="right" class="max-[30rem]:w-full">
+          {t(lang, 'home.hero.browse')}
+        </Button>
+        <Button
+          href={REPORT_URL}
+          variant="line"
+          icon="ne"
+          rel="external"
+          class="max-[30rem]:w-full"
+        >
+          {t(lang, 'report.link')}
+        </Button>
+      </div>
+    </div>
+
+    <div class="border border-t-[6px] border-edge border-t-frame bg-surface p-[clamp(1.4rem,3vw,2.25rem)] shadow-lift">
+      {hasSearch ? (
+        <search>
+          <form action={searchHref} method="get" aria-labelledby="find-title">
+            <h2 id="find-title" class="mb-4 flex items-center gap-2.5 text-2xl tracking-title">
+              <Icon name="search" class="size-[1.4rem] text-accent" />
+              <label for="find-q">{t(lang, 'nav.find')}</label>
+            </h2>
+            <div class="flex gap-2">
+              <input
+                id="find-q"
+                name="q"
+                type="search"
+                autocomplete="off"
+                enterkeyhint="search"
+                placeholder={t(lang, 'home.find.placeholder')}
+                class="min-w-0 flex-1 border border-edge bg-canvas-alt px-4 py-3.5 text-[1.05rem] text-fg focus:border-transparent focus:outline-3 focus:outline-offset-0 focus:outline-accent"
+              />
+              <button
+                type="submit"
+                aria-label={t(lang, 'home.find.submit')}
+                class="grid min-h-12 w-[3.4rem] shrink-0 place-items-center bg-accent text-on-accent hover:brightness-110"
+              >
+                <Icon name="right" class="size-5" />
+              </button>
+            </div>
+          </form>
+        </search>
+      ) : (
+        <div>
+          <h2 id="find-title" class="mb-3 flex items-center gap-2.5 text-2xl tracking-title">
+            <Icon name="search" class="size-[1.4rem] text-accent" />
+            {t(lang, 'nav.find')}
+          </h2>
+          <p class="text-fg-soft">{t(lang, 'home.find.noSearch')}</p>
+          <Button href={servicesHref} variant="flag" icon="right" class="mt-5 w-full">
+            {t(lang, 'home.find.browse')}
+          </Button>
+        </div>
+      )}
+      {popular.length > 0 && (
+        <p class="mt-5 flex flex-wrap items-center gap-2 text-[0.9rem] text-fg-soft">
+          <span>{t(lang, 'home.find.popular')}</span>
+          {popular.map((item) => (
+            <Chip href={item.href}>{item.label}</Chip>
+          ))}
+        </p>
+      )}
+      <p class="mt-5 flex gap-2 border-t border-edge pt-4 text-sm text-fg-soft">
+        <Icon name="book" class="mt-0.5 size-[1.1rem] text-accent" />
+        <span>{t(lang, 'home.find.note')}</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Faint blueprint grid behind the hero (DESIGN.md "Shapes"). */
+  .hero-grid {
+    background:
+      linear-gradient(color-mix(in srgb, var(--color-flag) 6%, transparent) 1px, transparent 1px) 0
+        0 / 80px 80px,
+      linear-gradient(
+          90deg,
+          color-mix(in srgb, var(--color-flag) 6%, transparent) 1px,
+          transparent 1px
+        )
+        0 0 / 80px 80px,
+      var(--color-paper);
+  }
+</style>

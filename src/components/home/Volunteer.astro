@@ -1,0 +1,48 @@
+---
+// Closing call to action: a flag-and-sun poster beside the volunteer pitch.
+import Button from '../Button.astro';
+import Sun from '../Sun.astro';
+import { t, type Lang } from '../../i18n/ui';
+import { localizedPath, routeExists } from '../../lib/routes';
+import { REPO_URL } from '../../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const href = routeExists('/contribute/') ? localizedPath(lang, '/contribute/') : REPO_URL;
+---
+
+<section class="overflow-hidden py-section" aria-labelledby="cta-title">
+  <div class="wrap grid items-center gap-x-16 gap-y-10 min-[58rem]:grid-cols-[0.8fr_1.2fr]">
+    <div
+      class="relative mx-auto grid aspect-square w-full max-w-88 place-items-center overflow-hidden bg-flag"
+      aria-hidden="true"
+    >
+      <Sun class="absolute w-[140%] text-sun opacity-90" />
+      <span class="relative -rotate-4 bg-sun px-2.5 py-0.5 font-display text-4xl font-extrabold tracking-display text-flag-deep">
+        Palo
+      </span>
+    </div>
+    <div>
+      <h2 id="cta-title" class="text-[clamp(2rem,4.6vw,3.75rem)] leading-[0.98] tracking-display">
+        {t(lang, 'home.cta.a')} <span class="text-accent">{t(lang, 'home.cta.b')}</span>
+      </h2>
+      <p class="mt-3 font-display text-[clamp(1.25rem,2vw,1.6rem)] font-extrabold tracking-headline text-accent">
+        {t(lang, 'home.cta.tag')}
+      </p>
+      <p class="mt-4 max-w-160 text-[1.05rem] text-fg-soft">{t(lang, 'home.cta.sub')}</p>
+      <Button
+        href={href}
+        rel={href === REPO_URL ? 'external' : undefined}
+        variant="sun"
+        icon="ne"
+        class="mt-8 max-[30rem]:w-full"
+      >
+        {t(lang, 'home.cta.button')}
+      </Button>
+    </div>
+  </div>
+</section>

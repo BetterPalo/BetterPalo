@@ -29,12 +29,19 @@ export const navItems: readonly NavItem[] = [
 export interface ExternalLink {
   href: string;
   key: Key;
+  /** One line saying what the source is for. */
+  noteKey: Key;
 }
 
 export const officialLinks: readonly ExternalLink[] = [
   {
     key: 'footer.official.charter',
+    noteKey: 'sources.note.charter',
     href: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf',
   },
-  { key: 'footer.official.lgu', href: 'http://210.213.142.34/home/?page=home' },
+  {
+    key: 'footer.official.lgu',
+    noteKey: 'sources.note.lgu',
+    href: 'http://210.213.142.34/home/?page=home',
+  },
 ];

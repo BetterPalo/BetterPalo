@@ -1,0 +1,27 @@
+---
+// Square icon well used on tiles and cards (DESIGN.md "Cards"). Decorative.
+import Icon from '../Icon.astro';
+import type { IconName } from '../icons';
+
+interface Props {
+  name: IconName;
+  /** `soft`: tinted well. `flag`: solid blue. `onFlag`: pale well on a blue surface. */
+  tone?: 'soft' | 'flag' | 'onFlag';
+  class?: string;
+}
+
+const { name, tone = 'soft', class: className } = Astro.props;
+
+const tones = {
+  soft: 'bg-icon-bg text-icon',
+  flag: 'bg-flag text-paper',
+  onFlag: 'bg-paper/14 text-sun',
+};
+---
+
+<span
+  class:list={['grid size-13 shrink-0 place-items-center', tones[tone], className]}
+  aria-hidden="true"
+>
+  <Icon name={name} class="size-6" />
+</span>

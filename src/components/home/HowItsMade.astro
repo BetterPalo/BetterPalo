@@ -1,0 +1,55 @@
+---
+// How a guide gets made: four steps on a ruled timeline, with three principles.
+import SectionHead from '../SectionHead.astro';
+import IconWell from './IconWell.astro';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const steps = [1, 2, 3, 4] as const;
+const principles = [
+  { icon: 'check', key: 'accuracy' },
+  { icon: 'book', key: 'source' },
+  { icon: 'globe', key: 'plain' },
+] as const;
+---
+
+<section class="bg-canvas-alt py-section" aria-labelledby="how-title">
+  <div class="wrap">
+    <SectionHead id="how-title" title={t(lang, 'home.how.a')} highlight={t(lang, 'home.how.b')} />
+    <div class="grid gap-x-10 gap-y-6 min-[62rem]:grid-cols-[1.6fr_1fr]">
+      <ol class="relative grid gap-4 pl-8 before:absolute before:top-2 before:bottom-2 before:left-[0.45rem] before:w-0.5 before:bg-linear-to-b before:from-accent before:to-edge">
+        {steps.map((n) => (
+          <li class="relative border border-edge bg-surface px-[1.35rem] py-[1.15rem] before:absolute before:top-[1.4rem] before:-left-8 before:size-[0.95rem] before:border-[3px] before:border-accent before:bg-canvas-alt">
+            <span class="inline-block bg-accent px-2 py-0.5 text-[0.8125rem] font-extrabold text-on-accent">
+              {t(lang, 'home.step')} {n}
+            </span>
+            <h3 class="mt-2.5 mb-1 text-[1.35rem] tracking-title">
+              {t(lang, `home.step.${n}.title` as Parameters<typeof t>[1])}
+            </h3>
+            <p class="text-fg-soft">{t(lang, `home.step.${n}.body` as Parameters<typeof t>[1])}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="grid content-start gap-4">
+        {principles.map((p) => (
+          <div class="flex gap-4 border border-edge bg-surface p-5">
+            <IconWell name={p.icon} tone="flag" class="size-11" />
+            <div>
+              <h3 class="text-[1.15rem] tracking-title">
+                {t(lang, `home.principle.${p.key}.title` as Parameters<typeof t>[1])}
+              </h3>
+              <p class="mt-1 text-[0.9375rem] text-fg-soft">
+                {t(lang, `home.principle.${p.key}.body` as Parameters<typeof t>[1])}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

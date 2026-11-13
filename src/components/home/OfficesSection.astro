@@ -1,0 +1,67 @@
+---
+// Offices: a blue place panel beside the Charter's office list with counts.
+import SectionHead from '../SectionHead.astro';
+import Sun from '../Sun.astro';
+import IconWell from './IconWell.astro';
+import { t, type Lang } from '../../i18n/ui';
+import { localizedPath, routeExists } from '../../lib/routes';
+import { census, charter, formatNumber, offices } from '../../lib/site-facts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const more = routeExists('/offices/')
+  ? { href: localizedPath(lang, '/offices/'), label: t(lang, 'home.offices.more') }
+  : undefined;
+
+const facts = [
+  [t(lang, 'home.glance.barangays'), String(census.barangays)],
+  [t(lang, 'home.offices.population'), formatNumber(census.population)],
+  [t(lang, 'home.offices.inCharter'), String(charter.offices)],
+] as const;
+---
+
+<section id="offices" class="py-section" aria-labelledby="off-title">
+  <div class="wrap">
+    <SectionHead
+      id="off-title"
+      title={t(lang, 'home.offices.a')}
+      highlight={t(lang, 'home.offices.b')}
+      more={more}
+    />
+    <div class="grid gap-5 min-[62rem]:grid-cols-[0.75fr_1.6fr]">
+      <div class="relative flex flex-col overflow-hidden border border-flag bg-flag p-[clamp(1.4rem,3vw,2rem)] text-paper">
+        <Sun class="pointer-events-none absolute -right-36 -bottom-36 w-88 text-paper opacity-16" />
+        <IconWell name="map" tone="onFlag" class="relative" />
+        <h3 class="relative mt-5 mb-1.5 text-[2.4rem] leading-none tracking-display">
+          {t(lang, 'site.place')}
+        </h3>
+        <p class="relative text-sky-ink">{t(lang, 'home.offices.body')}</p>
+        <ul class="relative mt-6 border-t border-paper/25">
+          {facts.map(([label, value]) => (
+            <li class="flex justify-between gap-4 border-b border-paper/25 py-2.5">
+              <span>{label}</span>
+              <b class="text-sun tabular-nums">{value}</b>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="border border-edge bg-surface p-[clamp(1.4rem,3vw,2rem)]">
+        <ul class="grid gap-x-8 min-[44rem]:grid-cols-2">
+          {offices.map((office) => (
+            <li class="flex items-baseline gap-3 border-b border-edge py-3">
+              <span class="min-w-7 text-sm font-extrabold text-accent tabular-nums">
+                {office.services}
+                <span class="sr-only"> {t(lang, 'home.offices.services')}</span>
+              </span>
+              <span class="font-semibold">{office.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
