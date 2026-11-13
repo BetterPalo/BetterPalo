@@ -12,10 +12,7 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div
-  class="bg-flag text-[0.8125rem] text-sky-ink [color-scheme:dark] dark:border-b dark:border-ink-line dark:bg-ink-alt"
-  data-pagefind-ignore
->
+<div class="bg-flag text-[0.8125rem] text-sky-ink [color-scheme:dark]" data-pagefind-ignore>
   <div class="mx-auto flex max-w-wrap flex-wrap justify-end gap-x-7 gap-y-1 px-gutter py-2">
     {items.map((item) => (
       <span class="inline-flex items-center gap-1.5">

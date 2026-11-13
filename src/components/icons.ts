@@ -29,9 +29,6 @@ export const iconPaths = {
   peso: 'M8 20V4h5a4 4 0 0 1 0 8H8M5 7.5h14M5 10.5h14',
   clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 7v5l3.5 2',
   menu: 'M4 7h16M4 12h16M4 17h16',
-  moon: 'M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z',
-  sunny:
-    'M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4',
 } as const;
 
 export type IconName = keyof typeof iconPaths;

@@ -1,8 +1,5 @@
 @import 'tailwindcss';
 
-/* Dark theme is opt-in: the header toggle sets data-theme="dark" on <html>. Light is the
-   default whatever the device says, so Tailwind's `dark:` follows the attribute too. */
-@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 /* Display face: Inter Tight 800, Latin subset only (~23 KB woff2). Body text stays on the
    system stack. See DESIGN.md "Typography" and the ADR 0010 font amendment. */
 @import '@fontsource/inter-tight/latin-800.css';
@@ -90,28 +87,6 @@
   --lift: 0 18px 40px -26px rgb(0 34 110 / 0.35);
 }
 
-/* Night: set by the header toggle (data-theme="dark"), not by the device setting. */
-@media all {
-  :root[data-theme='dark'] {
-    color-scheme: dark;
-    --canvas: var(--color-ink);
-    --canvas-alt: var(--color-ink-alt);
-    --surface: var(--color-ink-raised);
-    --fg: var(--color-paper);
-    --fg-soft: var(--color-stone);
-    --edge: var(--color-ink-line);
-    --accent: var(--color-flag-bright);
-    --on-accent: var(--color-ink);
-    --icon-bg: rgb(0 150 255 / 0.12);
-    --icon: var(--color-flag-bright);
-    --chip-bg: rgb(255 255 255 / 0.08);
-    --chip-fg: var(--color-paper);
-    --placeholder: #9a9a94;
-    --frame: var(--color-sun);
-    --lift: 0 18px 40px -20px rgb(0 0 0 / 0.7);
-  }
-}
-
 /* Inverted band: an ink section on the white page, or a white section in the dark theme.
    Put `inv` on a section and everything inside follows. */
 .inv {
@@ -133,26 +108,6 @@
   --lift: 0 18px 40px -20px rgb(0 0 0 / 0.7);
   background-color: var(--canvas);
   color: var(--fg);
-}
-@media all {
-  :root[data-theme='dark'] .inv {
-    color-scheme: light;
-    --canvas: var(--color-paper);
-    --canvas-alt: var(--color-paper);
-    --surface: var(--color-wash);
-    --fg: var(--color-ink);
-    --fg-soft: var(--color-muted);
-    --edge: var(--color-line);
-    --accent: var(--color-flag);
-    --on-accent: var(--color-paper);
-    --icon-bg: var(--color-mist);
-    --icon: var(--color-flag);
-    --chip-bg: var(--color-mist);
-    --chip-fg: var(--color-flag-deep);
-    --placeholder: #6b6b66;
-    --frame: var(--color-flag);
-    --lift: 0 18px 40px -26px rgb(0 34 110 / 0.35);
-  }
 }
 
 @layer base {
@@ -214,9 +169,7 @@
 /* Printed service sheets are always black on white, whatever the device theme. */
 @media print {
   :root,
-  :root[data-theme='dark'],
-  .inv,
-  :root[data-theme='dark'] .inv {
+  .inv {
     color-scheme: light;
     --canvas: var(--color-paper);
     --canvas-alt: var(--color-paper);

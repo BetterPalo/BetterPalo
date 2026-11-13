@@ -19,7 +19,6 @@ const en = {
   'nav.find': 'Find a service',
   'lang.label': 'Language',
   'lang.current': 'current language',
-  'theme.toggle': 'Dark mode',
   'footer.tag': 'Unofficial service guide · Palo, Leyte',
   'footer.about':
     "A community-run guide to the public services of the Municipality of Palo. Every guide is cited to the Palo Citizen's Charter 2026 (2nd Edition). It complements official channels; it does not replace them.",
@@ -82,7 +81,6 @@ const fil: Partial<Record<Key, string>> = {
   'nav.find': 'Maghanap ng serbisyo',
   'lang.label': 'Wika',
   'lang.current': 'kasalukuyang wika',
-  'theme.toggle': 'Madilim na mode',
   'footer.tag': 'Hindi opisyal na gabay sa serbisyo · Palo, Leyte',
   'footer.about':
     "Gabay ng komunidad sa mga serbisyong pampubliko ng Bayan ng Palo. Bawat gabay ay hango sa Palo Citizen's Charter 2026 (2nd Edition). Kaagapay ito ng mga opisyal na daluyan; hindi nito pinapalitan ang mga iyon.",
