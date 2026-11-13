@@ -1,6 +1,9 @@
 ---
-// Home page content for both languages. The full White Portal home is #36.
+// Landing page for both languages. Content is static (no React): the search
+// box filters the service cards with a small progressive-enhancement script,
+// and the language switch lives in the shared header (SiteHeader).
 import Base from '../../layouts/Base.astro';
+import Button from '../Button.astro';
 import { t, type Lang } from '../../i18n/ui';
 
 interface Props {
@@ -8,9 +11,556 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+
+const services = [
+  {
+    name: t(lang, 'home.service.certificates'),
+    detail: t(lang, 'home.service.certificates.detail'),
+    count: 13,
+    icon: '📄',
+  },
+  {
+    name: t(lang, 'home.service.business'),
+    detail: t(lang, 'home.service.business.detail'),
+    count: 7,
+    icon: '🏢',
+  },
+  {
+    name: t(lang, 'home.service.property'),
+    detail: t(lang, 'home.service.property.detail'),
+    count: 17,
+    icon: '🏠',
+  },
+  {
+    name: t(lang, 'home.service.social'),
+    detail: t(lang, 'home.service.social.detail'),
+    count: 15,
+    icon: '🤝',
+  },
+  {
+    name: t(lang, 'home.service.health'),
+    detail: t(lang, 'home.service.health.detail'),
+    count: 19,
+    icon: '➕',
+  },
+];
+
+const offices = [
+  'Municipal Health Office',
+  'Municipal Civil Registrar',
+  'Municipal Assessor',
+  'Social Welfare and Development',
+  'Business Permits and Licensing',
+  'Public Market (Economic Enterprise)',
+  'Municipal Engineer',
+  'Planning and Development',
+  "Mayor's Office (Admin and HR)",
+  'MDRRMO',
+  'Senior Citizens Affairs (OSCA)',
+  'Municipal Treasurer',
+  'One Stop Health Shop',
+  'Municipal Agriculturist',
+  'Tourism, Culture, Arts and Media',
+  'Public Employment Service',
+  'Sangguniang Bayan',
+  'Municipal Accountant',
+  'Municipal Budget Officer',
+  'Traffic and Security Management',
+];
+
+const steps = [
+  [t(lang, 'home.step.1'), t(lang, 'home.step.1.title'), t(lang, 'home.step.1.body')],
+  [t(lang, 'home.step.2'), t(lang, 'home.step.2.title'), t(lang, 'home.step.2.body')],
+  [t(lang, 'home.step.3'), t(lang, 'home.step.3.title'), t(lang, 'home.step.3.body')],
+  [t(lang, 'home.step.4'), t(lang, 'home.step.4.title'), t(lang, 'home.step.4.body')],
+];
+
+const principles = [
+  [
+    t(lang, 'home.principle.accuracy.icon'),
+    t(lang, 'home.principle.accuracy.title'),
+    t(lang, 'home.principle.accuracy.body'),
+  ],
+  [
+    t(lang, 'home.principle.source.icon'),
+    t(lang, 'home.principle.source.title'),
+    t(lang, 'home.principle.source.body'),
+  ],
+  [
+    t(lang, 'home.principle.plain.icon'),
+    t(lang, 'home.principle.plain.title'),
+    t(lang, 'home.principle.plain.body'),
+  ],
+];
+
+const contactCards = [
+  [
+    t(lang, 'home.contact.corrections.icon'),
+    t(lang, 'home.contact.corrections.eyebrow'),
+    t(lang, 'home.contact.corrections.title'),
+    t(lang, 'home.contact.corrections.body'),
+    t(lang, 'home.contact.corrections.link'),
+  ],
+  [
+    t(lang, 'home.contact.contribute.icon'),
+    t(lang, 'home.contact.contribute.eyebrow'),
+    t(lang, 'home.contact.contribute.title'),
+    t(lang, 'home.contact.contribute.body'),
+    t(lang, 'home.contact.contribute.link'),
+  ],
+  [
+    t(lang, 'home.contact.official.icon'),
+    t(lang, 'home.contact.official.eyebrow'),
+    t(lang, 'home.contact.official.title'),
+    t(lang, 'home.contact.official.body'),
+    t(lang, 'home.contact.official.link'),
+  ],
+];
 ---
 
 <Base title={t(lang, 'home.title')} lang={lang} description={t(lang, 'home.lead')}>
-  <h1 class="text-4xl tracking-headline">{t(lang, 'home.title')}</h1>
-  <p class="mt-3 text-fg-soft">{t(lang, 'home.lead')}</p>
+  <!-- Toast notice (progressive enhancement; hidden without JS) -->
+  <div
+    id="notice"
+    role="status"
+    aria-live="polite"
+    class="fixed right-gutter top-20 z-50 hidden max-w-sm border border-edge bg-canvas px-4 py-3 text-sm shadow-lift"
+  ></div>
+
+  <!-- Hero -->
+  <section class="page-width py-section" id="top">
+    <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+      <div>
+        <p class="text-sm font-bold tracking-label text-flag uppercase">
+          {t(lang, 'home.eyebrow')}
+        </p>
+        <h1 class="mt-3 font-display text-5xl tracking-headline sm:text-6xl">
+          {t(lang, 'home.hero.line1')}
+          <br />
+          <span class="text-flag">{t(lang, 'home.hero.line2')}</span>
+        </h1>
+        <p class="mt-5 max-w-xl text-lg text-fg-soft">{t(lang, 'home.hero.copy')}</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <Button href="#services" variant="flag" icon="right">
+            {t(lang, 'home.hero.browse')}
+          </Button>
+          <button
+            type="button"
+            class="outline-button"
+            data-notice={t(lang, 'home.hero.reportNotice')}
+          >
+            {t(lang, 'home.hero.report')} <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Finder -->
+      <div class="rounded-none border border-edge bg-canvas-alt p-6" id="finder">
+        <h2 class="flex items-center gap-2 font-display text-2xl tracking-title">
+          <span aria-hidden="true">🔎</span> {t(lang, 'home.finder.title')}
+        </h2>
+        <form id="service-form" class="mt-4 flex gap-2">
+          <input
+            id="service-search"
+            type="search"
+            placeholder={t(lang, 'home.finder.placeholder')}
+            aria-label={t(lang, 'home.finder.aria')}
+            class="min-h-11 flex-1 border border-edge bg-canvas px-3 text-fg placeholder:text-placeholder focus-visible:outline"
+          />
+          <button
+            type="submit"
+            aria-label={t(lang, 'home.finder.submit')}
+            class="min-h-11 border border-flag bg-flag px-3 text-paper"
+          >
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {['Cedula', 'Birth certificate', 'Business permit'].map((q) => (
+            <button
+              type="button"
+              class="border border-edge bg-canvas px-3 py-1 text-sm hover:bg-canvas-alt"
+              data-quick={q}
+            >
+              {q}
+            </button>
+          ))}
+        </div>
+        <p class="mt-4 text-sm text-fg-soft">{t(lang, 'home.finder.note')}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Printed sheet showcase -->
+  <section class="border-y border-edge bg-canvas-alt py-section">
+    <div class="page-width grid gap-10 lg:grid-cols-2">
+      <div class="border border-edge bg-canvas p-6 shadow-lift" aria-hidden="true">
+        <p class="mb-2 text-xs font-bold tracking-label text-flag uppercase">
+          {t(lang, 'home.sheet.printable')}
+        </p>
+        <p class="font-display text-2xl tracking-headline">
+          {t(lang, 'site.name')}{' '}
+          <small class="text-sm text-fg-soft">{t(lang, 'home.sheet.label')}</small>
+        </p>
+        <h3 class="mt-3 font-display text-xl">{t(lang, 'home.sheet.example')}</h3>
+        <dl class="mt-4 grid gap-2 text-sm">
+          <div>
+            <dt class="font-bold">{t(lang, 'home.sheet.where')}</dt>
+            <dd>{t(lang, 'home.sheet.where.val')}</dd>
+          </div>
+          <div>
+            <dt class="font-bold">{t(lang, 'home.sheet.bring')}</dt>
+            <dd>{t(lang, 'home.sheet.bring.val')}</dd>
+          </div>
+          <div>
+            <dt class="font-bold">{t(lang, 'home.sheet.cost')}</dt>
+            <dd>{t(lang, 'home.sheet.cost.val')}</dd>
+          </div>
+          <div>
+            <dt class="font-bold">{t(lang, 'home.sheet.time')}</dt>
+            <dd>{t(lang, 'home.sheet.time.val')}</dd>
+          </div>
+        </dl>
+      </div>
+      <div>
+        <h2 class="font-display text-3xl tracking-headline">
+          {t(lang, 'home.sheet.title1')}{' '}
+          <span class="text-flag">{t(lang, 'home.sheet.title2')}</span>
+        </h2>
+        <p class="mt-4 text-fg-soft">{t(lang, 'home.sheet.body')}</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <Button href="#services" variant="flag" icon="right">
+            {t(lang, 'home.sheet.pick')}
+          </Button>
+          <button
+            type="button"
+            class="outline-button"
+            data-notice={t(lang, 'home.sheet.sampleNotice')}
+          >
+            {t(lang, 'home.sheet.sample')} <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="page-width py-section" id="services">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h2 class="font-display text-3xl tracking-headline">
+          {t(lang, 'home.services.title1')}{' '}
+          <span class="text-flag">{t(lang, 'home.services.title2')}</span>
+        </h2>
+        <p class="mt-2 text-fg-soft">{t(lang, 'home.services.subtitle')}</p>
+      </div>
+      <a href="/services/" class="font-semibold text-flag underline">
+        {t(lang, 'home.services.all')} →
+      </a>
+    </div>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="services-grid">
+      {services.map((service) => (
+        <button
+          type="button"
+          class="service-card group flex items-start gap-3 border border-edge bg-canvas p-4 text-left hover:border-flag"
+          data-name={`${service.name} ${service.detail}`.toLowerCase()}
+        >
+          <span class="text-2xl" aria-hidden="true">
+            {service.icon}
+          </span>
+          <span class="flex-1">
+            <strong class="block font-display tracking-title">{service.name}</strong>
+            <small class="text-sm text-fg-soft">{service.detail}</small>
+          </span>
+          <b class="text-lg tabular-nums text-flag">{service.count}</b>
+        </button>
+      ))}
+      <a
+        href="/services/"
+        class="service-card flex items-start gap-3 border border-edge bg-canvas p-4 hover:border-flag"
+      >
+        <span class="text-2xl" aria-hidden="true">
+          📚
+        </span>
+        <span class="flex-1">
+          <strong class="block font-display tracking-title">{t(lang, 'home.services.all')}</strong>
+          <small class="text-sm text-fg-soft">{t(lang, 'home.services.allDetail')}</small>
+        </span>
+        <b class="text-lg tabular-nums text-flag">112</b>
+      </a>
+    </div>
+    <p id="services-empty" class="mt-4 hidden text-sm text-fg-soft">
+      {t(lang, 'home.services.empty')}
+    </p>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-ink py-section text-paper [color-scheme:dark]" id="about">
+    <div class="page-width">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <h2 class="font-display text-3xl tracking-headline">
+          {t(lang, 'home.stats.title1')}{' '}
+          <em class="text-sun not-italic">{t(lang, 'home.stats.title2')}</em>
+        </h2>
+        <a href="/about/" class="font-semibold text-flag-bright underline">
+          {t(lang, 'home.stats.about')} →
+        </a>
+      </div>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          ['80,291', t(lang, 'home.stats.pop'), t(lang, 'home.stats.pop.src')],
+          ['33', t(lang, 'home.stats.brgy'), t(lang, 'home.stats.brgy.src')],
+          ['112', t(lang, 'home.stats.services'), t(lang, 'home.stats.services.src')],
+          ['20', t(lang, 'home.stats.offices'), t(lang, 'home.stats.offices.src')],
+        ].map(([n, label, src]) => (
+          <div class="border border-ink-line bg-ink-raised p-5">
+            <span class="text-ink-line" aria-hidden="true">
+              📊
+            </span>
+            <strong class="mt-2 block font-display text-4xl tabular-nums">{n}</strong>
+            <span class="mt-1 block text-sm">
+              {label}
+              <br />
+              <small class="text-stone">{src}</small>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Offices -->
+  <section class="page-width py-section" id="offices">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 class="font-display text-3xl tracking-headline">
+        {t(lang, 'home.offices.title1')}{' '}
+        <span class="text-flag">{t(lang, 'home.offices.title2')}</span>
+      </h2>
+      <a href="/offices/" class="font-semibold text-flag underline">
+        {t(lang, 'home.offices.directory')} →
+      </a>
+    </div>
+    <div class="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]" id="directory">
+      <div class="border border-edge bg-canvas p-6">
+        <p class="text-3xl" aria-hidden="true">
+          📍
+        </p>
+        <h3 class="mt-2 font-display text-xl">{t(lang, 'home.offices.place')}</h3>
+        <span class="text-sm text-fg-soft">{t(lang, 'home.offices.placeSub')}</span>
+        <dl class="mt-4 grid gap-2 text-sm">
+          <div class="flex justify-between">
+            <dt>{t(lang, 'home.offices.brgy')}</dt>
+            <dd class="font-bold">33</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>{t(lang, 'home.stats.pop')}</dt>
+            <dd class="font-bold">80,291</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>{t(lang, 'home.offices.charter')}</dt>
+            <dd class="font-bold">20</dd>
+          </div>
+        </dl>
+      </div>
+      <ol class="grid gap-2 text-sm">
+        {offices.map((office, index) => (
+          <li class="flex items-center gap-3 border-b border-edge py-2">
+            <span class="w-8 text-right tabular-nums text-fg-soft">{offices.length - index}</span>
+            <span>{office}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- How a guide gets made -->
+  <section class="border-y border-edge bg-canvas-alt py-section">
+    <div class="page-width">
+      <h2 class="font-display text-3xl tracking-headline">
+        {t(lang, 'home.guide.title1')} <span class="text-flag">{t(lang, 'home.guide.title2')}</span>
+      </h2>
+      <div class="mt-8 grid gap-10 lg:grid-cols-2">
+        <div class="grid gap-4">
+          {steps.map(([step, title, body]) => (
+            <article class="border border-edge bg-canvas p-5">
+              <b class="text-xs font-bold tracking-label text-flag uppercase">{step}</b>
+              <h3 class="mt-1 font-display text-lg">{title}</h3>
+              <p class="mt-1 text-sm text-fg-soft">{body}</p>
+            </article>
+          ))}
+        </div>
+        <div class="grid gap-4">
+          {principles.map(([icon, title, body]) => (
+            <article class="flex gap-4 border border-edge bg-canvas p-5">
+              <i class="text-2xl" aria-hidden="true">
+                {icon}
+              </i>
+              <div>
+                <h3 class="font-display text-lg">{title}</h3>
+                <p class="mt-1 text-sm text-fg-soft">{body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="page-width py-section">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div>
+        <h2 class="font-display text-3xl tracking-headline">
+          {t(lang, 'home.sources.title1')}
+          <br />
+          <span class="text-flag">{t(lang, 'home.sources.title2')}</span>
+        </h2>
+        <p class="mt-4 text-fg-soft">{t(lang, 'home.sources.body')}</p>
+        <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
+          <li>{t(lang, 'home.sources.li1')}</li>
+          <li>{t(lang, 'home.sources.li2')}</li>
+          <li>{t(lang, 'home.sources.li3')}</li>
+        </ul>
+        <Button href="#top" variant="flag" class="mt-6" icon="right">
+          {t(lang, 'home.sources.read')}
+        </Button>
+      </div>
+      <div class="border border-edge bg-canvas p-6">
+        <h3 class="text-xs font-bold tracking-label text-flag uppercase">
+          {t(lang, 'home.sources.cardTitle')}
+        </h3>
+        {[
+          [t(lang, 'home.sources.s1'), t(lang, 'home.sources.s1.sub')],
+          [t(lang, 'home.sources.s2'), t(lang, 'home.sources.s2.sub')],
+          [t(lang, 'home.sources.s3'), t(lang, 'home.sources.s3.sub')],
+        ].map(([name, sub]) => (
+          <button
+            type="button"
+            class="mt-3 flex w-full items-center justify-between border border-edge bg-canvas p-3 text-left hover:border-flag"
+            data-notice={`${name} is an external official source.`}
+          >
+            <span>
+              <b class="block font-display tracking-title">{name}</b>
+              <small class="text-sm text-fg-soft">{sub}</small>
+            </span>
+            <span aria-hidden="true">→</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / contribute -->
+  <section class="bg-ink py-section text-paper [color-scheme:dark]" id="contribute">
+    <div class="page-width">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <h2 class="font-display text-3xl tracking-headline">
+          {t(lang, 'home.contact.title1')}{' '}
+          <em class="text-sun not-italic">{t(lang, 'home.contact.title2')}</em>
+        </h2>
+        <a href="#footer" class="font-semibold text-flag-bright underline">
+          {t(lang, 'home.contact.github')} →
+        </a>
+      </div>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {contactCards.map(([icon, eyebrow, title, body, link]) => (
+          <article class="border border-ink-line bg-ink-raised p-5">
+            <i class="text-2xl" aria-hidden="true">
+              {icon}
+            </i>
+            <div class="mt-3">
+              <small class="text-xs font-bold tracking-label text-stone uppercase">{eyebrow}</small>
+              <h3 class="mt-1 font-display text-lg">{title}</h3>
+              <p class="mt-1 text-sm text-stone">{body}</p>
+              <button
+                type="button"
+                class="mt-3 font-semibold text-flag-bright underline"
+                data-notice={`${title}: thanks for helping BetterPalo.`}
+              >
+                {link} <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer -->
+  <section class="page-width py-section">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div class="border border-edge bg-canvas-alt p-8">
+        <p class="text-xs font-bold tracking-label text-flag uppercase">
+          {t(lang, 'home.volunteer.poster')}
+        </p>
+        <p class="mt-4 font-display text-6xl tracking-display text-flag">Palo</p>
+      </div>
+      <div>
+        <h2 class="font-display text-3xl tracking-headline">
+          {t(lang, 'home.volunteer.title1')}{' '}
+          <span class="text-flag">{t(lang, 'home.volunteer.title2')}</span>
+        </h2>
+        <h3 class="mt-2 font-display text-xl">{t(lang, 'home.volunteer.subtitle')}</h3>
+        <p class="mt-3 text-fg-soft">{t(lang, 'home.volunteer.body')}</p>
+        <button
+          type="button"
+          class="mt-6 inline-flex min-h-11 items-center gap-2 bg-flag px-5 py-2 font-bold text-paper hover:bg-flag-dark"
+          data-notice={t(lang, 'home.volunteer.notice')}
+        >
+          {t(lang, 'home.volunteer.cta')} <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inline progressive enhancement: search filter + notice toast. No framework. -->
+  <script is:inline>
+    (function () {
+      const input = document.getElementById('service-search');
+      const grid = document.getElementById('services-grid');
+      const empty = document.getElementById('services-empty');
+      const cards = grid ? Array.from(grid.querySelectorAll('.service-card')) : [];
+      const filter = (q) => {
+        const needle = (q || '').trim().toLowerCase();
+        let shown = 0;
+        cards.forEach((card) => {
+          const name = (card.getAttribute('data-name') || card.textContent || '').toLowerCase();
+          const match = !needle || name.includes(needle);
+          card.classList.toggle('hidden', !match);
+          if (match) shown += 1;
+        });
+        if (empty) empty.classList.toggle('hidden', !(needle && shown === 0));
+      };
+      if (input) {
+        input.addEventListener('input', (e) => filter(e.target.value));
+      }
+      const form = document.getElementById('service-form');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+      document.querySelectorAll('[data-quick]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const q = btn.getAttribute('data-quick') || '';
+          if (input) {
+            input.value = q;
+            filter(q);
+          }
+        });
+      });
+      const notice = document.getElementById('notice');
+      const showNotice = (msg) => {
+        if (!notice) return;
+        notice.textContent = msg;
+        notice.classList.remove('hidden');
+        window.clearTimeout(notice._t);
+        notice._t = window.setTimeout(() => notice.classList.add('hidden'), 2800);
+      };
+      document.querySelectorAll('[data-notice]').forEach((el) => {
+        el.addEventListener('click', () => showNotice(el.getAttribute('data-notice') || ''));
+      });
+    })();
+  </script>
 </Base>
