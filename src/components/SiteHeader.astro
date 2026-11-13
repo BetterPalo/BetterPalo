@@ -1,0 +1,200 @@
+---
+// Sticky site header (DESIGN.md "Navigation"): brand, primary nav, EN/FIL
+// switch, and the Find button. The menu is a native popover, so it opens with
+// no JavaScript; from 66rem the same list shows inline.
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import Sun from './Sun.astro';
+import { languages, t, type Lang } from '../i18n/ui';
+import { alternateOf, localizedPath, normalizePath, routeExists } from '../lib/routes';
+import { SEARCH_PATH, navItems } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const current = normalizePath(Astro.url.pathname);
+const home = lang === 'en' ? '/' : '/fil/';
+const links = navItems
+  .filter((item) => routeExists(item.path))
+  .map((item) => {
+    const href = localizedPath(lang, item.path);
+    return { href, label: t(lang, item.key), current: href === current };
+  });
+
+const alternate = alternateOf(lang, Astro.url.pathname);
+const switcher = [
+  { code: 'en' as const, short: 'EN' },
+  { code: 'fil' as const, short: 'FIL' },
+];
+const showFind = routeExists(SEARCH_PATH);
+const findHref = localizedPath(lang, SEARCH_PATH);
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-paper/12 bg-flag-deep/96 text-paper backdrop-blur-sm [color-scheme:dark]"
+  data-pagefind-ignore
+>
+  <div class="mx-auto flex min-h-17 max-w-wrap items-center gap-2 px-gutter sm:gap-4">
+    <a href={home} class="flex shrink-0 items-center gap-4 text-paper no-underline">
+      <span class="flex items-center gap-2 font-display text-[1.15rem] font-extrabold tracking-display">
+        <Sun mark class="size-7.5 text-sun" />
+        {t(lang, 'site.name')}
+      </span>
+      <span class="hidden border-l border-paper/30 pl-4 font-display text-[1.15rem] font-extrabold tracking-display text-sun min-[40rem]:block">
+        {t(lang, 'site.place')}
+      </span>
+    </a>
+
+    {links.length > 0 && (
+      <nav aria-label={t(lang, 'nav.label')} class="ml-auto">
+        <button
+          type="button"
+          class="menu-button inline-flex min-h-10 items-center gap-2 border border-paper/40 px-3 font-bold text-paper hover:bg-paper/8"
+          popovertarget="site-menu"
+          aria-controls="site-menu"
+        >
+          <Icon name="menu" class="size-5" />
+          <span class="max-[30rem]:sr-only">{t(lang, 'nav.menu')}</span>
+        </button>
+        <ul id="site-menu" class="site-menu" popover="auto">
+          {links.map((link) => (
+            <li>
+              <a href={link.href} aria-current={link.current ? 'page' : undefined}>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+
+    <div class:list={['flex shrink-0 items-center gap-2', links.length === 0 && 'ml-auto']}>
+      <div
+        role="group"
+        aria-label={t(lang, 'lang.label')}
+        class="inline-flex border border-paper/40"
+      >
+        {switcher.map((item) =>
+          item.code === lang ? (
+            <span class="flex h-10 min-w-10 items-center justify-center bg-paper px-2 text-sm leading-none font-bold text-flag-deep">
+              {item.short}
+              <span class="sr-only">
+                {' '}
+                ({languages[item.code]}, {t(lang, 'lang.current')})
+              </span>
+            </span>
+          ) : (
+            <a
+              href={alternate.path}
+              hreflang={item.code}
+              lang={item.code}
+              class="flex h-10 min-w-10 items-center justify-center px-2 text-sm leading-none font-bold text-paper no-underline hover:bg-paper/10"
+            >
+              {item.short}
+              <span class="sr-only"> ({languages[item.code]})</span>
+            </a>
+          ),
+        )}
+      </div>
+      {showFind && (
+        <Button
+          href={findHref}
+          variant="sun"
+          size="compact"
+          icon="search"
+          class="hidden min-[30rem]:inline-flex"
+        >
+          {t(lang, 'nav.find')}
+        </Button>
+      )}
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Narrow layout: the list is a popover panel under the menu button. */
+  .menu-button {
+    anchor-name: --site-menu-button;
+  }
+
+  .site-menu {
+    position: fixed;
+    inset: auto;
+    /* Fallback without anchor positioning: just under the 4.25rem header. */
+    inset-block-start: 4.75rem;
+    inset-inline-end: var(--spacing-gutter);
+    inline-size: min(80dvw, 18rem);
+    max-block-size: calc(100dvh - 6rem);
+    margin: 0;
+    padding: 0.5rem 0;
+    overflow: auto;
+    list-style: none;
+    border: 1px solid color-mix(in srgb, var(--color-paper) 20%, transparent);
+    background: var(--color-flag-deep);
+    color: var(--color-paper);
+    box-shadow: 0 18px 40px -20px rgb(0 0 0 / 0.7);
+  }
+
+  @supports (inset-block-start: anchor(--a bottom)) {
+    .site-menu {
+      inset-block-start: calc(anchor(--site-menu-button bottom) + 0.5rem);
+    }
+  }
+
+  .site-menu a {
+    display: block;
+    padding: 0.7rem 1.1rem;
+    color: inherit;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .site-menu a:hover {
+    background: var(--color-flag);
+  }
+
+  .site-menu a[aria-current='page'] {
+    text-decoration: underline;
+    text-decoration-color: var(--color-sun);
+    text-decoration-thickness: 2px;
+  }
+
+  /* Wide layout: the same list, inline; the menu button goes away. */
+  @media (min-width: 66rem) {
+    .menu-button {
+      display: none;
+    }
+
+    .site-menu {
+      position: static;
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      inline-size: auto;
+      max-block-size: none;
+      padding: 0;
+      overflow: visible;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .site-menu::backdrop {
+      display: none;
+    }
+
+    .site-menu a {
+      padding: 0;
+      color: color-mix(in srgb, var(--color-paper) 82%, transparent);
+      font-size: 0.9375rem;
+    }
+
+    .site-menu a:hover {
+      background: transparent;
+      color: var(--color-paper);
+    }
+  }
+</style>

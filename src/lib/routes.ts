@@ -123,3 +123,46 @@ export function labelFor(lang: Lang, path: string): PageLabel {
   }
   return { text: humanize(path), pending: lang !== 'en' };
 }
+
+/**
+ * A URL path in the trailing-slash form the build writes: `/sitemap` →
+ * `/sitemap/`, `/fil/index.html` → `/fil/`. Dev and preview servers do not
+ * always add the slash, so compare paths only after this.
+ */
+export function normalizePath(pathname: string): string {
+  const path = pathname.replace(/index\.html$/, '').replace(/\.html$/, '/');
+  return path.endsWith('/') ? path : `${path}/`;
+}
+
+/** True when a page file builds exactly this path (static pages, not `[id]`). */
+export function routeExists(path: string): boolean {
+  return routes.includes(normalizePath(path));
+}
+
+/** Where an English path lives in `lang`: the Filipino page when it exists. */
+export function localizedPath(lang: Lang, enPath: string): string {
+  if (lang === 'en') return enPath;
+  return filVariantOf(enPath) ?? enPath;
+}
+
+/** The other language's version of a page, for the header's EN/FIL switch. */
+export interface Alternate {
+  path: string;
+  /** False when the page has no translation and `path` is that language's home. */
+  exact: boolean;
+}
+
+/**
+ * The same page in the other language. An English page without a Filipino
+ * version falls back to `/fil/`. Every Filipino page has an English original
+ * (they share one page component), so `/fil/x/` always maps to `/x/`.
+ */
+export function alternateOf(lang: Lang, pathname: string): Alternate {
+  const path = normalizePath(pathname);
+  if (lang === 'en') {
+    const fil = filVariantOf(path);
+    return fil ? { path: fil, exact: true } : { path: '/fil/', exact: false };
+  }
+  if (path.startsWith('/fil/')) return { path: path.slice('/fil'.length), exact: true };
+  return { path: '/', exact: false };
+}

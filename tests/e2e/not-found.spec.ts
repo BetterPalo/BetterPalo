@@ -37,14 +37,7 @@ test('404 page has no accessibility violations and no sideways scroll', async ({
   );
 
   const results = await new AxeBuilder({ page }).analyze();
-
-  // The site-wide notice bar in Base.astro sits outside any landmark. That is
-  // pre-existing on every page and belongs to the shared kit in #35; the 404
-  // page's own content must be clean.
-  const outsideNotice = results.violations.filter(
-    (v) => v.id !== 'region' || v.nodes.some((n) => !n.html.includes('role="note"')),
-  );
-  expect(outsideNotice).toEqual([]);
+  expect(results.violations).toEqual([]);
 
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth - window.innerWidth,

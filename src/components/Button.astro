@@ -1,0 +1,64 @@
+---
+// Square button or button-styled link (DESIGN.md "Buttons"). Renders <a> when
+// `href` is given, otherwise <button>. Use the sun variant for at most one
+// action per viewport.
+import Icon from './Icon.astro';
+import type { IconName } from './icons';
+
+interface Props {
+  href?: string;
+  variant?: 'sun' | 'flag' | 'line' | 'ghost';
+  size?: 'default' | 'compact';
+  /** Optional trailing icon; it nudges up and right on hover. */
+  icon?: IconName;
+  type?: 'button' | 'submit';
+  class?: string;
+  hreflang?: string;
+  lang?: string;
+  rel?: string;
+}
+
+const {
+  href,
+  variant = 'flag',
+  size = 'default',
+  icon,
+  type = 'button',
+  class: className,
+  ...rest
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+
+const variants = {
+  sun: 'bg-sun text-ink hover:bg-sun-light',
+  flag: 'bg-flag text-paper hover:bg-flag-deep',
+  line: 'border-fg text-fg hover:bg-fg hover:text-canvas',
+  ghost: 'border-paper/55 text-paper hover:border-paper hover:bg-paper/8',
+};
+
+const sizes = {
+  default: 'min-h-13 px-6 text-base',
+  compact: 'min-h-10 px-4 text-[0.9375rem]',
+};
+---
+
+<Tag
+  href={href}
+  type={href ? undefined : type}
+  class:list={[
+    'group inline-flex items-center justify-center gap-2.5 border border-transparent font-bold no-underline transition-colors duration-160 ease-out',
+    variants[variant],
+    sizes[size],
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+  {icon && (
+    <Icon
+      name={icon}
+      class="size-4 transition-transform duration-160 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+    />
+  )}
+</Tag>

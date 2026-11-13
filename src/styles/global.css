@@ -127,6 +127,8 @@
   --placeholder: #9a9a94;
   --frame: var(--color-sun);
   --lift: 0 18px 40px -20px rgb(0 0 0 / 0.7);
+  background-color: var(--canvas);
+  color: var(--fg);
 }
 @media (prefers-color-scheme: dark) {
   .inv {
@@ -152,6 +154,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Keep #anchor targets clear of the sticky header (4.25rem tall). */
+    scroll-padding-block-start: 5rem;
   }
   body {
     background: var(--canvas);

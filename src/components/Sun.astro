@@ -1,0 +1,33 @@
+---
+// The Philippine flag sun: a disc with eight rays, each ray a broad beam
+// flanked by two thin ones. Drawn in currentColor so each band tints it.
+interface Props {
+  class?: string;
+  /** Compact mark for the logo: solid, fewer details. */
+  mark?: boolean;
+}
+const { class: className, mark = false } = Astro.props;
+const angles = [0, 45, 90, 135, 180, 225, 270, 315];
+---
+
+{mark ? (
+  <svg class={className} viewBox="-50 -50 100 100" aria-hidden="true" focusable="false">
+    <circle r="16" fill="currentColor" />
+    {angles.map((a) => (
+      <g transform={`rotate(${a})`} fill="currentColor">
+        <path d="M-4.5 -22 L0 -47 L4.5 -22 Z" />
+      </g>
+    ))}
+  </svg>
+) : (
+  <svg class={className} viewBox="-100 -100 200 200" aria-hidden="true" focusable="false">
+    <circle r="26" fill="currentColor" />
+    {angles.map((a) => (
+      <g transform={`rotate(${a})`} fill="currentColor">
+        <path d="M-6 -34 L-3 -99 L3 -99 L6 -34 Z" />
+        <path d="M-1.6 -34 L-1 -96 L1 -96 L1.6 -34 Z" transform="rotate(-9)" />
+        <path d="M-1.6 -34 L-1 -96 L1 -96 L1.6 -34 Z" transform="rotate(9)" />
+      </g>
+    ))}
+  </svg>
+)}

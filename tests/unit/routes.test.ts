@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  alternateOf,
   areaOf,
   fileToRoute,
   filVariantOf,
@@ -8,6 +9,9 @@ import {
   labelKey,
   listEnglishPaths,
   listRoutes,
+  localizedPath,
+  normalizePath,
+  routeExists,
 } from '../../src/lib/routes';
 
 describe('fileToRoute', () => {
@@ -84,5 +88,51 @@ describe('labelFor', () => {
     expect(humanize('/how-it-works/')).toBe('How It Works');
     expect(labelFor('en', '/how-it-works/')).toEqual({ text: 'How It Works', pending: false });
     expect(labelFor('fil', '/how-it-works/')).toEqual({ text: 'How It Works', pending: true });
+  });
+});
+
+describe('normalizePath', () => {
+  it('adds the trailing slash the build uses', () => {
+    expect(normalizePath('/sitemap')).toBe('/sitemap/');
+    expect(normalizePath('/sitemap/')).toBe('/sitemap/');
+    expect(normalizePath('/')).toBe('/');
+    expect(normalizePath('/fil/index.html')).toBe('/fil/');
+  });
+});
+
+describe('routeExists', () => {
+  it('knows the pages in src/pages', () => {
+    expect(routeExists('/')).toBe(true);
+    expect(routeExists('/sitemap')).toBe(true);
+    expect(routeExists('/fil/sitemap/')).toBe(true);
+  });
+
+  it('does not treat a dynamic template or a missing page as a page', () => {
+    expect(routeExists('/services/')).toBe(false);
+    expect(routeExists('/no-such-page/')).toBe(false);
+  });
+});
+
+describe('localizedPath', () => {
+  it('keeps English paths and finds the Filipino page when there is one', () => {
+    expect(localizedPath('en', '/sitemap/')).toBe('/sitemap/');
+    expect(localizedPath('fil', '/sitemap/')).toBe('/fil/sitemap/');
+    expect(localizedPath('fil', '/no-such-page/')).toBe('/no-such-page/');
+  });
+});
+
+describe('alternateOf', () => {
+  it('maps an English page to its Filipino version', () => {
+    expect(alternateOf('en', '/sitemap/')).toEqual({ path: '/fil/sitemap/', exact: true });
+    expect(alternateOf('en', '/')).toEqual({ path: '/fil/', exact: true });
+  });
+
+  it('falls back to the Filipino home page when there is no translation', () => {
+    expect(alternateOf('en', '/404')).toEqual({ path: '/fil/', exact: false });
+  });
+
+  it('maps a Filipino page back to English', () => {
+    expect(alternateOf('fil', '/fil/sitemap/')).toEqual({ path: '/sitemap/', exact: true });
+    expect(alternateOf('fil', '/fil/')).toEqual({ path: '/', exact: true });
   });
 });

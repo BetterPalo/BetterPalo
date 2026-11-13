@@ -1,0 +1,29 @@
+---
+// The unofficial-status strip at the top of every page (DESIGN.md
+// "Navigation"). An <aside> so it sits in a landmark, and outside Pagefind's
+// index so search results do not all start with it.
+import { t, type Lang } from '../i18n/ui';
+import { REPORT_URL } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<aside
+  aria-label={t(lang, 'notice.label')}
+  class="no-print bg-ink text-[0.8125rem] tracking-[0.02em] text-stone [color-scheme:dark]"
+  data-pagefind-ignore
+>
+  <div class="mx-auto flex max-w-wrap flex-wrap justify-between gap-x-4 gap-y-1 px-gutter py-1.5">
+    <p>
+      <b class="font-bold text-sun">{t(lang, 'notice.lead')}</b>
+      {t(lang, 'notice.body')}
+    </p>
+    <a href={REPORT_URL} class="font-semibold text-paper underline">
+      {t(lang, 'report.link')}
+    </a>
+  </div>
+</aside>
