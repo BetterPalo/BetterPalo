@@ -182,7 +182,7 @@ except the flag sun, and one web font.
 - One sun-yellow action per view; flag blue for every other action.
 - Thin 1px borders do the layering; a single soft shadow lifts the cards you can act on.
 - The Philippine flag sun is the only ornament, drawn in `currentColor` at low opacity.
-- Light by default, with a matching dark theme (Night) that follows the device setting.
+- Light by default, whatever the device setting is, with a matching dark theme (Night) that the visitor switches on with the header toggle. The choice is kept in `localStorage`; without JavaScript the page stays light.
 
 ## Colors
 

@@ -1,4 +1,8 @@
 @import 'tailwindcss';
+
+/* Dark theme is opt-in: the header toggle sets data-theme="dark" on <html>. Light is the
+   default whatever the device says, so Tailwind's `dark:` follows the attribute too. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 /* Display face: Inter Tight 800, Latin subset only (~23 KB woff2). Body text stays on the
    system stack. See DESIGN.md "Typography" and the ADR 0010 font amendment. */
 @import '@fontsource/inter-tight/latin-800.css';
@@ -86,9 +90,9 @@
   --lift: 0 18px 40px -26px rgb(0 34 110 / 0.35);
 }
 
-/* Night: the dark theme follows the device setting. */
-@media (prefers-color-scheme: dark) {
-  :root {
+/* Night: set by the header toggle (data-theme="dark"), not by the device setting. */
+@media all {
+  :root[data-theme='dark'] {
     color-scheme: dark;
     --canvas: var(--color-ink);
     --canvas-alt: var(--color-ink-alt);
@@ -130,8 +134,8 @@
   background-color: var(--canvas);
   color: var(--fg);
 }
-@media (prefers-color-scheme: dark) {
-  .inv {
+@media all {
+  :root[data-theme='dark'] .inv {
     color-scheme: light;
     --canvas: var(--color-paper);
     --canvas-alt: var(--color-paper);
@@ -210,7 +214,9 @@
 /* Printed service sheets are always black on white, whatever the device theme. */
 @media print {
   :root,
-  .inv {
+  :root[data-theme='dark'],
+  .inv,
+  :root[data-theme='dark'] .inv {
     color-scheme: light;
     --canvas: var(--color-paper);
     --canvas-alt: var(--color-paper);

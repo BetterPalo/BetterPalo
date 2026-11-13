@@ -13,9 +13,14 @@ async function animationsDone(page: Page) {
   );
 }
 
-for (const colorScheme of ['light', 'dark'] as const) {
-  test.describe(`${colorScheme} theme`, () => {
-    test.use({ colorScheme });
+// Light is the default whatever the device says; dark is the saved toggle choice.
+for (const theme of ['light', 'dark'] as const) {
+  test.describe(`${theme} theme`, () => {
+    test.use({ colorScheme: 'dark' }); // a dark device must still start light
+
+    test.beforeEach(async ({ page }) => {
+      if (theme === 'dark') await page.addInitScript(() => localStorage.setItem('theme', 'dark'));
+    });
 
     for (const path of pages) {
       test(`${path}: notice, report link, and no axe violations`, async ({ page }) => {
@@ -31,6 +36,37 @@ for (const colorScheme of ['light', 'dark'] as const) {
     }
   });
 }
+
+test('the page is light by default, even on a dark device', async ({ browser }) => {
+  const context = await browser.newContext({ colorScheme: 'dark' });
+  const page = await context.newPage();
+  await page.goto('/');
+  await expect(page.locator('html')).not.toHaveAttribute('data-theme', 'dark');
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+  await context.close();
+});
+
+test('the toggle switches to dark, remembers it, and switches back', async ({ page }) => {
+  await page.goto('/');
+  const toggle = page.getByRole('button', { name: 'Dark mode' });
+  await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+
+  await toggle.click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(10, 10, 10)');
+
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(page.getByRole('button', { name: 'Dark mode' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+
+  await page.getByRole('button', { name: 'Dark mode' }).click();
+  await expect(page.locator('html')).not.toHaveAttribute('data-theme', 'dark');
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+});
 
 test('the language switch opens the same page in the other language', async ({ page }) => {
   await page.goto('/sitemap/');
@@ -72,6 +108,8 @@ test.describe('phone, no JavaScript', () => {
 
   test('the menu opens and closes as a popover', async ({ page }) => {
     await page.goto('/sitemap/');
+    // Without JavaScript there is no theme toggle: the page stays light.
+    await expect(page.getByRole('button', { name: 'Dark mode' })).toBeHidden();
     const nav = page.getByRole('navigation', { name: 'Primary' });
     const link = nav.getByRole('link', { name: 'Sitemap' });
     await expect(link).toBeHidden();

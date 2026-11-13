@@ -99,6 +99,17 @@ const findHref = localizedPath(lang, SEARCH_PATH);
           ),
         )}
       </div>
+      <button
+        id="theme-toggle"
+        type="button"
+        hidden
+        aria-pressed="false"
+        aria-label={t(lang, 'theme.toggle')}
+        class="flex size-10 items-center justify-center border border-paper/40 text-paper hover:bg-paper/10"
+      >
+        <Icon name="moon" class="size-5 dark:hidden" />
+        <Icon name="sunny" class="hidden size-5 dark:block" />
+      </button>
       {showFind && (
         <Button
           href={findHref}
@@ -113,6 +124,32 @@ const findHref = localizedPath(lang, SEARCH_PATH);
     </div>
   </div>
 </header>
+
+<!-- The only script on the page: it shows the toggle and remembers the choice. Without
+     JavaScript the toggle stays hidden and the page stays light. -->
+<script is:inline>
+  (function () {
+    const button = document.getElementById('theme-toggle');
+    if (!button) return;
+    const root = document.documentElement;
+    function sync() {
+      button.setAttribute('aria-pressed', root.dataset.theme === 'dark' ? 'true' : 'false');
+    }
+    button.hidden = false;
+    sync();
+    button.addEventListener('click', function () {
+      const dark = root.dataset.theme !== 'dark';
+      if (dark) root.dataset.theme = 'dark';
+      else delete root.dataset.theme;
+      try {
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      } catch {
+        // Storage blocked: the choice just won't be remembered.
+      }
+      sync();
+    });
+  })();
+</script>
 
 <style>
   /* Narrow layout: the list is a popover panel under the menu button. */
