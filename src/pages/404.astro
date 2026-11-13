@@ -3,15 +3,155 @@ import Base from '../layouts/Base.astro';
 import { t } from '../i18n/ui';
 ---
 
-<Base title={t('en', 'notFound.title')} lang="en">
-  <h1 class="text-2xl font-bold">{t('en', 'notFound.title')}</h1>
-  <p class="mt-2">{t('en', 'notFound.body')}</p>
-  <p class="mt-2" lang="fil">
-    {t('fil', 'notFound.body')}
-  </p>
-  <p class="mt-4">
-    <a class="underline" href="/">
-      {t('en', 'notFound.home')}
-    </a>
-  </p>
+<Base title={t('en', 'notFound.title')} lang="en" noindex>
+  <section class="not-found" aria-labelledby="nf-heading">
+    <!-- Eyebrow: error badge, hairline, state. -->
+    <p class="nf-rise flex items-center gap-3" style="--nf-delay: 0ms">
+      <span class="bg-brand px-2 py-1 text-[0.7rem] font-bold tracking-[0.2em] text-brand-ink uppercase">
+        {t('en', 'notFound.badge')}
+      </span>
+      <span class="h-px flex-1 bg-slate-200" aria-hidden="true"></span>
+      <span class="text-[0.7rem] font-semibold tracking-[0.2em] text-slate-600 uppercase">
+        {t('en', 'notFound.eyebrow')}
+      </span>
+    </p>
+
+    <!-- Hero: display numeral, rule, heading, body. -->
+    <div class="nf-rise mt-6" style="--nf-delay: 80ms">
+      <!-- The rule is exactly as wide as the numeral it underlines. -->
+      <div class="inline-block">
+        <p
+          aria-hidden="true"
+          class="text-[clamp(4.5rem,22vw,8rem)] leading-[0.85] font-black tracking-tight text-slate-900"
+        >
+          40<span class="text-brand">4</span>
+        </p>
+        <span class="nf-rule mt-5 block h-0.5 w-full bg-brand" aria-hidden="true"></span>
+      </div>
+      <h1 id="nf-heading" class="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        {t('en', 'notFound.title')}
+      </h1>
+      <p class="mt-2 max-w-prose text-slate-600">{t('en', 'notFound.body')}</p>
+    </div>
+
+    <!-- Filipino, shown beside English: a static host serves one 404 page. -->
+    <div class="nf-rise mt-6 border-l-2 border-brand pl-4" lang="fil" style="--nf-delay: 140ms">
+      <p class="text-[0.7rem] font-bold tracking-[0.2em] text-slate-600 uppercase">Filipino</p>
+      <p class="mt-1 font-semibold text-slate-900">{t('fil', 'notFound.title')}</p>
+      <p class="text-slate-600">{t('fil', 'notFound.body')}</p>
+    </div>
+
+    <!-- Search: posts to the Pagefind route from issue #34. -->
+    <form
+      class="nf-rise mt-8 border border-slate-200 p-4"
+      style="--nf-delay: 200ms"
+      role="search"
+      action="/search/"
+      method="get"
+    >
+      <label
+        for="nf-q"
+        class="block text-[0.7rem] font-bold tracking-[0.2em] text-slate-600 uppercase"
+      >
+        {t('en', 'notFound.searchLabel')}
+      </label>
+      <div class="mt-2 flex flex-col gap-2 sm:flex-row">
+        <input
+          id="nf-q"
+          name="q"
+          type="search"
+          required
+          placeholder={t('en', 'notFound.searchPlaceholder')}
+          class="min-w-0 flex-1 border border-slate-200 bg-white px-3 py-2.5 text-base text-slate-900 transition-colors placeholder:text-slate-600 focus:border-brand focus:outline-2 focus:outline-offset-2 focus:outline-brand"
+        />
+        <button
+          type="submit"
+          class="bg-brand px-5 py-2.5 text-base font-semibold text-brand-ink transition hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+        >
+          {t('en', 'notFound.searchSubmit')}
+        </button>
+      </div>
+      <p class="mt-2 text-sm text-slate-600">{t('en', 'notFound.searchHint')}</p>
+    </form>
+
+    <!-- Recovery links. -->
+    <nav
+      class="nf-rise mt-5 grid gap-3 sm:grid-cols-2"
+      aria-label={t('en', 'notFound.nav')}
+      style="--nf-delay: 260ms"
+    >
+      <a
+        href="/"
+        class="group border border-slate-200 p-4 transition-colors hover:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+      >
+        <span class="flex items-center justify-between gap-2 font-semibold text-slate-900 group-hover:text-brand">
+          {t('en', 'notFound.home')}
+          <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">
+            →
+          </span>
+        </span>
+        <span class="mt-1 block text-sm text-slate-600">{t('en', 'notFound.homeHint')}</span>
+      </a>
+      <a
+        href="/services/"
+        class="group border border-slate-200 p-4 transition-colors hover:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+      >
+        <span class="flex items-center justify-between gap-2 font-semibold text-slate-900 group-hover:text-brand">
+          {t('en', 'notFound.services')}
+          <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">
+            →
+          </span>
+        </span>
+        <span class="mt-1 block text-sm text-slate-600" lang="en">
+          {t('en', 'home.lead')}
+        </span>
+      </a>
+    </nav>
+  </section>
 </Base>
+
+<style>
+  .not-found {
+    display: flex;
+    min-height: 62svh;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .nf-rise {
+    animation: nf-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--nf-delay, 0ms);
+  }
+
+  .nf-rule {
+    transform-origin: left;
+    animation: nf-rule 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+  }
+
+  @keyframes nf-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes nf-rule {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nf-rise,
+    .nf-rule {
+      animation-delay: 0ms;
+    }
+  }
+</style>
