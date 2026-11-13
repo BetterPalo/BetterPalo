@@ -6,9 +6,11 @@ interface Props {
   title: string;
   lang?: Lang;
   description?: string;
+  /** Set on pages search engines must not index (for example the 404 page). */
+  noindex?: boolean;
 }
 
-const { title, lang = 'en', description } = Astro.props;
+const { title, lang = 'en', description, noindex = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,6 +20,7 @@ const { title, lang = 'en', description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · {t(lang, 'site.name')}</title>
     {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
