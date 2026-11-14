@@ -1,8 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getCollection } from 'astro:content';
-import { isPublishable } from '../../lib/publishing';
+import PageHero from '../PageHero.astro';
+import { listServices } from '../../lib/data';
 import { t, type Lang } from '../../i18n/ui';
+import { localizedPath } from '../../lib/routes';
 
 interface Props {
   lang: Lang;
@@ -10,26 +11,25 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const services = (await getCollection('services'))
-  .map((entry) => entry.data)
-  .filter(isPublishable)
-  .sort((a, b) => a.name.localeCompare(b.name));
+const services = await listServices();
 ---
 
-<Base title={t(lang, 'servicesDir.title')} lang={lang} description={t(lang, 'servicesDir.lead')}>
-  <section class="page-width py-section">
-    <p class="text-sm font-bold tracking-label text-flag uppercase">
-      {t(lang, 'servicesDir.eyebrow')}
-    </p>
-    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
-      {t(lang, 'servicesDir.title')}
-    </h1>
-    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'servicesDir.lead')}</p>
-  </section>
+<Base
+  title={t(lang, 'servicesDir.title')}
+  lang={lang}
+  description={t(lang, 'servicesDir.lead')}
+  width="full"
+>
+  <PageHero
+    id="services-title"
+    eyebrow={t(lang, 'servicesDir.eyebrow')}
+    title={t(lang, 'servicesDir.title')}
+    lead={t(lang, 'servicesDir.lead')}
+  />
 
-  <section class="page-width pb-section">
+  <section class="wrap pb-section">
     {services.length === 0 ? (
-      <div class="border border-edge bg-canvas-alt p-8 text-center">
+      <div class="border border-edge bg-surface p-8 text-center">
         <p class="font-display text-xl">{t(lang, 'servicesDir.empty')}</p>
         <p class="mt-2 text-sm text-fg-soft">{t(lang, 'servicesDir.emptyBody')}</p>
       </div>
@@ -38,8 +38,8 @@ const services = (await getCollection('services'))
         {services.map((service) => (
           <li>
             <a
-              href={`/services/${service.id}/`}
-              class="block border border-edge bg-canvas p-4 no-underline hover:border-flag"
+              href={localizedPath(lang, `/services/${service.id}/`)}
+              class="block border border-edge bg-canvas p-4 no-underline hover:border-accent"
             >
               <b class="font-display tracking-title">{service.name}</b>
               <p class="mt-1 text-sm text-fg-soft">{service.description}</p>

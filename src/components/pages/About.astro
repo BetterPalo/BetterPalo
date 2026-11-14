@@ -1,6 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import SectionHead from '../SectionHead.astro';
+import IconWell from '../home/IconWell.astro';
 import { t, type Lang } from '../../i18n/ui';
+import { census, charter, formatNumber } from '../../lib/site-facts';
 
 interface Props {
   lang: Lang;
@@ -9,49 +13,72 @@ interface Props {
 const { lang } = Astro.props;
 
 const stats = [
-  ['80,291', t(lang, 'about.stat.pop'), t(lang, 'about.stat.pop.src')],
-  ['33', t(lang, 'about.stat.brgy'), t(lang, 'about.stat.brgy.src')],
-  ['112', t(lang, 'about.stat.services'), t(lang, 'about.stat.services.src')],
-  ['20', t(lang, 'about.stat.offices'), t(lang, 'about.stat.offices.src')],
-];
+  {
+    icon: 'users',
+    num: formatNumber(census.population),
+    label: t(lang, 'about.stat.pop'),
+    src: t(lang, 'about.stat.pop.src'),
+  },
+  {
+    icon: 'pin',
+    num: String(census.barangays),
+    label: t(lang, 'about.stat.brgy'),
+    src: t(lang, 'about.stat.brgy.src'),
+  },
+  {
+    icon: 'doc',
+    num: String(charter.services),
+    label: t(lang, 'about.stat.services'),
+    src: t(lang, 'about.stat.services.src'),
+  },
+  {
+    icon: 'building',
+    num: String(charter.offices),
+    label: t(lang, 'about.stat.offices'),
+    src: t(lang, 'about.stat.offices.src'),
+  },
+] as const;
 ---
 
-<Base title={t(lang, 'about.title')} lang={lang} description={t(lang, 'about.lead')}>
-  <section class="page-width py-section">
-    <p class="text-sm font-bold tracking-label text-flag uppercase">{t(lang, 'about.eyebrow')}</p>
-    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
-      {t(lang, 'about.title')}
-    </h1>
-    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'about.lead')}</p>
-  </section>
+<Base title={t(lang, 'about.title')} lang={lang} description={t(lang, 'about.lead')} width="full">
+  <PageHero
+    id="about-title"
+    eyebrow={t(lang, 'about.eyebrow')}
+    title={t(lang, 'about.title')}
+    lead={t(lang, 'about.lead')}
+  />
 
-  <section class="border-y border-edge bg-canvas-alt py-section">
-    <div class="page-width">
-      <h2 class="font-display text-3xl tracking-headline">{t(lang, 'about.factsTitle')}</h2>
-      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map(([n, label, src]) => (
-          <div class="border border-edge bg-canvas p-5">
-            <strong class="block font-display text-4xl tabular-nums">{n}</strong>
-            <span class="mt-1 block text-sm">
-              {label}
-              <br />
-              <small class="text-fg-soft">{src}</small>
-            </span>
+  <section class="inv py-section" aria-labelledby="facts-title">
+    <div class="wrap">
+      <SectionHead id="facts-title" title={t(lang, 'about.factsTitle')} highlight="" />
+      <div class="grid gap-4 min-[40rem]:grid-cols-2 min-[72rem]:grid-cols-4 min-[72rem]:gap-5">
+        {stats.map((stat) => (
+          <div class="flex gap-4 border border-edge bg-surface p-6">
+            <IconWell name={stat.icon} />
+            <div class="min-w-0">
+              <span class="block font-display text-[clamp(2.2rem,3.4vw,2.9rem)] leading-none font-extrabold tracking-display text-accent tabular-nums">
+                {stat.num}
+              </span>
+              <span class="mt-1.5 block font-bold">{stat.label}</span>
+              <span class="mt-0.5 block text-[0.8125rem] text-fg-soft">{stat.src}</span>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="page-width py-section">
-    <h2 class="font-display text-3xl tracking-headline">{t(lang, 'about.barangaysTitle')}</h2>
-    <p class="mt-3 max-w-2xl text-fg-soft">{t(lang, 'about.barangaysBody')}</p>
+  <section class="py-section" aria-labelledby="barangays-title">
+    <div class="wrap max-w-3xl">
+      <SectionHead id="barangays-title" title={t(lang, 'about.barangaysTitle')} highlight="" />
+      <p class="text-fg-soft">{t(lang, 'about.barangaysBody')}</p>
+    </div>
   </section>
 
   <section class="border-t border-edge bg-canvas-alt py-section">
-    <div class="page-width max-w-3xl">
-      <h2 class="font-display text-3xl tracking-headline">{t(lang, 'about.sourcesTitle')}</h2>
-      <p class="mt-3 text-fg-soft">{t(lang, 'about.sourcesBody')}</p>
+    <div class="wrap max-w-3xl">
+      <SectionHead id="sources-title" title={t(lang, 'about.sourcesTitle')} highlight="" />
+      <p class="text-fg-soft">{t(lang, 'about.sourcesBody')}</p>
       <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
         <li>{t(lang, 'about.sources.li1')}</li>
         <li>{t(lang, 'about.sources.li2')}</li>

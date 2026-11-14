@@ -1,0 +1,23 @@
+---
+// Page header for the secondary pages: tracked eyebrow, display h1, lede.
+// Same look as the About page and the home hero (DESIGN.md "Typography").
+interface Props {
+  /** id for the h1, so the section can use aria-labelledby. */
+  id: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
+}
+
+const { id, eyebrow, title, lead } = Astro.props;
+---
+
+<section class="py-section" aria-labelledby={id}>
+  <div class="wrap">
+    <p class="mb-5 text-[0.8125rem] font-bold tracking-label text-accent uppercase">{eyebrow}</p>
+    <h1 id={id} class="text-[clamp(2.5rem,6.2vw,5.25rem)] leading-[0.95] tracking-display">
+      {title}
+    </h1>
+    <p class="mt-6 max-w-xl text-[clamp(1.05rem,1.5vw,1.3rem)] text-fg-soft">{lead}</p>
+  </div>
+</section>

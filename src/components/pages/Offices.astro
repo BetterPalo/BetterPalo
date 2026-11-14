@@ -1,66 +1,49 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import SectionHead from '../SectionHead.astro';
+import IconWell from '../home/IconWell.astro';
 import { t, type Lang } from '../../i18n/ui';
+import { census, charter, formatNumber, offices } from '../../lib/site-facts';
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
-
-const offices = [
-  'Municipal Health Office',
-  'Municipal Civil Registrar',
-  'Municipal Assessor',
-  'Social Welfare and Development',
-  'Business Permits and Licensing',
-  'Public Market (Economic Enterprise)',
-  'Municipal Engineer',
-  'Planning and Development',
-  "Mayor's Office (Admin and HR)",
-  'MDRRMO',
-  'Senior Citizens Affairs (OSCA)',
-  'Municipal Treasurer',
-  'One Stop Health Shop',
-  'Municipal Agriculturist',
-  'Tourism, Culture, Arts and Media',
-  'Public Employment Service',
-  'Sangguniang Bayan',
-  'Municipal Accountant',
-  'Municipal Budget Officer',
-  'Traffic and Security Management',
-];
 ---
 
-<Base title={t(lang, 'offices.title')} lang={lang} description={t(lang, 'offices.lead')}>
-  <section class="page-width py-section">
-    <p class="text-sm font-bold tracking-label text-flag uppercase">{t(lang, 'offices.eyebrow')}</p>
-    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
-      {t(lang, 'offices.title')}
-    </h1>
-    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'offices.lead')}</p>
-  </section>
+<Base
+  title={t(lang, 'offices.title')}
+  lang={lang}
+  description={t(lang, 'offices.lead')}
+  width="full"
+>
+  <PageHero
+    id="offices-title"
+    eyebrow={t(lang, 'offices.eyebrow')}
+    title={t(lang, 'offices.title')}
+    lead={t(lang, 'offices.lead')}
+  />
 
-  <section class="page-width py-section">
+  <section class="wrap py-section">
     <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]" id="directory">
-      <div class="border border-edge bg-canvas p-6">
-        <p class="text-3xl" aria-hidden="true">
-          📍
-        </p>
-        <h3 class="mt-2 font-display text-xl">{t(lang, 'offices.place')}</h3>
+      <div class="border border-edge bg-surface p-6">
+        <IconWell name="pin" />
+        <h2 class="mt-2 font-display text-xl">{t(lang, 'offices.place')}</h2>
         <span class="text-sm text-fg-soft">{t(lang, 'offices.placeSub')}</span>
         <dl class="mt-4 grid gap-2 text-sm">
           <div class="flex justify-between">
             <dt>{t(lang, 'offices.brgy')}</dt>
-            <dd class="font-bold">33</dd>
+            <dd class="font-bold">{census.barangays}</dd>
           </div>
           <div class="flex justify-between">
             <dt>{t(lang, 'about.stat.pop')}</dt>
-            <dd class="font-bold">80,291</dd>
+            <dd class="font-bold">{formatNumber(census.population)}</dd>
           </div>
           <div class="flex justify-between">
             <dt>{t(lang, 'offices.charter')}</dt>
-            <dd class="font-bold">20</dd>
+            <dd class="font-bold">{charter.offices}</dd>
           </div>
         </dl>
       </div>
@@ -68,7 +51,7 @@ const offices = [
         {offices.map((office, index) => (
           <li class="flex items-center gap-3 border-b border-edge py-2">
             <span class="w-8 text-right tabular-nums text-fg-soft">{offices.length - index}</span>
-            <span>{office}</span>
+            <span>{office.name}</span>
           </li>
         ))}
       </ol>
@@ -76,8 +59,8 @@ const offices = [
   </section>
 
   <section class="border-t border-edge bg-canvas-alt py-section">
-    <div class="page-width max-w-3xl">
-      <h2 class="font-display text-3xl tracking-headline">{t(lang, 'offices.noteTitle')}</h2>
+    <div class="wrap max-w-3xl">
+      <SectionHead id="offices-notetitle" title={t(lang, 'offices.noteTitle')} highlight="" />
       <p class="mt-3 text-fg-soft">{t(lang, 'offices.noteBody')}</p>
     </div>
   </section>
