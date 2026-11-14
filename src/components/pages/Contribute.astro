@@ -9,7 +9,12 @@ interface Props {
 const { lang } = Astro.props;
 ---
 
-<Base title={t(lang, 'contribute.title')} lang={lang} description={t(lang, 'contribute.lead')}>
+<Base
+  title={t(lang, 'contribute.title')}
+  lang={lang}
+  description={t(lang, 'contribute.lead')}
+  width="full"
+>
   <section class="wrap py-section">
     <p class="text-sm font-bold tracking-label text-flag uppercase">
       {t(lang, 'contribute.eyebrow')}

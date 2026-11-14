@@ -11,6 +11,7 @@ Thumbs.db
 *.log
 logs/
 CLAUDE.md
+.claude
 
 # Build output
 dist/

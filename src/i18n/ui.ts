@@ -198,19 +198,15 @@ const en = {
   'howItWorks.step.4.title': 'Publish with dates',
   'howItWorks.step.4.body':
     'The guide shows its Charter edition and the date it was last verified.',
-  'howItWorks.principle.accuracy.icon': '\u{1F3AF}',
   'howItWorks.principle.accuracy.title': 'Accuracy first',
   'howItWorks.principle.accuracy.body':
     'A missing page is better than a wrong one. Unconfirmed details stay off the site.',
-  'howItWorks.principle.source.icon': '\u{1F517}',
   'howItWorks.principle.source.title': 'Cite the source',
   'howItWorks.principle.source.body':
     'Every fact links or cites from the official document it came from.',
-  'howItWorks.principle.plain.icon': '\u{1F4AC}',
   'howItWorks.principle.plain.title': 'Plain language',
   'howItWorks.principle.plain.body':
     'Written for someone in a hurry, on a phone, on a slow connection.',
-  'howItWorks.principle.open.icon': '\u{1F310}',
   'howItWorks.principle.open.title': 'Open and community-built',
   'howItWorks.principle.open.body': 'Anyone can contribute. The code and the data are open.',
 

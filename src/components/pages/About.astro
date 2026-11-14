@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import SectionHead from '../SectionHead.astro';
 import IconWell from '../home/IconWell.astro';
 import { t, type Lang } from '../../i18n/ui';
-import { census, formatNumber } from '../../lib/site-facts';
+import { census, charter, formatNumber } from '../../lib/site-facts';
 
 interface Props {
   lang: Lang;
@@ -26,20 +26,20 @@ const stats = [
   },
   {
     icon: 'doc',
-    num: '112',
+    num: String(charter.services),
     label: t(lang, 'about.stat.services'),
     src: t(lang, 'about.stat.services.src'),
   },
   {
     icon: 'building',
-    num: '20',
+    num: String(charter.offices),
     label: t(lang, 'about.stat.offices'),
     src: t(lang, 'about.stat.offices.src'),
   },
 ] as const;
 ---
 
-<Base title={t(lang, 'about.title')} lang={lang} description={t(lang, 'about.lead')}>
+<Base title={t(lang, 'about.title')} lang={lang} description={t(lang, 'about.lead')} width="full">
   <section class="py-section" aria-labelledby="about-title">
     <div class="wrap">
       <p class="mb-5 text-[0.8125rem] font-bold tracking-label text-accent uppercase">
