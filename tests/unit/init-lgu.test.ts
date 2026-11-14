@@ -122,6 +122,78 @@ function runCopy(copy: string, args: string[]) {
   });
 }
 
+/** Runs the script with no --answers, feeding `input` on stdin. Always with --root. */
+function runInteractive(root: string, input: string) {
+  return spawnSync(process.execPath, [scriptPath, '--root', root], {
+    encoding: 'utf8',
+    input,
+  });
+}
+
+interface FixtureAnswers {
+  name: string;
+  type: string;
+  province: string;
+  brand: string;
+  toolName: string;
+  siteUrl: string;
+  repoUrl: string;
+  officialSiteUrl: string;
+  charter: {
+    title: string;
+    edition: string;
+    year: number;
+    url: string;
+    services: number;
+    offices: number;
+  };
+  census: {
+    population: number;
+    source: string;
+    year: number;
+    referenceDate: { en: string; fil: string };
+    barangays: number;
+  };
+  offices: Office[];
+}
+
+/**
+ * The city fixture's answers, one per line, in the order `askInteractively` asks them,
+ * then the confirmation line (or none, when `confirmation` is null).
+ */
+function interactiveInput(confirmation: string | null): string {
+  const a = JSON.parse(readFileSync(fixturePath, 'utf8')) as FixtureAnswers;
+  const lines = [
+    a.name,
+    a.type,
+    a.province,
+    a.brand,
+    a.toolName,
+    a.siteUrl,
+    a.repoUrl,
+    a.officialSiteUrl,
+    a.charter.title,
+    a.charter.edition,
+    String(a.charter.year),
+    a.charter.url,
+    String(a.charter.services),
+    String(a.charter.offices),
+    String(a.census.population),
+    a.census.source,
+    String(a.census.year),
+    a.census.referenceDate.en,
+    a.census.referenceDate.fil,
+    String(a.census.barangays),
+  ];
+  for (const office of a.offices) {
+    lines.push(office.name, office.short, String(office.services));
+  }
+  // A blank office name ends the list.
+  lines.push('');
+  if (confirmation !== null) lines.push(confirmation);
+  return lines.map((line) => `${line}\n`).join('');
+}
+
 function expectNothingWritten(root: string) {
   expect(existsSync(join(root, 'src', 'config', 'lgu.ts'))).toBe(false);
   expect(readFileSync(join(root, 'wrangler.jsonc'), 'utf8')).toBe(
@@ -311,5 +383,48 @@ describe('pnpm init:lgu', () => {
 
     const loaded = await import(join(root, 'src', 'config', 'lgu.ts'));
     expect(loaded.lgu.offices.map((office: Office) => office.short)).toEqual(['civil', 'finance']);
+  });
+});
+
+describe('pnpm init:lgu in interactive mode', () => {
+  it('shows a summary and writes nothing when the answer is n', () => {
+    const root = makeRoot();
+    const before = snapshot(root);
+    const result = runInteractive(root, interactiveInput('n'));
+    expect(result.status).toBe(1);
+    expect(result.stdout).toContain('LGU: Sample (city)');
+    expect(result.stdout).toContain('Site address: https://bettersample.example.org');
+    expect(result.stdout).toContain('Write these files? [y/N]');
+    expect(result.stdout).toContain('Nothing was written.');
+    expect(snapshot(root)).toEqual(before);
+  });
+
+  it('writes the files when the answer is y', async () => {
+    const root = makeRoot();
+    const result = runInteractive(root, interactiveInput('y'));
+    expect(result.status, result.stderr).toBe(0);
+
+    const loaded = await import(join(root, 'src', 'config', 'lgu.ts'));
+    expect(loaded.lgu).toEqual(cityConfig);
+    const wrangler = readFileSync(join(root, 'wrangler.jsonc'), 'utf8');
+    expect(wrangler).toContain('"name": "bettersample"');
+  });
+
+  it('treats a blank answer as no and writes nothing', () => {
+    const root = makeRoot();
+    const before = snapshot(root);
+    const result = runInteractive(root, interactiveInput(''));
+    expect(result.status).toBe(1);
+    expect(result.stdout).toContain('Nothing was written.');
+    expect(snapshot(root)).toEqual(before);
+  });
+
+  it('treats an input that ends before the confirmation as no and writes nothing', () => {
+    const root = makeRoot();
+    const before = snapshot(root);
+    const result = runInteractive(root, interactiveInput(null));
+    expect(result.status).toBe(1);
+    expect(result.stdout).toContain('Nothing was written.');
+    expect(snapshot(root)).toEqual(before);
   });
 });

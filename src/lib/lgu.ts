@@ -108,12 +108,16 @@ export function fillPlaceholders(text: string, values: Record<string, string>): 
   });
 }
 
-/** "Palo" -> "palo"; used for stable anchors such as the Glance section id. */
+/**
+ * "Palo" -> "palo"; used for stable anchors such as the Glance section id. A name with
+ * no Latin letters or digits gives "lgu", so the anchor is never empty.
+ */
 export function lguSlug(config: Pick<LguConfig, 'name'>): string {
-  return config.name
+  const slug = config.name
     .normalize('NFD')
     .replace(/[\u0300-\u036F]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
+  return slug === '' ? 'lgu' : slug;
 }

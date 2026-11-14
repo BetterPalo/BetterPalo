@@ -66,6 +66,11 @@ describe('lguSlug', () => {
     expect(lguSlug({ name: 'Palo' })).toBe('palo');
     expect(lguSlug({ name: 'San José' })).toBe('san-jose');
   });
+
+  it('falls back to "lgu" when the name has no Latin letters or digits', () => {
+    expect(lguSlug({ name: '日本語' })).toBe('lgu');
+    expect(lguSlug({ name: '!!!' })).toBe('lgu');
+  });
 });
 
 describe('live config sanity', () => {

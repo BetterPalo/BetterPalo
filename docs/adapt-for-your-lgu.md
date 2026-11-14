@@ -45,6 +45,8 @@ office count; the census population, source, year, reference dates in English
 and Filipino, and barangay count; and then each office, with its name, short
 key, and service count, until you enter a blank name.
 
+Interactive mode shows what it will write and asks for confirmation before writing anything.
+
 Have your Citizen's Charter and your census source open. The script never
 guesses a number. No fact has a default. A blank answer asks again, except where
 a suggestion is shown (brand and tool name) or when you finish the list of

@@ -327,19 +327,28 @@ function readOrProblem(path, problems) {
   }
 }
 
-/** Asks every question in order. A blank fact is asked again; brand and tool name have suggestions. */
+/**
+ * Asks every question in order. A blank fact is asked again; brand and tool name have
+ * suggestions. Returns the answers, `readLine` (for the confirmation, on the same
+ * input), and `close`, which the caller must call once it is done.
+ */
 async function askInteractively(root) {
   // Lines come from the async iterator, which buffers them, so piped input is not lost.
   // The prompt is written by hand; the terminal echoes what the user types.
   const rl = createInterface({ input: process.stdin, crlfDelay: Infinity });
   const lines = rl[Symbol.asyncIterator]();
-  const ask = async (question) => {
+  // The next line, or null once the input has ended.
+  const readLine = async (question) => {
     process.stdout.write(question);
     const next = await lines.next();
-    if (next.done) {
+    return next.done ? null : next.value;
+  };
+  const ask = async (question) => {
+    const answer = await readLine(question);
+    if (answer === null) {
       throw new Error('Input ended before every answer was given. Nothing was written.');
     }
-    return next.value;
+    return answer;
   };
 
   const text = async (label, meaning, suggestion) => {
@@ -357,6 +366,7 @@ async function askInteractively(root) {
     return /^\d+$/.test(answer) ? Number(answer) : answer;
   };
 
+  let answers;
   try {
     console.log(`Set up a copy of this template for one local government.
 Have your Citizen's Charter and census source open. Never guess a number.
@@ -423,7 +433,7 @@ A blank name ends the list. Short keys group service tiles; known keys: ${TILE_K
       offices.push({ name: officeName, short, services });
     }
 
-    return {
+    answers = {
       name,
       type,
       province,
@@ -449,9 +459,11 @@ A blank name ends the list. Short keys group service tiles; known keys: ${TILE_K
       },
       offices,
     };
-  } finally {
+  } catch (error) {
     rl.close();
+    throw error;
   }
+  return { answers, readLine, close: () => rl.close() };
 }
 
 async function main(argv) {
@@ -480,19 +492,32 @@ async function main(argv) {
   }
 
   const root = resolve(options.root ?? REPO_ROOT);
-  let raw;
-  if (options.answers !== undefined) {
-    const file = resolve(options.answers);
+  if (options.answers === undefined) {
+    const session = await askInteractively(root);
     try {
-      raw = JSON.parse(readFileSync(file, 'utf8'));
-    } catch (error) {
-      console.error(`Cannot read the answers file ${file}: ${error.message}`);
-      return 1;
+      return await writeAnswers(session.answers, root, session.readLine);
+    } finally {
+      session.close();
     }
-  } else {
-    raw = await askInteractively(root);
   }
 
+  const file = resolve(options.answers);
+  let raw;
+  try {
+    raw = JSON.parse(readFileSync(file, 'utf8'));
+  } catch (error) {
+    console.error(`Cannot read the answers file ${file}: ${error.message}`);
+    return 1;
+  }
+  return writeAnswers(raw, root, null);
+}
+
+/**
+ * Checks the answers and writes the three files. `readLine` is set in interactive mode,
+ * where the user must confirm the summary before anything is written; it is null for
+ * --answers.
+ */
+async function writeAnswers(raw, root, readLine) {
   const prepared = prepare(raw);
   const { problems, warnings } = validate(prepared);
   for (const warning of warnings) console.warn(`Warning: ${warning}`);
@@ -529,6 +554,22 @@ async function main(argv) {
     console.error('Nothing was written:');
     for (const problem of fileProblems) console.error(`  - ${problem}`);
     return 1;
+  }
+
+  if (readLine !== null) {
+    console.log(`Ready to write under ${root}:
+  src/config/lgu.ts
+  wrangler.jsonc (Worker name: ${prepared.toolName})
+  package.json (name: ${prepared.toolName})
+LGU: ${prepared.name} (${prepared.type})
+Brand: ${prepared.brand}
+Tool name: ${prepared.toolName}
+Site address: ${prepared.siteUrl}`);
+    const answer = (await readLine('Write these files? [y/N] ')) ?? '';
+    if (!/^y(es)?$/i.test(answer.trim())) {
+      console.log('Nothing was written.');
+      return 1;
+    }
   }
 
   const source = renderConfig(prepared);
