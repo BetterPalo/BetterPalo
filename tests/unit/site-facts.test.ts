@@ -12,8 +12,10 @@ describe('site facts', () => {
   });
 
   it('adds up services for one or more offices', () => {
-    expect(servicesOf('civil-registry')).toBe(13);
-    expect(servicesOf('assessor', 'treasurer')).toBe(17);
+    expect(servicesOf(offices[0]!.short)).toBe(offices[0]!.services);
+    expect(servicesOf(offices[0]!.short, offices[1]!.short)).toBe(
+      offices[0]!.services + offices[1]!.services,
+    );
     expect(servicesOf('no-such-office')).toBe(0);
   });
 

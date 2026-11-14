@@ -1,23 +1,26 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { lgu } from '../../src/config/lgu';
+import { formatNumber } from '../../src/lib/site-facts';
 
 // The White Portal home page, in English and Filipino.
+// Names and figures come from src/config/lgu.ts, so this spec works for any LGU.
 
 test('home page has one heading and every section', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('BetterPalo.');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(`${lgu.brand}.`);
 
   for (const name of [
     'Find a service',
     'One errand, one printed page.',
     'Popular services.',
-    'Palo at a glance.',
+    `${lgu.name} at a glance.`,
     'Offices and where to go.',
     'How a guide gets made.',
     'Check it against the official source.',
     'Get in touch, or pitch in.',
-    'Know Palo? Help write its guides.',
+    `Know ${lgu.name}? Help write its guides.`,
   ]) {
     await expect(page.getByRole('heading', { level: 2, name })).toBeVisible();
   }
@@ -25,12 +28,12 @@ test('home page has one heading and every section', async ({ page }) => {
 
 test('the facts come from the Charter and the census', async ({ page }) => {
   await page.goto('/');
-  const glance = page.getByRole('region', { name: 'Palo at a glance.' });
-  await expect(glance).toContainText('80,291');
-  await expect(glance).toContainText('PSA 2024 Census');
-  await expect(glance).toContainText('112');
-  await expect(glance).toContainText('20');
-  await expect(glance).toContainText('33');
+  const glance = page.getByRole('region', { name: `${lgu.name} at a glance.` });
+  await expect(glance).toContainText(formatNumber(lgu.census.population));
+  await expect(glance).toContainText(lgu.census.source);
+  await expect(glance).toContainText(String(lgu.charter.services));
+  await expect(glance).toContainText(String(lgu.charter.offices));
+  await expect(glance).toContainText(String(lgu.census.barangays));
 });
 
 test('tile counts say they are Charter counts, not published guides', async ({ page }) => {

@@ -1,8 +1,10 @@
 ---
-// "Palo at a glance": four stat cards, each with its source. Inverted band.
+// "<place> at a glance": four stat cards, each with its source. Inverted band.
 import SectionHead from '../SectionHead.astro';
 import IconWell from './IconWell.astro';
+import { lgu } from '../../config/lgu';
 import { t, type Lang } from '../../i18n/ui';
+import { lguSlug } from '../../lib/lgu';
 import { census, charter, formatNumber } from '../../lib/site-facts';
 import { localizedPath, routeExists } from '../../lib/routes';
 
@@ -44,7 +46,7 @@ const stats = [
 ] as const;
 ---
 
-<section id="palo" class="inv py-section" aria-labelledby="glance-title">
+<section id={lguSlug(lgu)} class="inv py-section" aria-labelledby="glance-title">
   <div class="wrap">
     <SectionHead
       id="glance-title"
