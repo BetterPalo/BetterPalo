@@ -14,6 +14,7 @@ const pages = [
   'how-it-works',
   'contribute',
   'accessibility',
+  'tourism',
   'services',
 ];
 const paths = pages.flatMap((slug) => [`/${slug}/`, `/fil/${slug}/`]);
