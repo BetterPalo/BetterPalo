@@ -92,6 +92,8 @@ jobs:
       - uses: ./.github/actions/setup
       - name: Build the site
         run: pnpm build
+      - name: Check the site has no sample content
+        run: node scripts/check-no-sample.mjs dist
       # `e2e` and `lighthouse` test this exact artifact instead of building
       # again, so what they check is what would deploy.
       - name: Upload the built site
@@ -125,6 +127,19 @@ jobs:
           PLAYWRIGHT_SERVE_PREBUILT: '1'
           # Use the Chrome already on GitHub's Ubuntu runners (playwright.config.ts)
           # instead of downloading a browser on every run.
+          PLAYWRIGHT_CHANNEL: chrome
+      # Second phase: the fictional guide in examples/services/ gets a real page
+      # test. This build stays inside this job and is never uploaded, so it
+      # cannot deploy (ADR 0014).
+      - name: Build with the sample guide
+        run: pnpm build
+        env:
+          SAMPLE_CONTENT: 'true'
+      - name: Test the sample guide page
+        run: pnpm exec playwright test tests/e2e/sample.spec.ts
+        env:
+          SAMPLE_CONTENT: 'true'
+          PLAYWRIGHT_SERVE_PREBUILT: '1'
           PLAYWRIGHT_CHANNEL: chrome
       - name: Upload the Playwright report
         if: failure()
@@ -287,6 +302,9 @@ jobs:
           test -s dist/fil/index.html
           test -s dist/404.html
           test -d dist/pagefind
+
+      - name: Check the site has no sample content
+        run: node scripts/check-no-sample.mjs dist
 
       # The version that is live now, kept so a failed smoke test can go back to it.
       # If it cannot be read (the first deploy, or an API error) the deploy still

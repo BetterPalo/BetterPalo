@@ -1,0 +1,37 @@
+# FICTIONAL SAMPLE. Sample City does not exist. Loaded only with SAMPLE_CONTENT=true.
+# Never copy this into src/content/. See ADR 0014.
+# Field rules: docs/decisions/0007-service-guide-content-model.md
+id: sample-business-permit
+name: 'Sample City: business permit (fictional sample)'
+category: business-permits
+office: Sample City Business Permits Office (fictional)
+classification: simple
+transaction_type: Application
+description: >
+  A fictional guide for testing the template. Sample City does not exist; nothing here is a real requirement or fee. betterlgu-sample-content
+eligibility: null
+requirements:
+  - document: Sample application form (fictional)
+    copies: 1
+    form: original
+    where_to_get: null
+    conditions: null
+steps:
+  - step: 1
+    applicant_action: Submit the sample form (fictional)
+    office_action: null
+    responsible: Sample office window (fictional)
+    max_time: null
+fees: []
+processing_time: null
+application_channels: []
+complaint_procedure: null
+effective_date: null
+notes: Fictional sample for template testing.
+
+source: https://example.org/sample-citizens-charter.pdf
+edition: Sample edition (fictional)
+retrieved: 2026-11-14
+verified_by: Sample reviewer (fictional)
+last_verified: 2026-11-14
+status: verified
