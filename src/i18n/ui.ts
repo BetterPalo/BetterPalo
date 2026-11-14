@@ -596,6 +596,102 @@ const fil: Partial<Record<Key, string>> = {
   'servicesDir.empty': 'Wala pang napapatunayang gabay sa serbisyo.',
   'servicesDir.emptyBody':
     'Inilalathala lamang ang mga gabay pagkatapos pumasa sa verified-only gate. Bumalik ka na lang mamaya.',
+
+  // Remaining Filipino for the secondary pages (draft; translation owner reviews).
+  'howItWorks.step.1': 'Hakbang 1',
+  'howItWorks.step.1.title': 'Hanapin ang pahina sa Charter',
+  'howItWorks.step.1.body':
+    "Nagsisimula ang bawat serbisyo sa pahina nito sa Palo Citizen's Charter 2026.",
+  'howItWorks.step.2': 'Hakbang 2',
+  'howItWorks.step.2.title': 'Isulat sa payak na salita',
+  'howItWorks.step.2.body':
+    'Isang volunteer ang mano-manong nagta-transcribe nito, sa Ingles at Filipino.',
+  'howItWorks.step.3': 'Hakbang 3',
+  'howItWorks.step.3.title': 'Suriin nang dalawang beses',
+  'howItWorks.step.3.body':
+    'Binabasa ng pangalawang tao ang parehong pahina at kinukumpirma ang bawat requirement, bayarin, at hakbang.',
+  'howItWorks.step.4': 'Hakbang 4',
+  'howItWorks.step.4.title': 'I-publish na may petsa',
+  'howItWorks.step.4.body':
+    'Makikita sa gabay ang edisyon ng Charter at ang petsa ng huling beripikasyon.',
+  'howItWorks.principle.accuracy.title': 'Katumpakan muna',
+  'howItWorks.principle.accuracy.body':
+    'Mas mabuti ang walang pahina kaysa sa maling pahina. Hindi inilalagay sa site ang mga detalyeng hindi pa nakukumpirma.',
+  'howItWorks.principle.source.title': 'Banggitin ang sanggunian',
+  'howItWorks.principle.source.body':
+    'Ang bawat katotohanan ay may link o pagbanggit sa opisyal na dokumentong pinagmulan nito.',
+  'howItWorks.principle.plain.title': 'Payak na wika',
+  'howItWorks.principle.plain.body':
+    'Isinulat para sa taong nagmamadali, gumagamit ng cellphone, at mabagal ang koneksyon.',
+  'howItWorks.principle.open.title': 'Bukas at gawa ng komunidad',
+  'howItWorks.principle.open.body': 'Kahit sino ay maaaring tumulong. Bukas ang code at ang data.',
+  'contribute.way.data.title': 'Pagwawasto ng data',
+  'contribute.way.data.body': 'Itama ang maling opisina, serbisyo, bayarin, opisyal, o contact.',
+  'contribute.way.translation.title': 'Pagsasalin',
+  'contribute.way.translation.body': 'Isalin ang nilalamang Ingles sa Filipino, o kabaligtaran.',
+  'contribute.way.design.title': 'Disenyo at accessibility',
+  'contribute.way.design.body':
+    'Pagandahin ang layout, contrast, paggamit ng keyboard, at suporta sa screen reader.',
+  'contribute.way.code.title': 'Code',
+  'contribute.way.code.body': 'Gumawa ng mga pahina, component, search, at mga tool para sa site.',
+  'contribute.data.li1': 'isang URL ng opisyal na sanggunian',
+  'contribute.data.li2': 'petsa ng pagkuha',
+  'contribute.data.li3': 'petsa ng beripikasyon',
+  'contribute.data.cta': 'Basahin ang gabay sa pag-ambag',
+  'contribute.workflow.1': 'Mag-branch mula sa main at gawin ang iyong pagbabago.',
+  'contribute.workflow.2': 'Patakbuhin ang pnpm format, lint, check, test, at build.',
+  'contribute.workflow.3': 'Magbukas ng pull request at punan ang template.',
+  'contribute.workflow.4': 'Susuriin at i-merge ito ng isang maintainer.',
+  'accessibility.standard.li1': 'Semantic HTML at mga landmark sa bawat pahina.',
+  'accessibility.standard.li2': 'Sapat na contrast at nakikitang focus state.',
+  'accessibility.standard.li3': "Gumagana kahit walang JavaScript hangga't maaari.",
+  'accessibility.feature.skip.title': 'Skip link',
+  'accessibility.feature.skip.body':
+    'May skip link sa itaas ng bawat pahina na naglilipat ng focus sa pangunahing nilalaman.',
+  'accessibility.feature.contrast.title': 'Contrast',
+  'accessibility.feature.contrast.body':
+    'Pasok ang teksto at mga kontrol sa contrast ratio ng WCAG AA.',
+  'accessibility.feature.keyboard.title': 'Keyboard',
+  'accessibility.feature.keyboard.body':
+    'Maaabot at magagamit gamit ang keyboard ang lahat ng interactive na elemento.',
+  'accessibility.feature.motion.title': 'Galaw',
+  'accessibility.feature.motion.body': 'Iginagalang ng mga animation ang prefers-reduced-motion.',
+  'accessibility.feature.lang.title': 'Wika',
+  'accessibility.feature.lang.body':
+    'May tamang lang attribute ang mga pahina, at available ang Filipino.',
+  'accessibility.feature.print.title': 'Pag-print',
+  'accessibility.feature.print.body':
+    'Malinis na nagpi-print ang mga sheet ng serbisyo bilang isang pahina.',
+  'resources.open': 'Buksan',
+  'resources.r1.name': 'Website ng LGU ng Palo',
+  'resources.r1.desc': 'Mga opisyal na anunsyo',
+  'resources.r2.name': "Citizen's Charter 2026 (PDF)",
+  'resources.r2.desc': 'Ang sanggunian ng bawat gabay',
+  'resources.r3.name': 'Sangguniang Bayan ng Palo',
+  'resources.r3.desc': 'Mga ordinansa at sesyon',
+  'resources.r4.name': 'Philippine Statistics Authority',
+  'resources.r4.desc': 'Datos ng populasyon at census',
+  'resources.r5.name': 'PhilHealth',
+  'resources.r5.desc': 'Health insurance',
+  'resources.r6.name': 'SSS',
+  'resources.r6.desc': 'Social security',
+  'resources.notHandled.1': 'Pagpaparehistro sa National ID (PSA)',
+  'resources.notHandled.2': 'Aplikasyon sa passport (DFA)',
+  'resources.notHandled.3': 'Lisensya sa pagmamaneho (LTO)',
+  'resources.notHandled.4': 'Pagpaparehistro bilang botante (COMELEC)',
+  'about.stat.pop': 'Populasyon',
+  'about.stat.pop.src': 'PSA 2024 Census',
+  'about.stat.brgy': 'Mga barangay',
+  'about.stat.brgy.src': 'Buong listahan sa Tungkol sa Palo',
+  'about.stat.services': 'Mga serbisyong pampubliko',
+  'about.stat.services.src': "Citizen's Charter, 2nd Edition",
+  'about.stat.offices': 'Mga opisina at unit',
+  'about.stat.offices.src': "Citizen's Charter, 2nd Edition",
+  'about.sources.li1': 'PSA 2024 Census, petsa ng sanggunian: Hulyo 1, 2024',
+  'about.sources.li2': "Palo Citizen's Charter 2026, 2nd Edition",
+  'offices.placeSub': "Nakalista ayon sa opisina ang mga serbisyo ng bayan sa Citizen's Charter.",
+  'offices.brgy': 'Mga barangay',
+  'offices.charter': 'Mga opisina sa Charter',
 };
 
 const ui: Record<Lang, Partial<Record<Key, string>>> = { en, fil };
