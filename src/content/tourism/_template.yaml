@@ -4,6 +4,7 @@
 # source, retrieved, verified_by, and last_verified are filled and status is verified.
 id: example-spot
 name: Example Spot
+# One of: historical, eco, cultural (see src/lib/schemas/tourism.ts).
 category: historical
 description: >
   One or two plain-language sentences about the place.
