@@ -2,6 +2,7 @@
 // Closing call to action: a flag-and-sun poster beside the volunteer pitch.
 import Button from '../Button.astro';
 import Sun from '../Sun.astro';
+import { lgu } from '../../config/lgu';
 import { t, type Lang } from '../../i18n/ui';
 import { localizedPath, routeExists } from '../../lib/routes';
 import { REPO_URL } from '../../lib/site';
@@ -23,7 +24,7 @@ const href = routeExists('/contribute/') ? localizedPath(lang, '/contribute/') :
     >
       <Sun class="absolute w-[140%] text-sun opacity-90" />
       <span class="relative -rotate-4 bg-sun px-2.5 py-0.5 font-display text-4xl font-extrabold tracking-display text-flag-deep">
-        Palo
+        {lgu.name}
       </span>
     </div>
     <div>

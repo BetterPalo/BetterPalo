@@ -27,31 +27,79 @@ Find every place Palo is named with:
 grep -rIn -i "palo" --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=.git --exclude-dir=.astro .
 ```
 
-## Step 1: Identity and configuration
+## Step 1: Run `pnpm init:lgu`
 
-| File | What to change |
-| --- | --- |
-| `package.json` | `name` |
-| `wrangler.jsonc` | `name`: your Worker name |
-| `astro.config.mjs` | `site`: your public URL, and remove the Palo `TODO` comment |
-| `public/robots.txt` | the `Sitemap:` URL |
-| `src/lib/site.ts` | `REPO_URL`, the official links (Charter PDF and LGU site), and the navigation if your pages differ |
-| `scripts/smoke-test.mjs` | the default URL and the user agent |
-| `.github/workflows/ci-cd.yml` and `monitor.yml` | the fallback URL after `vars.PRODUCTION_URL` (five places). See [Automatic deploys](#automatic-deploys-from-github) |
-| `.github/ISSUE_TEMPLATE/config.yml`, `data-correction.yml`, `feature-request.yml` | links that point at the Palo repository |
-| `LICENSE` | keep the existing MIT text and copyright line, and add your own line below it |
+Run the script once, in your copy, before you change anything else:
 
-## Step 2: Facts and text
+```sh
+pnpm install
+pnpm init:lgu
+```
 
-| File | What to change |
-| --- | --- |
-| `src/lib/site-facts.ts` | the Charter title, edition, service and office counts, the census figures, and the office list with its counts. Change a number only together with its source |
-| `src/i18n/ui.ts` | every string that names Palo (about 76 lines), in English and Filipino. Official office names and legal terms stay verbatim |
-| `src/components/home/Glance.astro`, `Volunteer.astro` | the section id and the place name |
-| `tests/e2e/home.spec.ts` | the headings and figures the test expects |
+The script asks for each value in turn, and each prompt says what the value
+means. It asks for the LGU's name; whether it is a municipality or a city; the
+province; the brand, and the Worker and package name (both suggested, and you
+can change them); the site address, the repository address, and the official
+site address; the Charter's title, edition, year, address, service count, and
+office count; the census population, source, year, reference dates in English
+and Filipino, and barangay count; and then each office, with its name, short
+key, and service count, until you enter a blank name.
 
-After this step, `pnpm check`, `pnpm test`, `pnpm build`, and `pnpm test:e2e`
-must pass again. A missing string is a type error, so the check names it.
+Interactive mode shows what it will write and asks for confirmation before writing anything.
+
+Have your Citizen's Charter and your census source open. The script never
+guesses a number. No fact has a default. A blank answer asks again, except where
+a suggestion is shown (brand and tool name) or when you finish the list of
+offices with a blank name.
+
+It writes three files and no others:
+
+- `src/config/lgu.ts`: your LGU's identity, facts, and URLs. This is the only
+  file that holds your values; [how the seam works](architecture.md#lgu-configuration)
+  is described in the architecture page.
+- `wrangler.jsonc`: the Worker `name`. The comments in the file are kept.
+- `package.json`: the package `name`.
+
+It does no find-and-replace. Palo's documents, the issue template links, and the
+licence line stay as they are until you handle them in Steps 2 and 3.
+
+To answer from a file instead of the questions, pass `--answers <file.json>`.
+The file has the same values as the config, plus `toolName`.
+[`tests/fixtures/init-answers-city.json`](../tests/fixtures/init-answers-city.json)
+is an example.
+
+The script refuses to run with `--answers` alone. Without a target, a run would
+overwrite this repository's own config by accident. Choose one:
+
+- In your own copy of the template, to write into this repository:
+  `pnpm init:lgu --answers my-answers.json --yes`
+- To write into another folder instead, such as a separate copy of the template:
+  `pnpm init:lgu --answers my-answers.json --root <dir>`. The folder must contain
+  the template's `wrangler.jsonc` and `package.json`.
+
+Then run the checks:
+
+```sh
+pnpm check && pnpm test && pnpm build
+```
+
+The built site should now show your LGU's name.
+
+## Step 2: What is still manual
+
+The script does not change these:
+
+- **Issue template links.** `.github/ISSUE_TEMPLATE/config.yml` and
+  `feature-request.yml` link to the Palo repository. Point them at your
+  repository.
+- **The licence line.** Keep the existing MIT text and copyright line in
+  `LICENSE`, and add your own line below it.
+- **Office short keys.** Each office's `short` key places it in the home page's
+  service tiles. The tiles count only offices whose key is one of these:
+  `civil-registry`, `business-permits`, `assessor`, `treasurer`,
+  `social-welfare`, `senior-citizens`, `health`, and `health-shop`. Use them for
+  the offices that should count. Each key must be unique; `pnpm init:lgu` checks
+  this.
 
 ## Step 3: Project documents
 
@@ -66,7 +114,7 @@ sources.
 | `docs/maintainers.md` | Keep the structure; replace the handles, URLs, and ruleset commands |
 | `docs/data-sources.md` | Keep the source hierarchy and rules; empty the register and source leads and add your own |
 | `docs/research/` | Palo's Charter inventory. Delete it and write your own inventory |
-| `docs/decisions/` | The decision history of this project. ADRs 0006, 0007, 0010, 0012, and 0013 describe design you inherit and can stay as reference. Palo-specific ADRs (0005, 0009) should be rewritten or removed. Number your own decisions from where you start |
+| `docs/decisions/` | The decision history of this project. ADRs 0006, 0007, 0010, 0012, 0013, and 0014 describe design you inherit and can stay as reference. Palo-specific ADRs (0005, 0009) should be rewritten or removed. Number your own decisions from where you start |
 | `PRODUCT.md`, `DESIGN.md` | Rewrite `PRODUCT.md`. `DESIGN.md` is the visual system; keep it, or restyle it in `src/styles/global.css` and update the document to match |
 | `README.md`, `CONTRIBUTING.md` | Describe your project. Keep the set-up steps |
 
@@ -90,9 +138,9 @@ check passes ([ADR 0012](decisions/0012-deploy-after-ci.md)). It does nothing
 until you turn it on. Do these in order:
 
 1. Deploy once by hand, as in the README, so that the Worker exists.
-2. Set the repository variable **`PRODUCTION_URL`** to your site address.
-   **Do this first.** If it is unset, the deploy check and the hourly monitor
-   test Palo's site instead of yours and report on it.
+2. Set the repository variable **`PRODUCTION_URL`** to your site address. The
+   workflows have no default address. Without it, the deploy job stops with an
+   error at its first step, and the hourly monitor skips with a notice.
 3. Create an environment named `production` under **Settings** then
    **Environments**, and allow only the `main` branch to use it.
 4. Create a Cloudflare API token that can edit your Worker (the **Workers
@@ -120,6 +168,23 @@ optional.
 Only guides with `status: verified` get a page. The rules for each field are in
 [ADR 0007](decisions/0007-service-guide-content-model.md).
 
+## Try the sample guide
+
+The template includes one fictional guide, `examples/services/sample-business-permit.yaml`,
+so you can see the guide page before you write your own. It describes Sample
+City, which does not exist.
+
+```sh
+SAMPLE_CONTENT=true pnpm build
+```
+
+The sample appears only in a build made with that flag. Never deploy such a
+build, and never copy the sample into `src/content/`. The deploy job runs
+`scripts/check-no-sample.mjs` and fails if the sample reaches `dist/`, so the
+sample cannot go live. Its fields are labelled fictional. It is marked
+`verified` only so that it passes the same publishing gate as a real guide.
+[ADR 0014](decisions/0014-lgu-configuration-seam.md) records this exception.
+
 ## Licenses
 
 Code, scripts, and workflows are MIT, and the license requires you to keep the
@@ -133,15 +198,11 @@ legal advice.
 
 ## Known gaps
 
-The template does not yet do these. Each is a reason this guide has so many manual
-steps:
+The template does not yet do these:
 
-- There is **no single configuration file**. The LGU's name, URL, and figures are
-  spread over the files in steps 1 and 2.
-- There is **no sample guide**. A new copy builds and shows empty states until you
-  add a guide, and the build warns that the `services` collection is empty.
-- The Palo name is in the **interface strings and tests**, so the e2e tests fail
-  until you update them.
-- The **workflows fall back to Palo's URL** when `PRODUCTION_URL` is not set.
 - The service guide page, the printable sheet, and the search page are still being
-  built for Palo (issues #33 and #34).
+  built (#33, #34).
+- The home page's drawn sample sheet uses Palo's cedula page numbers
+  (`home.sheet.foot`).
+- Issue template links are manual (see Step 2).
+- Filipino placeholder phrasing awaits translator review (#13).

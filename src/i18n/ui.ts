@@ -1,38 +1,45 @@
+import { lgu } from '../config/lgu';
+import { fillPlaceholders, placeholderValues, type LguConfig } from '../lib/lgu';
+
+// Strings may use the placeholders in `placeholders` (src/lib/lgu.ts), written as {place},
+// {lguPhrase}, and so on. `t()` fills them from src/config/lgu.ts. Never write an LGU name,
+// province, or figure in this file.
+
 export const languages = { en: 'English', fil: 'Filipino' } as const;
 export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'en';
 
 const en = {
-  'site.name': 'BetterPalo',
+  'site.name': '{brand}',
   'site.skip': 'Skip to content',
-  'site.place': 'Palo, Leyte',
+  'site.place': '{place}, {province}',
   'notice.label': 'Site notice',
   'notice.lead': 'Unofficial.',
-  'notice.body': 'Community-run, not affiliated with the Palo local government.',
+  'notice.body': 'Community-run, not affiliated with the {place} local government.',
   'report.link': 'Report a wrong detail',
   'nav.label': 'Primary',
   'nav.menu': 'Menu',
   'nav.services': 'Services',
   'nav.offices': 'Offices',
-  'nav.about': 'About Palo',
+  'nav.about': 'About {place}',
   'nav.sitemap': 'Sitemap',
   'nav.find': 'Find a service',
   'lang.label': 'Language',
   'lang.current': 'current language',
-  'footer.tag': 'Unofficial service guide · Palo, Leyte',
+  'footer.tag': 'Unofficial service guide · {place}, {province}',
   'footer.about':
-    "A community-run guide to the public services of the Municipality of Palo. Every guide is cited to the Palo Citizen's Charter 2026 (2nd Edition). It complements official channels; it does not replace them.",
+    'A community-run guide to the public services of the {lguPhrase}. Every guide is cited to the {charterTitle} ({charterEdition}). It complements official channels; it does not replace them.',
   'footer.found': 'Found something wrong?',
   'footer.guide': 'Guide',
   'footer.official': 'Official sources',
   'footer.source': 'Source code',
-  'footer.official.charter': "Citizen's Charter 2026 (PDF)",
-  'footer.official.lgu': 'Palo LGU website',
+  'footer.official.charter': "Citizen's Charter {charterYear} (PDF)",
+  'footer.official.lgu': '{place} LGU website',
   'footer.bar.community': 'Community-built · Open source',
   'footer.bar.unofficial': 'Not an official government website',
   'footer.bar.bettergov': 'Part of the BetterGov.ph community',
   'sitemap.title': 'Sitemap',
-  'sitemap.lead': 'Every page on BetterPalo, grouped by area.',
+  'sitemap.lead': 'Every page on {brand}, grouped by area.',
   'sitemap.lang': 'Read this page in:',
   'sitemap.xml': 'Machine-readable sitemap (XML)',
   'sitemap.area.services': 'Services',
@@ -44,18 +51,19 @@ const en = {
   'page.home': 'Home',
   'page.sitemap': 'Sitemap',
   'site.banner':
-    'Unofficial. BetterPalo is community-run and not affiliated with the Palo local government. Check official sources.',
-  'home.title': 'Hello, Palo',
-  'home.lead': 'Where to go, what to bring, how much, and how long, for public services in Palo.',
-  'home.eyebrow': 'Unofficial service guide · Palo, Leyte',
+    'Unofficial. {brand} is community-run and not affiliated with the {place} local government. Check official sources.',
+  'home.title': 'Hello, {place}',
+  'home.lead':
+    'Where to go, what to bring, how much, and how long, for public services in {place}.',
+  'home.eyebrow': 'Unofficial service guide · {place}, {province}',
   'home.hero.line1': 'Welcome to',
-  'home.hero.line2': 'BetterPalo.',
+  'home.hero.line2': '{brand}.',
   'home.hero.ledeMore': "Each guide is read from the official Citizen's Charter.",
   'home.hero.browse': 'Browse services',
   'home.find.placeholder': 'e.g., cedula, birth certificate',
   'home.find.submit': 'Search',
   'home.find.popular': 'Popular:',
-  'home.find.note': "Every answer comes from the Palo Citizen's Charter 2026, 2nd Edition.",
+  'home.find.note': 'Every answer comes from the {charterTitle}, {charterEdition}.',
   'home.find.noSearch': 'Search is not ready yet. Browse every service in the directory.',
   'home.find.browse': 'Browse the services directory',
   'home.sheet.a': 'One errand,',
@@ -67,7 +75,7 @@ const en = {
   'home.sheet.printable': 'Printable',
   'home.sheet.label': 'Service sheet',
   'home.sheet.example': 'Get a cedula',
-  'home.sheet.where.val': 'Municipal Treasurer',
+  'home.sheet.where.val': '{lguAdj} Treasurer',
   'home.sheet.foot': "Citizen's Charter pp. 225–227",
   'home.sheet.page': 'Page 1 of 1',
   'home.q.where': 'Where to go',
@@ -91,26 +99,26 @@ const en = {
   'home.tile.all': 'All services',
   'home.tile.all.d': 'The complete directory',
   'home.tile.count': 'services in the Charter',
-  'home.glance.a': 'Palo',
+  'home.glance.a': '{place}',
   'home.glance.b': 'at a glance.',
   'home.glance.population': 'Population',
   'home.glance.barangays': 'Barangays',
-  'home.glance.barangays.src': 'Full list on About Palo',
+  'home.glance.barangays.src': 'Full list on About {place}',
   'home.glance.services': 'Public services',
   'home.glance.offices': 'Offices and units',
-  'home.glance.src.charter': "Citizen's Charter, 2nd Edition",
+  'home.glance.src.charter': "Citizen's Charter, {charterEdition}",
   'home.offices.a': 'Offices',
   'home.offices.b': 'and where to go.',
   'home.offices.more': 'Office directory',
-  'home.offices.body': "Municipal services are listed by office in the Citizen's Charter.",
-  'home.offices.population': 'Population (2024)',
+  'home.offices.body': "{lguAdj} services are listed by office in the Citizen's Charter.",
+  'home.offices.population': 'Population ({censusYear})',
   'home.offices.inCharter': 'Offices in the Charter',
   'home.offices.services': 'services',
   'home.how.a': 'How a guide',
   'home.how.b': 'gets made.',
   'home.step': 'Step',
   'home.step.1.title': 'Find the Charter page',
-  'home.step.1.body': "Each service starts from its page in the Palo Citizen's Charter 2026.",
+  'home.step.1.body': 'Each service starts from its page in the {charterTitle}.',
   'home.step.2.title': 'Write it in plain words',
   'home.step.2.body': 'A volunteer transcribes it by hand, in English and Filipino.',
   'home.step.3.title': 'Check it twice',
@@ -128,9 +136,9 @@ const en = {
   'home.sources.a': 'Check it against',
   'home.sources.b': 'the official source.',
   'home.sources.sub':
-    'BetterPalo complements official channels; it does not replace them. These are the documents and sites behind every guide.',
-  'home.sources.check.charter': "Palo Citizen's Charter 2026, 2nd Edition",
-  'home.sources.check.census': 'PSA 2024 Census, reference date July 1, 2024',
+    '{brand} complements official channels; it does not replace them. These are the documents and sites behind every guide.',
+  'home.sources.check.charter': '{charterTitle}, {charterEdition}',
+  'home.sources.check.census': '{censusSource}, reference date {censusDate}',
   'home.sources.check.lgu': 'Applications and payments stay with the LGU',
   'home.sources.read': 'Read the Charter',
   'home.sources.card': 'Official sources',
@@ -144,14 +152,14 @@ const en = {
   'home.help.fix.body': 'Tell us what is wrong and where. We check it against the source.',
   'home.help.fix.link': 'Report it',
   'home.help.build.k': 'Contribute',
-  'home.help.build.title': 'Help build BetterPalo',
+  'home.help.build.title': 'Help build {brand}',
   'home.help.build.body': 'Transcribe a service, review a translation, or improve the site.',
   'home.help.build.link': 'Start here',
   'home.help.lgu.k': 'Official channel',
-  'home.help.lgu.title': 'Palo LGU',
+  'home.help.lgu.title': '{place} LGU',
   'home.help.lgu.body': 'For applications, payments, and official announcements.',
   'home.help.lgu.link': 'Visit the LGU site',
-  'home.cta.a': 'Know Palo?',
+  'home.cta.a': 'Know {place}?',
   'home.cta.b': 'Help write its guides.',
   'home.cta.tag': 'No coding needed.',
   'home.cta.sub':
@@ -164,7 +172,7 @@ const en = {
   'notFound.eyebrow': 'Not found',
   'notFound.homeHint': 'Start over from the home page.',
   'notFound.services': 'Browse the services directory',
-  'notFound.searchLabel': 'Search BetterPalo',
+  'notFound.searchLabel': 'Search {brand}',
   'notFound.searchPlaceholder': 'e.g. birth certificate, cedula',
   'notFound.searchSubmit': 'Search',
   'notFound.searchHint': 'Find a service, an office, or a guide.',
@@ -177,7 +185,7 @@ const en = {
   'howItWorks.title': 'How a guide gets made',
   'howItWorks.eyebrow': 'Behind the scenes',
   'howItWorks.lead':
-    'Every guide on BetterPalo follows the same four steps, so you can trust what you read.',
+    'Every guide on {brand} follows the same four steps, so you can trust what you read.',
   'howItWorks.stepsTitle': 'The four steps',
   'howItWorks.principlesTitle': 'The principles behind them',
   'howItWorks.volunteerTitle': 'Help write the next guide',
@@ -186,7 +194,7 @@ const en = {
   'howItWorks.volunteerCta': 'Volunteer on GitHub',
   'howItWorks.step.1': 'Step 1',
   'howItWorks.step.1.title': 'Find the Charter page',
-  'howItWorks.step.1.body': "Each service starts from its page in the Palo Citizen's Charter 2026.",
+  'howItWorks.step.1.body': 'Each service starts from its page in the {charterTitle}.',
   'howItWorks.step.2': 'Step 2',
   'howItWorks.step.2.title': 'Write it in plain words',
   'howItWorks.step.2.body': 'A volunteer transcribes it by hand, in English and Filipino.',
@@ -213,7 +221,7 @@ const en = {
   // Contribute (/contribute/)
   'contribute.title': 'Contribute',
   'contribute.eyebrow': 'Get involved',
-  'contribute.lead': 'BetterPalo is community-built. You do not need to write code to contribute.',
+  'contribute.lead': '{brand} is community-built. You do not need to write code to contribute.',
   'contribute.waysTitle': 'Ways to contribute',
   'contribute.way.data.title': 'Data correction',
   'contribute.way.data.body': 'Fix a wrong office, service, fee, official, or contact.',
@@ -243,7 +251,7 @@ const en = {
   'accessibility.title': 'Accessibility statement',
   'accessibility.eyebrow': 'Accessibility',
   'accessibility.lead':
-    'BetterPalo aims to be usable by everyone, on any device, on a slow connection.',
+    '{brand} aims to be usable by everyone, on any device, on a slow connection.',
   'accessibility.standardTitle': 'Our standard',
   'accessibility.standardBody':
     'We target WCAG 2.1 AA as the floor, and test with keyboard and screen readers.',
@@ -273,16 +281,16 @@ const en = {
   // Resources (/resources/)
   'resources.title': 'Official resources',
   'resources.eyebrow': 'Official sources',
-  'resources.lead': 'The documents and sites behind every guide on BetterPalo.',
+  'resources.lead': 'The documents and sites behind every guide on {brand}.',
   'resources.officialTitle': 'Official resources',
   'resources.officialBody':
-    'These are the sources we cite. BetterPalo complements them; it does not replace them.',
+    'These are the sources we cite. {brand} complements them; it does not replace them.',
   'resources.open': 'Open',
-  'resources.r1.name': 'Palo LGU website',
+  'resources.r1.name': '{place} LGU website',
   'resources.r1.desc': 'Official announcements',
-  'resources.r2.name': "Citizen's Charter 2026 (PDF)",
+  'resources.r2.name': "Citizen's Charter {charterYear} (PDF)",
   'resources.r2.desc': 'The source for every guide',
-  'resources.r3.name': 'Sangguniang Bayan of Palo',
+  'resources.r3.name': '{council} of {place}',
   'resources.r3.desc': 'Ordinances and sessions',
   'resources.r4.name': 'Philippine Statistics Authority',
   'resources.r4.desc': 'Population and census data',
@@ -290,7 +298,7 @@ const en = {
   'resources.r5.desc': 'Health insurance',
   'resources.r6.name': 'SSS',
   'resources.r6.desc': 'Social security',
-  'resources.notHandledTitle': 'Not handled by the municipality',
+  'resources.notHandledTitle': 'Not handled by the {lguKind}',
   'resources.notHandledBody': 'Some services people expect from the LGU are run by other agencies.',
   'resources.notHandled.1': 'National ID registration (PSA)',
   'resources.notHandled.2': 'Passport applications (DFA)',
@@ -298,32 +306,32 @@ const en = {
   'resources.notHandled.4': 'Voter registration (COMELEC)',
 
   // About (/about/)
-  'about.title': 'About Palo',
+  'about.title': 'About {place}',
   'about.eyebrow': 'About',
-  'about.lead': 'Palo, Leyte: facts from the official sources, not guesses.',
-  'about.factsTitle': 'Palo at a glance',
+  'about.lead': '{place}, {province}: facts from the official sources, not guesses.',
+  'about.factsTitle': '{place} at a glance',
   'about.stat.pop': 'Population',
-  'about.stat.pop.src': 'PSA 2024 Census',
+  'about.stat.pop.src': '{censusSource}',
   'about.stat.brgy': 'Barangays',
-  'about.stat.brgy.src': 'Full list on About Palo',
+  'about.stat.brgy.src': 'Full list on About {place}',
   'about.stat.services': 'Public services',
-  'about.stat.services.src': "Citizen's Charter, 2nd Edition",
+  'about.stat.services.src': "Citizen's Charter, {charterEdition}",
   'about.stat.offices': 'Offices and units',
-  'about.stat.offices.src': "Citizen's Charter, 2nd Edition",
-  'about.barangaysTitle': 'The 33 barangays',
+  'about.stat.offices.src': "Citizen's Charter, {charterEdition}",
+  'about.barangaysTitle': 'The {barangays} barangays',
   'about.barangaysBody':
-    'The full list of the 33 barangays is being transcribed from the official source.',
+    'The full list of the {barangays} barangays is being transcribed from the official source.',
   'about.sourcesTitle': 'Sources',
   'about.sourcesBody': 'Every fact on this page is cited to an official document.',
-  'about.sources.li1': 'PSA 2024 Census, reference date July 1, 2024',
-  'about.sources.li2': "Palo Citizen's Charter 2026, 2nd Edition",
+  'about.sources.li1': '{censusSource}, reference date {censusDate}',
+  'about.sources.li2': '{charterTitle}, {charterEdition}',
 
   // Offices (/offices/)
   'offices.title': 'Offices',
   'offices.eyebrow': 'Offices',
-  'offices.lead': 'Where to go for the services of the Municipality of Palo.',
-  'offices.place': 'Palo, Leyte',
-  'offices.placeSub': 'Municipal services are listed by office in the Citizen\u2019s Charter.',
+  'offices.lead': 'Where to go for the services of the {lguPhrase}.',
+  'offices.place': '{place}, {province}',
+  'offices.placeSub': '{lguAdj} services are listed by office in the Citizen\u2019s Charter.',
   'offices.brgy': 'Barangays',
   'offices.charter': 'Offices in the Charter',
   'offices.noteTitle': 'About this list',
@@ -344,58 +352,58 @@ export type Key = keyof typeof en;
 // Draft Filipino. Translation owner (not yet assigned) reviews before M1.
 const fil: Partial<Record<Key, string>> = {
   'site.skip': 'Laktawan papunta sa nilalaman',
-  'site.place': 'Palo, Leyte',
+  'site.place': '{place}, {province}',
   'notice.label': 'Paalala',
   'notice.lead': 'Hindi opisyal.',
-  'notice.body': 'Pinapatakbo ng komunidad, hindi kaugnay ng pamahalaang bayan ng Palo.',
+  'notice.body': 'Pinapatakbo ng komunidad, hindi kaugnay ng pamahalaang {lguKind} ng {place}.',
   'report.link': 'Iulat ang maling detalye',
   'nav.label': 'Pangunahin',
   'nav.menu': 'Menu',
   'nav.services': 'Mga serbisyo',
   'nav.offices': 'Mga opisina',
-  'nav.about': 'Tungkol sa Palo',
+  'nav.about': 'Tungkol sa {place}',
   'nav.sitemap': 'Sitemap',
   'nav.find': 'Maghanap ng serbisyo',
   'lang.label': 'Wika',
   'lang.current': 'kasalukuyang wika',
-  'footer.tag': 'Hindi opisyal na gabay sa serbisyo · Palo, Leyte',
+  'footer.tag': 'Hindi opisyal na gabay sa serbisyo · {place}, {province}',
   'footer.about':
-    "Gabay ng komunidad sa mga serbisyong pampubliko ng Bayan ng Palo. Bawat gabay ay hango sa Palo Citizen's Charter 2026 (2nd Edition). Kaagapay ito ng mga opisyal na daluyan; hindi nito pinapalitan ang mga iyon.",
+    'Gabay ng komunidad sa mga serbisyong pampubliko ng {lguPhrase}. Bawat gabay ay hango sa {charterTitle} ({charterEdition}). Kaagapay ito ng mga opisyal na daluyan; hindi nito pinapalitan ang mga iyon.',
   'footer.found': 'May nakitang mali?',
   'footer.guide': 'Gabay',
   'footer.official': 'Mga opisyal na sanggunian',
   'footer.source': 'Source code',
-  'footer.official.charter': "Citizen's Charter 2026 (PDF)",
-  'footer.official.lgu': 'Website ng LGU ng Palo',
+  'footer.official.charter': "Citizen's Charter {charterYear} (PDF)",
+  'footer.official.lgu': 'Website ng LGU ng {place}',
   'footer.bar.community': 'Gawa ng komunidad · Open source',
   'footer.bar.unofficial': 'Hindi opisyal na website ng pamahalaan',
   'footer.bar.bettergov': 'Bahagi ng komunidad ng BetterGov.ph',
   'sitemap.title': 'Sitemap',
-  'sitemap.lead': 'Lahat ng pahina ng BetterPalo, nakagrupo ayon sa seksyon.',
+  'sitemap.lead': 'Lahat ng pahina ng {brand}, nakagrupo ayon sa seksyon.',
   'sitemap.lang': 'Basahin ang pahinang ito sa:',
   'sitemap.xml': 'Sitemap para sa makina (XML)',
   'sitemap.area.services': 'Mga serbisyo',
   'sitemap.area.offices': 'Mga opisina',
-  'sitemap.area.about': 'Tungkol sa Palo',
+  'sitemap.area.about': 'Tungkol sa {place}',
   'sitemap.area.site': 'Mga pahina ng site',
   'sitemap.empty': 'Wala pang pahina sa seksyong ito.',
   'sitemap.pending': 'translation-pending',
   'page.home': 'Home',
   'page.sitemap': 'Sitemap',
   'site.banner':
-    'Hindi ito opisyal. Ang BetterPalo ay pinapatakbo ng komunidad at hindi kaugnay ng pamahalaang bayan ng Palo. Tingnan ang mga opisyal na sanggunian.',
-  'home.title': 'Kumusta, Palo',
+    'Hindi ito opisyal. Ang {brand} ay pinapatakbo ng komunidad at hindi kaugnay ng pamahalaang {lguKind} ng {place}. Tingnan ang mga opisyal na sanggunian.',
+  'home.title': 'Kumusta, {place}',
   'home.lead':
-    'Saan pupunta, ano ang dadalhin, magkano, at gaano katagal, para sa mga serbisyong pampubliko sa Palo.',
-  'home.eyebrow': 'Hindi opisyal na gabay sa serbisyo · Palo, Leyte',
+    'Saan pupunta, ano ang dadalhin, magkano, at gaano katagal, para sa mga serbisyong pampubliko sa {place}.',
+  'home.eyebrow': 'Hindi opisyal na gabay sa serbisyo · {place}, {province}',
   'home.hero.line1': 'Maligayang pagdating sa',
-  'home.hero.line2': 'BetterPalo.',
+  'home.hero.line2': '{brand}.',
   'home.hero.ledeMore': "Ang bawat gabay ay hango sa opisyal na Citizen's Charter.",
   'home.hero.browse': 'Tingnan ang mga serbisyo',
   'home.find.placeholder': 'hal., cedula, birth certificate',
   'home.find.submit': 'Hanapin',
   'home.find.popular': 'Madalas hanapin:',
-  'home.find.note': "Ang bawat sagot ay mula sa Palo Citizen's Charter 2026, 2nd Edition.",
+  'home.find.note': 'Ang bawat sagot ay mula sa {charterTitle}, {charterEdition}.',
   'home.find.noSearch':
     'Hindi pa handa ang paghahanap. Tingnan ang lahat ng serbisyo sa direktoryo.',
   'home.find.browse': 'Tingnan ang direktoryo ng mga serbisyo',
@@ -408,7 +416,7 @@ const fil: Partial<Record<Key, string>> = {
   'home.sheet.printable': 'Maipi-print',
   'home.sheet.label': 'Sheet ng serbisyo',
   'home.sheet.example': 'Kumuha ng cedula',
-  'home.sheet.where.val': 'Municipal Treasurer',
+  'home.sheet.where.val': '{lguAdj} Treasurer',
   'home.sheet.foot': "Citizen's Charter p. 225–227",
   'home.sheet.page': 'Pahina 1 ng 1',
   'home.q.where': 'Saan pupunta',
@@ -432,28 +440,27 @@ const fil: Partial<Record<Key, string>> = {
   'home.tile.all': 'Lahat ng serbisyo',
   'home.tile.all.d': 'Ang kumpletong direktoryo',
   'home.tile.count': 'serbisyo sa Charter',
-  'home.glance.a': 'Palo',
+  'home.glance.a': '{place}',
   'home.glance.b': 'sa isang tingin.',
   'home.glance.population': 'Populasyon',
   'home.glance.barangays': 'Mga barangay',
-  'home.glance.barangays.src': 'Buong listahan sa Tungkol sa Palo',
+  'home.glance.barangays.src': 'Buong listahan sa Tungkol sa {place}',
   'home.glance.services': 'Mga serbisyong pampubliko',
   'home.glance.offices': 'Mga opisina at yunit',
-  'home.glance.src.charter': "Citizen's Charter, 2nd Edition",
+  'home.glance.src.charter': "Citizen's Charter, {charterEdition}",
   'home.offices.a': 'Mga opisina',
   'home.offices.b': 'at saan pupunta.',
   'home.offices.more': 'Direktoryo ng mga opisina',
   'home.offices.body':
-    "Nakalista ayon sa opisina ang mga serbisyo ng munisipyo sa Citizen's Charter.",
-  'home.offices.population': 'Populasyon (2024)',
+    "Nakalista ayon sa opisina ang mga serbisyo ng {lguHall} sa Citizen's Charter.",
+  'home.offices.population': 'Populasyon ({censusYear})',
   'home.offices.inCharter': 'Mga opisina sa Charter',
   'home.offices.services': 'serbisyo',
   'home.how.a': 'Paano ginagawa',
   'home.how.b': 'ang isang gabay.',
   'home.step': 'Hakbang',
   'home.step.1.title': 'Hanapin ang pahina sa Charter',
-  'home.step.1.body':
-    "Nagsisimula ang bawat serbisyo sa pahina nito sa Palo Citizen's Charter 2026.",
+  'home.step.1.body': 'Nagsisimula ang bawat serbisyo sa pahina nito sa {charterTitle}.',
   'home.step.2.title': 'Isulat sa simpleng salita',
   'home.step.2.body': 'Isang boluntaryo ang nagta-transcribe nito, sa English at Filipino.',
   'home.step.3.title': 'Suriin nang dalawang beses',
@@ -473,9 +480,9 @@ const fil: Partial<Record<Key, string>> = {
   'home.sources.a': 'Itapat ito sa',
   'home.sources.b': 'opisyal na sanggunian.',
   'home.sources.sub':
-    'Kaagapay ng BetterPalo ang mga opisyal na daluyan; hindi nito pinapalitan ang mga iyon. Ito ang mga dokumento at site sa likod ng bawat gabay.',
-  'home.sources.check.charter': "Palo Citizen's Charter 2026, 2nd Edition",
-  'home.sources.check.census': 'PSA 2024 Census, petsa ng sanggunian: Hulyo 1, 2024',
+    'Kaagapay ng {brand} ang mga opisyal na daluyan; hindi nito pinapalitan ang mga iyon. Ito ang mga dokumento at site sa likod ng bawat gabay.',
+  'home.sources.check.charter': '{charterTitle}, {charterEdition}',
+  'home.sources.check.census': '{censusSource}, petsa ng sanggunian: {censusDate}',
   'home.sources.check.lgu': 'Nasa LGU pa rin ang mga aplikasyon at bayad',
   'home.sources.read': 'Basahin ang Charter',
   'home.sources.card': 'Mga opisyal na sanggunian',
@@ -490,14 +497,14 @@ const fil: Partial<Record<Key, string>> = {
     'Sabihin kung ano ang mali at saan. Susuriin namin ito laban sa sanggunian.',
   'home.help.fix.link': 'Iulat ito',
   'home.help.build.k': 'Tumulong',
-  'home.help.build.title': 'Tumulong sa pagbuo ng BetterPalo',
+  'home.help.build.title': 'Tumulong sa pagbuo ng {brand}',
   'home.help.build.body': 'Mag-transcribe ng serbisyo, mag-review ng salin, o pagandahin ang site.',
   'home.help.build.link': 'Magsimula rito',
   'home.help.lgu.k': 'Opisyal na daluyan',
-  'home.help.lgu.title': 'LGU ng Palo',
+  'home.help.lgu.title': 'LGU ng {place}',
   'home.help.lgu.body': 'Para sa mga aplikasyon, bayad, at opisyal na anunsyo.',
   'home.help.lgu.link': 'Bisitahin ang site ng LGU',
-  'home.cta.a': 'Kilala mo ang Palo?',
+  'home.cta.a': 'Kilala mo ang {place}?',
   'home.cta.b': 'Tulungang isulat ang mga gabay nito.',
   'home.cta.tag': 'Hindi kailangan ng coding.',
   'home.cta.sub':
@@ -510,7 +517,7 @@ const fil: Partial<Record<Key, string>> = {
   'notFound.eyebrow': 'Hindi nakita',
   'notFound.homeHint': 'Magsimula muli mula sa home page.',
   'notFound.services': 'Tingnan ang direktoryo ng mga serbisyo',
-  'notFound.searchLabel': 'Hanapin sa BetterPalo',
+  'notFound.searchLabel': 'Hanapin sa {brand}',
   'notFound.searchPlaceholder': 'hal. birth certificate, cedula',
   'notFound.searchSubmit': 'Hanapin',
   'notFound.searchHint': 'Maghanap ng serbisyo, opisina, o gabay.',
@@ -523,7 +530,7 @@ const fil: Partial<Record<Key, string>> = {
   'howItWorks.title': 'Paano ginagawa ang isang gabay',
   'howItWorks.eyebrow': 'Sa likod ng eksena',
   'howItWorks.lead':
-    'Bawat gabay sa BetterPalo ay sumusunod sa parehong apat na hakbang, kaya mapagkakatiwalaan mo ang binabasa mo.',
+    'Bawat gabay sa {brand} ay sumusunod sa parehong apat na hakbang, kaya mapagkakatiwalaan mo ang binabasa mo.',
   'howItWorks.stepsTitle': 'Ang apat na hakbang',
   'howItWorks.principlesTitle': 'Mga prinsipyo sa likod nito',
   'howItWorks.volunteerTitle': 'Tumulong sumulat ng susunod na gabay',
@@ -534,7 +541,7 @@ const fil: Partial<Record<Key, string>> = {
   // Contribute
   'contribute.title': 'Makibahagi',
   'contribute.eyebrow': 'Sumali',
-  'contribute.lead': 'Gawa ng komunidad ang BetterPalo. Hindi kailangan ng coding para makibahagi.',
+  'contribute.lead': 'Gawa ng komunidad ang {brand}. Hindi kailangan ng coding para makibahagi.',
   'contribute.waysTitle': 'Mga paraan ng paglahok',
   'contribute.dataTitle': 'Mga kontribusyon sa datos',
   'contribute.dataBody':
@@ -547,7 +554,7 @@ const fil: Partial<Record<Key, string>> = {
   'accessibility.title': 'Pahayag ng accessibility',
   'accessibility.eyebrow': 'Accessibility',
   'accessibility.lead':
-    'Layunin ng BetterPalo na magamit ng lahat, sa anumang device, sa mabagal na koneksyon.',
+    'Layunin ng {brand} na magamit ng lahat, sa anumang device, sa mabagal na koneksyon.',
   'accessibility.standardTitle': 'Ang aming pamantayan',
   'accessibility.standardBody':
     'Target namin ang WCAG 2.1 AA bilang minimum, at sinusubok gamit ang keyboard at screen reader.',
@@ -560,22 +567,23 @@ const fil: Partial<Record<Key, string>> = {
   // Resources
   'resources.title': 'Mga opisyal na sanggunian',
   'resources.eyebrow': 'Mga opisyal na sanggunian',
-  'resources.lead': 'Mga dokumento at site sa likod ng bawat gabay sa BetterPalo.',
+  'resources.lead': 'Mga dokumento at site sa likod ng bawat gabay sa {brand}.',
   'resources.officialTitle': 'Mga opisyal na sanggunian',
   'resources.officialBody':
-    'Ito ang mga sanggunian na tinutukoy namin. Kaagapay ang BetterPalo; hindi nito pinapalitan ang mga ito.',
-  'resources.notHandledTitle': 'Hindi sakop ng pamahalaang bayan',
+    'Ito ang mga sanggunian na tinutukoy namin. Kaagapay ang {brand}; hindi nito pinapalitan ang mga ito.',
+  'resources.notHandledTitle': 'Hindi sakop ng pamahalaang {lguKind}',
   'resources.notHandledBody':
     'May mga serbisyong inaasahan sa LGU ngunit pinapatakbo ng ibang ahensya.',
 
   // About
-  'about.title': 'Tungkol sa Palo',
+  'about.title': 'Tungkol sa {place}',
   'about.eyebrow': 'Tungkol',
-  'about.lead': 'Palo, Leyte: mga katotohanan mula sa opisyal na sanggunian, hindi haka-haka.',
-  'about.factsTitle': 'Palo sa isang tingin',
-  'about.barangaysTitle': 'Ang 33 barangay',
+  'about.lead':
+    '{place}, {province}: mga katotohanan mula sa opisyal na sanggunian, hindi haka-haka.',
+  'about.factsTitle': '{place} sa isang tingin',
+  'about.barangaysTitle': 'Ang {barangays} barangay',
   'about.barangaysBody':
-    'Isinusulat pa ang kumpletong listahan ng 33 barangay mula sa opisyal na sanggunian.',
+    'Isinusulat pa ang kumpletong listahan ng {barangays} barangay mula sa opisyal na sanggunian.',
   'about.sourcesTitle': 'Mga sanggunian',
   'about.sourcesBody':
     'Bawat katotohanan sa pahinang ito ay tinutukoy sa isang opisyal na dokumento.',
@@ -583,8 +591,8 @@ const fil: Partial<Record<Key, string>> = {
   // Offices
   'offices.title': 'Mga opisina',
   'offices.eyebrow': 'Mga opisina',
-  'offices.lead': 'Saan pupunta para sa mga serbisyo ng Bayan ng Palo.',
-  'offices.place': 'Palo, Leyte',
+  'offices.lead': 'Saan pupunta para sa mga serbisyo ng {lguPhrase}.',
+  'offices.place': '{place}, {province}',
   'offices.noteTitle': 'Tungkol sa listahang ito',
   'offices.noteBody':
     'Ang mga pangalan ng opisina ay kinopya nang tuwiran mula sa Citizen\u2019s Charter. Inilalathala lamang ang mga napapatunayang detalye.',
@@ -600,8 +608,7 @@ const fil: Partial<Record<Key, string>> = {
   // Remaining Filipino for the secondary pages (draft; translation owner reviews).
   'howItWorks.step.1': 'Hakbang 1',
   'howItWorks.step.1.title': 'Hanapin ang pahina sa Charter',
-  'howItWorks.step.1.body':
-    "Nagsisimula ang bawat serbisyo sa pahina nito sa Palo Citizen's Charter 2026.",
+  'howItWorks.step.1.body': 'Nagsisimula ang bawat serbisyo sa pahina nito sa {charterTitle}.',
   'howItWorks.step.2': 'Hakbang 2',
   'howItWorks.step.2.title': 'Isulat sa payak na salita',
   'howItWorks.step.2.body':
@@ -663,11 +670,11 @@ const fil: Partial<Record<Key, string>> = {
   'accessibility.feature.print.body':
     'Malinis na nagpi-print ang mga sheet ng serbisyo bilang isang pahina.',
   'resources.open': 'Buksan',
-  'resources.r1.name': 'Website ng LGU ng Palo',
+  'resources.r1.name': 'Website ng LGU ng {place}',
   'resources.r1.desc': 'Mga opisyal na anunsyo',
-  'resources.r2.name': "Citizen's Charter 2026 (PDF)",
+  'resources.r2.name': "Citizen's Charter {charterYear} (PDF)",
   'resources.r2.desc': 'Ang sanggunian ng bawat gabay',
-  'resources.r3.name': 'Sangguniang Bayan ng Palo',
+  'resources.r3.name': '{council} ng {place}',
   'resources.r3.desc': 'Mga ordinansa at sesyon',
   'resources.r4.name': 'Philippine Statistics Authority',
   'resources.r4.desc': 'Datos ng populasyon at census',
@@ -680,25 +687,36 @@ const fil: Partial<Record<Key, string>> = {
   'resources.notHandled.3': 'Lisensya sa pagmamaneho (LTO)',
   'resources.notHandled.4': 'Pagpaparehistro bilang botante (COMELEC)',
   'about.stat.pop': 'Populasyon',
-  'about.stat.pop.src': 'PSA 2024 Census',
+  'about.stat.pop.src': '{censusSource}',
   'about.stat.brgy': 'Mga barangay',
-  'about.stat.brgy.src': 'Buong listahan sa Tungkol sa Palo',
+  'about.stat.brgy.src': 'Buong listahan sa Tungkol sa {place}',
   'about.stat.services': 'Mga serbisyong pampubliko',
-  'about.stat.services.src': "Citizen's Charter, 2nd Edition",
+  'about.stat.services.src': "Citizen's Charter, {charterEdition}",
   'about.stat.offices': 'Mga opisina at unit',
-  'about.stat.offices.src': "Citizen's Charter, 2nd Edition",
-  'about.sources.li1': 'PSA 2024 Census, petsa ng sanggunian: Hulyo 1, 2024',
-  'about.sources.li2': "Palo Citizen's Charter 2026, 2nd Edition",
-  'offices.placeSub': "Nakalista ayon sa opisina ang mga serbisyo ng bayan sa Citizen's Charter.",
+  'about.stat.offices.src': "Citizen's Charter, {charterEdition}",
+  'about.sources.li1': '{censusSource}, petsa ng sanggunian: {censusDate}',
+  'about.sources.li2': '{charterTitle}, {charterEdition}',
+  'offices.placeSub':
+    "Nakalista ayon sa opisina ang mga serbisyo ng {lguKind} sa Citizen's Charter.",
   'offices.brgy': 'Mga barangay',
   'offices.charter': 'Mga opisina sa Charter',
 };
 
 const ui: Record<Lang, Partial<Record<Key, string>>> = { en, fil };
 
-/** Translated string, falling back to English if a key is not translated yet. */
+/** Every interface key, for tests. */
+export const uiKeys = Object.keys(en) as Key[];
+
+const values = { en: placeholderValues(lgu, 'en'), fil: placeholderValues(lgu, 'fil') };
+
+/** A string for any LGU config. `t()` is this with the site's own config. */
+export function tFor(config: LguConfig, lang: Lang, key: Key): string {
+  return fillPlaceholders(ui[lang][key] ?? en[key], placeholderValues(config, lang));
+}
+
+/** Translated string, falling back to English, with placeholders filled from src/config/lgu.ts. */
 export function t(lang: Lang, key: Key): string {
-  return ui[lang][key] ?? en[key];
+  return fillPlaceholders(ui[lang][key] ?? en[key], values[lang]);
 }
 
 export interface Lookup {
@@ -715,9 +733,9 @@ export interface Lookup {
 export function lookup(lang: Lang, key: string): Lookup | undefined {
   const fallback = (en as Record<string, string>)[key];
   if (fallback === undefined) return undefined;
-  if (lang === 'en') return { text: fallback, translated: true };
+  if (lang === 'en') return { text: fillPlaceholders(fallback, values.en), translated: true };
   const value = (fil as Record<string, string>)[key];
   return value === undefined
-    ? { text: fallback, translated: false }
-    : { text: value, translated: true };
+    ? { text: fillPlaceholders(fallback, values.fil), translated: false }
+    : { text: fillPlaceholders(value, values.fil), translated: true };
 }

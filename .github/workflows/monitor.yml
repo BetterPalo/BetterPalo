@@ -27,28 +27,43 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Find the site to check
+        id: target
+        env:
+          PRODUCTION_URL: ${{ vars.PRODUCTION_URL }}
+        run: |
+          if [ -z "$PRODUCTION_URL" ]; then
+            echo "::notice title=Monitor skipped::The repository variable PRODUCTION_URL is not set, so there is no site to check. See docs/adapt-for-your-lgu.md#automatic-deploys-from-github."
+            echo "set=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "set=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        if: steps.target.outputs.set == 'true'
         with:
           persist-credentials: false
 
       # smoke-test.mjs has no dependencies; only Node is needed.
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        if: steps.target.outputs.set == 'true'
         with:
           node-version-file: .nvmrc
 
       - name: Check production
         id: smoke
+        if: steps.target.outputs.set == 'true'
         run: node scripts/smoke-test.mjs
         env:
-          SMOKE_BASE_URL: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}
+          SMOKE_BASE_URL: ${{ vars.PRODUCTION_URL }}
           SMOKE_ATTEMPTS: '3'
           SMOKE_DELAY_MS: '10000'
 
       - name: Open or update an issue if the site is down
-        if: failure()
+        if: failure() && steps.target.outputs.set == 'true'
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         env:
-          SMOKE_BASE_URL: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}
+          SMOKE_BASE_URL: ${{ vars.PRODUCTION_URL }}
         with:
           script: |
             const title = 'Production smoke test failed';
@@ -94,7 +109,7 @@ jobs:
             }
 
       - name: Close the issue when the site is back
-        if: success()
+        if: success() && steps.target.outputs.set == 'true'
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         with:
           script: |

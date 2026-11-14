@@ -1,17 +1,27 @@
 #!/usr/bin/env node
-// Checks a deployed BetterPalo site, production by default.
+// Checks a deployed site. It needs the address: there is no default,
+// so a copy of this template never checks another LGU's site.
 //
-//   pnpm smoke
-//   SMOKE_BASE_URL=https://preview.example.workers.dev pnpm smoke
+//   SMOKE_BASE_URL=https://your-site.example pnpm smoke
+//   pnpm smoke https://your-site.example
 //
 // The deploy workflow runs this after `wrangler deploy`. It retries because a
 // new version can take a few seconds to answer everywhere.
 
-const baseURL = (
-  process.env.SMOKE_BASE_URL ??
-  process.argv[2] ??
-  'https://betterpalo.betterpalogov.workers.dev'
-).replace(/\/+$/, '');
+import { readFileSync } from 'node:fs';
+
+const target = process.env.SMOKE_BASE_URL || process.argv[2];
+if (!target) {
+  console.error('Usage: SMOKE_BASE_URL=https://your-site.example pnpm smoke');
+  console.error('   or: pnpm smoke https://your-site.example');
+  console.error('There is no default address.');
+  process.exit(2);
+}
+const baseURL = target.replace(/\/+$/, '');
+
+const { name: packageName } = JSON.parse(
+  readFileSync(new URL('../package.json', import.meta.url), 'utf8'),
+);
 
 const attempts = Number(process.env.SMOKE_ATTEMPTS ?? 6);
 const delayMs = Number(process.env.SMOKE_DELAY_MS ?? 5_000);
@@ -23,7 +33,7 @@ async function get(path) {
   const response = await fetch(`${baseURL}${path}`, {
     redirect: 'follow',
     signal: AbortSignal.timeout(timeoutMs),
-    headers: { 'user-agent': 'betterpalo-smoke-test' },
+    headers: { 'user-agent': `${packageName}-smoke-test` },
   });
   return { response, body: await response.text() };
 }

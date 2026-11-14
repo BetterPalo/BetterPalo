@@ -1,59 +1,21 @@
 /**
  * Verified facts shown on the home page. Nothing here is a fee or a processing
- * time: none are verified yet. Change a number only with its source.
+ * time: none are verified yet. The values live in `src/config/lgu.ts`; this module
+ * re-exports them under the names the components use. Change a number only with its
+ * source.
  */
+import { lgu } from '../config/lgu';
 
-/**
- * Palo Citizen's Charter 2026, 2nd Edition: 112 external services across 20
- * offices or units. Source: docs/research/citizens-charter-2026-inventory.md.
- */
-export const charter = {
-  title: "Palo Citizen's Charter 2026",
-  edition: '2nd Edition',
-  services: 112,
-  offices: 20,
-} as const;
+export type { OfficeFact } from './lgu';
 
-/** PSA 2024 Census and the barangay count, as recorded in PRODUCT.md. */
-export const census = {
-  population: 80291,
-  source: 'PSA 2024 Census',
-  referenceDate: 'July 1, 2024',
-  barangays: 33,
-} as const;
+/** The Citizen's Charter in use: title, edition, services, and offices. */
+export const charter = lgu.charter;
 
-export interface OfficeFact {
-  /** Name as printed in the Charter. */
-  name: string;
-  /** Short key used to group offices into service tiles. */
-  short: string;
-  /** External services this office lists in the Charter. */
-  services: number;
-}
+/** Census figures and the barangay count. */
+export const census = lgu.census;
 
-/** External services per office or unit, in the Charter's order of size (sum: 112). */
-export const offices: readonly OfficeFact[] = [
-  { name: 'Municipal Health Office', short: 'health', services: 15 },
-  { name: 'Municipal Civil Registrar', short: 'civil-registry', services: 13 },
-  { name: 'Municipal Assessor', short: 'assessor', services: 12 },
-  { name: 'Social Welfare and Development', short: 'social-welfare', services: 10 },
-  { name: 'Business Permits and Licensing', short: 'business-permits', services: 7 },
-  { name: 'Public Market (Economic Enterprise)', short: 'public-market', services: 7 },
-  { name: 'Municipal Engineer', short: 'engineering', services: 7 },
-  { name: 'Planning and Development', short: 'planning', services: 7 },
-  { name: "Mayor's Office (Admin and HR)", short: 'mayors-office', services: 5 },
-  { name: 'MDRRMO', short: 'disaster-risk', services: 5 },
-  { name: 'Senior Citizens Affairs (OSCA)', short: 'senior-citizens', services: 5 },
-  { name: 'Municipal Treasurer', short: 'treasurer', services: 5 },
-  { name: 'One Stop Health Shop', short: 'health-shop', services: 4 },
-  { name: 'Municipal Agriculturist', short: 'agriculture', services: 3 },
-  { name: 'Tourism, Culture, Arts and Media', short: 'tourism', services: 2 },
-  { name: 'Public Employment Service', short: 'employment', services: 1 },
-  { name: 'Sangguniang Bayan', short: 'sangguniang-bayan', services: 1 },
-  { name: 'Municipal Accountant', short: 'accountant', services: 1 },
-  { name: 'Municipal Budget Officer', short: 'budget', services: 1 },
-  { name: 'Traffic and Security Management', short: 'traffic', services: 1 },
-];
+/** External services per office or unit, in the Charter's order of size. */
+export const offices = lgu.offices;
 
 /** Charter services handled by the offices with these short keys. */
 export function servicesOf(...shorts: string[]): number {
