@@ -1,11 +1,11 @@
 /**
  * Fixed links for the site chrome (notice, header, footer).
- * Official URLs are the ones recorded in docs/data-sources.md; change both
- * together.
+ * URLs live in `src/config/lgu.ts` (and `docs/data-sources.md`); change them together.
  */
 import type { Key } from '../i18n/ui';
+import { lgu } from '../config/lgu';
 
-export const REPO_URL = 'https://github.com/BetterPalo/BetterPalo';
+export const REPO_URL = lgu.repoUrl;
 export const REPORT_URL = `${REPO_URL}/issues/new?template=data-correction.yml`;
 export const BUG_REPORT_URL = `${REPO_URL}/issues/new?template=bug-report.yml`;
 export const CONTRIBUTING_URL = `${REPO_URL}/blob/main/CONTRIBUTING.md`;
@@ -39,11 +39,11 @@ export const officialLinks: readonly ExternalLink[] = [
   {
     key: 'footer.official.charter',
     noteKey: 'sources.note.charter',
-    href: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf',
+    href: lgu.charter.url,
   },
   {
     key: 'footer.official.lgu',
     noteKey: 'sources.note.lgu',
-    href: 'http://210.213.142.34/home/?page=home',
+    href: lgu.officialSiteUrl,
   },
 ];
