@@ -31,7 +31,8 @@ src/
     sample-content.ts    the SAMPLE_CONTENT flag (off by default)
   i18n/ui.ts             interface strings for en and fil, with placeholders
   layouts/               page shells (Base.astro)
-  components/            .astro components; React islands as .tsx
+  components/            .astro components; React islands as .tsx (register
+                         @astrojs/react in astro.config.mjs with the first one)
   pages/                 routes; /fil/ for Filipino
     robots.txt.ts        generated from the config, not a static file
     api/                 empty on purpose, reserved for future endpoints
