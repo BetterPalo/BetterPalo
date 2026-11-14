@@ -17,6 +17,9 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Re-run the whole pipeline on the chosen branch without a new commit. On `main`
+  # this also redeploys, which is the way out when a push event never started a run.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -31,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
-      code: ${{ steps.filter.outputs.code }}
+      code: ${{ github.event_name == 'workflow_dispatch' && 'true' || steps.filter.outputs.code }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -44,6 +47,8 @@ jobs:
       # `.github/` Markdown counts as documentation.
       - uses: dorny/paths-filter@0e4a8c6effa4802afeda77dc8d303f8176d7dfad # v3
         id: filter
+        # A manual run has no base to compare with, so it always runs everything.
+        if: github.event_name != 'workflow_dispatch'
         with:
           predicate-quantifier: every
           filters: |
@@ -72,9 +77,8 @@ jobs:
       - name: Unit tests
         run: pnpm test
 
-  # Runs beside `quality` instead of after it: the build does not need the
-  # checks to finish, and e2e and lighthouse wait for `build` only. `ci` and
-  # `deploy` still wait for every job.
+  # Runs beside `quality` so the two overlap. `e2e` and `lighthouse` wait for both,
+  # so a type error or a failed test stops the slow browser jobs from starting.
   build:
     name: build
     needs: changes
@@ -100,7 +104,7 @@ jobs:
 
   e2e:
     name: e2e
-    needs: [changes, build]
+    needs: [changes, quality, build]
     if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -135,7 +139,7 @@ jobs:
 
   lighthouse:
     name: lighthouse
-    needs: [changes, build]
+    needs: [changes, quality, build]
     if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -149,9 +153,12 @@ jobs:
         with:
           name: site
           path: dist
+      # One run per page on a pull request (the median of three is only needed on
+      # `main`, which gates the deploy). The budgets are the same either way.
       - name: Run Lighthouse CI
-        run: pnpm exec lhci autorun
+        run: pnpm exec lhci autorun --collect.numberOfRuns="$LHCI_RUNS"
         env:
+          LHCI_RUNS: ${{ github.event_name == 'pull_request' && '1' || '3' }}
           # Chrome is preinstalled on GitHub's Ubuntu runners.
           CHROME_PATH: /usr/bin/google-chrome
       - name: Upload the Lighthouse reports
@@ -163,13 +170,33 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
+  # Known vulnerabilities in the dependencies that ship to production. Dev tools
+  # are left out and only high or critical advisories fail the job, so a new
+  # low-severity advisory in a build tool cannot block a merge. Renovate opens
+  # the fixing pull request.
+  audit:
+    name: audit
+    needs: changes
+    if: needs.changes.outputs.code == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+        with:
+          install: 'false'
+      - name: Audit production dependencies
+        run: pnpm audit --prod --audit-level=high
+
   # The required status check. When the change touches code, every job above
   # must have finished as `success`; a job that was skipped by mistake does not
   # count as a pass. When the change is documentation only, every heavy job must
   # have been skipped. A failed or cancelled job always fails `ci`.
   ci:
     name: ci
-    needs: [changes, quality, build, e2e, lighthouse]
+    needs: [changes, quality, audit, build, e2e, lighthouse]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -179,6 +206,7 @@ jobs:
           CODE: ${{ needs.changes.outputs.code }}
           CHANGES: ${{ needs.changes.result }}
           QUALITY: ${{ needs.quality.result }}
+          AUDIT: ${{ needs.audit.result }}
           BUILD: ${{ needs.build.result }}
           E2E: ${{ needs.e2e.result }}
           LIGHTHOUSE: ${{ needs.lighthouse.result }}
@@ -191,11 +219,15 @@ jobs:
             echo "::error::changes finished as '$CHANGES', expected 'success'"
             failed=1
           fi
-          for pair in "quality=$QUALITY" "build=$BUILD" "e2e=$E2E" "lighthouse=$LIGHTHOUSE"; do
+          for pair in "quality=$QUALITY" "audit=$AUDIT" "build=$BUILD" "e2e=$E2E" "lighthouse=$LIGHTHOUSE"; do
             job="${pair%%=*}"
             result="${pair#*=}"
             if [ "$result" != "$expected" ]; then
-              echo "::error::$job finished as '$result', expected '$expected'"
+              hint=""
+              if [ "$result" = "skipped" ] && [ "$QUALITY" = "failure" ]; then
+                hint=" (it waits for quality, which failed: fix that first)"
+              fi
+              echo "::error::$job finished as '$result', expected '$expected'$hint"
               failed=1
             fi
           done
@@ -203,20 +235,18 @@ jobs:
           if [ "$failed" -ne 0 ]; then exit 1; fi
           echo "ci passed (code changed: ${CODE:-false})"
 
+  # `ci` already requires every job above to have succeeded, so deploy waits for
+  # `ci` alone and the rules live in one place. A failed or cancelled `ci` skips
+  # deploy without any extra condition.
   deploy:
     name: deploy
-    needs: [changes, quality, build, e2e, lighthouse]
+    needs: [changes, ci]
     if: >-
-      always() &&
-      needs.changes.result == 'success' &&
+      needs.ci.result == 'success' &&
       needs.changes.outputs.code == 'true' &&
-      github.event_name == 'push' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
       github.ref == 'refs/heads/main' &&
-      vars.DEPLOY_ENABLED == 'true' &&
-      needs.quality.result == 'success' &&
-      needs.build.result == 'success' &&
-      needs.e2e.result == 'success' &&
-      needs.lighthouse.result == 'success'
+      vars.DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     environment:
@@ -246,16 +276,86 @@ jobs:
           test -s dist/404.html
           test -d dist/pagefind
 
+      # The version that is live now, kept so a failed smoke test can go back to it.
+      # If it cannot be read (the first deploy, or an API error) the deploy still
+      # goes ahead and a failure is rolled back by hand.
+      - name: Remember the live version
+        id: previous
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          version=$(pnpm exec wrangler deployments list --json 2>/dev/null | node -e '
+            let text = "";
+            process.stdin.on("data", (chunk) => (text += chunk)).on("end", () => {
+              try {
+                // A bare array, or the API envelope ({ deployments } or { result }).
+                const data = JSON.parse(text);
+                const list = Array.isArray(data)
+                  ? data
+                  : (data.deployments ?? data.result?.deployments ?? []);
+                list.sort((a, b) => String(a.created_on).localeCompare(String(b.created_on)));
+                // During a gradual rollout the live deployment splits traffic between
+                // versions; go back to the one serving the most.
+                const versions = [...(list.at(-1)?.versions ?? [])];
+                versions.sort((a, b) => (b.percentage ?? 0) - (a.percentage ?? 0));
+                const id = versions[0]?.version_id;
+                if (id) console.log(id);
+              } catch {}
+            });
+          ' || true)
+          if [ -z "$version" ]; then
+            echo "::warning::Could not read the live version; automatic rollback is off for this deploy."
+          else
+            echo "Live version before this deploy: $version"
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
       - name: Deploy to production
         run: pnpm exec wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Check production
-        run: pnpm smoke
+      # `pnpm smoke` already retries for about 30 seconds. If it still fails, check
+      # once more after a pause, so one network blip cannot undo a good deploy
+      # (ADR 0012). Only a second failure rolls back. The job stays red either way
+      # after a rollback, so the failed deploy is never mistaken for a good one.
+      - name: Check production, and roll back if it is broken
+        shell: bash
         env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           SMOKE_BASE_URL: ${{ vars.PRODUCTION_URL || 'https://betterpalo.betterpalogov.workers.dev' }}
+          PREVIOUS_VERSION: ${{ steps.previous.outputs.version }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          if pnpm smoke; then exit 0; fi
+
+          echo "::warning::The smoke test failed. Checking again in 30 seconds."
+          sleep 30
+          if pnpm smoke; then
+            echo "::warning::The second check passed, so there is no rollback. Look at the first failure above."
+            exit 0
+          fi
+
+          if [ -z "$PREVIOUS_VERSION" ]; then
+            echo "::error::Production is failing and no earlier version is known. Roll back by hand."
+            exit 1
+          fi
+
+          echo "::error::Production is still failing. Rolling back to $PREVIOUS_VERSION."
+          pnpm exec wrangler rollback "$PREVIOUS_VERSION" \
+            --message "Automatic rollback: smoke test failed after $COMMIT_SHA" --yes
+          echo "ROLLED_BACK=true" >> "$GITHUB_ENV"
+
+          if pnpm smoke; then
+            echo "::error::Rolled back to $PREVIOUS_VERSION and the earlier version is healthy. The new version is NOT live."
+          else
+            echo "::error::Rolled back to $PREVIOUS_VERSION but the site is still failing, so the cause is not this deploy."
+          fi
+          exit 1
 
       - name: Record the deployment
         if: always()
@@ -277,15 +377,20 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Explain how to roll back
+      - name: Explain what happened and how to roll back
         if: failure()
         shell: bash
         run: |
           {
             echo "### Deploy failed"
             echo
-            echo "Production may be serving the previous version or a broken one."
-            echo "Roll back with the project lead:"
+            if [ "${ROLLED_BACK:-}" = "true" ]; then
+              echo "The smoke test failed twice, so production was rolled back automatically."
+              echo "The new version is not live. Read the log above before deploying again."
+            else
+              echo "Production may be serving a broken version, and no automatic rollback ran."
+              echo "Roll back with the project lead:"
+            fi
             echo
             echo '```sh'
             echo 'pnpm exec wrangler deployments list'

@@ -8,6 +8,14 @@
   workflow triggered by `workflow_run`. The heavy jobs are skipped when a
   change touches only documentation; the always-running `ci` job reports the
   combined result, so it is the required check and never hangs.
+- Revised: 2026-11-14. The deploy job now rolls back by itself. It records the
+  live version before deploying. If the smoke test fails, it checks again after
+  30 seconds and, on a second failure, runs `wrangler rollback` to the recorded
+  version, then fails the run. A single failed check never triggers a rollback.
+  If the live version cannot be read, the deploy goes ahead without a rollback
+  and says so in a warning. The consequence below, "a failed smoke test leaves
+  the bad version live", now applies only when the live version could not be
+  read.
 - Supersedes: the production-deploy part of ADR 0010. Pull request previews stay
   on Cloudflare Workers Builds.
 
@@ -81,6 +89,7 @@ in the repository.
 - **Cloudflare Pages.** Rejected in ADR 0010, and it does not solve the gate.
 - **Deploy by hand with `wrangler deploy`.** Rejected: the project has several
   maintainers, and a manual step is forgotten under pressure.
-- **Roll back automatically when the smoke test fails.** Rejected for now: a
-  false alarm from a network blip would undo a good deploy. Revisit if the smoke
-  test proves noisy.
+- **Roll back automatically when the smoke test fails.** Rejected on
+  2026-11-10: a false alarm from a network blip would undo a good deploy.
+  Accepted on 2026-11-14 because the team judged the smoke test reliable,
+  with a guard against that failure (see the 2026-11-14 revision above).
