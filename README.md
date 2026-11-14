@@ -22,6 +22,9 @@ start a portal for another municipality or city. It gives you:
 - CI with unit, end-to-end, accessibility, and Lighthouse checks, a dependency
   audit, and a free deploy to Cloudflare Workers.
 
+Start with [`pnpm init:lgu`](docs/adapt-for-your-lgu.md), which asks for your LGU's
+values and writes them to one config file.
+
 What you must replace is Palo's identity, figures, and text, and the project
 documents about Palo. Everything you need to change is listed, file by file, in
 [`docs/adapt-for-your-lgu.md`](docs/adapt-for-your-lgu.md).
@@ -59,17 +62,17 @@ The site is plain static files, so it runs on the Cloudflare Workers free plan.
 To publish a first version from your computer:
 
 1. Create a free Cloudflare account.
-2. In [`wrangler.jsonc`](wrangler.jsonc), change `name` to your own Worker name.
+2. In [`wrangler.jsonc`](wrangler.jsonc), change `name` to your own Worker name
+   (`pnpm init:lgu` sets it for you).
 3. Build the site: `pnpm build`.
 4. Sign in: `pnpm exec wrangler login`.
 5. Deploy: `pnpm exec wrangler deploy`. It prints your `workers.dev` address.
-6. Put that address in `site` in [`astro.config.mjs`](astro.config.mjs) and in the
-   `Sitemap:` line of [`public/robots.txt`](public/robots.txt), then build and
-   deploy again.
+6. Put that address in `siteUrl` in [`src/config/lgu.ts`](src/config/lgu.ts), then
+   build and deploy again. The sitemap and `robots.txt` are generated from it.
 
 To deploy automatically from GitHub after every merge, follow
 [Automatic deploys](docs/adapt-for-your-lgu.md#automatic-deploys-from-github). Set
-`PRODUCTION_URL` first, or the workflows will check Palo's site instead of yours.
+`PRODUCTION_URL`; without it the deploy job stops and the monitor skips.
 
 ## What the Palo portal includes (v1)
 
@@ -105,7 +108,9 @@ BetterPalo is community-run and unofficial. It is not affiliated with or endorse
 
 ```text
 src/         Astro site: content (service guide YAML), pages, layouts, schemas
-public/      static files copied as is (robots.txt, _headers)
+public/      static files copied as is (_headers, favicon)
+examples/    fictional sample guide, loaded only with SAMPLE_CONTENT=true
+scripts/     smoke test, pnpm init:lgu, and the check that keeps the sample out of production
 tests/       unit tests (Vitest) and end-to-end tests (Playwright)
 docs/        charter, team, architecture, licensing, data sources, decisions
 .github/     issue forms, pull request template, CI workflows, CODEOWNERS

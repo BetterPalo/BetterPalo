@@ -10,4 +10,4 @@ not exist, "Sample City".
   (`scripts/check-no-sample.mjs`) fails if the sample marker reaches `dist/`, so a
   sample can never reach the live site.
 - Never copy a file from here into `src/content/`. Real guides are written from
-  the official source and are never fictional. See ADR 0014.
+  the official source and are never fictional. See [ADR 0014](../docs/decisions/0014-lgu-configuration-seam.md).
