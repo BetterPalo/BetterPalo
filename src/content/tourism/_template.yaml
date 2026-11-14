@@ -10,8 +10,6 @@ description: >
   One or two plain-language sentences about the place.
 address: null
 offer: null
-# Use an original photo or one with permission recorded in docs/data-sources.md.
-# A photo needs image_alt; otherwise keep both fields null.
 image: null
 image_alt: null
 
