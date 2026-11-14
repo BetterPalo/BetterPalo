@@ -1,12 +1,23 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import SectionHead from '../SectionHead.astro';
+import IconWell from '../home/IconWell.astro';
 import { t, type Lang } from '../../i18n/ui';
+import { CONTRIBUTING_URL } from '../../lib/site';
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
+
+const ways = [
+  { icon: 'doc', key: 'data' },
+  { icon: 'globe', key: 'translation' },
+  { icon: 'grid', key: 'design' },
+  { icon: 'code', key: 'code' },
+] as const;
 ---
 
 <Base
@@ -15,29 +26,24 @@ const { lang } = Astro.props;
   description={t(lang, 'contribute.lead')}
   width="full"
 >
-  <section class="wrap py-section">
-    <p class="text-sm font-bold tracking-label text-flag uppercase">
-      {t(lang, 'contribute.eyebrow')}
-    </p>
-    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
-      {t(lang, 'contribute.title')}
-    </h1>
-    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'contribute.lead')}</p>
-  </section>
+  <PageHero
+    id="contribute-title"
+    eyebrow={t(lang, 'contribute.eyebrow')}
+    title={t(lang, 'contribute.title')}
+    lead={t(lang, 'contribute.lead')}
+  />
 
   <section class="border-y border-edge bg-canvas-alt py-section">
     <div class="wrap">
-      <h2 class="font-display text-3xl tracking-headline">{t(lang, 'contribute.waysTitle')}</h2>
+      <SectionHead id="contribute-waystitle" title={t(lang, 'contribute.waysTitle')} highlight="" />
       <div class="mt-8 grid gap-4 sm:grid-cols-2">
-        {[
-          [t(lang, 'contribute.way.data.title'), t(lang, 'contribute.way.data.body')],
-          [t(lang, 'contribute.way.translation.title'), t(lang, 'contribute.way.translation.body')],
-          [t(lang, 'contribute.way.design.title'), t(lang, 'contribute.way.design.body')],
-          [t(lang, 'contribute.way.code.title'), t(lang, 'contribute.way.code.body')],
-        ].map(([title, body]) => (
-          <article class="border border-edge bg-canvas p-5">
-            <h3 class="font-display text-lg">{title}</h3>
-            <p class="mt-1 text-sm text-fg-soft">{body}</p>
+        {ways.map(({ icon, key }) => (
+          <article class="flex gap-4 border border-edge bg-surface p-6">
+            <IconWell name={icon} />
+            <div>
+              <h3 class="font-display text-lg">{t(lang, `contribute.way.${key}.title`)}</h3>
+              <p class="mt-1 text-sm text-fg-soft">{t(lang, `contribute.way.${key}.body`)}</p>
+            </div>
           </article>
         ))}
       </div>
@@ -45,7 +51,7 @@ const { lang } = Astro.props;
   </section>
 
   <section class="wrap py-section">
-    <h2 class="font-display text-3xl tracking-headline">{t(lang, 'contribute.dataTitle')}</h2>
+    <SectionHead id="contribute-datatitle" title={t(lang, 'contribute.dataTitle')} highlight="" />
     <p class="mt-3 max-w-2xl text-fg-soft">{t(lang, 'contribute.dataBody')}</p>
     <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
       <li>{t(lang, 'contribute.data.li1')}</li>
@@ -53,11 +59,7 @@ const { lang } = Astro.props;
       <li>{t(lang, 'contribute.data.li3')}</li>
     </ul>
     <p class="mt-6">
-      <a
-        href="https://github.com/BetterPalo/BetterPalo"
-        rel="external"
-        class="font-semibold text-flag underline"
-      >
+      <a href={CONTRIBUTING_URL} rel="external" class="font-bold text-accent underline">
         {t(lang, 'contribute.data.cta')} →
       </a>
     </p>
@@ -65,7 +67,11 @@ const { lang } = Astro.props;
 
   <section class="border-t border-edge bg-canvas-alt py-section">
     <div class="wrap max-w-2xl">
-      <h2 class="font-display text-3xl tracking-headline">{t(lang, 'contribute.workflowTitle')}</h2>
+      <SectionHead
+        id="contribute-workflowtitle"
+        title={t(lang, 'contribute.workflowTitle')}
+        highlight=""
+      />
       <p class="mt-3 text-fg-soft">{t(lang, 'contribute.workflowBody')}</p>
       <ol class="mt-4 list-decimal pl-5 text-sm text-fg-soft">
         <li>{t(lang, 'contribute.workflow.1')}</li>

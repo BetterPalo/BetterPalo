@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import SectionHead from '../SectionHead.astro';
 import { t, type Lang } from '../../i18n/ui';
 
 interface Props {
@@ -55,18 +57,19 @@ const notHandled = [
   description={t(lang, 'resources.lead')}
   width="full"
 >
-  <section class="wrap py-section">
-    <p class="text-sm font-bold tracking-label text-flag uppercase">
-      {t(lang, 'resources.eyebrow')}
-    </p>
-    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
-      {t(lang, 'resources.title')}
-    </h1>
-    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'resources.lead')}</p>
-  </section>
+  <PageHero
+    id="resources-title"
+    eyebrow={t(lang, 'resources.eyebrow')}
+    title={t(lang, 'resources.title')}
+    lead={t(lang, 'resources.lead')}
+  />
 
   <section class="wrap py-section">
-    <h2 class="font-display text-3xl tracking-headline">{t(lang, 'resources.officialTitle')}</h2>
+    <SectionHead
+      id="resources-officialtitle"
+      title={t(lang, 'resources.officialTitle')}
+      highlight=""
+    />
     <p class="mt-2 text-fg-soft">{t(lang, 'resources.officialBody')}</p>
     <ul class="mt-6 grid gap-3 sm:grid-cols-2">
       {resources.map((r) => (
@@ -74,11 +77,11 @@ const notHandled = [
           <a
             href={r.href}
             rel="external"
-            class="flex h-full flex-col border border-edge bg-canvas p-4 no-underline hover:border-flag"
+            class="flex h-full flex-col border border-edge bg-surface p-5 no-underline hover:border-accent"
           >
             <b class="font-display tracking-title">{r.name}</b>
             <small class="mt-1 text-sm text-fg-soft">{r.desc}</small>
-            <span class="mt-3 text-xs text-flag">{t(lang, 'resources.open')} →</span>
+            <span class="mt-3 text-xs text-accent">{t(lang, 'resources.open')} →</span>
           </a>
         </li>
       ))}
@@ -87,9 +90,11 @@ const notHandled = [
 
   <section class="border-t border-edge bg-canvas-alt py-section">
     <div class="wrap max-w-3xl">
-      <h2 class="font-display text-3xl tracking-headline">
-        {t(lang, 'resources.notHandledTitle')}
-      </h2>
+      <SectionHead
+        id="resources-nothandledtitle"
+        title={t(lang, 'resources.notHandledTitle')}
+        highlight=""
+      />
       <p class="mt-3 text-fg-soft">{t(lang, 'resources.notHandledBody')}</p>
       <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
         {notHandled.map((item) => (

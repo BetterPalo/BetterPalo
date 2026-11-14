@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
 import SectionHead from '../SectionHead.astro';
 import IconWell from '../home/IconWell.astro';
 import { t, type Lang } from '../../i18n/ui';
@@ -40,22 +41,12 @@ const stats = [
 ---
 
 <Base title={t(lang, 'about.title')} lang={lang} description={t(lang, 'about.lead')} width="full">
-  <section class="py-section" aria-labelledby="about-title">
-    <div class="wrap">
-      <p class="mb-5 text-[0.8125rem] font-bold tracking-label text-accent uppercase">
-        {t(lang, 'about.eyebrow')}
-      </p>
-      <h1
-        id="about-title"
-        class="text-[clamp(2.5rem,6.2vw,5.25rem)] leading-[0.95] tracking-display"
-      >
-        {t(lang, 'about.title')}
-      </h1>
-      <p class="mt-6 max-w-xl text-[clamp(1.05rem,1.5vw,1.3rem)] text-fg-soft">
-        {t(lang, 'about.lead')}
-      </p>
-    </div>
-  </section>
+  <PageHero
+    id="about-title"
+    eyebrow={t(lang, 'about.eyebrow')}
+    title={t(lang, 'about.title')}
+    lead={t(lang, 'about.lead')}
+  />
 
   <section class="inv py-section" aria-labelledby="facts-title">
     <div class="wrap">

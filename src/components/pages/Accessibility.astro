@@ -1,12 +1,25 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import SectionHead from '../SectionHead.astro';
+import IconWell from '../home/IconWell.astro';
 import { t, type Lang } from '../../i18n/ui';
+import { BUG_REPORT_URL } from '../../lib/site';
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
+
+const features = [
+  { icon: 'right', key: 'skip' },
+  { icon: 'flag', key: 'contrast' },
+  { icon: 'grid', key: 'keyboard' },
+  { icon: 'pulse', key: 'motion' },
+  { icon: 'globe', key: 'lang' },
+  { icon: 'print', key: 'print' },
+] as const;
 ---
 
 <Base
@@ -15,21 +28,20 @@ const { lang } = Astro.props;
   description={t(lang, 'accessibility.lead')}
   width="full"
 >
-  <section class="wrap py-section">
-    <p class="text-sm font-bold tracking-label text-flag uppercase">
-      {t(lang, 'accessibility.eyebrow')}
-    </p>
-    <h1 class="mt-3 font-display text-4xl tracking-headline sm:text-5xl">
-      {t(lang, 'accessibility.title')}
-    </h1>
-    <p class="mt-4 max-w-2xl text-lg text-fg-soft">{t(lang, 'accessibility.lead')}</p>
-  </section>
+  <PageHero
+    id="accessibility-title"
+    eyebrow={t(lang, 'accessibility.eyebrow')}
+    title={t(lang, 'accessibility.title')}
+    lead={t(lang, 'accessibility.lead')}
+  />
 
   <section class="border-y border-edge bg-canvas-alt py-section">
     <div class="wrap max-w-3xl">
-      <h2 class="font-display text-3xl tracking-headline">
-        {t(lang, 'accessibility.standardTitle')}
-      </h2>
+      <SectionHead
+        id="accessibility-standardtitle"
+        title={t(lang, 'accessibility.standardTitle')}
+        highlight=""
+      />
       <p class="mt-3 text-fg-soft">{t(lang, 'accessibility.standardBody')}</p>
       <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
         <li>{t(lang, 'accessibility.standard.li1')}</li>
@@ -40,30 +52,19 @@ const { lang } = Astro.props;
   </section>
 
   <section class="wrap py-section">
-    <h2 class="font-display text-3xl tracking-headline">
-      {t(lang, 'accessibility.featuresTitle')}
-    </h2>
+    <SectionHead
+      id="accessibility-featurestitle"
+      title={t(lang, 'accessibility.featuresTitle')}
+      highlight=""
+    />
     <div class="mt-8 grid gap-4 sm:grid-cols-2">
-      {[
-        [t(lang, 'accessibility.feature.skip.title'), t(lang, 'accessibility.feature.skip.body')],
-        [
-          t(lang, 'accessibility.feature.contrast.title'),
-          t(lang, 'accessibility.feature.contrast.body'),
-        ],
-        [
-          t(lang, 'accessibility.feature.keyboard.title'),
-          t(lang, 'accessibility.feature.keyboard.body'),
-        ],
-        [
-          t(lang, 'accessibility.feature.motion.title'),
-          t(lang, 'accessibility.feature.motion.body'),
-        ],
-        [t(lang, 'accessibility.feature.lang.title'), t(lang, 'accessibility.feature.lang.body')],
-        [t(lang, 'accessibility.feature.print.title'), t(lang, 'accessibility.feature.print.body')],
-      ].map(([title, body]) => (
-        <article class="border border-edge bg-canvas p-5">
-          <h3 class="font-display text-lg">{title}</h3>
-          <p class="mt-1 text-sm text-fg-soft">{body}</p>
+      {features.map(({ icon, key }) => (
+        <article class="flex gap-4 border border-edge bg-surface p-6">
+          <IconWell name={icon} />
+          <div>
+            <h3 class="font-display text-lg">{t(lang, `accessibility.feature.${key}.title`)}</h3>
+            <p class="mt-1 text-sm text-fg-soft">{t(lang, `accessibility.feature.${key}.body`)}</p>
+          </div>
         </article>
       ))}
     </div>
@@ -71,16 +72,14 @@ const { lang } = Astro.props;
 
   <section class="border-t border-edge bg-canvas-alt py-section">
     <div class="wrap max-w-2xl">
-      <h2 class="font-display text-3xl tracking-headline">
-        {t(lang, 'accessibility.feedbackTitle')}
-      </h2>
+      <SectionHead
+        id="accessibility-feedbacktitle"
+        title={t(lang, 'accessibility.feedbackTitle')}
+        highlight=""
+      />
       <p class="mt-3 text-fg-soft">{t(lang, 'accessibility.feedbackBody')}</p>
       <p class="mt-4">
-        <a
-          href="https://github.com/BetterPalo/BetterPalo/issues/new"
-          rel="external"
-          class="font-semibold text-flag underline"
-        >
+        <a href={BUG_REPORT_URL} rel="external" class="font-bold text-accent underline">
           {t(lang, 'accessibility.feedbackCta')} →
         </a>
       </p>

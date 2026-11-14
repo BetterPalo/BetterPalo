@@ -7,6 +7,8 @@ import type { Key } from '../i18n/ui';
 
 export const REPO_URL = 'https://github.com/BetterPalo/BetterPalo';
 export const REPORT_URL = `${REPO_URL}/issues/new?template=data-correction.yml`;
+export const BUG_REPORT_URL = `${REPO_URL}/issues/new?template=bug-report.yml`;
+export const CONTRIBUTING_URL = `${REPO_URL}/blob/main/CONTRIBUTING.md`;
 export const BETTERGOV_URL = 'https://bettergov.ph';
 
 /** English path of the search page; the Find button shows once it exists. */
