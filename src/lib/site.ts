@@ -23,6 +23,7 @@ export interface NavItem {
 /** Header and footer navigation. Items whose page does not exist are hidden. */
 export const navItems: readonly NavItem[] = [
   { path: '/services/', key: 'nav.services' },
+  { path: '/tourism/', key: 'nav.tourism' },
   { path: '/offices/', key: 'nav.offices' },
   { path: '/about/', key: 'nav.about' },
   { path: '/sitemap/', key: 'nav.sitemap' },

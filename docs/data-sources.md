@@ -36,6 +36,7 @@ entries and nothing from them is published until it reaches the register.
 | DILG Province of Leyte, Palo profile | <https://sites.google.com/view/dilg-province-of-leyte/lgus/palo> | 3 | No visible update date; confirm officials and contacts with the LGU | Unverified |
 | PSA 2024 Census of Population | PSA release for Palo (exact table to be recorded) | 2 | Record the table title, release date, and reference date (July 1, 2024) | Headline total (80,291) matches a secondary source |
 | Palo Citizen's Charter (PDF) | <http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf> | 1 | Cover says "2026 (2nd Edition)"; approval date still unconfirmed by the LGU; see [the service inventory](research/citizens-charter-2026-inventory.md) and [Verifying without an LGU reply](#verifying-without-an-lgu-reply) | Downloaded and inventoried, 2026-11-06; accepted as the source for service guides, 2026-11-12 |
+| Palo Tourism Portal | Project copy of the portal (no public URL recorded) | 5 | Spot names, descriptions, and offers; confirm each with the tourism office | Ported 2026-11-14; the portal cited no official sources |
 | Citizen's Charter announcement | LGU Facebook page (via Govserv mirror) | 4 / 5 | The linked download goes to a third-party PDFfiller page; do not use it | Rejected as a source |
 | Scribd upload "PALO-Leyte" | <https://www.scribd.com/document/566303202/PALO-Leyte> | 5 | Unknown content and date; open it to see whether it is an older Charter edition. Research lead only | Found in web search, 2026-11-12; not opened |
 
@@ -52,10 +53,23 @@ entries and nothing from them is published until it reaches the register.
   came from, reachable in two clicks.
 - Record the edition or effective date of the source (for example, the
   Citizen's Charter edition).
-- Verified-only publishing gate: an item is published only when it has a source,
-  an edition or effective date, and a last-verified date. Unverified items are
-  not published.
+- Verified-only publishing gate for service guides: a guide is published only
+  when it has a source, an edition or effective date, and a last-verified date.
+  Unverified guides are not published.
 - A missing page is better than a wrong one.
+
+## Tourism spots
+
+The spots in `src/content/tourism/` come from the Palo Tourism Portal, which
+cites no official source. They are level 5 leads and are the one deliberate
+exception to the verified-only gate: the page shows them with an **Unverified**
+badge and a note to confirm details with the tourism office, instead of hiding
+community leads. A spot loses the badge only when `source`, `retrieved`,
+`verified_by`, and `last_verified` are filled and `status` is `verified`.
+
+Photos follow [`licensing.md`](licensing.md). A third-party photo with unknown
+terms is not used; [issue #64](https://github.com/BetterPalo/BetterPalo/issues/64)
+tracks cleared photos.
 
 ## Verifying without an LGU reply
 

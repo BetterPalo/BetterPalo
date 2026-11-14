@@ -20,6 +20,7 @@ const en = {
   'nav.label': 'Primary',
   'nav.menu': 'Menu',
   'nav.services': 'Services',
+  'nav.tourism': 'Tourism',
   'nav.offices': 'Offices',
   'nav.about': 'About {place}',
   'nav.sitemap': 'Sitemap',
@@ -50,6 +51,7 @@ const en = {
   'sitemap.pending': 'translation-pending',
   'page.home': 'Home',
   'page.sitemap': 'Sitemap',
+  'page.tourism': 'Tourism',
   'site.banner':
     'Unofficial. {brand} is community-run and not affiliated with the {place} local government. Check official sources.',
   'home.title': 'Hello, {place}',
@@ -345,6 +347,28 @@ const en = {
   'servicesDir.empty': 'No verified service guides yet.',
   'servicesDir.emptyBody':
     'Guides are published only after they pass the verified-only gate. Check back soon.',
+
+  // Tourism (/tourism/)
+  'tourism.title': 'Tourism in {place}',
+  'tourism.eyebrow': 'Tourism',
+  'tourism.lead':
+    'Tourist spots in {place}, {province}: where they are, what they are, and what they offer.',
+  'tourism.spotsTitle': 'Tourist',
+  'tourism.spotsHighlight': 'spots.',
+  'tourism.spotsSub': 'Places worth a visit, with what each one offers.',
+  'tourism.address': 'Where',
+  'tourism.offer': 'What it offers',
+  'tourism.unverified': 'Unverified',
+  'tourism.noteTitle': 'A note on this page',
+  'tourism.noteBody':
+    '{brand} publishes information only. Bookings, tours, and payments stay with the {lguKind} tourism office.',
+  'tourism.unverifiedNote':
+    'Spots marked "Unverified" are community-compiled and have not been checked against an official source. Confirm details with the tourism office before travelling.',
+  'tourism.empty': 'No tourist spots listed yet.',
+  'tourism.emptyBody': 'Spots appear here after a contributor adds them to the content collection.',
+  'tourism.cat.historical': 'Historical site',
+  'tourism.cat.eco': 'Eco-tourism',
+  'tourism.cat.cultural': 'Cultural',
 } as const;
 
 export type Key = keyof typeof en;
@@ -360,6 +384,7 @@ const fil: Partial<Record<Key, string>> = {
   'nav.label': 'Pangunahin',
   'nav.menu': 'Menu',
   'nav.services': 'Mga serbisyo',
+  'nav.tourism': 'Turismo',
   'nav.offices': 'Mga opisina',
   'nav.about': 'Tungkol sa {place}',
   'nav.sitemap': 'Sitemap',
@@ -390,6 +415,7 @@ const fil: Partial<Record<Key, string>> = {
   'sitemap.pending': 'translation-pending',
   'page.home': 'Home',
   'page.sitemap': 'Sitemap',
+  'page.tourism': 'Turismo',
   'site.banner':
     'Hindi ito opisyal. Ang {brand} ay pinapatakbo ng komunidad at hindi kaugnay ng pamahalaang {lguKind} ng {place}. Tingnan ang mga opisyal na sanggunian.',
   'home.title': 'Kumusta, {place}',
@@ -700,6 +726,29 @@ const fil: Partial<Record<Key, string>> = {
     "Nakalista ayon sa opisina ang mga serbisyo ng {lguKind} sa Citizen's Charter.",
   'offices.brgy': 'Mga barangay',
   'offices.charter': 'Mga opisina sa Charter',
+
+  // Tourism
+  'tourism.title': 'Turismo sa {place}',
+  'tourism.eyebrow': 'Turismo',
+  'tourism.lead':
+    'Mga pook-turista sa {place}, {province}: kung saan sila, ano sila, at ano ang iniaalok.',
+  'tourism.spotsTitle': 'Mga pook-',
+  'tourism.spotsHighlight': 'turista.',
+  'tourism.spotsSub': 'Mga lugar na sulit bisitahin, kasama ang iniaalok ng bawat isa.',
+  'tourism.address': 'Saan',
+  'tourism.offer': 'Ano ang iniaalok',
+  'tourism.unverified': 'Hindi pa beripikado',
+  'tourism.noteTitle': 'Paalala sa pahinang ito',
+  'tourism.noteBody':
+    'Impormasyon lamang ang inilalathala ng {brand}. Ang mga booking, tour, at bayad ay nasa tanggapan ng turismo ng {lguKind}.',
+  'tourism.unverifiedNote':
+    'Ang mga pook na may markang "Hindi pa beripikado" ay mula sa komunidad at hindi pa nasusuri laban sa opisyal na sanggunian. Itanong sa tanggapan ng turismo bago maglakbay.',
+  'tourism.empty': 'Wala pang nakalistang pook-turista.',
+  'tourism.emptyBody':
+    'Lalabas dito ang mga pook kapag may nagdagdag sa kanila sa koleksyon ng nilalaman.',
+  'tourism.cat.historical': 'Pook na pangkasaysayan',
+  'tourism.cat.eco': 'Eko-turismo',
+  'tourism.cat.cultural': 'Pangkultura',
 };
 
 const ui: Record<Lang, Partial<Record<Key, string>>> = { en, fil };

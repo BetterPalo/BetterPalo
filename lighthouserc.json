@@ -2,7 +2,12 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "url": ["http://localhost/index.html", "http://localhost/fil/index.html"],
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/fil/index.html",
+        "http://localhost/tourism/index.html",
+        "http://localhost/fil/tourism/index.html"
+      ],
       "numberOfRuns": 3,
       "settings": {
         "skipAudits": ["canonical", "is-on-https", "redirects-http"]
