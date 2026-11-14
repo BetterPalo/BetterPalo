@@ -1,8 +1,10 @@
 import { getCollection } from 'astro:content';
 import { isPublishable } from './publishing';
 import type { ServiceData } from './schemas/service';
+import type { TourismSpotData } from './schemas/tourism';
 
 export type Service = ServiceData;
+export type TourismSpot = TourismSpotData;
 
 function checkIds(entries: { id: string; data: { id: string } }[], dir: string): void {
   for (const entry of entries) {
@@ -27,4 +29,14 @@ export async function listServices(): Promise<Service[]> {
 
 export async function getService(id: string): Promise<Service | undefined> {
   return (await listServices()).find((service) => service.id === id);
+}
+
+/**
+ * Every tourist spot, verified or not, sorted by name. The tourism page shows
+ * unverified entries with a badge rather than dropping a community lead.
+ */
+export async function listSpots(): Promise<TourismSpot[]> {
+  const entries = await getCollection('tourism');
+  checkIds(entries, 'src/content/tourism');
+  return entries.map((entry) => entry.data).sort((a, b) => a.name.localeCompare(b.name));
 }

@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import SectionHead from '../SectionHead.astro';
+import { listSpots } from '../../lib/data';
+import { isVerifiedSpot } from '../../lib/publishing';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const spots = await listSpots();
+const unverified = spots.filter((spot) => !isVerifiedSpot(spot)).length;
+
+const categoryKey = {
+  historical: 'tourism.cat.historical',
+  eco: 'tourism.cat.eco',
+  cultural: 'tourism.cat.cultural',
+} as const;
+---
+
+<Base
+  title={t(lang, 'tourism.title')}
+  lang={lang}
+  description={t(lang, 'tourism.lead')}
+  width="full"
+>
+  <PageHero
+    id="tourism-title"
+    eyebrow={t(lang, 'tourism.eyebrow')}
+    title={t(lang, 'tourism.title')}
+    lead={t(lang, 'tourism.lead')}
+  />
+
+  <section class="inv py-section" aria-labelledby="spots-title">
+    <div class="wrap">
+      <SectionHead
+        id="spots-title"
+        title={t(lang, 'tourism.spotsTitle')}
+        highlight={t(lang, 'tourism.spotsHighlight')}
+        sub={t(lang, 'tourism.spotsSub')}
+      />
+
+      {spots.length === 0 ? (
+        <div class="border border-edge bg-surface p-8 text-center">
+          <p class="font-display text-xl">{t(lang, 'tourism.empty')}</p>
+          <p class="mt-2 text-sm text-fg-soft">{t(lang, 'tourism.emptyBody')}</p>
+        </div>
+      ) : (
+        <ul class="grid gap-5 min-[40rem]:grid-cols-2 min-[72rem]:grid-cols-3">
+          {spots.map((spot) => (
+            <li class="flex flex-col border border-edge bg-surface">
+              {spot.image && (
+                <img
+                  src={spot.image}
+                  alt={spot.image_alt ?? ''}
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-[4/3] w-full border-b border-edge object-cover"
+                  width="800"
+                  height="600"
+                />
+              )}
+              <div class="flex flex-1 flex-col p-5">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <span class="text-[0.7rem] font-bold tracking-label text-accent uppercase">
+                    {t(lang, categoryKey[spot.category])}
+                  </span>
+                  {!isVerifiedSpot(spot) && (
+                    <span class="border border-edge px-1.5 py-0.5 text-[0.65rem] font-bold tracking-label text-fg-soft uppercase">
+                      {t(lang, 'tourism.unverified')}
+                    </span>
+                  )}
+                </div>
+                <h3 class="mt-1 font-display text-xl tracking-title">{spot.name}</h3>
+                <p class="mt-2 text-sm text-fg-soft">{spot.description}</p>
+                {spot.address && (
+                  <p class="mt-3 text-xs text-fg-soft">
+                    <b class="font-bold text-fg">{t(lang, 'tourism.address')}:</b> {spot.address}
+                  </p>
+                )}
+                {spot.offer && (
+                  <p class="mt-1 text-xs text-fg-soft">
+                    <b class="font-bold text-fg">{t(lang, 'tourism.offer')}:</b> {spot.offer}
+                  </p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  <section class="border-t border-edge bg-canvas-alt py-section">
+    <div class="wrap max-w-3xl">
+      <SectionHead id="note-title" title={t(lang, 'tourism.noteTitle')} highlight="" />
+      <p class="text-fg-soft">{t(lang, 'tourism.noteBody')}</p>
+      {unverified > 0 && (
+        <p class="mt-3 text-sm text-fg-soft">{t(lang, 'tourism.unverifiedNote')}</p>
+      )}
+    </div>
+  </section>
+</Base>

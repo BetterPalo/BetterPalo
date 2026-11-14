@@ -1,0 +1,20 @@
+# Copy this file to <id>.yaml (for example macarthur-landing-memorial.yaml) and fill it in.
+# null means "the official source does not say". Never guess.
+# Ported from the Palo Tourism Portal. A spot shows an "unverified" badge until
+# source, retrieved, verified_by, and last_verified are filled and status is verified.
+id: example-spot
+name: Example Spot
+category: historical
+description: >
+  One or two plain-language sentences about the place.
+address: null
+offer: null
+image: null
+image_alt: null
+
+source: null
+edition: null
+retrieved: null
+verified_by: null
+last_verified: null
+status: needs_confirmation

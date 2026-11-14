@@ -1,0 +1,18 @@
+id: red-beach
+name: Red Beach
+category: eco
+description: >
+  The beach where American forces landed during the Leyte Gulf Campaign in
+  October 1944. Today a quiet beach with dark sand and historical markers.
+address: Palo, Leyte
+offer: >
+  Beach walks, historical tours, swimming, photography, and relaxing by the sea.
+image: /images/tourism/red_beach.jpg
+image_alt: Red Beach shoreline
+
+source: null
+edition: null
+retrieved: null
+verified_by: null
+last_verified: null
+status: needs_confirmation

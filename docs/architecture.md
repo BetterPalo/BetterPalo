@@ -21,6 +21,7 @@ src/
     lgu.ts               the LGU's identity, facts, and URLs (LGU-owned)
   content/
     services/            one YAML file per service guide; _template.yaml to copy
+    tourism/             one YAML file per tourist spot; _template.yaml to copy
   content.config.ts      content collections and their Zod schemas
   lib/
     lgu.ts               config type, derived terms, placeholder values
@@ -53,6 +54,11 @@ src/content/services/*.yaml
   → src/lib/data.ts (drops anything not publishable)
   → pages under src/pages/ (static HTML)
   → dist/ → Pagefind index → Cloudflare static assets
+
+src/content/tourism/*.yaml
+  → Zod schema (tourismSpotSchema)
+  → src/lib/data.ts (listSpots())
+  → /tourism/ and /fil/tourism/
 ```
 
 ## LGU configuration
@@ -99,6 +105,10 @@ Never write a place name or a figure in `src/i18n/ui.ts`. Add a placeholder in
   `retrieved`, `verified_by`, `last_verified`, and `office`, or the build
   fails.
 - Only `verified` services get a page. Drafts stay in the repository.
+- Tourist spots use the same provenance fields. A spot without a source and a
+  verification date is still listed, with an "Unverified" badge, because the
+  tourism page is a community lead list rather than a service guide. Add the
+  source and flip `status` to `verified` to remove the badge.
 - A `null` field means the official source does not say. Pages show "Not
   stated in the official source. Ask the office." instead.
 - The file name must match `id` (`cedula.yaml` has `id: cedula`).

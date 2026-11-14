@@ -1,12 +1,18 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { serviceSchema } from './lib/schemas/service';
+import { tourismSpotSchema } from './lib/schemas/tourism';
 import { SAMPLE_CONTENT_ENABLED } from './lib/sample-content';
 
 const services = defineCollection({
   // Files starting with "_" (like _template.yaml) are not loaded.
   loader: glob({ pattern: '**/[^_]*.yaml', base: './src/content/services' }),
   schema: serviceSchema,
+});
+
+const tourism = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.yaml', base: './src/content/tourism' }),
+  schema: tourismSpotSchema,
 });
 
 // Fictional sample guides (examples/services/), for testing the template only.
@@ -19,4 +25,4 @@ const samples = defineCollection({
   schema: serviceSchema,
 });
 
-export const collections = { services, samples };
+export const collections = { services, tourism, samples };
