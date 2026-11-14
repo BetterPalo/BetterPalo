@@ -26,8 +26,8 @@ No one else merges into `main`.
 - Require conversation resolution before merging.
 - Require status checks to pass and the branch to be up to date: `ci`
   (CI/CD workflow) and `docs` (Docs workflow). Both always run. `ci` fails if any CI/CD
-  job failed or was cancelled. The jobs it summarises (`quality`, `build`,
-  `e2e`, `lighthouse`) are skipped on documentation-only changes, so they must
+  job failed or was cancelled. The jobs it summarises (`quality`, `audit`,
+  `build`, `e2e`, `lighthouse`) are skipped on documentation-only changes, so they must
   not be required themselves.
 - Restrict who can update `main` to the project lead and the backup
   maintainer once one is named.
@@ -97,12 +97,19 @@ hangs and never passes when a test failed. All jobs share Node.js and pnpm with
 | --- | --- | --- |
 | `changes` | Reports whether anything besides documentation changed | always |
 | `quality` | `format:check`, `lint`, `check`, `test` | not docs-only |
+| `audit` | `pnpm audit --prod --audit-level=high`: production dependencies only, high or critical advisories only | not docs-only |
 | `build` | `build`, then uploads `dist/` for the next jobs | not docs-only |
-| `e2e` | Playwright against the uploaded `dist/`, Chromium only | not docs-only |
-| `lighthouse` | Lighthouse CI against ADR 0010's performance budget | not docs-only |
+| `e2e` | Playwright against the uploaded `dist/`, Chromium only; waits for `quality` and `build` | not docs-only |
+| `lighthouse` | Lighthouse CI against ADR 0010's performance budget; waits for `quality` and `build` | not docs-only |
 | `ci` | Fails if any job above failed or was cancelled (required check) | always |
-| `deploy` | Deploys `dist/` to production (gated on `DEPLOY_ENABLED`) | push to `main`, not docs-only |
+| `deploy` | Deploys `dist/` to production; waits for `ci` only (gated on `DEPLOY_ENABLED`) | push or manual run on `main`, not docs-only |
 
+- `quality` and `build` run side by side. `e2e` and `lighthouse` start only
+  after both pass, so a type error or a failing test never spends time in the
+  browser jobs.
+- The workflow can be started by hand from the **Actions** tab (**Run
+  workflow**). A manual run always runs every job, and on `main` it also
+  deploys. Use it when a merge to `main` did not start a run.
 - A pull request push cancels the run already in progress for that branch.
   Runs on `main` are never cancelled.
 - `e2e` uploads `playwright-report/` and `test-results/` when a test fails;
@@ -110,7 +117,9 @@ hangs and never passes when a test failed. All jobs share Node.js and pnpm with
   days under the run's **Artifacts**.
 - Lighthouse serves the uploaded `dist/` with its own static server, so it makes
   no network calls to Cloudflare and needs no secrets. It checks `/` and
-  `/fil/`, with three runs per page and the median asserted.
+  `/fil/`, with one run per page on a pull request and three on `main` (the
+  median of three is asserted, and it gates the deploy). The budgets are the
+  same in both cases.
 - The JavaScript budget in `lighthouserc.json` covers `/` and `/fil/` only. It
   is a target of under 50 KB and only warns above that. A pull request that
   adds an island to either page must raise `resource-summary:script:size` to
@@ -162,7 +171,7 @@ Monday, Asia/Manila time.
 Production is deployed by the `deploy` job in `.github/workflows/ci-cd.yml`,
 not by Cloudflare Workers Builds ([ADR 0012](decisions/0012-deploy-after-ci.md)).
 
-- A merge to `main` starts the `CI/CD` workflow. When `quality`, `build`, `e2e`,
+- A merge to `main` starts the `CI/CD` workflow. When `quality`, `audit`, `build`, `e2e`,
   and `lighthouse` pass in that same run, the `deploy` job downloads the `site`
   artifact and runs `pnpm exec wrangler deploy` against the `production`
   environment. The bytes CI tested are the bytes that deploy.
@@ -175,8 +184,14 @@ not by Cloudflare Workers Builds ([ADR 0012](decisions/0012-deploy-after-ci.md))
   custom 404. It retries for about 30 seconds before failing.
 - Two merges in a row queue instead of overlapping; a deploy in progress is not
   cancelled.
-- A deploy that fails is not rolled back automatically. Roll back from the
-  `deploy` job's summary in the CI/CD run, or by hand:
+- Before deploying, the job records the version that is live. If the smoke test
+  fails, it waits 30 seconds and checks again, so one network blip does not undo
+  a good deploy. A second failure rolls production back to the recorded version
+  with `wrangler rollback`, checks that the old version is healthy, and still
+  fails the run so nobody mistakes it for a good deploy. If the live version
+  could not be read (the very first deploy, or a Cloudflare API error), the job
+  warns and does not roll back. Roll back by hand from the `deploy` job's
+  summary in the CI/CD run, or with:
 
   ```sh
   pnpm exec wrangler deployments list
