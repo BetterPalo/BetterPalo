@@ -39,6 +39,22 @@ test.describe('tourism filters', () => {
     await expect(page.locator('[data-spot]:visible')).toHaveCount(2);
     await expect(page.getByRole('status')).toContainText('Spots shown: 2');
   });
+
+  test('keeps the filter when an in-page anchor changes the hash', async ({ page }) => {
+    await page.goto('/tourism/#church');
+    await expect(page.locator('[data-spot]:visible')).toHaveCount(1);
+
+    // The skip link also uses the hash, so it must not clear the filter.
+    await page.getByRole('link', { name: 'Skip to content' }).focus();
+    await page.keyboard.press('Enter');
+
+    await expect(page).toHaveURL(/#main$/);
+    await expect(page.locator('[data-spot]:visible')).toHaveCount(1);
+    await expect(page.getByRole('button', { name: 'Churches', exact: true })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+  });
 });
 
 test.describe('tourism without JavaScript', () => {

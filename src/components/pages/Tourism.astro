@@ -141,7 +141,7 @@ const groups = tourismGroupsInUse(spots);
       history.replaceState(null, '', next ? `#${next}` : `${location.pathname}${location.search}`);
     };
 
-    const readHash = () => {
+    const readHash = (initial = false) => {
       const wanted = location.hash.replace(/^#/, '');
       if (wanted && groupOfType(wanted) !== undefined) {
         type = wanted;
@@ -149,6 +149,10 @@ const groups = tourismGroupsInUse(spots);
       } else if (wanted && groupButtons.some((button) => button.dataset.filterGroup === wanted)) {
         group = wanted;
         type = 'all';
+      } else if (wanted && !initial) {
+        // Another anchor on the page, such as the skip link's #main. Keep the
+        // current filter instead of clearing it while the page jumps.
+        return;
       } else {
         group = 'all';
         type = 'all';
@@ -175,7 +179,7 @@ const groups = tourismGroupsInUse(spots);
       });
     }
 
-    window.addEventListener('hashchange', readHash);
-    readHash();
+    window.addEventListener('hashchange', () => readHash());
+    readHash(true);
   }
 </script>
