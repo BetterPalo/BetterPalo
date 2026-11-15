@@ -205,4 +205,42 @@
     content: ' (' attr(href) ')';
     font-size: 0.8em;
   }
+  /* The site header has no print class of its own. Guide pages hide it here so the sheet prints without it; other pages are unchanged. */
+  html:has([data-guide]) body > header {
+    display: none;
+  }
+  /* Guide pages print as one sheet (DESIGN.md "Printable service sheet"). */
+  html:has([data-guide]) {
+    font-size: 65%;
+  }
+  [data-guide] section {
+    padding-block: 0.5rem;
+  }
+  [data-guide] .wrap {
+    max-width: none;
+    padding-inline: 0;
+  }
+  [data-guide] h1 {
+    font-size: 2rem;
+    line-height: 1.05;
+  }
+  [data-guide] h2 {
+    font-size: 1.4rem;
+  }
+  [data-guide] h2 + p {
+    display: none;
+  }
+  [data-guide] [data-sheet-card] {
+    padding: 0.5rem 0;
+    border-width: 0 0 1px;
+  }
+  [data-guide] li,
+  [data-guide] dl > div {
+    break-inside: avoid;
+  }
+}
+
+/* Print margins. No page size, so Letter, A4, and long bond all work. */
+@page {
+  margin: 12mm;
 }

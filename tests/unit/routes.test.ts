@@ -68,8 +68,8 @@ describe('filVariantOf', () => {
   });
 
   it('matches a collection page against its Filipino template when there is one', () => {
-    const hasTemplate = listRoutes().includes('/fil/services/[id]/');
-    expect(filVariantOf('/services/cedula/')).toBe(hasTemplate ? '/fil/services/cedula/' : null);
+    expect(listRoutes()).toContain('/fil/services/[id]/');
+    expect(filVariantOf('/services/cedula/')).toBe('/fil/services/cedula/');
   });
 
   it('returns null when the page is only published in English', () => {

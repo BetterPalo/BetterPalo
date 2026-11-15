@@ -159,7 +159,9 @@ optional.
 1. Copy `src/content/services/_template.yaml` to `src/content/services/<id>.yaml`.
    The file name must equal the `id`.
 2. Fill it in from the Charter page. Use `null` for anything the source does not
-   state. Never guess.
+   state. Never guess. Record the PDF page numbers of the service in
+   `source_pages` (for example `"225–227"`), as the PDF viewer shows them; the
+   guide links straight to that page.
 3. Keep `status: needs_confirmation` until a second person has checked it page by
    page. Then set `status: verified` and fill `verified_by` and `last_verified`.
 4. Run `pnpm build`. The build fails if a verified guide is missing a source, an
@@ -200,8 +202,7 @@ legal advice.
 
 The template does not yet do these:
 
-- The service guide page, the printable sheet, and the search page are still being
-  built (#33, #34).
+- The QR code on the printed sheet (#5) and the search page (#34) are not built yet.
 - The home page's drawn sample sheet uses Palo's cedula page numbers
   (`home.sheet.foot`).
 - Issue template links are manual (see Step 2).

@@ -7,17 +7,28 @@ interface Props {
   eyebrow: string;
   title: string;
   lead: string;
+  /** Set to `en` when the text is English content on a Filipino page. */
+  titleLang?: string;
+  /** Set to `en` when the text is English content on a Filipino page. */
+  leadLang?: string;
 }
 
-const { id, eyebrow, title, lead } = Astro.props;
+const { id, eyebrow, title, lead, titleLang, leadLang } = Astro.props;
 ---
 
 <section class="py-section" aria-labelledby={id}>
   <div class="wrap">
     <p class="mb-5 text-[0.8125rem] font-bold tracking-label text-accent uppercase">{eyebrow}</p>
-    <h1 id={id} class="text-[clamp(2.5rem,6.2vw,5.25rem)] leading-[0.95] tracking-display">
+    <h1
+      id={id}
+      lang={titleLang}
+      class="text-[clamp(2.5rem,6.2vw,5.25rem)] leading-[0.95] tracking-display"
+    >
       {title}
     </h1>
-    <p class="mt-6 max-w-xl text-[clamp(1.05rem,1.5vw,1.3rem)] text-fg-soft">{lead}</p>
+    <p class="mt-6 max-w-xl text-[clamp(1.05rem,1.5vw,1.3rem)] text-fg-soft" lang={leadLang}>
+      {lead}
+    </p>
+    <slot />
   </div>
 </section>

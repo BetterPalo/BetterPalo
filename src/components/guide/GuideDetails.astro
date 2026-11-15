@@ -1,0 +1,226 @@
+---
+// The rest of the guide. It is on screen only: the printed sheet keeps the four
+// answers, and this section is hidden by the no-print class.
+import GuideField from './GuideField.astro';
+import NotStated from './NotStated.astro';
+import SectionHead from '../SectionHead.astro';
+import { t, type Key, type Lang } from '../../i18n/ui';
+import { formatDate } from '../../lib/guide';
+import type { Service } from '../../lib/data';
+
+interface Props {
+  lang: Lang;
+  service: Service;
+}
+
+const { lang, service } = Astro.props;
+const dataLang = lang === 'en' ? undefined : 'en';
+// RA 11032 classification as a UI label (translated through t()), not source text.
+const classificationKey = {
+  simple: 'guide.classification.simple',
+  complex: 'guide.classification.complex',
+  highly_technical: 'guide.classification.highly_technical',
+} as const satisfies Record<string, Key>;
+---
+
+<section
+  id="guide-details"
+  class="no-print bg-canvas-alt py-section"
+  aria-labelledby="guide-details-title"
+>
+  <div class="wrap">
+    <SectionHead
+      id="guide-details-title"
+      title={t(lang, 'guide.details.a')}
+      highlight={t(lang, 'guide.details.b')}
+    />
+
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div id="guide-about">
+        <h3 class="text-[1.35rem] leading-[1.1] tracking-title">{t(lang, 'guide.about')}</h3>
+        <p class="mt-3" lang={dataLang}>
+          {service.description}
+        </p>
+        <dl class="mt-3 grid gap-1 text-sm">
+          <GuideField
+            lang={lang}
+            label={t(lang, 'guide.classification')}
+            value={
+              service.classification === null
+                ? null
+                : t(lang, classificationKey[service.classification])
+            }
+          />
+          <GuideField
+            lang={lang}
+            label={t(lang, 'guide.transactionType')}
+            value={service.transaction_type}
+            valueLang={dataLang}
+          />
+        </dl>
+      </div>
+
+      <div id="guide-eligibility">
+        <h3 class="text-[1.35rem] leading-[1.1] tracking-title">{t(lang, 'guide.eligibility')}</h3>
+        {service.eligibility === null ? (
+          <p class="mt-3">
+            <NotStated lang={lang} />
+          </p>
+        ) : (
+          <p class="mt-3" lang={dataLang}>
+            {service.eligibility}
+          </p>
+        )}
+      </div>
+
+      <div id="guide-steps">
+        <h3 class="text-[1.35rem] leading-[1.1] tracking-title">{t(lang, 'guide.steps')}</h3>
+        {service.steps.length === 0 ? (
+          <p class="mt-3">
+            <NotStated lang={lang} />
+          </p>
+        ) : (
+          <ol class="mt-3 grid gap-3">
+            {service.steps.map((s) => (
+              <li class="border border-edge bg-surface p-4">
+                <p class="text-[0.8125rem] font-bold tracking-label text-accent uppercase">
+                  {t(lang, 'guide.step')} {s.step}
+                </p>
+                <dl class="mt-2 grid gap-1 text-sm">
+                  <GuideField
+                    lang={lang}
+                    label={t(lang, 'guide.step.applicant')}
+                    value={s.applicant_action}
+                    valueLang={dataLang}
+                  />
+                  <GuideField
+                    lang={lang}
+                    label={t(lang, 'guide.step.office')}
+                    value={s.office_action}
+                    valueLang={dataLang}
+                  />
+                  <GuideField
+                    lang={lang}
+                    label={t(lang, 'guide.step.responsible')}
+                    value={s.responsible}
+                    valueLang={dataLang}
+                  />
+                  <GuideField
+                    lang={lang}
+                    label={t(lang, 'guide.step.maxTime')}
+                    value={s.max_time}
+                    valueLang={dataLang}
+                  />
+                </dl>
+              </li>
+            ))}
+          </ol>
+        )}
+      </div>
+
+      <div id="guide-channels">
+        <h3 class="text-[1.35rem] leading-[1.1] tracking-title">{t(lang, 'guide.channels')}</h3>
+        {service.application_channels.length === 0 ? (
+          <p class="mt-3">
+            <NotStated lang={lang} />
+          </p>
+        ) : (
+          <ul class="mt-3 grid gap-3">
+            {service.application_channels.map((c) => (
+              <li class="border border-edge bg-surface p-4">
+                <p class="font-bold">
+                  {t(lang, c.type === 'online' ? 'guide.channel.online' : 'guide.channel.walkIn')}
+                </p>
+                <dl class="mt-2 grid gap-1 text-sm">
+                  {c.type === 'walk-in' ? (
+                    <GuideField
+                      lang={lang}
+                      label={t(lang, 'guide.channel.location')}
+                      value={c.location}
+                      valueLang={dataLang}
+                    />
+                  ) : (
+                    <>
+                      {c.url ? (
+                        <GuideField lang={lang} label={t(lang, 'guide.channel.link')}>
+                          <a
+                            href={c.url}
+                            rel="external"
+                            class="font-bold text-accent underline wrap-anywhere"
+                          >
+                            {t(lang, 'guide.channel.open')}
+                          </a>
+                        </GuideField>
+                      ) : (
+                        <GuideField
+                          lang={lang}
+                          label={t(lang, 'guide.channel.link')}
+                          value={null}
+                        />
+                      )}
+                      {c.supports && c.supports.length > 0 ? (
+                        <GuideField lang={lang} label={t(lang, 'guide.channel.supports')}>
+                          <ul lang={dataLang}>
+                            {c.supports.map((item) => (
+                              <li>{item}</li>
+                            ))}
+                          </ul>
+                        </GuideField>
+                      ) : (
+                        <GuideField
+                          lang={lang}
+                          label={t(lang, 'guide.channel.supports')}
+                          value={null}
+                        />
+                      )}
+                      <GuideField
+                        lang={lang}
+                        label={t(lang, 'guide.channel.account')}
+                        value={
+                          c.account_required === null
+                            ? null
+                            : t(lang, c.account_required ? 'guide.yes' : 'guide.no')
+                        }
+                      />
+                      <GuideField
+                        lang={lang}
+                        label={t(lang, 'guide.channel.lastTested')}
+                        value={c.last_tested ? formatDate(c.last_tested, lang) : null}
+                      />
+                    </>
+                  )}
+                </dl>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div id="guide-complaint">
+        <h3 class="text-[1.35rem] leading-[1.1] tracking-title">{t(lang, 'guide.complaint')}</h3>
+        {service.complaint_procedure === null ? (
+          <p class="mt-3">
+            <NotStated lang={lang} />
+          </p>
+        ) : (
+          <p class="mt-3" lang={dataLang}>
+            {service.complaint_procedure}
+          </p>
+        )}
+      </div>
+
+      <div id="guide-notes">
+        <h3 class="text-[1.35rem] leading-[1.1] tracking-title">{t(lang, 'guide.notes')}</h3>
+        {service.notes === null ? (
+          <p class="mt-3">
+            <NotStated lang={lang} />
+          </p>
+        ) : (
+          <p class="mt-3" lang={dataLang}>
+            {service.notes}
+          </p>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

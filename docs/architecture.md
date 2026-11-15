@@ -28,6 +28,7 @@ src/
     schemas/             Zod schemas (plain TypeScript, unit-tested)
     publishing.ts        the verified-only publishing gate
     data.ts              the only module that reads content collections
+    guide.ts             helpers for the guide page: source page links, dates
     sample-content.ts    the SAMPLE_CONTENT flag (off by default)
   i18n/ui.ts             interface strings for en and fil, with placeholders
   layouts/               page shells (Base.astro)
@@ -124,6 +125,8 @@ Never write a place name or a figure in `src/i18n/ui.ts`. Add a placeholder in
 - A `null` field means the official source does not say. Pages show "Not
   stated in the official source. Ask the office." instead.
 - The file name must match `id` (`cedula.yaml` has `id: cedula`).
+- Every guide page shows its provenance fields (source, edition, pages,
+  retrieved, last verified, verified by) and the report link.
 
 ## Rules that keep a backend easy to add
 
@@ -181,6 +184,9 @@ ADR 0010 under "Future direction".
   [placeholder](#lgu-configuration), which `t()` fills in each language.
 - An untranslated page shows the English text with a visible
   `translation-pending` notice, as the charter requires.
+- A service guide's Filipino page (`/fil/services/<id>/`) shows Filipino labels
+  around the English guide content, with the `translation-pending` notice, until
+  the guide is translated (#59).
 
 ## Deployment
 

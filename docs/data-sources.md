@@ -86,7 +86,11 @@ letter, so M1 does not wait for a reply.
 - The unofficial-site banner and the "report a wrong detail" link stay on every
   page.
 - These still need confirmation and stay unpublished until they get it:
-  - office phone numbers and hotlines, until a test call confirms them;
+  - Palo office phone numbers and local or emergency hotlines, until a test call
+    confirms them. Contacts of national government agencies that the Charter
+    itself prints (for example ARTA, PCC, and CCB on its Feedback and Complaint
+    Mechanism page) may be published as printed, with the page cited. Decided
+    2026-11-14 for the cedula guide (#26) by the lead and the second checker;
   - claims that a transaction can be completed online through the BPLS, until
     the permits office or an end-to-end test confirms it;
   - anything the Charter does not state, which stays `null`.
