@@ -1,0 +1,17 @@
+---
+import ServiceGuide from '../../../components/pages/ServiceGuide.astro';
+import { listServices, type Service } from '../../../lib/data';
+
+export async function getStaticPaths() {
+  const services = await listServices();
+  return services.map((service) => ({ params: { id: service.id }, props: { service } }));
+}
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+<ServiceGuide lang="fil" service={service} />

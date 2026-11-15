@@ -16,9 +16,11 @@ interface Props {
    * the page's own sections run edge to edge, as the White Portal home does.
    */
   width?: 'prose' | 'full';
+  /** Link-preview tags. Only guide pages pass them, so other pages get none. */
+  og?: { title: string; description: string; url: string };
 }
 
-const { title, lang = 'en', description, noindex = false, width = 'prose' } = Astro.props;
+const { title, lang = 'en', description, noindex = false, width = 'prose', og } = Astro.props;
 ---
 
 <!doctype html>
@@ -30,6 +32,9 @@ const { title, lang = 'en', description, noindex = false, width = 'prose' } = As
     <meta name="theme-color" content="#00226e" />
     <title>{title} · {t(lang, 'site.name')}</title>
     {description && <meta name="description" content={description} />}
+    {og && <meta property="og:title" content={og.title} />}
+    {og && <meta property="og:description" content={og.description} />}
+    {og && <meta property="og:url" content={og.url} />}
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />

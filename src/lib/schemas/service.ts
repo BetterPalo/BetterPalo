@@ -6,6 +6,19 @@ const stated = z.string().trim().min(1).nullable();
 const optionalStated = stated.default(null);
 const date = z.coerce.date().nullable();
 
+// PDF page numbers: "225", "225–227", "225-227", or a comma list "7, 9–10" (ADR 0007).
+const pageNumbers = /^\d+(?:[–-]\d+)?(?:, ?\d+(?:[–-]\d+)?)*$/;
+
+/** Every page is 1 or more, and every range runs upward ("225–227", not "227–225"). Only call on text that matches pageNumbers. */
+function pagesRunUpward(pages: string): boolean {
+  return pages.split(',').every((part) => {
+    const numbers = part.trim().split(/[–-]/).map(Number);
+    const first = numbers[0] ?? 0;
+    const last = numbers[numbers.length - 1] ?? 0;
+    return first >= 1 && last >= first;
+  });
+}
+
 export const statuses = ['verified', 'needs_confirmation', 'outdated'] as const;
 
 const requirement = z.object({
@@ -68,6 +81,19 @@ export const serviceSchema = z
 
     // Provenance (ADR 0006). Names must not change.
     source: z.url().nullable(),
+    // PDF page numbers as the PDF viewer counts them: "225", "225–227", or "7, 9–10" (ADR 0007).
+    // The page links to <source>#page=<first page>. null when not recorded.
+    source_pages: z
+      .string()
+      .trim()
+      .regex(pageNumbers, 'Use PDF page numbers like "225" or "225–227".')
+      // A malformed string is already reported by the regex above, so this only checks well-formed text.
+      .refine((pages) => !pageNumbers.test(pages) || pagesRunUpward(pages), {
+        message:
+          'source_pages must be page numbers from 1 up, with each range going upward, for example "225–227".',
+      })
+      .nullable()
+      .default(null),
     edition: stated,
     retrieved: date,
     verified_by: stated,

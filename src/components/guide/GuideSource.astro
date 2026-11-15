@@ -1,0 +1,99 @@
+---
+// Where the guide comes from: the source link (opened at the first recorded page),
+// the edition and dates, the verifier, and the report link (ADR 0006).
+import GuideField from './GuideField.astro';
+import NotStated from './NotStated.astro';
+import Icon from '../Icon.astro';
+import SectionHead from '../SectionHead.astro';
+import { t, type Lang } from '../../i18n/ui';
+import { formatDate, isSinglePage, sourceHref } from '../../lib/guide';
+import { REPORT_URL } from '../../lib/site';
+import type { Service } from '../../lib/data';
+
+interface Props {
+  lang: Lang;
+  service: Service;
+  /** Absolute address of this page in the current language, printed under the sheet. */
+  pageUrl: string;
+}
+
+const { lang, service, pageUrl } = Astro.props;
+const dataLang = lang === 'en' ? undefined : 'en';
+---
+
+<section id="guide-source" class="wrap py-section" aria-labelledby="guide-source-title">
+  <SectionHead
+    id="guide-source-title"
+    title={t(lang, 'guide.source.a')}
+    highlight={t(lang, 'guide.source.b')}
+  />
+
+  <div class="border border-t-6 border-edge border-t-frame bg-surface p-6">
+    {service.source !== null ? (
+      <a
+        id="guide-source-link"
+        href={sourceHref(service.source, service.source_pages)}
+        rel="external"
+        class="inline-flex items-center gap-2 font-bold text-accent underline decoration-2 wrap-anywhere"
+      >
+        {t(lang, 'guide.source.link')}
+        <Icon name="ne" class="size-4" />
+      </a>
+    ) : (
+      <p>
+        <NotStated lang={lang} />
+      </p>
+    )}
+
+    <dl class="mt-4 grid gap-1">
+      <GuideField
+        lang={lang}
+        label={t(lang, 'guide.source.edition')}
+        value={service.edition}
+        valueLang={dataLang}
+      />
+      {service.source_pages !== null && (
+        <GuideField
+          lang={lang}
+          label={t(lang, 'guide.source.pagesLabel')}
+          value={`${t(lang, isSinglePage(service.source_pages) ? 'guide.source.page' : 'guide.source.pages')} ${service.source_pages}`}
+        />
+      )}
+      <GuideField
+        lang={lang}
+        label={t(lang, 'guide.source.retrieved')}
+        value={service.retrieved ? formatDate(service.retrieved, lang) : null}
+      />
+      <GuideField
+        lang={lang}
+        label={t(lang, 'guide.lastVerified')}
+        value={service.last_verified ? formatDate(service.last_verified, lang) : null}
+      />
+      <GuideField
+        lang={lang}
+        label={t(lang, 'guide.source.verifiedBy')}
+        value={service.verified_by}
+        valueLang={dataLang}
+      />
+      {service.effective_date !== null && (
+        <GuideField
+          lang={lang}
+          label={t(lang, 'guide.source.effective')}
+          value={formatDate(service.effective_date, lang)}
+        />
+      )}
+    </dl>
+
+    <p id="guide-print-url" class="mt-4 hidden text-sm print:block">
+      {t(lang, 'guide.print.online')} <span class="wrap-anywhere">{pageUrl}</span>
+    </p>
+    {/* The QR code for this page goes next to this line (#5). */}
+
+    <p class="no-print mt-4 text-sm">
+      {t(lang, 'guide.report.lead')}{' '}
+      <a href={REPORT_URL} class="font-semibold text-accent underline">
+        {t(lang, 'report.link')}
+      </a>
+    </p>
+  </div>
+</section>

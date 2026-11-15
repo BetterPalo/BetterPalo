@@ -35,6 +35,7 @@ effective_date: null
 notes: null
 
 source: null
+source_pages: null # PDF page numbers as the viewer shows them, for example "225–227"
 edition: null
 retrieved: null
 verified_by: null

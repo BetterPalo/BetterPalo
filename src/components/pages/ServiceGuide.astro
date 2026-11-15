@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import GuideDetails from '../guide/GuideDetails.astro';
+import GuideSheet from '../guide/GuideSheet.astro';
+import GuideSource from '../guide/GuideSource.astro';
+import NotStated from '../guide/NotStated.astro';
+import { lgu } from '../../config/lgu';
+import { t, type Lang } from '../../i18n/ui';
+import { formatDate, isoDate } from '../../lib/guide';
+import type { Service } from '../../lib/data';
+import { localizedPath } from '../../lib/routes';
+
+interface Props {
+  lang: Lang;
+  service: Service;
+}
+
+const { lang, service } = Astro.props;
+
+// The guide content is English on the Filipino page, so it is tagged `en` (D6).
+const dataLang = lang === 'en' ? undefined : 'en';
+const pageUrl = new URL(localizedPath(lang, `/services/${service.id}/`), lgu.siteUrl).href;
+const lastVerified = service.last_verified ? formatDate(service.last_verified, lang) : null;
+const ogDescription = [
+  service.office ?? service.name,
+  lastVerified ? `${t(lang, 'guide.lastVerified')} ${lastVerified}` : null,
+]
+  .filter(Boolean)
+  .join(' · ');
+---
+
+<Base
+  title={service.name}
+  lang={lang}
+  description={service.description}
+  width="full"
+  og={{ title: service.name, description: ogDescription, url: pageUrl }}
+>
+  <article data-guide>
+    <PageHero
+      id="guide-title"
+      eyebrow={t(lang, 'guide.eyebrow')}
+      title={service.name}
+      lead={service.office ?? t(lang, 'missing.stated')}
+      titleLang={dataLang}
+      leadLang={service.office ? dataLang : undefined}
+    >
+      <p class="mt-4 text-sm font-bold text-fg-soft">
+        {t(lang, 'guide.lastVerified')}{' '}
+        {service.last_verified ? (
+          <time datetime={isoDate(service.last_verified)}>{lastVerified}</time>
+        ) : (
+          <NotStated lang={lang} />
+        )}
+      </p>
+    </PageHero>
+
+    {lang !== 'en' && (
+      <div class="wrap pb-8">
+        <p id="guide-pending" class="border border-edge bg-canvas-alt p-4">
+          <b>{t(lang, 'guide.pending.label')}</b> {t(lang, 'guide.pending.body')}
+        </p>
+      </div>
+    )}
+
+    <GuideSheet lang={lang} service={service} />
+    <GuideDetails lang={lang} service={service} />
+    <GuideSource lang={lang} service={service} pageUrl={pageUrl} />
+  </article>
+</Base>

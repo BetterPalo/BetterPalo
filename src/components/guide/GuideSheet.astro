@@ -1,0 +1,182 @@
+---
+// The four answers, on one printable sheet (DESIGN.md "Printable service sheet").
+// Every empty answer reads "Not stated"; an empty fee list never reads as free.
+import GuideField from './GuideField.astro';
+import NotStated from './NotStated.astro';
+import IconWell from '../home/IconWell.astro';
+import SectionHead from '../SectionHead.astro';
+import { t, type Key, type Lang } from '../../i18n/ui';
+import type { Service } from '../../lib/data';
+
+interface Props {
+  lang: Lang;
+  service: Service;
+}
+
+const { lang, service } = Astro.props;
+const dataLang = lang === 'en' ? undefined : 'en';
+
+const formKey = {
+  original: 'guide.req.form.original',
+  photocopy: 'guide.req.form.photocopy',
+  certified_true_copy: 'guide.req.form.certified_true_copy',
+} as const satisfies Record<string, Key>;
+
+const walkIns = service.application_channels.filter((c) => c.type === 'walk-in');
+---
+
+<section id="guide-sheet" class="wrap pb-section" aria-labelledby="guide-sheet-title">
+  <SectionHead
+    id="guide-sheet-title"
+    title={t(lang, 'guide.sheet.a')}
+    highlight={t(lang, 'guide.sheet.b')}
+    sub={t(lang, 'guide.sheet.sub')}
+  />
+
+  <div class="grid gap-4 md:grid-cols-2 print:grid-cols-2">
+    <div id="guide-where" data-sheet-card class="border border-edge bg-surface p-6">
+      <h3 class="flex items-center gap-3 text-[1.35rem] leading-[1.1] tracking-title">
+        <IconWell name="pin" />
+        {t(lang, 'home.q.where')}
+      </h3>
+      <dl class="mt-4 grid gap-2">
+        <GuideField
+          lang={lang}
+          label={t(lang, 'guide.where.office')}
+          value={service.office}
+          valueLang={dataLang}
+        />
+        {walkIns.length === 0 ? (
+          <GuideField lang={lang} label={t(lang, 'guide.where.walkIn')} value={null} />
+        ) : (
+          walkIns.map((channel) => (
+            <GuideField
+              lang={lang}
+              label={t(lang, 'guide.where.walkIn')}
+              value={channel.location}
+              valueLang={dataLang}
+            />
+          ))
+        )}
+      </dl>
+    </div>
+
+    <div id="guide-bring" data-sheet-card class="border border-edge bg-surface p-6">
+      <h3 class="flex items-center gap-3 text-[1.35rem] leading-[1.1] tracking-title">
+        <IconWell name="doc" />
+        {t(lang, 'home.q.bring')}
+      </h3>
+      {service.requirements.length === 0 ? (
+        <p class="mt-4">
+          <NotStated lang={lang} />
+        </p>
+      ) : (
+        <ul id="guide-bring-list" class="mt-4 grid gap-3">
+          {service.requirements.map((r) => (
+            <li class="border-t border-edge pt-3">
+              <p class="font-bold" lang={dataLang}>
+                {r.document}
+              </p>
+              <dl class="mt-1 grid gap-1 text-sm">
+                <GuideField
+                  lang={lang}
+                  label={t(lang, 'guide.req.copies')}
+                  value={r.copies === null ? null : String(r.copies)}
+                />
+                <GuideField
+                  lang={lang}
+                  label={t(lang, 'guide.req.form')}
+                  value={r.form === null ? null : t(lang, formKey[r.form])}
+                />
+                <GuideField
+                  lang={lang}
+                  label={t(lang, 'guide.req.whereToGet')}
+                  value={r.where_to_get}
+                  valueLang={dataLang}
+                />
+                <GuideField
+                  lang={lang}
+                  label={t(lang, 'guide.conditions')}
+                  value={r.conditions}
+                  valueLang={dataLang}
+                />
+              </dl>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    <div id="guide-cost" data-sheet-card class="border border-edge bg-surface p-6">
+      <h3 class="flex items-center gap-3 text-[1.35rem] leading-[1.1] tracking-title">
+        <IconWell name="peso" />
+        {t(lang, 'home.q.cost')}
+      </h3>
+      {service.fees.length === 0 ? (
+        <p class="mt-4">
+          <NotStated lang={lang} />
+        </p>
+      ) : (
+        <ul id="guide-cost-list" class="mt-4 grid gap-3">
+          {service.fees.map((fee) => (
+            <li class="border-t border-edge pt-3">
+              {fee.amount !== null ? (
+                <p class="tabular font-bold" lang={dataLang}>
+                  {fee.amount}
+                </p>
+              ) : (
+                <p class="font-bold">
+                  {t(lang, 'guide.fee.basedOn')} <span lang={dataLang}>{fee.basis}</span>
+                </p>
+              )}
+              <dl class="mt-1 grid gap-1 text-sm">
+                <GuideField
+                  lang={lang}
+                  label={t(lang, 'guide.fee.purpose')}
+                  value={fee.purpose}
+                  valueLang={dataLang}
+                />
+                <GuideField
+                  lang={lang}
+                  label={t(lang, 'guide.fee.whereToPay')}
+                  value={fee.where_to_pay}
+                  valueLang={dataLang}
+                />
+                <GuideField
+                  lang={lang}
+                  label={t(lang, 'guide.conditions')}
+                  value={fee.conditions}
+                  valueLang={dataLang}
+                />
+                {fee.amount !== null && fee.basis !== null && (
+                  <GuideField
+                    lang={lang}
+                    label={t(lang, 'guide.fee.basis')}
+                    value={fee.basis}
+                    valueLang={dataLang}
+                  />
+                )}
+              </dl>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    <div id="guide-time" data-sheet-card class="border border-edge bg-surface p-6">
+      <h3 class="flex items-center gap-3 text-[1.35rem] leading-[1.1] tracking-title">
+        <IconWell name="clock" />
+        {t(lang, 'home.q.time')}
+      </h3>
+      {service.processing_time === null ? (
+        <p class="mt-4">
+          <NotStated lang={lang} />
+        </p>
+      ) : (
+        <p class="mt-4 text-lg font-bold" lang={dataLang}>
+          {service.processing_time}
+        </p>
+      )}
+    </div>
+  </div>
+</section>

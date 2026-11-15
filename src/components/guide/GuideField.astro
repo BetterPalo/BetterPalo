@@ -1,0 +1,29 @@
+---
+// One row of a definition list: a label, then its value or the "Not stated" text.
+// Pass a slot when the value needs markup (a link or a list). Otherwise `value`
+// is shown as text, and `valueLang` marks the source language on a Filipino page.
+import NotStated from './NotStated.astro';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  label: string;
+  value?: string | null;
+  valueLang?: string;
+}
+
+const { lang, label, value, valueLang } = Astro.props;
+---
+
+<div class="grid gap-x-3 sm:grid-cols-[10rem_1fr]">
+  <dt class="font-bold">{label}</dt>
+  <dd>
+    {Astro.slots.has('default') ? (
+      <slot />
+    ) : value == null ? (
+      <NotStated lang={lang} />
+    ) : (
+      <span lang={valueLang}>{value}</span>
+    )}
+  </dd>
+</div>

@@ -91,6 +91,29 @@ describe('service schema', () => {
   });
 });
 
+describe('source_pages', () => {
+  it('defaults to null when the field is left out', () => {
+    expect(serviceSchema.parse(verifiedService).source_pages).toBeNull();
+  });
+
+  it.each(['225', '225–227', '225-227', '7, 9–10', '12–13', '5–5', ' 225 '])(
+    'accepts %j',
+    (pages) => {
+      expect(serviceSchema.safeParse({ ...verifiedService, source_pages: pages }).success).toBe(
+        true,
+      );
+    },
+  );
+
+  it.each(['', '   ', 'pp. 225', 'abc', '225–', '0', '227–225'])('rejects %j', (pages) => {
+    expect(issuePaths({ ...verifiedService, source_pages: pages })).toEqual([['source_pages']]);
+  });
+
+  it('the template has source_pages: null', () => {
+    expect(serviceSchema.parse(template).source_pages).toBeNull();
+  });
+});
+
 describe('isPublishable', () => {
   it('returns false for drafts', () => {
     expect(isPublishable(serviceSchema.parse(template))).toBe(false);
