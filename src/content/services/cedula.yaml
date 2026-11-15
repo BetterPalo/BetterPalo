@@ -1,0 +1,164 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 225-227
+# and 255. Checked against the PDF by the lead and a second checker; verified 2026-11-14.
+id: cedula
+name: Issuance of Community Tax Certificate (Cedula)
+category: taxes
+office: Office of the Municipal Treasurer
+classification: simple
+transaction_type: G2C – Government to Citizen; G2B – Government to Business
+description: >
+  The Community Tax Certificate (CTC), also called cedula, is a document that
+  serves as proof of residence. An individual pays the corresponding dues
+  arising from income from business, exercise of profession and/or ownership of
+  real properties in the area, and profit and non-profit corporations and other
+  entities operating in the Municipality must also secure a CTC.
+eligibility: Individuals and duly authorized representatives of corporations.
+requirements:
+  - document: Any government-issued ID
+    copies: null
+    form: null
+    where_to_get: >
+      Bureau of Internal Revenue (BIR), Post Office, Department of Foreign
+      Affairs (DFA)-Passport, Social Security System (SSS), Government Service
+      Insurance System (GSIS), Land Transportation Office (LTO), Pag-IBIG,
+      Commission on Elections (COMELEC), or Philippine Statistics Authority
+      (PSA)-Philippine ID
+    conditions: For Individual Community Tax (CTC)
+  - document: >
+      Tax Declaration of the property/ies owned by the corporation
+    copies: 1
+    form: photocopy
+    where_to_get: Office of the Municipal Assessor
+    conditions: For Corporation-Renewal of Business
+  - document: Updated Financial Statement with BIR receipt stamp
+    copies: null
+    form: null
+    where_to_get: Bureau of Internal Revenue (BIR)
+    conditions: For Corporation-Renewal of Business
+  - document: Any government-issued ID card of the authorized representative
+    copies: null
+    form: null
+    where_to_get: BIR, Post Office, DFA, SSS, GSIS, LTO, Pag-IBIG, COMELEC, or PSA (Phil ID/PSN)
+    conditions: For Corporation-Renewal of Business
+  - document: Notarized Special Power of Attorney (SPA) of the authorized representative
+    copies: null
+    form: null
+    where_to_get: Notary Public
+    conditions: For Corporation-Renewal of Business
+  - document: Securities and Exchange Commission (SEC) Registration.
+    copies: null
+    form: null
+    where_to_get: Securities and Exchange Commission
+    conditions: For Corporation-For New Business
+steps:
+  - step: 1
+    applicant_action: >
+      1. Submit the requirements to the Municipal Treasurer's Office.
+      1.1 None
+    office_action: >
+      1. Receive the requirements.
+      1.1 Fill out the CTC and compute the amount to be paid by the client.
+    responsible: >
+      Revenue Collection Clerk 1 and Ticket Checker, Office of the Municipal
+      Treasurer (MTO Windows 1 to 4)
+    max_time: 3 minutes
+  - step: 2
+    applicant_action: >
+      2. Pay the amount of the computed Community Tax indicated in the CTC.
+      2.1 Sign the CTC and affix right thumbmark on the three (3) copies of the
+      CTC. 2.2 Secure the original copy of the CTC.
+    office_action: >
+      2. Accept payment based on the computation and issue Official Receipt
+      (OR). 2.1 Ask the client to affix signature and right thumbmark on the 3
+      copies of the CTC. 2.2 Issue the original copy of the CTC.
+    responsible: >
+      Revenue Collection Clerk 1 and Ticket Checker, Office of the Municipal
+      Treasurer (MTO Windows 1 to 4)
+    max_time: 5 minutes
+fees:
+  - amount: PHP 5.00
+    purpose: Individual - Basic Community Tax
+    where_to_pay: null
+    conditions: null
+    basis: null
+  - amount: >
+      Additional tax of One Peso (PHP 1.00) for every One Thousand Pesos (PHP
+      1,000.00) of income from business, exercise of profession, or property but
+      which in no case shall exceed Five Thousand Pesos (PHP 5,000.00)
+    purpose: Individual - Additional tax
+    where_to_pay: null
+    conditions: null
+    basis: null
+  - amount: PHP 500.00
+    purpose: Corporation - Basic Community Tax
+    where_to_pay: null
+    conditions: null
+    basis: null
+  - amount: Not to exceed PHP 10,000.00
+    purpose: Corporation - Additional Community Tax
+    where_to_pay: null
+    conditions: >
+      Listed with two sub-items: Gross Receipts/Sales and Assessed Value of
+      property owned by the corporation (next two entries)
+    basis: null
+  - amount: >
+      Two Pesos (PHP 2.00) for every Five Thousand Pesos (PHP 5,000.00) of gross
+      sales/receipts
+    purpose: Corporation - Additional Community Tax, Gross Receipts/Sales
+    where_to_pay: null
+    conditions: null
+    basis: null
+  - amount: >
+      Two Pesos (PHP 2.00) for every Five Thousand Pesos (PHP 5,000.00) of
+      Assessed Value per Tax Declaration
+    purpose: >
+      Corporation - Additional Community Tax, Assessed Value of property owned by
+      the corporation
+    where_to_pay: null
+    conditions: null
+    basis: null
+processing_time: 8 minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Municipal Treasurer's Office
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. You may visit the Administrative Office and secure a complaint
+  form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  The Charter's approval date has not been confirmed by the LGU.
+  Transcribed from PDF pages 225, 226, 227 (cedula and Community Tax Base) and
+  255 (Feedback and Complaint Mechanism); printed page numbers are the same as
+  the PDF page numbers. The Charter's table of steps was read from a page image.
+  The two steps rows combine the Charter's sub-steps (1.1, 2.1, 2.2) into one
+  entry each; the Charter lists the person responsible per window by individual
+  staff name, which is not published here. The Charter also states that the CTC
+  is paid during the beginning of the year and shall be paid to the Municipal
+  Treasurer not later than the last day of February of each year, and that
+  corporations established and organized on or before the last day of June shall
+  be liable for the payment of community tax for the year, while corporations
+  organized before the last day of March shall have 20 days to pay the community
+  tax, and corporations established and organized on or after the first day of
+  July shall not be subject to community tax for the year. The Charter does not
+  say where payment is made, and gives no required copies or forms except the
+  Tax Declaration (1 photocopy).
+
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '225–227'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: Zyxavy
+last_verified: 2026-11-14
+status: verified
