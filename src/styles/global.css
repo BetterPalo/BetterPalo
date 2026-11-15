@@ -162,6 +162,14 @@
   }
 }
 
+/* The tourism chips filter with JavaScript. When scripting is off they would be
+   inert buttons, so hide them and leave the full spot list on the page. */
+@media (scripting: none) {
+  [data-tourism-filters] {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

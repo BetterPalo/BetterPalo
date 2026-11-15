@@ -1,6 +1,6 @@
 id: palo-municipal-park
 name: Palo Municipal Park
-category: cultural
+categories: [park]
 description: >
   The central public park: gardens, a children's playground, and an open-air
   stage for local events. Venue for the annual Palo Festival.
