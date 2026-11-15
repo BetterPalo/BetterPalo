@@ -68,7 +68,7 @@ for (const service of services) {
   entries.services.push(
     toEntry(
       `/services/${service.id}/`,
-      { text: service.name, pending: false },
+      { text: service.name, pending: lang !== 'en' },
       service.office ?? t(lang, 'missing.stated'),
     ),
   );

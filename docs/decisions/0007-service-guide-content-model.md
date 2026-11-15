@@ -2,6 +2,9 @@
 
 - Status: Accepted (2026-11-12)
 - Date: 2026-11-06
+- Revised: 2026-11-14. Adds the optional `source_pages` field (#33). This is a
+  data-model change, so the revision is proposed until the lead and
+  @STR4T-coder both approve it.
 
 ## Context
 
@@ -45,6 +48,7 @@ fields.
 | `complaint_procedure` | string or null | As stated in the source |
 | `effective_date` | date or null | Only when it differs from `edition`, for example after an ordinance changes a fee |
 | `notes` | string or null | Limits of the source, such as "official source could not be accessed" |
+| `source_pages` | string or null | PDF page numbers of this service in `source`, for example `"225–227"`. Optional; see "Revision: source pages" |
 
 Rules:
 
@@ -95,6 +99,40 @@ verified_by: null
 last_verified: null
 status: needs_confirmation
 ```
+
+## Revision: source pages (2026-11-14)
+
+Why: a guide's source link opens the whole Charter PDF at its first page, so a
+reader has to search for the service. The guide now records where the service
+is in the PDF. Its source link opens the PDF at the first recorded page, and
+the printed sheet says which pages to read, for example "pp. 225–227".
+
+Format: `source_pages` is a string of PDF page numbers. It takes one of three
+forms: one page (`"225"`), a range with an en dash or a hyphen (`"225–227"` or
+`"225-227"`), or a comma-separated list (`"7, 9–10"` or `"7,9–10"`; a space
+after the comma is optional). Surrounding spaces are trimmed. An empty string
+is rejected. Leave the field out, or write `null`, when the pages are not
+recorded. As for every other content field, `null` is the only "not stated"
+value. The build checks the shape, that every page is 1 or more, and that each
+range runs upward. It does not check that the pages exist in the PDF or hold
+the service; the second checker confirms that.
+
+Page numbers: the numbers are the page numbers the PDF viewer shows, not the
+folio printed on the page. The link has to land on the right page, and the
+printed folio can differ from the viewer's count. The transcriber records the
+viewer's numbers.
+
+Optional: the field is not required for `status: verified`. Guides without it
+still pass the publishing gate. The ADR 0006 provenance field names do not
+change.
+
+Rejected alternative: keep the pages only in the `source` URL fragment (for
+example `#page=225`). The link would land on the right page, but the printed
+sheet would have no page numbers to show, and the build would have to read
+them back out of a URL.
+
+Decided on 2026-11-14 (#33). It is a data-model change, so it needs two
+approvals, from the lead and @STR4T-coder, before it is in force.
 
 ## Consequences
 

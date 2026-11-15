@@ -1,0 +1,15 @@
+---
+// Shown in place of every empty field of a guide. The official source does not
+// say, so the page says so rather than leaving a blank or guessing.
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<span class="text-fg-soft" data-not-stated>
+  {t(lang, 'missing.stated')}
+</span>

@@ -16,20 +16,59 @@ requirements:
     form: original
     where_to_get: null
     conditions: null
+  - document: Sample proof of address (fictional)
+    copies: 2
+    form: photocopy
+    where_to_get: Sample barangay hall (fictional)
+    conditions: Only for a new sample business (fictional)
+  - document: Sample certified record (fictional)
+    copies: null
+    form: certified_true_copy
+    where_to_get: Sample records office (fictional)
+    conditions: null
 steps:
   - step: 1
     applicant_action: Submit the sample form (fictional)
     office_action: null
     responsible: Sample office window (fictional)
     max_time: null
-fees: []
-processing_time: null
-application_channels: []
-complaint_procedure: null
+  - step: 2
+    applicant_action: Pay the sample fee at the sample cashier (fictional)
+    office_action: Issues a sample receipt (fictional)
+    responsible: Sample cashier (fictional)
+    max_time: Sample time (fictional)
+  - step: 3
+    applicant_action: Claim the sample permit (fictional)
+    office_action: Releases the sample permit (fictional)
+    responsible: Sample office window (fictional)
+    max_time: null
+fees:
+  - amount: Sample amount (fictional)
+    purpose: Sample permit fee (fictional)
+    where_to_pay: Sample cashier (fictional)
+    conditions: null
+    basis: null
+  - amount: null
+    purpose: Sample regulatory fee (fictional)
+    where_to_pay: null
+    conditions: Only for a new sample business (fictional)
+    basis: Sample City Revenue Code (fictional)
+processing_time: Sample processing time (fictional)
+application_channels:
+  - type: walk-in
+    location: Sample City Hall, ground floor (fictional)
+  - type: online
+    url: https://example.org/sample-online-permit
+    supports:
+      - Check the status of a sample application (fictional)
+    account_required: true
+    last_tested: 2026-11-14
+complaint_procedure: Write to the sample complaints desk (fictional).
 effective_date: null
 notes: Fictional sample for template testing.
 
 source: https://example.org/sample-citizens-charter.pdf
+source_pages: '12–13'
 edition: Sample edition (fictional)
 retrieved: 2026-11-14
 verified_by: Sample reviewer (fictional)
