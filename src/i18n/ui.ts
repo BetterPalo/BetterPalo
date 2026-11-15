@@ -366,9 +366,39 @@ const en = {
     'Spots marked "Unverified" are community-compiled and have not been checked against an official source. Confirm details with the tourism office before travelling.',
   'tourism.empty': 'No tourist spots listed yet.',
   'tourism.emptyBody': 'Spots appear here after a contributor adds them to the content collection.',
-  'tourism.cat.historical': 'Historical site',
-  'tourism.cat.eco': 'Eco-tourism',
-  'tourism.cat.cultural': 'Cultural',
+
+  // Tourism filters
+  'tourism.filters.groupLegend': 'Show',
+  'tourism.filters.typeLegend': 'Type',
+  'tourism.filters.all': 'All',
+  'tourism.filters.allGroups': 'All kinds of visit',
+  'tourism.filters.allTypes': 'All types',
+  'tourism.filters.shown': 'Spots shown:',
+  'tourism.filters.none': 'No spots match these filters.',
+  'tourism.filters.noScript': 'Filters need JavaScript. Every spot is listed below.',
+
+  // Visitor groups and place types, in taxonomy order
+  'tourism.group.see': 'See',
+  'tourism.group.eat': 'Eat',
+  'tourism.group.stay': 'Stay',
+  'tourism.group.do': 'Do',
+  'tourism.cat.heritage': 'Heritage sites',
+  'tourism.cat.church': 'Churches',
+  'tourism.cat.museum': 'Museums',
+  'tourism.cat.park': 'Parks',
+  'tourism.cat.nature': 'Nature',
+  'tourism.cat.beach': 'Beaches',
+  'tourism.cat.view-deck': 'View decks',
+  'tourism.cat.cafe': 'Cafes',
+  'tourism.cat.restaurant': 'Restaurants',
+  'tourism.cat.market': 'Markets',
+  'tourism.cat.villa': 'Villas',
+  'tourism.cat.resort': 'Resorts',
+  'tourism.cat.homestay': 'Homestays',
+  'tourism.cat.inn': 'Inns',
+  'tourism.cat.festival': 'Festivals',
+  'tourism.cat.tour': 'Tours',
+  'tourism.cat.adventure': 'Adventures',
 } as const;
 
 export type Key = keyof typeof en;
@@ -746,9 +776,40 @@ const fil: Partial<Record<Key, string>> = {
   'tourism.empty': 'Wala pang nakalistang pook-turista.',
   'tourism.emptyBody':
     'Lalabas dito ang mga pook kapag may nagdagdag sa kanila sa koleksyon ng nilalaman.',
-  'tourism.cat.historical': 'Pook na pangkasaysayan',
-  'tourism.cat.eco': 'Eko-turismo',
-  'tourism.cat.cultural': 'Pangkultura',
+
+  // Tourism filters
+  'tourism.filters.groupLegend': 'Ipakita',
+  'tourism.filters.typeLegend': 'Uri',
+  'tourism.filters.all': 'Lahat',
+  'tourism.filters.allGroups': 'Lahat ng uri ng pagbisita',
+  'tourism.filters.allTypes': 'Lahat ng uri',
+  'tourism.filters.shown': 'Mga pook na nakikita:',
+  'tourism.filters.none': 'Walang pook na tumutugma sa mga filter na ito.',
+  'tourism.filters.noScript':
+    'Kailangan ng JavaScript ang mga filter. Nakalista sa ibaba ang lahat ng pook.',
+
+  // Visitor groups and place types, in taxonomy order
+  'tourism.group.see': 'Tanawin',
+  'tourism.group.eat': 'Kainan',
+  'tourism.group.stay': 'Tuluyan',
+  'tourism.group.do': 'Gawain',
+  'tourism.cat.heritage': 'Mga pamanang pook',
+  'tourism.cat.church': 'Mga simbahan',
+  'tourism.cat.museum': 'Mga museo',
+  'tourism.cat.park': 'Mga liwasan',
+  'tourism.cat.nature': 'Kalikasan',
+  'tourism.cat.beach': 'Mga dalampasigan',
+  'tourism.cat.view-deck': 'Mga tanawan',
+  'tourism.cat.cafe': 'Mga kapihan',
+  'tourism.cat.restaurant': 'Mga restawran',
+  'tourism.cat.market': 'Mga pamilihan',
+  'tourism.cat.villa': 'Mga villa',
+  'tourism.cat.resort': 'Mga resort',
+  'tourism.cat.homestay': 'Mga homestay',
+  'tourism.cat.inn': 'Mga inn',
+  'tourism.cat.festival': 'Mga pista',
+  'tourism.cat.tour': 'Mga tour',
+  'tourism.cat.adventure': 'Mga pakikipagsapalaran',
 };
 
 const ui: Record<Lang, Partial<Record<Key, string>>> = { en, fil };

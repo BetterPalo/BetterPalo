@@ -5,8 +5,62 @@ import { statuses } from './service';
 const stated = z.string().trim().min(1).nullable();
 const date = z.coerce.date().nullable();
 
-export const tourismCategories = ['historical', 'eco', 'cultural'] as const;
+/** Visitor groups, in the order the tourism page filters them. */
+export const tourismGroups = ['see', 'eat', 'stay', 'do'] as const;
+export type TourismGroup = (typeof tourismGroups)[number];
+
+/**
+ * Place types, in taxonomy order. Adding one here also needs a
+ * `tourism.cat.<slug>` string in `src/i18n/ui.ts`; a unit test enforces it.
+ */
+export const tourismCategories = [
+  'heritage',
+  'church',
+  'museum',
+  'park',
+  'nature',
+  'beach',
+  'view-deck',
+  'cafe',
+  'restaurant',
+  'market',
+  'villa',
+  'resort',
+  'homestay',
+  'inn',
+  'festival',
+  'tour',
+  'adventure',
+] as const;
 export type TourismCategory = (typeof tourismCategories)[number];
+
+/**
+ * The visitor group for each type. A spot takes its group from its first
+ * category, so a multi-category spot never appears under two groups.
+ */
+export const tourismCategoryGroups: Record<TourismCategory, TourismGroup> = {
+  heritage: 'see',
+  church: 'see',
+  museum: 'see',
+  park: 'see',
+  nature: 'see',
+  beach: 'see',
+  'view-deck': 'see',
+  cafe: 'eat',
+  restaurant: 'eat',
+  market: 'eat',
+  villa: 'stay',
+  resort: 'stay',
+  homestay: 'stay',
+  inn: 'stay',
+  festival: 'do',
+  tour: 'do',
+  adventure: 'do',
+};
+
+export function tourismGroupOf(category: TourismCategory): TourismGroup {
+  return tourismCategoryGroups[category];
+}
 
 /**
  * A tourist spot, ported from the Palo Tourism Portal.
@@ -20,7 +74,12 @@ export const tourismSpotSchema = z
   .object({
     id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use lowercase words joined by hyphens.'),
     name: z.string().trim().min(1),
-    category: z.enum(tourismCategories),
+    /**
+     * One or more place types. The first is the card's primary label and sets
+     * the spot's visitor group; all of them are listed on the card and used by
+     * the filters.
+     */
+    categories: z.array(z.enum(tourismCategories)).min(1, 'Pick at least one category.'),
     description: z.string().trim().min(1),
     address: stated,
     offer: stated,
@@ -37,6 +96,25 @@ export const tourismSpotSchema = z
     status: z.enum(statuses),
   })
   .superRefine((spot, ctx) => {
+    const unique = new Set(spot.categories);
+    if (unique.size !== spot.categories.length) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['categories'],
+        message: 'List each category only once.',
+      });
+    }
+
+    const groups = new Set(spot.categories.map(tourismGroupOf));
+    if (groups.size > 1) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['categories'],
+        message:
+          'Pick categories from one group (see, eat, stay, or do). Use the first type for the spot\u2019s main draw and describe any other in the text.',
+      });
+    }
+
     if (spot.image !== null && spot.image_alt === null) {
       ctx.addIssue({
         code: 'custom',
@@ -58,3 +136,17 @@ export const tourismSpotSchema = z
   });
 
 export type TourismSpotData = z.infer<typeof tourismSpotSchema>;
+
+type Categorised = Pick<TourismSpotData, 'categories'>;
+
+/** The categories at least one spot uses, in taxonomy order. */
+export function categoriesInUse(spots: Categorised[]): TourismCategory[] {
+  const used = new Set(spots.flatMap((spot) => spot.categories));
+  return tourismCategories.filter((category) => used.has(category));
+}
+
+/** The visitor groups at least one spot uses, in filter order. */
+export function tourismGroupsInUse(spots: Categorised[]): TourismGroup[] {
+  const used = new Set(categoriesInUse(spots).map(tourismGroupOf));
+  return tourismGroups.filter((group) => used.has(group));
+}

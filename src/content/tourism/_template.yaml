@@ -4,8 +4,15 @@
 # source, retrieved, verified_by, and last_verified are filled and status is verified.
 id: example-spot
 name: Example Spot
-# One of: historical, eco, cultural (see src/lib/schemas/tourism.ts).
-category: historical
+# One or more place types, from src/lib/schemas/tourism.ts. The first one is the
+# card's primary label and sets the visitor group (see, eat, stay, or do).
+# Types:
+#   See:  heritage, church, museum, park, nature, beach, view-deck
+#   Eat:  cafe, restaurant, market
+#   Stay: villa, resort, homestay, inn
+#   Do:   festival, tour, adventure
+# All categories on one spot must share a group, for example [church, heritage].
+categories: [heritage, museum]
 description: >
   One or two plain-language sentences about the place.
 address: null

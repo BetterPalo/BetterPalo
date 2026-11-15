@@ -1,0 +1,64 @@
+---
+// One tourist spot card. The tourism filter script reads `data-group` and
+// `data-categories`, so keep both attributes when changing this markup.
+import { isVerifiedSpot } from '../../lib/publishing';
+import { t, type Key, type Lang } from '../../i18n/ui';
+import { tourismCategoryGroups, type TourismSpotData } from '../../lib/schemas/tourism';
+
+interface Props {
+  spot: TourismSpotData;
+  lang: Lang;
+}
+
+const { spot, lang } = Astro.props;
+
+function categoryLabel(category: TourismSpotData['categories'][number]): string {
+  return t(lang, `tourism.cat.${category}` as Key);
+}
+
+const [primary] = spot.categories;
+// The schema rejects an empty list, so a validated spot always has a first type.
+const group = tourismCategoryGroups[primary!];
+const labels = spot.categories.map(categoryLabel).join(' · ');
+---
+
+<li
+  class="flex flex-col border border-edge bg-surface"
+  data-spot
+  data-group={group}
+  data-categories={spot.categories.join(' ')}
+>
+  {spot.image && (
+    <img
+      src={spot.image}
+      alt={spot.image_alt ?? ''}
+      loading="lazy"
+      decoding="async"
+      class="aspect-[4/3] w-full border-b border-edge object-cover"
+      width="800"
+      height="600"
+    />
+  )}
+  <div class="flex flex-1 flex-col p-5">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <span class="text-[0.7rem] font-bold tracking-label text-accent uppercase">{labels}</span>
+      {!isVerifiedSpot(spot) && (
+        <span class="border border-edge px-1.5 py-0.5 text-[0.65rem] font-bold tracking-label text-fg-soft uppercase">
+          {t(lang, 'tourism.unverified')}
+        </span>
+      )}
+    </div>
+    <h3 class="mt-1 font-display text-xl tracking-title">{spot.name}</h3>
+    <p class="mt-2 text-sm text-fg-soft">{spot.description}</p>
+    {spot.address && (
+      <p class="mt-3 text-xs text-fg-soft">
+        <b class="font-bold text-fg">{t(lang, 'tourism.address')}:</b> {spot.address}
+      </p>
+    )}
+    {spot.offer && (
+      <p class="mt-1 text-xs text-fg-soft">
+        <b class="font-bold text-fg">{t(lang, 'tourism.offer')}:</b> {spot.offer}
+      </p>
+    )}
+  </div>
+</li>

@@ -1,0 +1,75 @@
+---
+// Two filter rows for the tourism page: a visitor group and a place type.
+// The tourism page's script reads the data attributes; without JavaScript the
+// page's <noscript> block hides this and lists every spot unfiltered.
+import { t, type Key, type Lang } from '../../i18n/ui';
+import {
+  tourismCategoryGroups,
+  type TourismCategory,
+  type TourismGroup,
+} from '../../lib/schemas/tourism';
+
+interface Props {
+  lang: Lang;
+  /** Place types at least one spot uses, in taxonomy order. */
+  categories: TourismCategory[];
+  /** Visitor groups at least one spot uses, in filter order. */
+  groups: TourismGroup[];
+}
+
+const { lang, categories, groups } = Astro.props;
+
+/** `aria-pressed` styling follows the design system's chip fill. */
+const chip =
+  'inline-flex min-h-9 items-center border border-edge bg-chip-bg px-3 py-1 text-sm font-semibold text-chip-fg transition-colors duration-160 ease-out hover:border-accent hover:bg-accent hover:text-on-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-on-accent pointer-coarse:min-h-11';
+
+const legend = 'mb-2 text-[0.8125rem] font-bold tracking-label text-accent uppercase';
+---
+
+<div class="flex flex-col gap-4" data-tourism-filters>
+  <fieldset class="min-w-0">
+    <legend class={legend}>{t(lang, 'tourism.filters.groupLegend')}</legend>
+    <div class="flex flex-wrap gap-2">
+      <button
+        type="button"
+        class={chip}
+        data-filter-group="all"
+        aria-pressed="true"
+        aria-label={t(lang, 'tourism.filters.allGroups')}
+      >
+        {t(lang, 'tourism.filters.all')}
+      </button>
+      {groups.map((group) => (
+        <button type="button" class={chip} data-filter-group={group} aria-pressed="false">
+          {t(lang, `tourism.group.${group}` as Key)}
+        </button>
+      ))}
+    </div>
+  </fieldset>
+
+  <fieldset class="min-w-0">
+    <legend class={legend}>{t(lang, 'tourism.filters.typeLegend')}</legend>
+    <div class="flex flex-wrap gap-2">
+      <button
+        type="button"
+        class={chip}
+        data-filter-type="all"
+        aria-pressed="true"
+        aria-label={t(lang, 'tourism.filters.allTypes')}
+      >
+        {t(lang, 'tourism.filters.all')}
+      </button>
+      {categories.map((category) => (
+        <button
+          type="button"
+          class={chip}
+          data-filter-type={category}
+          data-group={tourismCategoryGroups[category]}
+          aria-pressed="false"
+        >
+          {t(lang, `tourism.cat.${category}` as Key)}
+        </button>
+      ))}
+    </div>
+  </fieldset>
+</div>

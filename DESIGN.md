@@ -347,6 +347,10 @@ on blue.
 - **Style:** mist background, deep-flag text, 600 weight, 0.875rem, square. Used
   for "Popular:" search shortcuts.
 - **Hover:** fills with the accent, and the text becomes `on-accent`.
+- **Filter chips:** `<button type="button" aria-pressed>` with the same fill; the
+  pressed chip keeps the hover fill (accent background, `on-accent` text). Rows
+  sit in a fieldset with a tracked uppercase legend, and the pressed state is
+  exposed through `aria-pressed` as well as the fill.
 
 ### Cards / Containers
 

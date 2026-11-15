@@ -57,10 +57,18 @@ src/content/services/*.yaml
   → dist/ → Pagefind index → Cloudflare static assets
 
 src/content/tourism/*.yaml
-  → Zod schema (tourismSpotSchema)
+  → Zod schema (tourismSpotSchema; categories must share one visitor group)
   → src/lib/data.ts (listSpots())
-  → /tourism/ and /fil/tourism/
+  → /tourism/ and /fil/tourism/ (one page, with group and type filters)
 ```
+
+Tourist spots carry one or more place types (`categories:`). The first type
+sets the spot's visitor group (see, eat, stay, or do), so the page can offer a
+group row and a type row without storing the group twice. The page renders
+every spot as static HTML and a small bundled script filters the cards; with
+JavaScript off, the chips are hidden and every spot stays listed. No route or
+data migration is needed to add a type: add it to the taxonomy, its label, and
+the spot's YAML.
 
 ## LGU configuration
 
@@ -110,6 +118,9 @@ Never write a place name or a figure in `src/i18n/ui.ts`. Add a placeholder in
   verification date is still listed, with an "Unverified" badge, because the
   tourism page is a community lead list rather than a service guide. Add the
   source and flip `status` to `verified` to remove the badge.
+- A tourist spot's `categories` list must not be empty, must not repeat a type,
+  and must not mix visitor groups: a cafe inside a heritage house takes the
+  dominant group and keeps the other type as a secondary label.
 - A `null` field means the official source does not say. Pages show "Not
   stated in the official source. Ask the office." instead.
 - The file name must match `id` (`cedula.yaml` has `id: cedula`).
