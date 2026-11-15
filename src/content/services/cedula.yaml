@@ -1,5 +1,5 @@
 # Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 225-227
-# and 255. Needs a second human check against the PDF before it can be verified.
+# and 255. Checked against the PDF by the lead and a second checker; verified 2026-11-14.
 id: cedula
 name: Issuance of Community Tax Certificate (Cedula)
 category: taxes
@@ -138,8 +138,7 @@ complaint_procedure: >
   (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
 effective_date: null
 notes: >
-  The Charter's approval date has not been confirmed by the LGU. This guide
-  matches the published Charter only once a second checker verifies it.
+  The Charter's approval date has not been confirmed by the LGU.
   Transcribed from PDF pages 225, 226, 227 (cedula and Community Tax Base) and
   255 (Feedback and Complaint Mechanism); printed page numbers are the same as
   the PDF page numbers. The Charter's table of steps was read from a page image.
@@ -157,6 +156,7 @@ notes: >
   Tax Declaration (1 photocopy).
 
 source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '225–227'
 edition: 2026 (2nd Edition)
 retrieved: 2026-11-06
 verified_by: Zyxavy

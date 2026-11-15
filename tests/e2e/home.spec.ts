@@ -1,6 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { lgu } from '../../src/config/lgu';
+import { t } from '../../src/i18n/ui';
 import { formatNumber } from '../../src/lib/site-facts';
 
 // The White Portal home page, in English and Filipino.
@@ -48,11 +49,31 @@ test('tile counts say they are Charter counts, not published guides', async ({ p
   );
 });
 
-test('nothing is shown that points at a guide that does not exist', async ({ page }) => {
+test('the home page only links to guides that exist', async ({ page }) => {
+  // The "Popular:" shortcuts and the sample-sheet button appear only when guides
+  // are published. Whichever of them are shown must resolve to a real guide page;
+  // when none are shown, there is nothing to check.
+  for (const [path, popularLabel, sampleLabel, servicesPrefix] of [
+    ['/', t('en', 'home.find.popular'), t('en', 'home.sheet.sample'), '/services/'],
+    ['/fil/', t('fil', 'home.find.popular'), t('fil', 'home.sheet.sample'), '/fil/services/'],
+  ] as const) {
+    await page.goto(path);
+    const shortcuts = page
+      .locator('p', { has: page.getByText(popularLabel, { exact: true }) })
+      .getByRole('link');
+    const sample = page.getByRole('link', { name: sampleLabel, exact: true });
+    const hrefs = [
+      ...(await shortcuts.evaluateAll((links) => links.map((link) => link.getAttribute('href')))),
+      ...(await sample.evaluateAll((links) => links.map((link) => link.getAttribute('href')))),
+    ];
+    for (const href of hrefs) {
+      expect(href?.startsWith(servicesPrefix) ?? false, `${path} links to ${href}`).toBe(true);
+      const response = await page.request.get(href as string);
+      expect(response.status(), `${path} links to ${href}`).toBe(200);
+    }
+  }
+
   await page.goto('/');
-  // No published guide yet: no "Popular:" shortcuts and no sample-sheet button.
-  await expect(page.getByText('Popular:')).toHaveCount(0);
-  await expect(page.getByRole('link', { name: 'See a sample sheet' })).toHaveCount(0);
   // No search page yet: the card links to the directory instead of a form.
   await expect(page.getByRole('search')).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Browse the services directory' })).toHaveAttribute(
