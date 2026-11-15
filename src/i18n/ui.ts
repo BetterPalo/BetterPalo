@@ -399,6 +399,12 @@ const en = {
   'tourism.cat.festival': 'Festivals',
   'tourism.cat.tour': 'Tours',
   'tourism.cat.adventure': 'Adventures',
+
+  // Unused since the new taxonomy. Kept in place for now so this change and the service
+  // guide page (#65) do not conflict at the end of this list. Remove in a follow-up.
+  'tourism.cat.historical': 'Historical site',
+  'tourism.cat.eco': 'Eco-tourism',
+  'tourism.cat.cultural': 'Cultural',
 } as const;
 
 export type Key = keyof typeof en;
