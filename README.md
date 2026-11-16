@@ -122,6 +122,10 @@ The stack is Astro, TypeScript, Tailwind CSS, and Cloudflare Workers; see
 [`CONTRIBUTING.md`](CONTRIBUTING.md#set-up). The team and their roles are in
 [`docs/team.md`](docs/team.md).
 
+The docs are also published as a searchable site at
+[betterpalo-betterpalo.docs7.io](https://betterpalo-betterpalo.docs7.io), built from
+the `docs/` folder on every push to `main`.
+
 ## Licenses
 
 | Artifact | License |
