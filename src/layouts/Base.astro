@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import interTight from '@fontsource/inter-tight/files/inter-tight-latin-800-normal.woff2?url';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteNotice from '../components/SiteNotice.astro';
@@ -38,6 +39,8 @@ const { title, lang = 'en', description, noindex = false, width = 'prose', og } 
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <!-- Start the display font with the stylesheet, so headings do not reflow when it arrives. -->
+    <link rel="preload" href={interTight} as="font" type="font/woff2" crossorigin />
   </head>
   <body class="flex min-h-svh flex-col">
     <a
