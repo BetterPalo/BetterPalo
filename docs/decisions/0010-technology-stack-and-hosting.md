@@ -1,3 +1,7 @@
+---
+title: "0010: Technology stack and hosting"
+---
+
 # 0010: Technology stack and hosting
 
 - Status: Accepted

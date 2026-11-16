@@ -1,3 +1,7 @@
+---
+title: "0009: Additions from the November 2026 research review"
+---
+
 # 0009: Additions from the November 2026 research review
 
 - Status: Accepted (2026-11-12)

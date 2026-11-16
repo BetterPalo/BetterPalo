@@ -1,3 +1,7 @@
+---
+title: "0012: Production deploys follow CI from GitHub Actions"
+---
+
 # 0012: Production deploys follow CI from GitHub Actions
 
 - Status: Accepted (2026-11-12)

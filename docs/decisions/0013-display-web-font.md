@@ -1,3 +1,7 @@
+---
+title: "0013: One self-hosted display font for headlines"
+---
+
 # 0013: One self-hosted display font for headlines
 
 - Status: Proposed

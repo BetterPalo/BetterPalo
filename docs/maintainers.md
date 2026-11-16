@@ -1,3 +1,7 @@
+---
+title: Maintainers
+---
+
 # Maintainers
 
 How the repository is administered. These are GitHub and Cloudflare settings,

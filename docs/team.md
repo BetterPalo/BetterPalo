@@ -1,3 +1,7 @@
+---
+title: Team
+---
+
 # Team
 
 Who owns what in BetterPalo, and how work moves between people. This fills in

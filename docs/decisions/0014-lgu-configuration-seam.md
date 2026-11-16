@@ -1,3 +1,7 @@
+---
+title: "0014: LGU configuration seam for template reuse"
+---
+
 # 0014: LGU configuration seam for template reuse
 
 - Status: Proposed

@@ -1,3 +1,7 @@
+---
+title: Labels and milestones
+---
+
 # Labels and milestones
 
 Definitions for the labels and milestones used in BetterPalo. Apply them in

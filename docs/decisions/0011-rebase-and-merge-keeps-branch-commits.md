@@ -1,3 +1,7 @@
+---
+title: "0011: Rebase and merge keeps branch commits on main"
+---
+
 # 0011: Rebase and merge keeps branch commits on main
 
 - Status: Rejected (2026-11-10); squash merge stays, as in

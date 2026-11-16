@@ -1,3 +1,7 @@
+---
+title: "Citizen's Charter 2026 service inventory"
+---
+
 # Citizen's Charter 2026 service inventory
 
 Inventory of the services in the Palo Citizen's Charter, prepared as the
