@@ -29,16 +29,16 @@ entries and nothing from them is published until it reaches the register.
 
 | Lead | Location | Level | What to check | Status |
 | --- | --- | --- | --- | --- |
-| Official LGU of Palo website | <http://210.213.142.34/home/?page=home> | 1 (once confirmed) | Whether it hosts the current Citizen's Charter, officials, offices, and hotlines; confirm with the LGU that this address is official | Reported by the team, 2026-11-06 |
-| `palo-leyte.gov.ph` | <https://www.palo-leyte.gov.ph> | 1 (once confirmed) | Listed on Wikipedia as the official site; check whether it is live or replaced by the address above | Did not resolve in an automated check, 2026-11-12; recheck from a normal connection before dropping it |
-| Palo BPLS (iBPLS) | <https://bpbc.ibpls.com/paloleyte/> | 1 (once confirmed) | Which transactions work end to end; see the BPLS caution below | Page identifies as Palo, 2026-11-06 |
-| Sangguniang Bayan of Palo | <https://palosb.com/official_website/> | 1 | Ordinance texts and COA report downloads; hotlines look like placeholders | Unverified |
-| DILG Province of Leyte, Palo profile | <https://sites.google.com/view/dilg-province-of-leyte/lgus/palo> | 3 | No visible update date; confirm officials and contacts with the LGU | Unverified |
+| Official LGU of Palo website | [http://210.213.142.34/home/?page=home](http://210.213.142.34/home/?page=home) | 1 (once confirmed) | Whether it hosts the current Citizen's Charter, officials, offices, and hotlines; confirm with the LGU that this address is official | Reported by the team, 2026-11-06 |
+| `palo-leyte.gov.ph` | [https://www.palo-leyte.gov.ph](https://www.palo-leyte.gov.ph) | 1 (once confirmed) | Listed on Wikipedia as the official site; check whether it is live or replaced by the address above | Did not resolve in an automated check, 2026-11-12; recheck from a normal connection before dropping it |
+| Palo BPLS (iBPLS) | [https://bpbc.ibpls.com/paloleyte/](https://bpbc.ibpls.com/paloleyte/) | 1 (once confirmed) | Which transactions work end to end; see the BPLS caution below | Page identifies as Palo, 2026-11-06 |
+| Sangguniang Bayan of Palo | [https://palosb.com/official_website/](https://palosb.com/official_website/) | 1 | Ordinance texts and COA report downloads; hotlines look like placeholders | Unverified |
+| DILG Province of Leyte, Palo profile | [https://sites.google.com/view/dilg-province-of-leyte/lgus/palo](https://sites.google.com/view/dilg-province-of-leyte/lgus/palo) | 3 | No visible update date; confirm officials and contacts with the LGU | Unverified |
 | PSA 2024 Census of Population | PSA release for Palo (exact table to be recorded) | 2 | Record the table title, release date, and reference date (July 1, 2024) | Headline total (80,291) matches a secondary source |
-| Palo Citizen's Charter (PDF) | <http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf> | 1 | Cover says "2026 (2nd Edition)"; approval date still unconfirmed by the LGU; see [the service inventory](research/citizens-charter-2026-inventory.md) and [Verifying without an LGU reply](#verifying-without-an-lgu-reply) | Downloaded and inventoried, 2026-11-06; accepted as the source for service guides, 2026-11-12 |
+| Palo Citizen's Charter (PDF) | [http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf](http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf) | 1 | Cover says "2026 (2nd Edition)"; approval date still unconfirmed by the LGU; see [the service inventory](research/citizens-charter-2026-inventory.md) and [Verifying without an LGU reply](#verifying-without-an-lgu-reply) | Downloaded and inventoried, 2026-11-06; accepted as the source for service guides, 2026-11-12 |
 | Palo Tourism Portal | Project copy of the portal (no public URL recorded) | 5 | Spot names, descriptions, and offers; confirm each with the tourism office. Place types are the team's classification, not the portal's | Ported 2026-11-14; the portal cited no official sources |
 | Citizen's Charter announcement | LGU Facebook page (via Govserv mirror) | 4 / 5 | The linked download goes to a third-party PDFfiller page; do not use it | Rejected as a source |
-| Scribd upload "PALO-Leyte" | <https://www.scribd.com/document/566303202/PALO-Leyte> | 5 | Unknown content and date; open it to see whether it is an older Charter edition. Research lead only | Found in web search, 2026-11-12; not opened |
+| Scribd upload "PALO-Leyte" | [https://www.scribd.com/document/566303202/PALO-Leyte](https://www.scribd.com/document/566303202/PALO-Leyte) | 5 | Unknown content and date; open it to see whether it is an older Charter edition. Research lead only | Found in web search, 2026-11-12; not opened |
 
 ## Rules
 

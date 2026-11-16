@@ -268,7 +268,7 @@ smoke test as the `deploy` job every hour against
 
 ## Project board
 
-The Kanban is the org project at <https://github.com/orgs/BetterPalo/projects/3>.
+The Kanban is the org project at [https://github.com/orgs/BetterPalo/projects/3](https://github.com/orgs/BetterPalo/projects/3).
 Move cards by hand as work progresses:
 
 | Event | Status |

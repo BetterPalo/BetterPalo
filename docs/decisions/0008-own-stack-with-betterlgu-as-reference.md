@@ -5,7 +5,7 @@
 
 ## Context
 
-BetterLGU (<https://lgu.bettergov.ph/>) is a community directory of LGU portals
+BetterLGU ([https://lgu.bettergov.ph/](https://lgu.bettergov.ph/)) is a community directory of LGU portals
 run by BetterGov.ph. Its contribution guide does not require a particular
 template or stack; templates are optional and listed in its `TEMPLATES.md`.
 Other Region VIII portals are in progress, for example Better Alangalang.

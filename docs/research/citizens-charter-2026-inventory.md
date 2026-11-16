@@ -9,7 +9,7 @@ numbers only. Nothing here is a verified service guide.
 | Field | Value |
 | --- | --- |
 | Title on cover | Local Government Unit of Palo Citizen's Charter 2026 (2nd Edition) |
-| URL | <http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf> |
+| URL | [http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf](http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf) |
 | Retrieved | 2026-11-06 (downloaded by the team) |
 | Pages | 256 (Word-generated PDF with selectable text) |
 | PDF created | 2026-10-21 (file metadata) |
