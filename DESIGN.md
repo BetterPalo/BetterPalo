@@ -409,8 +409,8 @@ The signature object. On screen it is drawn as a sheet of paper, rotated -2.5°
 over a flag-blue backing square rotated 3°, with a sun "Printable" tag. In print
 it is the real thing: ink on white, the four questions (Where to go / What to
 bring / How much / How long) as uppercase flag-blue labels with icons, and the
-Charter page reference and "Page 1 of 1" at the foot. Print always uses the
-light palette.
+Charter page reference at the foot. Print always uses the light palette. A long
+guide may run to a second page; the sheet never promises a page count.
 
 ### Icons
 

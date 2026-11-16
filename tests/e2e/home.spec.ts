@@ -14,7 +14,7 @@ test('home page has one heading and every section', async ({ page }) => {
 
   for (const name of [
     'Find a service',
-    'One errand, one printed page.',
+    'One errand, one clear sheet.',
     'Popular services.',
     `${lgu.name} at a glance.`,
     'Offices and where to go.',

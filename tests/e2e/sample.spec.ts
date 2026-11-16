@@ -211,10 +211,28 @@ test('print shows the sheet and hides the site chrome', async ({ page }) => {
   await expect(page.locator('#guide-print-url')).toBeHidden();
 });
 
-test('the English sample guide prints on one Letter page', async ({ page }) => {
+test('the English sample guide prints at a readable size', async ({ page }) => {
   await page.goto(EN);
-  const pdf = await page.pdf({ format: 'Letter', preferCSSPageSize: true });
-  expect(pdfPageCount(pdf)).toBe(1);
+  await page.emulateMedia({ media: 'print' });
+
+  const bodyPt = await page.evaluate(() => {
+    const size = parseFloat(getComputedStyle(document.body).fontSize);
+    return size * 0.75;
+  });
+  expect(bodyPt, 'printed body text is smaller than 10pt').toBeGreaterThanOrEqual(10);
+
+  const label = await page.evaluate(() => {
+    const heading = document.querySelector('#guide-where h3');
+    if (!heading) throw new Error('the where-to-go label is missing');
+    const style = getComputedStyle(heading);
+    return { transform: style.textTransform, color: style.color };
+  });
+  expect(label.transform).toBe('uppercase');
+
+  const pages = pdfPageCount(await page.pdf({ format: 'Letter', preferCSSPageSize: true }));
+  test.info().annotations.push({ type: 'pages', description: String(pages) });
+  // A real guide may need a second page; it never claims to be one page.
+  expect(pages).toBeLessThanOrEqual(2);
 });
 
 // The fixture is built here, not in a YAML file, so nothing new can be published.
