@@ -1,4 +1,6 @@
-# 0002: License split for code, content, and data
+---
+title: "0002: License split for code, content, and data"
+---
 
 - Status: Accepted
 - Date: 2026-11-03

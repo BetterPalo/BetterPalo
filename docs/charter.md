@@ -1,4 +1,6 @@
-# BetterPalo Charter
+---
+title: BetterPalo Charter
+---
 
 Adopted: 2026-11-03
 

@@ -1,4 +1,6 @@
-# Adapt BetterPalo for your LGU
+---
+title: Adapt BetterPalo for your LGU
+---
 
 How to turn a copy of this repository into the portal for another municipality
 or city. Work through the steps in order. This is a checklist for the template
@@ -65,7 +67,7 @@ licence line stay as they are until you handle them in Steps 2 and 3.
 
 To answer from a file instead of the questions, pass `--answers <file.json>`.
 The file has the same values as the config, plus `toolName`.
-[`tests/fixtures/init-answers-city.json`](../tests/fixtures/init-answers-city.json)
+[`tests/fixtures/init-answers-city.json`](https://github.com/betterpalo/betterpalo/blob/main/tests/fixtures/init-answers-city.json)
 is an example.
 
 The script refuses to run with `--answers` alone. Without a target, a run would
@@ -129,7 +131,7 @@ A new repository starts without these. The commands and the reasoning are in
 - Create the labels in [`labels.md`](labels.md) and the milestones you need.
   Renovate also needs the labels `major` and `security`.
 - Install the Renovate GitHub App on the repository if you want
-  [`renovate.json`](../renovate.json) to open dependency pull requests.
+  [`renovate.json`](https://github.com/betterpalo/betterpalo/blob/main/renovate.json) to open dependency pull requests.
 
 ## Automatic deploys from GitHub
 

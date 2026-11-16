@@ -1,4 +1,6 @@
-# Architecture
+---
+title: Architecture
+---
 
 How the site is put together, and the rules that keep it ready for a backend
 later without building one now. The stack itself is decided in

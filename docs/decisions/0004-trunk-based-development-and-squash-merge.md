@@ -1,4 +1,6 @@
-# 0004: Trunk-based development and squash merge
+---
+title: "0004: Trunk-based development and squash merge"
+---
 
 - Status: Accepted (squash merge kept; [ADR 0011](0011-rebase-and-merge-keeps-branch-commits.md) was rejected)
 - Date: 2026-11-03

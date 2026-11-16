@@ -1,4 +1,6 @@
-# Data sources
+---
+title: Data sources
+---
 
 How BetterPalo records where its data came from and what terms apply.
 
