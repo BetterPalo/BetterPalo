@@ -25,10 +25,10 @@ const questions = [
 ] as const;
 ---
 
-<section class="overflow-hidden bg-canvas-alt py-section" aria-labelledby="sheet-title">
+<section class="inv-flag overflow-hidden py-section" aria-labelledby="sheet-title">
   <div class="wrap grid items-center gap-x-[4.5rem] gap-y-12 min-[58rem]:grid-cols-[0.8fr_1.2fr]">
     <div class="relative isolate mx-auto w-full max-w-88" aria-hidden="true">
-      <span class="absolute inset-0 -z-10 translate-x-4 translate-y-[1.2rem] rotate-3 bg-flag"></span>
+      <span class="absolute inset-0 -z-10 translate-x-4 translate-y-[1.2rem] rotate-3 bg-flag-deep"></span>
       <div class="relative -rotate-[2.5deg] border border-line bg-paper px-5 pt-5 pb-4 text-ink shadow-[0_30px_60px_-30px_rgb(0_0_0/0.5)] motion-reduce:rotate-0">
         <span class="absolute -top-3.5 -right-2.5 rotate-4 bg-sun px-2 py-0.5 text-[0.8125rem] font-bold tracking-[0.08em] text-flag-deep">
           {t(lang, 'home.sheet.printable')}
@@ -80,7 +80,7 @@ const questions = [
       />
       <div class="flex flex-wrap gap-3">
         {sampleHref && (
-          <Button href={sampleHref} variant="flag" icon="print" class="max-[30rem]:w-full">
+          <Button href={sampleHref} variant="sun" icon="print" class="max-[30rem]:w-full">
             {t(lang, 'home.sheet.sample')}
           </Button>
         )}
