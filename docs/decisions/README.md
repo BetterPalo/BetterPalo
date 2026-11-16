@@ -58,7 +58,7 @@ What else was considered, and why was it rejected?
 - [0005: Positioning and phased roadmap](0005-positioning-and-phased-roadmap.md) — Accepted.
 - [0006: Content format for service guides](0006-content-format-for-service-guides.md) — Accepted.
 - [0007: Service guide content model](0007-service-guide-content-model.md) —
-  Accepted.
+  Accepted; revised 2026-11-14 (adds `source_pages`), approved 2026-11-15.
 - [0008: Own stack and template, with BetterLGU as reference](0008-own-stack-with-betterlgu-as-reference.md)
   — Accepted.
 - [0009: Additions from the November 2026 research review](0009-additions-from-november-2026-review.md)

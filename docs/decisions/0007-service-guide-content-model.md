@@ -4,9 +4,8 @@ title: "0007: Service guide content model"
 
 - Status: Accepted (2026-11-12)
 - Date: 2026-11-06
-- Revised: 2026-11-14. Adds the optional `source_pages` field (#33). This is a
-  data-model change, so the revision is proposed until the lead and
-  @STR4T-coder both approve it.
+- Revised: 2026-11-14. Adds the optional `source_pages` field (#33). Approved
+  by the lead and @STR4T-coder on 2026-11-15 in #65.
 
 ## Context
 
