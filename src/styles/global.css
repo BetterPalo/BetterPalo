@@ -110,6 +110,29 @@
   color: var(--fg);
 }
 
+/* Blue band: a flag-blue section. Use `inv-flag` instead of `inv`; the sun accent and
+   white text keep the contrast the ink band has. */
+.inv-flag {
+  color-scheme: dark;
+  --canvas: var(--color-flag);
+  --canvas-alt: var(--color-flag);
+  --surface: var(--color-flag-dark);
+  --fg: var(--color-paper);
+  --fg-soft: var(--color-sky-ink);
+  --edge: rgb(255 255 255 / 0.3);
+  --accent: var(--color-sun);
+  --on-accent: var(--color-flag-deep);
+  --icon-bg: rgb(255 255 255 / 0.12);
+  --icon: var(--color-sun);
+  --chip-bg: rgb(255 255 255 / 0.12);
+  --chip-fg: var(--color-paper);
+  --placeholder: var(--color-sky-ink);
+  --frame: var(--color-sun);
+  --lift: 0 18px 40px -20px rgb(0 0 0 / 0.5);
+  background-color: var(--canvas);
+  color: var(--fg);
+}
+
 /* Page column: centred, capped at the wrap width, with the fluid gutter. */
 @utility wrap {
   margin-inline: auto;
@@ -185,7 +208,8 @@
 /* Printed service sheets are always black on white, whatever the device theme. */
 @media print {
   :root,
-  .inv {
+  .inv,
+  .inv-flag {
     color-scheme: light;
     --canvas: var(--color-paper);
     --canvas-alt: var(--color-paper);
