@@ -74,7 +74,7 @@ of the code is template code that works for any LGU.
   the sample is dropped and the empty states stay. The data rules are in
   [ADR 0006](0006-content-format-for-service-guides.md) and
   [ADR 0007](0007-service-guide-content-model.md); the sample itself is described
-  in [`examples/README.md`](../../examples/README.md).
+  in [`examples/README.md`](https://github.com/betterpalo/betterpalo/blob/main/examples/README.md).
 - Palo's repository needs the repository variable `PRODUCTION_URL`. It is now set
   to Palo's address. The workflows have no fallback, so any copy must set the
   variable before deploys or monitoring can work. Without it, the deploy stops

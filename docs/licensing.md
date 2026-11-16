@@ -4,9 +4,9 @@
 
 | Path or artifact | License | Notes |
 | --- | --- | --- |
-| Source code, scripts, build configuration, GitHub workflows | MIT | See [`LICENSE`](../LICENSE). |
-| Site prose, documentation, translations, original images and diagrams | CC BY-SA 4.0 | See [`LICENSES/CC-BY-SA-4.0.txt`](../LICENSES/CC-BY-SA-4.0.txt). |
-| Structured data: officials, barangays, departments, services, contacts | CC0 1.0 | See [`LICENSES/CC0-1.0.txt`](../LICENSES/CC0-1.0.txt). |
+| Source code, scripts, build configuration, GitHub workflows | MIT | See [`LICENSE`](https://github.com/betterpalo/betterpalo/blob/main/LICENSE). |
+| Site prose, documentation, translations, original images and diagrams | CC BY-SA 4.0 | See [`LICENSES/CC-BY-SA-4.0.txt`](https://github.com/betterpalo/betterpalo/blob/main/LICENSES/CC-BY-SA-4.0.txt). |
+| Structured data: officials, barangays, departments, services, contacts | CC0 1.0 | See [`LICENSES/CC0-1.0.txt`](https://github.com/betterpalo/betterpalo/blob/main/LICENSES/CC0-1.0.txt). |
 | Third-party photos, logos, screenshots, quoted text, and external datasets | Not covered | Record source, owner, terms, and permission in [`data-sources.md`](data-sources.md). |
 
 ## Mixed files

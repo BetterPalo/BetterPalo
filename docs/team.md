@@ -16,7 +16,7 @@ allowed to touch it". Anyone can contribute anywhere.
 | Infrastructure, second reviewer, and second checker | Infrastructure | `@STR4T-coder` | Co-owns infrastructure and CI; second approval on charter, licence, governance, and data-policy changes; second check of every transcribed guide |
 | Translation and QA | Not yet assigned | TBD | Filipino (and Waray pilot) translation, phone and browser testing. Until assigned, the lead asks the frontend developer or designer for translation review |
 
-Replace `TBD` in the table and in [`.github/CODEOWNERS`](../.github/CODEOWNERS)
+Replace `TBD` in the table and in [`.github/CODEOWNERS`](https://github.com/betterpalo/betterpalo/blob/main/.github/CODEOWNERS)
 when the translation and QA owner is named.
 
 ## Merging
@@ -79,8 +79,8 @@ only builds pull request previews. Secrets never go into the repository; see
 
 ## Joining the team
 
-1. Read the [charter](charter.md), [CONTRIBUTING.md](../CONTRIBUTING.md), and
+1. Read the [charter](charter.md), [CONTRIBUTING.md](https://github.com/betterpalo/betterpalo/blob/main/CONTRIBUTING.md), and
    [architecture.md](architecture.md).
 2. Accept the GitHub organisation invitation.
-3. Follow the set-up steps in [CONTRIBUTING.md](../CONTRIBUTING.md#set-up).
+3. Follow the set-up steps in [CONTRIBUTING.md](https://github.com/betterpalo/betterpalo/blob/main/CONTRIBUTING.md#set-up).
 4. Pick up an issue assigned to you, or one labelled `good first issue`.

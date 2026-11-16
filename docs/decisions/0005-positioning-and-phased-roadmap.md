@@ -1,4 +1,6 @@
-# 0005: Positioning and phased roadmap
+---
+title: "0005: Positioning and phased roadmap"
+---
 
 - Status: Accepted
 - Date: 2026-11-03

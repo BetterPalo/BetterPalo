@@ -1,4 +1,6 @@
-# 0001: Record architecture decisions
+---
+title: "0001: Record architecture decisions"
+---
 
 - Status: Accepted
 - Date: 2026-11-03

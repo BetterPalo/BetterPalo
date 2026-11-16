@@ -1,4 +1,6 @@
-# 0008: Own stack and template, with BetterLGU as reference
+---
+title: "0008: Own stack and template, with BetterLGU as reference"
+---
 
 - Status: Accepted (2026-11-12)
 - Date: 2026-11-06

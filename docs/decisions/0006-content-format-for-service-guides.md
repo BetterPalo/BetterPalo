@@ -1,4 +1,6 @@
-# 0006: Content format for service guides
+---
+title: "0006: Content format for service guides"
+---
 
 - Status: Accepted
 - Date: 2026-11-03

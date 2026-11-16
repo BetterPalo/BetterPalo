@@ -1,4 +1,6 @@
-# 0007: Service guide content model
+---
+title: "0007: Service guide content model"
+---
 
 - Status: Accepted (2026-11-12)
 - Date: 2026-11-06
