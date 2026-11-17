@@ -45,7 +45,10 @@ entries and nothing from them is published until it reaches the register.
 ## Rules
 
 - Record a source URL and a retrieval date for every dataset.
-- Record who verified it and when.
+- Record who verified it and when. A service guide needs a second checker who
+  did not transcribe it. Other data (tourism spots, statistics, officials,
+  hotlines) can be verified by one team member, with a second check
+  encouraged.
 - Prefer primary sources. If only a secondary source exists, say why.
 - Extract only the fields the site needs. Do not copy whole pages.
 - Review each dataset quarterly or when the source changes.
@@ -66,8 +69,9 @@ The spots in `src/content/tourism/` come from the Palo Tourism Portal, which
 cites no official source. They are level 5 leads and are the one deliberate
 exception to the verified-only gate: the page shows them with an **Unverified**
 badge and a note to confirm details with the tourism office, instead of hiding
-community leads. A spot loses the badge only when `source`, `retrieved`,
-`verified_by`, and `last_verified` are filled and `status` is `verified`.
+community leads. A spot loses the badge when `source`, `retrieved`,
+`verified_by`, and `last_verified` are filled and `status` is `verified`. One
+team member can do this; a second check is encouraged.
 
 Photos follow [`licensing.md`](licensing.md). A third-party photo with unknown
 terms is not used; [issue #64](https://github.com/BetterPalo/BetterPalo/issues/64)
@@ -87,15 +91,20 @@ letter, so M1 does not wait for a reply.
   confirmed by the LGU.
 - The unofficial-site banner and the "report a wrong detail" link stay on every
   page.
-- These still need confirmation and stay unpublished until they get it:
-  - Palo office phone numbers and local or emergency hotlines, until a test call
-    confirms them. Contacts of national government agencies that the Charter
-    itself prints (for example ARTA, PCC, and CCB on its Feedback and Complaint
-    Mechanism page) may be published as printed, with the page cited. Decided
-    2026-11-14 for the cedula guide (#26) by the lead and the second checker;
-  - claims that a transaction can be completed online through the BPLS, until
-    the permits office or an end-to-end test confirms it;
-  - anything the Charter does not state, which stays `null`.
+- Phone numbers and hotlines follow the source level:
+  - From a level 1 to 3 source (the Charter, an official LGU or national
+    agency page, or an official directory), a team member may publish the
+    number without a test call. Show the source and an "as of" date.
+  - From level 4 or lower (a Facebook post, a mirror, a third-party site, word
+    of mouth), the number stays unpublished until a test call or the LGU
+    confirms it.
+  - Contacts of national agencies that the Charter itself prints (for example
+    ARTA, PCC, and CCB on its Feedback and Complaint Mechanism page) may be
+    published as printed, with the page cited. Decided 2026-11-14 for the cedula
+    guide (#26) by the lead and the second checker.
+- Claims that a transaction can be completed online through the BPLS stay
+  unpublished until the permits office or an end-to-end test confirms it.
+- Anything the Charter does not state stays `null`.
 - If the LGU replies, record the confirmed approval date and official website
   address here and in the source leads, and recheck published guides against
   any newer Charter edition.
@@ -124,8 +133,9 @@ letter, so M1 does not wait for a reply.
   census. Always label a figure with its census year and reference date, and
   cite the 2024 table for 2024 figures.
 - **Emergency hotlines.** Numbers on third-party sites may be placeholders. For
-  a hotline, a wrong number is a safety problem. Publish only numbers confirmed
-  by calling the office.
+  a hotline, a wrong number is a safety problem. A number from a level 1 to 3
+  source can be published with its source and date; from level 4 or lower,
+  confirm it by calling the office first.
 - **Mirrors and third-party sites** (for example, the Govserv Facebook mirror)
   are leads, not sources. Re-verify names, population figures, and contacts
   against the primary document or the office.

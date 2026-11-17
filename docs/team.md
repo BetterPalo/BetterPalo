@@ -37,7 +37,8 @@ when the translation and QA owner is named.
 
 | Change | First reviewer | Also needed |
 | --- | --- | --- |
-| Service guide or other data | Second checker (`@STR4T-coder`) | Lead merges |
+| Service guide | Second checker (`@STR4T-coder`) | Lead merges |
+| Other data (tourism, statistics, officials, hotlines) | Any one team member | Second check encouraged; lead merges |
 | Pages, components, schemas | Frontend (`@khalmahi`) | Designer for visual changes |
 | Styles and tokens | Designer (`@jaimedesu`) | Frontend |
 | Wrangler, workflows, `_headers` | Infrastructure (`@Rurur8`) | Second reviewer; lead merges |
@@ -52,6 +53,11 @@ source page by page against the YAML and records themselves in
 `verified_by`. The second reviewer, `@STR4T-coder`, is the default second
 checker for the lead's transcriptions. When they are unavailable, the designer
 (`@jaimedesu`) checks instead, so the lead never checks their own work.
+
+Other data (tourism spots, statistics, officials, hotlines) can be verified by
+any one team member listed on this page, who records themselves in
+`verified_by`. A second check is encouraged
+([ADR 0017](decisions/0017-verification-by-data-risk.md)).
 
 ## Design files
 
