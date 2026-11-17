@@ -69,9 +69,9 @@ const en = {
   'home.find.noSearch': 'Search is not ready yet. Browse every service in the directory.',
   'home.find.browse': 'Browse the services directory',
   'home.sheet.a': 'One errand,',
-  'home.sheet.b': 'one printed page.',
+  'home.sheet.b': 'one clear sheet.',
   'home.sheet.body':
-    'Every guide prints as a single sheet: where to go, what to bring, how much, and how long, with its Charter page at the bottom. Bring it with you, or print it for someone who is not online.',
+    'Every guide prints on its own sheet: where to go, what to bring, how much, and how long, with its Charter page at the bottom. Some guides run to two pages. Bring it with you, or print it for someone who is not online.',
   'home.sheet.sample': 'See a sample sheet',
   'home.sheet.pick': 'Pick a service',
   'home.sheet.printable': 'Printable',
@@ -79,7 +79,6 @@ const en = {
   'home.sheet.example': 'Get a cedula',
   'home.sheet.where.val': '{lguAdj} Treasurer',
   'home.sheet.foot': "Citizen's Charter pp. 225–227",
-  'home.sheet.page': 'Page 1 of 1',
   'home.q.where': 'Where to go',
   'home.q.bring': 'What to bring',
   'home.q.cost': 'How much',
@@ -412,9 +411,9 @@ const en = {
   'guide.pending.label': 'translation-pending',
   'guide.pending.body': 'The guide below is in English until its Filipino translation is reviewed.',
   'guide.sheet.a': 'Four answers,',
-  'guide.sheet.b': 'one sheet.',
+  'guide.sheet.b': 'ready to print.',
   'guide.sheet.sub':
-    'Where to go, what to bring, how much, and how long. This part prints on one page.',
+    'Where to go, what to bring, how much, and how long. This part is laid out for print.',
   'guide.where.office': 'Office',
   'guide.where.walkIn': 'Walk-in location',
   'guide.req.copies': 'Copies',
@@ -467,6 +466,7 @@ const en = {
   'guide.source.verifiedBy': 'Verified by',
   'guide.source.effective': 'Effective',
   'guide.print.online': 'Latest version online:',
+  'guide.print.omitted': 'Rows not shown here are not stated in the official source.',
   'guide.report.lead': 'Something wrong or out of date?',
 } as const;
 
@@ -533,9 +533,9 @@ const fil: Partial<Record<Key, string>> = {
     'Hindi pa handa ang paghahanap. Tingnan ang lahat ng serbisyo sa direktoryo.',
   'home.find.browse': 'Tingnan ang direktoryo ng mga serbisyo',
   'home.sheet.a': 'Isang lakad,',
-  'home.sheet.b': 'isang pahinang naka-print.',
+  'home.sheet.b': 'isang malinaw na pahina.',
   'home.sheet.body':
-    'Ang bawat gabay ay lumalabas bilang isang sheet: saan pupunta, ano ang dadalhin, magkano, at gaano katagal, kasama ang pahina nito sa Charter sa ibaba. Dalhin ito, o i-print para sa taong walang internet.',
+    'Ang bawat gabay ay may sariling sheet: saan pupunta, ano ang dadalhin, magkano, at gaano katagal, kasama ang pahina nito sa Charter sa ibaba. May mga gabay na umabot sa dalawang pahina. Dalhin ito, o i-print para sa taong walang internet.',
   'home.sheet.sample': 'Tingnan ang sample na sheet',
   'home.sheet.pick': 'Pumili ng serbisyo',
   'home.sheet.printable': 'Maipi-print',
@@ -543,7 +543,6 @@ const fil: Partial<Record<Key, string>> = {
   'home.sheet.example': 'Kumuha ng cedula',
   'home.sheet.where.val': '{lguAdj} Treasurer',
   'home.sheet.foot': "Citizen's Charter p. 225–227",
-  'home.sheet.page': 'Pahina 1 ng 1',
   'home.q.where': 'Saan pupunta',
   'home.q.bring': 'Ano ang dadalhin',
   'home.q.cost': 'Magkano',
@@ -737,9 +736,9 @@ const fil: Partial<Record<Key, string>> = {
   'guide.pending.body':
     'Nasa Ingles ang gabay sa ibaba hanggang masuri ang salin nito sa Filipino.',
   'guide.sheet.a': 'Apat na sagot,',
-  'guide.sheet.b': 'isang pahina.',
+  'guide.sheet.b': 'handa nang i-print.',
   'guide.sheet.sub':
-    'Saan pupunta, ano ang dadalhin, magkano, at gaano katagal. Ang bahaging ito ang nai-print sa isang pahina.',
+    'Saan pupunta, ano ang dadalhin, magkano, at gaano katagal. Inihanda ang bahaging ito para sa pag-print.',
   'guide.where.office': 'Opisina',
   'guide.where.walkIn': 'Lokasyon para sa personal na pagpunta',
   'guide.req.copies': 'Bilang ng kopya',
@@ -792,6 +791,7 @@ const fil: Partial<Record<Key, string>> = {
   'guide.source.verifiedBy': 'Sinuri ni',
   'guide.source.effective': 'Epektibo mula',
   'guide.print.online': 'Pinakabagong bersyon online:',
+  'guide.print.omitted': 'Ang mga detalyeng wala rito ay hindi nakasaad sa opisyal na sanggunian.',
   'guide.report.lead': 'May mali o luma na ba rito?',
 
   // Remaining Filipino for the secondary pages (draft; translation owner reviews).
