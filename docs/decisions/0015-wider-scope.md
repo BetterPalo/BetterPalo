@@ -1,11 +1,14 @@
-# 0015: Wider scope for v1
+---
+title: "0015: Wider scope for v1"
+---
 
 - Status: Proposed
 - Date: 2026-11-17
 - Approval: only @Zyxavy and @STR4T-coder are actively working on the
   project, so both approve. @STR4T-coder approves on GitHub; @Zyxavy records
   their approval as the author in the PR thread, because GitHub does not let
-  the author approve their own PR.
+  the author approve their own PR. This is a scope change, so it needs two
+  approvals under the charter's current rule.
 - Amends: the roadmap in [ADR 0005](0005-positioning-and-phased-roadmap.md) and
   the v1 scope in the [charter](../charter.md).
 
@@ -37,8 +40,10 @@ ADR 0005 becomes:
 | Later | Citizen feedback or report intake (needs a backend, moderation, and Data Privacy Act handling) |
 
 Budget stays a links page, not our own dashboards. A news section is not
-planned. The hotlines page publishes only numbers that pass the verification
-rules in `data-sources.md`; those rules are not changed by this ADR.
+planned. This ADR does not change how hotlines are verified. Today
+`data-sources.md` requires a test call for local and emergency hotlines, with
+one exception: national-agency contacts that the Charter itself prints. ADR
+0017 (#75) proposes to relax that for official sources.
 
 ## Consequences
 
@@ -46,8 +51,10 @@ rules in `data-sources.md`; those rules are not changed by this ADR.
   BetterLGU portals, next to the guides.
 - More pages to keep accurate. Each new page follows the same verified-only
   gate.
-- The hotlines page cannot ship until at least one hotline passes the existing
-  verification rules (a source at level 1 to 3, or a test call).
+- The hotlines page cannot ship until at least one hotline passes the
+  verification rules in force when it is published: today a test call (or a
+  Charter-printed national-agency contact), and after ADR 0017 a level 1 to 3
+  source.
 
 ## Alternatives
 

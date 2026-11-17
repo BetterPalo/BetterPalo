@@ -21,7 +21,8 @@ long."
 - Offices and officials: elected officials, departments, what each does, where
   it is, and verified public contacts.
 - Hotlines: emergency and office numbers, each with its source and an "as of"
-  date.
+  date, published only when they pass the verification rules in
+  [data-sources.md](data-sources.md).
 - About Palo and barangays: municipal profile, the 33-barangay list, and PSA
   2024 census figures labeled by census year, with a statistics page.
 - Official resources: links to the LGU site, the Citizen's Charter, the SB
@@ -85,9 +86,9 @@ Named leads and `CODEOWNERS` are added when handles exist.
 
 ## Decision rules
 
-- Every pull request needs one maintainer approval, including license, charter,
-  governance, and data-policy changes. A second approval is welcome on those
-  and is not required ([ADR 0016](decisions/0016-one-approval-for-every-change.md)).
+- Routine pull requests need one maintainer approval.
+- License, charter, governance, or data-policy changes need two approvals, or
+  unanimous approval of active maintainers if fewer than two are active.
 - Disputes get a written summary and a seven-day comment period, then a
   maintainer vote. Ties keep the status quo.
 

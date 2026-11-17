@@ -178,9 +178,9 @@ Optional scopes: `services`, `government`, `legislation`, `transparency`,
 
 ## Review and decisions
 
-Every pull request needs one maintainer approval, including license, charter,
-governance, and data-policy changes; a second approval is welcome on those but
-not required. Disputes get a written summary
+Routine pull requests need one maintainer approval. License, charter,
+governance, or data-policy changes need two approvals, or unanimous approval of
+active maintainers if fewer than two are active. Disputes get a written summary
 and a seven-day comment period, then a maintainer vote. Ties keep the status quo.
 See [docs/charter.md](docs/charter.md).
 
