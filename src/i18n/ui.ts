@@ -399,12 +399,6 @@ const en = {
   'tourism.cat.tour': 'Tours',
   'tourism.cat.adventure': 'Adventures',
 
-  // Unused since the new taxonomy. Kept in place for now so this change and the service
-  // guide page (#65) do not conflict at the end of this list. Remove in a follow-up.
-  'tourism.cat.historical': 'Historical site',
-  'tourism.cat.eco': 'Eco-tourism',
-  'tourism.cat.cultural': 'Cultural',
-
   // Service guide page (/services/<id>/)
   'guide.eyebrow': 'Service guide',
   'guide.lastVerified': 'Last verified',
