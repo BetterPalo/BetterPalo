@@ -2,10 +2,12 @@
 
 - Status: Proposed
 - Date: 2026-11-17
-- Approval: needs two approvals under the current rule. The author is
-  @Zyxavy and cannot approve their own PR, so the approvals must come from
-  @STR4T-coder and one of @Rurur8, @khalmahi, or @jaimedesu. This is the last
-  change that needs two approvals, because it removes that rule.
+- Approval: only @Zyxavy and @STR4T-coder are actively working on the
+  project, so both are the approvers. Under the charter's rule for fewer than
+  two active maintainers, this needs both of their approvals. GitHub does not
+  let the author approve their own PR, so @STR4T-coder approves on GitHub and
+  @Zyxavy records their approval as the author in the PR thread. This is the
+  last change that needs two approvals, because it removes that rule.
 - Amends: [ADR 0005](0005-positioning-and-phased-roadmap.md) (roadmap and the
   two-approval rule), the [charter](../charter.md) decision rules, and the
   verification rules in [data-sources.md](../data-sources.md).
