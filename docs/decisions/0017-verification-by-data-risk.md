@@ -2,8 +2,6 @@
 title: "0017: Verification by data risk"
 ---
 
-# 0017: Verification by data risk
-
 - Status: Proposed
 - Date: 2026-11-17
 - Approval: only @Zyxavy and @STR4T-coder are actively working on the
