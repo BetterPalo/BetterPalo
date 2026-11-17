@@ -20,8 +20,11 @@ long."
   bring, cost, and processing time.
 - Offices and officials: elected officials, departments, what each does, where
   it is, and verified public contacts.
+- Hotlines: emergency and office numbers, each with its source and an "as of"
+  date, published only when they pass the verification rules in
+  [data-sources.md](data-sources.md).
 - About Palo and barangays: municipal profile, the 33-barangay list, and PSA
-  2024 census figures labeled by census year.
+  2024 census figures labeled by census year, with a statistics page.
 - Official resources: links to the LGU site, the Citizen's Charter, the SB
   site, BPLS (once confirmed), PSA, and COMPASS.
 - Site basics: search (Pagefind), About, Accessibility, Contribute, Sitemap, an

@@ -71,6 +71,7 @@ What else was considered, and why was it rejected?
   — Proposed.
 - [0014: LGU configuration seam for template reuse](0014-lgu-configuration-seam.md) — Proposed.
 - [0017: Verification by data risk](0017-verification-by-data-risk.md) — Proposed.
+- [0015: Wider scope for v1](0015-wider-scope.md) — Proposed.
 
 Number 0003 was reserved for the technology stack decision, which was later
 recorded as [ADR 0010](0010-technology-stack-and-hosting.md). No 0003 file was
