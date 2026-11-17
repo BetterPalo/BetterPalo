@@ -37,7 +37,8 @@ when the translation and QA owner is named.
 
 | Change | First reviewer | Also needed |
 | --- | --- | --- |
-| Service guide or other data | Second checker (`@STR4T-coder`) | Lead merges |
+| Service guide | Second checker (`@STR4T-coder`) | Lead merges |
+| Other data (tourism, statistics, officials, hotlines) | Any one team member | Second check encouraged; lead merges |
 | Pages, components, schemas | Frontend (`@khalmahi`) | Designer for visual changes |
 | Styles and tokens | Designer (`@jaimedesu`) | Frontend |
 | Wrangler, workflows, `_headers` | Infrastructure (`@Rurur8`) | Second reviewer; lead merges |

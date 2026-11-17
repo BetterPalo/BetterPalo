@@ -1,3 +1,7 @@
+---
+title: "0017: Verification by data risk"
+---
+
 # 0017: Verification by data risk
 
 - Status: Proposed
@@ -8,7 +12,15 @@
   the author approve their own PR.
 - Depends on: issue #26 closing first (the cedula guide's second check).
 - Amends: the verification rules in [data-sources.md](../data-sources.md),
-  [team.md](../team.md), and [CONTRIBUTING.md](../../CONTRIBUTING.md).
+  [team.md](../team.md), and [CONTRIBUTING.md](https://github.com/betterpalo/betterpalo/blob/main/CONTRIBUTING.md).
+
+## Supersedes
+
+The standing rule that every data change gets a second check by
+`@STR4T-coder` before the lead merges (`team.md`, review routing and second
+checker rule). It now applies only to service guides. Other data needs one
+verifier. The rule is replaced in those files in this PR, so only one version
+remains.
 
 ## Context
 
@@ -51,8 +63,10 @@ Match the checking to the risk.
   (unofficial sources) still wait for a call.
 - This ADR should merge after #26 closes, so the rule is not used to skip the
   open second check on the cedula guide.
-- ADRs 0006 and 0007 already describe a mandatory second checker for guides,
-  so they stay correct.
+- The general second-checker rule lives in `team.md` and `data-sources.md`,
+  the files this ADR amends. ADR 0006 does not mention a second checker, and
+  ADR 0007 mentions one only for the `source_pages` check, so neither needs to
+  change.
 
 ## Alternatives
 
