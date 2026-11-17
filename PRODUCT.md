@@ -39,8 +39,9 @@ Nothing is published without passing the verified-only gate.
 
 ## Operating Context
 
-- v1 scope: about 10 to 12 service guides, offices and officials, About Palo
-  with the 33-barangay list and PSA 2024 census figures, official resource
+- v1 scope: about 10 to 12 service guides, offices and officials, hotlines,
+  About Palo with the 33-barangay list and PSA 2024 census figures and a
+  statistics page, official resource
   links, search, English and Filipino, printable one-page service sheets.
 - An "unofficial" banner and a "report a wrong detail" link appear on every
   page.
@@ -53,8 +54,10 @@ Nothing is published without passing the verified-only gate.
   as an official channel.
 - Out of scope for v1: legislation, budget/COA/procurement views, project
   tracking, maps, citizen reports, Waray, a CMS.
-- Unconfirmed items (hotlines, office phone numbers, BPLS online claims) stay
-  unpublished until confirmed.
+- Hotlines, office phone numbers, and BPLS online claims are published once a
+  team member has verified them from a cited source ("factual, with a
+  reasonable claim"), each with its source and date. Anything not stated stays
+  `null`.
 - No placeholders (`TBD`, `TODO`); a missing page is better than a wrong one.
 - Untranslated pages are marked `translation-pending`.
 

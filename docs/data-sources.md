@@ -13,10 +13,13 @@ How BetterPalo records where its data came from and what terms apply.
 | 3 | Official government directory (for example, a DILG provincial profile) | Reference for officials and public contacts; check freshness before use |
 | 4 | Official LGU social media | Discovery of announcements and updates; link the supporting document where one exists |
 | 5 | Third-party aggregator or mirror | Research lead only; verify against levels 1 to 3 |
-| 6 | Community contribution | Unverified until a maintainer checks it against levels 1 to 3 |
+| 6 | Community contribution | Unverified until a team member checks it and judges it factual |
 
-Levels 4 to 6 are never enough on their own to publish a fee, requirement,
-processing time, or contact number.
+A level 1 to 3 source is preferred. A lower-level source may support a fee,
+requirement, processing time, or contact number when the verifier judges it
+factual, with a reasonable claim, and records the source and date
+([ADR 0015](decisions/0015-wider-scope-one-approval-and-team-verification.md)).
+Say in `notes` when the source is level 4 or lower.
 
 ## Register
 
@@ -57,7 +60,9 @@ entries and nothing from them is published until it reaches the register.
   Citizen's Charter edition).
 - Verified-only publishing gate for service guides: a guide is published only
   when it has a source, an edition or effective date, and a last-verified date.
-  Unverified guides are not published.
+  Unverified guides are not published. Any team member can verify a guide
+  (their handle goes in `verified_by`); a second check is encouraged, not
+  required.
 - A missing page is better than a wrong one.
 
 ## Tourism spots
@@ -66,8 +71,9 @@ The spots in `src/content/tourism/` come from the Palo Tourism Portal, which
 cites no official source. They are level 5 leads and are the one deliberate
 exception to the verified-only gate: the page shows them with an **Unverified**
 badge and a note to confirm details with the tourism office, instead of hiding
-community leads. A spot loses the badge only when `source`, `retrieved`,
-`verified_by`, and `last_verified` are filled and `status` is `verified`.
+community leads. A spot loses the badge when `source`, `retrieved`,
+`verified_by`, and `last_verified` are filled and `status` is `verified`; any
+team member can do this.
 
 Photos follow [`licensing.md`](licensing.md). A third-party photo with unknown
 terms is not used; [issue #64](https://github.com/BetterPalo/BetterPalo/issues/64)
@@ -78,24 +84,23 @@ tracks cleared photos.
 Decided 2026-11-12 in issue #24. The LGU of Palo has not answered the team's
 letter, so M1 does not wait for a reply.
 
-- A service guide may be marked `verified` when a second checker, who did not
-  transcribe it, has compared it page by page against the Citizen's Charter PDF
-  published on the LGU's own server (the 2026, 2nd Edition entry in the source
-  leads). `verified` means "matches the published official source", not
-  "confirmed by the LGU".
+- A service guide may be marked `verified` when a team member has compared it
+  page by page against the Citizen's Charter PDF published on the LGU's own
+  server (the 2026, 2nd Edition entry in the source leads). A second check is
+  encouraged, not required. `verified` means "matches the published official
+  source", not "confirmed by the LGU".
 - Each guide's `notes` says that the Charter's approval date has not been
   confirmed by the LGU.
 - The unofficial-site banner and the "report a wrong detail" link stay on every
   page.
-- These still need confirmation and stay unpublished until they get it:
-  - Palo office phone numbers and local or emergency hotlines, until a test call
-    confirms them. Contacts of national government agencies that the Charter
-    itself prints (for example ARTA, PCC, and CCB on its Feedback and Complaint
-    Mechanism page) may be published as printed, with the page cited. Decided
-    2026-11-14 for the cedula guide (#26) by the lead and the second checker;
-  - claims that a transaction can be completed online through the BPLS, until
-    the permits office or an end-to-end test confirms it;
-  - anything the Charter does not state, which stays `null`.
+- Phone numbers and hotlines may be published once a team member judges them
+  factual from a cited source (the Charter, an official LGU or national agency
+  page or post, or a test call). Show the source and an "as of" date. A test
+  call or LGU confirmation is a strong source but is not required.
+- Claims that a transaction can be completed online through the BPLS still need
+  the permits office or an end-to-end test, because a wrong claim sends a
+  resident to a dead end.
+- Anything the Charter or source does not state stays `null`.
 - If the LGU replies, record the confirmed approval date and official website
   address here and in the source leads, and recheck published guides against
   any newer Charter edition.
