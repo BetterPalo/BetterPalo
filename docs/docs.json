@@ -41,7 +41,8 @@
           "decisions/0011-rebase-and-merge-keeps-branch-commits",
           "decisions/0012-deploy-after-ci",
           "decisions/0013-display-web-font",
-          "decisions/0014-lgu-configuration-seam"
+          "decisions/0014-lgu-configuration-seam",
+          "decisions/0017-verification-by-data-risk"
         ]
       }
     ]

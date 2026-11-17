@@ -53,6 +53,11 @@ source page by page against the YAML and records themselves in
 checker for the lead's transcriptions. When they are unavailable, the designer
 (`@jaimedesu`) checks instead, so the lead never checks their own work.
 
+Other data (tourism spots, statistics, officials, hotlines) can be verified by
+any one team member listed on this page, who records themselves in
+`verified_by`. A second check is encouraged
+([ADR 0017](decisions/0017-verification-by-data-risk.md)).
+
 ## Design files
 
 - Figma: link to be added once the file exists. Use view-only links in public
