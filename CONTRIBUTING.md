@@ -150,9 +150,8 @@ git push -u origin feat/service-page
 - After merge, production deploys by itself once CI passes on `main`; no one
   runs a deploy command. See [Deploying](docs/maintainers.md#deploying) and
   [ADR 0012](docs/decisions/0012-deploy-after-ci.md) if a deploy fails.
-- Any team member can set `status: verified` on data they have checked against
-  a cited source and record themselves in `verified_by`. A second check by
-  someone else is encouraged (see [docs/team.md](docs/team.md)).
+- Data changes are checked by someone other than the person who transcribed
+  them before `status` becomes `verified` (see [docs/team.md](docs/team.md)).
 
 ## Commit messages
 

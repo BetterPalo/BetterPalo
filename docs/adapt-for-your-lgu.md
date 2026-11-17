@@ -17,8 +17,8 @@ read [ADR 0006](decisions/0006-content-format-for-service-guides.md) and
 
 - Get your LGU's current Citizen's Charter and note its edition and where you
   found it. Without a source you cannot publish a guide.
-- Decide who transcribes and who checks. Palo encourages a second checker, but
-  does not require one ([`team.md`](team.md#verification-rule)).
+- Decide who transcribes and who checks. A guide's checker must be a different
+  person from its transcriber ([`team.md`](team.md#second-checker-rule)).
 - Click **Use this template** on GitHub to create your own repository. A copy
   does not carry over the Palo repository's history, secrets, variables,
   branch rules, or labels.

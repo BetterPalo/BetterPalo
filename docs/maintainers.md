@@ -21,7 +21,7 @@ No one else merges into `main`.
 
 - Require a pull request before merging.
 - Require at least one approval for every change, including license, charter,
-  governance, and data-policy changes (ADR 0015). If a ruleset still asks for
+  governance, and data-policy changes (ADR 0016). If a ruleset still asks for
   two on those paths, lower it to one.
 - Require review from code owners (see `.github/CODEOWNERS`).
 - Dismiss stale approvals when new commits are pushed.

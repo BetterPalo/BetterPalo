@@ -54,10 +54,8 @@ Nothing is published without passing the verified-only gate.
   as an official channel.
 - Out of scope for v1: legislation, budget/COA/procurement views, project
   tracking, maps, citizen reports, Waray, a CMS.
-- Hotlines, office phone numbers, and BPLS online claims are published once a
-  team member has verified them from a cited source ("factual, with a
-  reasonable claim"), each with its source and date. Anything not stated stays
-  `null`.
+- Unconfirmed items (hotlines, office phone numbers, BPLS online claims) stay
+  unpublished until confirmed.
 - No placeholders (`TBD`, `TODO`); a missing page is better than a wrong one.
 - Untranslated pages are marked `translation-pending`.
 

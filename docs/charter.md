@@ -87,7 +87,7 @@ Named leads and `CODEOWNERS` are added when handles exist.
 
 - Every pull request needs one maintainer approval, including license, charter,
   governance, and data-policy changes. A second approval is welcome on those
-  and is not required ([ADR 0015](decisions/0015-wider-scope-one-approval-and-team-verification.md)).
+  and is not required ([ADR 0016](decisions/0016-one-approval-for-every-change.md)).
 - Disputes get a written summary and a seven-day comment period, then a
   maintainer vote. Ties keep the status quo.
 

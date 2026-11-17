@@ -2,7 +2,7 @@
 title: "0005: Positioning and phased roadmap"
 ---
 
-- Status: Accepted. Roadmap and the two-approval rule amended by [ADR 0015](0015-wider-scope-one-approval-and-team-verification.md).
+- Status: Accepted. Roadmap amended by [ADR 0015](0015-wider-scope.md); the two-approval rule amended by [ADR 0016](0016-one-approval-for-every-change.md).
 - Date: 2026-11-03
 
 ## Context
