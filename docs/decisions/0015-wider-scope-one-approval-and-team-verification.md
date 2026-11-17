@@ -2,8 +2,10 @@
 
 - Status: Proposed
 - Date: 2026-11-17
-- Approval: requested from the @Zyxavy and @STR4T-coder. This is the last change
-  that needs two approvals, because it removes that rule.
+- Approval: needs two approvals under the current rule. The author is
+  @Zyxavy and cannot approve their own PR, so the approvals must come from
+  @STR4T-coder and one of @Rurur8, @khalmahi, or @jaimedesu. This is the last
+  change that needs two approvals, because it removes that rule.
 - Amends: [ADR 0005](0005-positioning-and-phased-roadmap.md) (roadmap and the
   two-approval rule), the [charter](../charter.md) decision rules, and the
   verification rules in [data-sources.md](../data-sources.md).
@@ -84,9 +86,10 @@ The charter's decision rules become:
   source and date shown with each item, the report link, and the quarterly
   review in `data-sources.md`. If a wrong emergency number is ever published,
   revisit the lenient bar for hotlines.
-- GitHub branch protection already asks for one approval, so no repository
-  setting changes unless a ruleset was configured to require two for the
-  charter paths.
+- The `protect-main` ruleset on GitHub requires 1 approval and does not
+  require code owner review (checked 2026-11-17). The two-approval rule for
+  charter, licence, governance, and data-policy changes is enforced by
+  convention and review, not by GitHub, so no setting needs to change.
 - The "second checker" wording in ADRs 0006 and 0007 and in
   `docs/research/` describes the earlier rule and is left as history.
 - `docs/adapt-for-your-lgu.md` can keep the stricter rule as a recommendation
