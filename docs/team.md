@@ -13,7 +13,7 @@ allowed to touch it". Anyone can contribute anywhere.
 | Frontend development | Frontend developer | `@khalmahi` | Astro pages and components, content collections and schemas, Pagefind search, EN/FIL routing |
 | Design and accessibility | Designer | `@jaimedesu` | Figma wireframes, design tokens for Tailwind, print sheet with QR code, WCAG 2.1 AA checks, visual identity |
 | Infrastructure and DevOps | Infrastructure | `@Rurur8` | Cloudflare (Workers, DNS, analytics), Workers Builds previews, GitHub Actions and the production deploy job, Playwright, Lighthouse CI, Renovate |
-| Infrastructure, second reviewer, and second checker | Infrastructure | `@STR4T-coder` | Co-owns infrastructure and CI; second approval on charter, licence, governance, and data-policy changes; second check of every transcribed guide |
+| Infrastructure, second reviewer, and second checker | Infrastructure | `@STR4T-coder` | Co-owns infrastructure and CI; optional second approval on charter, licence, governance, and data-policy changes; second check of every transcribed guide |
 | Translation and QA | Not yet assigned | TBD | Filipino (and Waray pilot) translation, phone and browser testing. Until assigned, the lead asks the frontend developer or designer for translation review |
 
 Replace `TBD` in the table and in [`.github/CODEOWNERS`](https://github.com/betterpalo/betterpalo/blob/main/.github/CODEOWNERS)
@@ -23,13 +23,15 @@ when the translation and QA owner is named.
 
 - The project lead merges into `main`. Nobody else merges until a backup
   maintainer is named (see [maintainers.md](maintainers.md)).
-- The second reviewer, `@STR4T-coder`, gives the second approval on every
-  charter, licence, governance, and data-policy change.
+- The second reviewer, `@STR4T-coder`, is the default second approval on
+  charter, licence, governance, and data-policy changes. It is welcome, not
+  required.
 - GitHub does not let an author approve their own pull request, so the lead's
   pull requests are approved by `@STR4T-coder` or a frontend or infrastructure
   owner.
-- License, charter, governance, and data-policy changes need two approvals under
-  the [charter](charter.md#decision-rules).
+- Every change, including license, charter, governance, and data-policy
+  changes, needs one approval under the [charter](charter.md#decision-rules)
+  ([ADR 0016](decisions/0016-one-approval-for-every-change.md)).
 
 ## Review routing
 
@@ -43,7 +45,7 @@ when the translation and QA owner is named.
 | Styles and tokens | Designer (`@jaimedesu`) | Frontend |
 | Wrangler, workflows, `_headers` | Infrastructure (`@Rurur8`) | Second reviewer; lead merges |
 | Translations | Translation and QA owner (TBD) | Frontend or designer until assigned |
-| ADRs, charter, licensing | Lead | Second reviewer (`@STR4T-coder`) and one more approval |
+| ADRs, charter, licensing | Lead | Second reviewer (`@STR4T-coder`), optional |
 
 ## Second checker rule
 
