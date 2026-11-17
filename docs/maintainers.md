@@ -9,10 +9,9 @@ are listed in [team.md](team.md).
 - **Project lead** (`@Zyxavy`): reviews and merges into `main`.
 - **Second reviewer** (`@STR4T-coder`): gives the second approval on charter,
   licence, governance, and data-policy changes, and checks the lead's data.
-  Does not merge unless named as a backup maintainer below.
-- **Backup maintainer:** not yet named. Until one is, `main` has no merge
-  cover when the lead is away; the lead should plan around this. Add the name
-  here and in `docs/team.md` when decided.
+- **Backup maintainer** (`@STR4T-coder`): merges into `main` when the lead is
+  away. This is the same person as the second reviewer; the two-approval rule
+  still applies to their own changes.
 
 No one else merges into `main`.
 
@@ -29,8 +28,8 @@ No one else merges into `main`.
   job failed or was cancelled. The jobs it summarises (`quality`, `audit`,
   `build`, `e2e`, `lighthouse`) are skipped on documentation-only changes, so they must
   not be required themselves.
-- Restrict who can update `main` to the project lead and the backup
-  maintainer once one is named.
+- Restrict who can update `main` to the project lead (`@Zyxavy`) and the
+  backup maintainer (`@STR4T-coder`).
 - Block force pushes and deletions.
 - Only repository administrators can bypass the above rules. The bypass is
   for emergencies: a broken required check that blocks every merge, or a fix
