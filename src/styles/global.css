@@ -274,8 +274,9 @@
     font-size: 9pt;
   }
   /* The screen keeps every "Not stated" row. On paper they would repeat the same
-     sentence many times, so the card prints one note instead. */
-  [data-guide] dl > div:has(> dd > [data-not-stated]) {
+     sentence many times, so each sheet card prints one note instead. Only the
+     sheet cards: empty source and detail rows stay visible. */
+  [data-guide] [data-sheet-card] dl > div:has(> dd > [data-not-stated]) {
     display: none;
   }
   [data-guide] [data-sheet-card] {

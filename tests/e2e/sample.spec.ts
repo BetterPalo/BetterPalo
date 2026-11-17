@@ -229,6 +229,17 @@ test('the English sample guide prints at a readable size', async ({ page }) => {
   });
   expect(label.transform).toBe('uppercase');
 
+  // The hide rule is for the sheet cards only; empty rows elsewhere stay visible.
+  const hiddenOutside = await page.evaluate(
+    () =>
+      [...document.querySelectorAll('[data-not-stated]')].filter(
+        (el) =>
+          !el.closest('[data-sheet-card]') &&
+          getComputedStyle(el.closest('div')!).display === 'none',
+      ).length,
+  );
+  expect(hiddenOutside, 'a "Not stated" row outside the sheet is hidden in print').toBe(0);
+
   const pages = pdfPageCount(await page.pdf({ format: 'Letter', preferCSSPageSize: true }));
   test.info().annotations.push({ type: 'pages', description: String(pages) });
   // A real guide may need a second page; it never claims to be one page.

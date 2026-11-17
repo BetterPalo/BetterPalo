@@ -27,12 +27,9 @@ const requirementsHaveMissing = service.requirements.some(
   (r) => r.copies === null || r.form === null || r.where_to_get === null || r.conditions === null,
 );
 const feesHaveMissing = service.fees.some(
-  (f) =>
-    f.purpose === null ||
-    f.where_to_pay === null ||
-    f.conditions === null ||
-    (f.amount !== null && f.basis === null),
+  (f) => f.purpose === null || f.where_to_pay === null || f.conditions === null,
 );
+const whereHasMissing = walkIns.length === 0 || walkIns.some((c) => c.location == null);
 ---
 
 <section id="guide-sheet" class="wrap pb-section" aria-labelledby="guide-sheet-title">
@@ -70,6 +67,9 @@ const feesHaveMissing = service.fees.some(
             ))
           )}
         </dl>
+        {whereHasMissing && (
+          <p class="mt-3 hidden text-sm print:block">{t(lang, 'guide.print.omitted')}</p>
+        )}
       </div>
 
       <div id="guide-bring" data-sheet-card class="border border-edge bg-surface p-6">
