@@ -36,7 +36,7 @@
 /tests/e2e/                         @Rurur8 @khalmahi @Zyxavy
 /scripts/                           @Rurur8 @STR4T-coder @Zyxavy
 
-# Governance, licensing, decisions (two approvals required by the charter)
+# Governance, licensing, decisions (one approval; a second is welcome, ADR 0016)
 /docs/charter.md                    @Zyxavy @STR4T-coder
 /docs/licensing.md                  @Zyxavy @STR4T-coder
 /docs/decisions/                    @Zyxavy @STR4T-coder
