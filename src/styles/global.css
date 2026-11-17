@@ -233,9 +233,10 @@
   html:has([data-guide]) body > header {
     display: none;
   }
-  /* Guide pages print as one sheet (DESIGN.md "Printable service sheet"). */
+  /* Guide pages print with the sheet type, not the screen scale. A 9.5pt root
+     keeps body text near 10pt; the small labels are set to 9pt below. */
   html:has([data-guide]) {
-    font-size: 65%;
+    font-size: 9.5pt;
   }
   [data-guide] section {
     padding-block: 0.5rem;
@@ -245,21 +246,44 @@
     padding-inline: 0;
   }
   [data-guide] h1 {
-    font-size: 2rem;
+    font-size: 18pt;
     line-height: 1.05;
   }
   [data-guide] h2 {
-    font-size: 1.4rem;
+    font-size: 12pt;
   }
   [data-guide] h2 + p {
+    display: none;
+  }
+  /* DESIGN.md "Printable service sheet": uppercase flag-blue labels with icons. */
+  [data-guide] [data-sheet-card] h3 {
+    color: var(--color-flag);
+    text-transform: uppercase;
+    font-size: 9.5pt;
+    letter-spacing: 0.08em;
+  }
+  [data-guide] [data-sheet-card] h3 > span {
+    inline-size: 1.4rem;
+    block-size: 1.4rem;
+  }
+  [data-guide] [data-sheet-card] h3 svg {
+    inline-size: 0.9rem;
+    block-size: 0.9rem;
+  }
+  [data-guide] .text-sm {
+    font-size: 9pt;
+  }
+  /* The screen keeps every "Not stated" row. On paper they would repeat the same
+     sentence many times, so each sheet card prints one note instead. Only the
+     sheet cards: empty source and detail rows stay visible. */
+  [data-guide] [data-sheet-card] dl > div:has(> dd > [data-not-stated]) {
     display: none;
   }
   [data-guide] [data-sheet-card] {
     padding: 0.5rem 0;
     border-width: 0 0 1px;
   }
-  [data-guide] li,
-  [data-guide] dl > div {
+  [data-guide] li {
     break-inside: avoid;
   }
 }
