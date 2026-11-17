@@ -39,8 +39,9 @@ Nothing is published without passing the verified-only gate.
 
 ## Operating Context
 
-- v1 scope: about 10 to 12 service guides, offices and officials, About Palo
-  with the 33-barangay list and PSA 2024 census figures, official resource
+- v1 scope: about 10 to 12 service guides, offices and officials, hotlines,
+  About Palo with the 33-barangay list and PSA 2024 census figures and a
+  statistics page, official resource
   links, search, English and Filipino, printable one-page service sheets.
 - An "unofficial" banner and a "report a wrong detail" link appear on every
   page.

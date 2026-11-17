@@ -2,7 +2,7 @@
 title: "0005: Positioning and phased roadmap"
 ---
 
-- Status: Accepted
+- Status: Accepted. Roadmap amended by [ADR 0015](0015-wider-scope.md).
 - Date: 2026-11-03
 
 ## Context
