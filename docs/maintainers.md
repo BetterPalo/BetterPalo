@@ -7,19 +7,22 @@ are listed in [team.md](team.md).
 ## Who merges
 
 - **Project lead** (`@Zyxavy`): reviews and merges into `main`.
-- **Second reviewer** (`@STR4T-coder`): gives the second approval on charter,
-  licence, governance, and data-policy changes, and checks the lead's data.
-- **Backup maintainer** (`@STR4T-coder`): merges into `main` when the lead is
-  away. This is the same person as the second reviewer; the two-approval rule
-  still applies to their own changes.
+- **Second reviewer** (`@STR4T-coder`): the default optional second approval on
+  charter, licence, governance, and data-policy changes, and the default
+  second checker of the lead's data.
+  Does not merge unless named as a backup maintainer below.
+- **Backup maintainer:** not yet named. Until one is, `main` has no merge
+  cover when the lead is away; the lead should plan around this. Add the name
+  here and in `docs/team.md` when decided.
 
 No one else merges into `main`.
 
 ## Branch protection (`main`)
 
 - Require a pull request before merging.
-- Require at least one approval (two for license, charter, governance, or
-  data-policy changes).
+- Require at least one approval for every change, including license, charter,
+  governance, and data-policy changes (ADR 0016). If a ruleset still asks for
+  two on those paths, lower it to one.
 - Require review from code owners (see `.github/CODEOWNERS`).
 - Dismiss stale approvals when new commits are pushed.
 - Require conversation resolution before merging.
@@ -154,8 +157,7 @@ Monday, Asia/Manila time.
   so fix a bad title before merging.
 - Merge commits and rebase merges are turned off in the repository settings.
 - Contributors do not merge their own pull requests. Maintainers do not merge
-  their own pull requests that touch data or licensing without the required
-  approvals.
+  their own pull requests without an approval.
 - Delete the branch after merge (automatic).
 
 ## Repository access

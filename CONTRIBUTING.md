@@ -150,8 +150,10 @@ git push -u origin feat/service-page
 - After merge, production deploys by itself once CI passes on `main`; no one
   runs a deploy command. See [Deploying](docs/maintainers.md#deploying) and
   [ADR 0012](docs/decisions/0012-deploy-after-ci.md) if a deploy fails.
-- Data changes are checked by someone other than the person who transcribed
-  them before `status` becomes `verified` (see [docs/team.md](docs/team.md)).
+- Service guides are checked by someone other than the person who transcribed
+  them before `status` becomes `verified`. Other data can be verified by one
+  team member, and a second check is encouraged (see
+  [docs/team.md](docs/team.md)).
 
 ## Commit messages
 
@@ -178,9 +180,9 @@ Optional scopes: `services`, `government`, `legislation`, `transparency`,
 
 ## Review and decisions
 
-Routine pull requests need one maintainer approval. License, charter,
-governance, or data-policy changes need two approvals, or unanimous approval of
-active maintainers if fewer than two are active. Disputes get a written summary
+Every pull request needs one maintainer approval, including license, charter,
+governance, and data-policy changes; a second approval is welcome on those but
+not required. Disputes get a written summary
 and a seven-day comment period, then a maintainer vote. Ties keep the status quo.
 See [docs/charter.md](docs/charter.md).
 
