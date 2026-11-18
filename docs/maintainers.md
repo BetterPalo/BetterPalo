@@ -31,8 +31,8 @@ No one else merges into `main`.
   job failed or was cancelled. The jobs it summarises (`quality`, `audit`,
   `build`, `e2e`, `lighthouse`) are skipped on documentation-only changes, so they must
   not be required themselves.
-- Restrict who can update `main` to the project lead and the backup
-  maintainer once one is named.
+- Restrict who can update `main` to the project lead (`@Zyxavy`) and the
+  backup maintainer (`@STR4T-coder`).
 - Block force pushes and deletions.
 - Only repository administrators can bypass the above rules. The bypass is
   for emergencies: a broken required check that blocks every merge, or a fix
