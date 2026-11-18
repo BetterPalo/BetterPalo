@@ -1,0 +1,19 @@
+id: palo-grocerette
+name: Palo Grocerette
+categories: [market]
+description: >
+  Formerly known as “Chiquillo Store,” this air-conditioned grocery on F.
+  Sevilla St. is the go-to place for small to medium store owners to stock up.
+  It offers a suki (loyalty) card for points on purchases and is open daily from
+  5:30 AM to 7:00 PM.
+address: null
+offer: null
+image: null
+image_alt: null
+
+source: null
+edition: null
+retrieved: null
+verified_by: null
+last_verified: null
+status: needs_confirmation

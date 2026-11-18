@@ -398,6 +398,10 @@ const en = {
   'tourism.cat.festival': 'Festivals',
   'tourism.cat.tour': 'Tours',
   'tourism.cat.adventure': 'Adventures',
+  'tourism.cat.school': 'Schools',
+  'tourism.cat.salon': 'Salons',
+  'tourism.cat.computer-shop': 'Computer shops',
+  'tourism.cat.bakery': 'Bakeries',
 
   // Service guide page (/services/<id>/)
   'guide.eyebrow': 'Service guide',
@@ -937,6 +941,10 @@ const fil: Partial<Record<Key, string>> = {
   'tourism.cat.festival': 'Mga pista',
   'tourism.cat.tour': 'Mga tour',
   'tourism.cat.adventure': 'Mga pakikipagsapalaran',
+  'tourism.cat.school': 'Mga paaralan',
+  'tourism.cat.salon': 'Mga salon',
+  'tourism.cat.computer-shop': 'Mga computer shop',
+  'tourism.cat.bakery': 'Mga panaderya',
 };
 
 const ui: Record<Lang, Partial<Record<Key, string>>> = { en, fil };
