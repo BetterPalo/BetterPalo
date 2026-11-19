@@ -281,3 +281,93 @@ test('a long guide still prints the four questions and the source', async ({ pag
   await page.emulateMedia({ media: 'print' });
   await expectSheetOnly(page);
 });
+
+// The directory pages: the fictional verified items from examples/*.yaml.
+const SAMPLE_SOURCE = 'https://example.org/betterlgu-sample-content';
+const SAMPLE_OFFICE = '#office-sample-office';
+
+test('/offices/: the sample office shows its marker, source, date, and guide link', async ({
+  page,
+}) => {
+  await page.goto('/offices/');
+  const office = page.locator(SAMPLE_OFFICE);
+  await expect(office).toBeVisible();
+  await expect(office).toContainText(SAMPLE_MARKER);
+  await expect(office.locator(`a[rel="external"][href="${SAMPLE_SOURCE}#page=1"]`)).toBeVisible();
+  await expect(office.locator('time[datetime="2026-01-01"]')).toBeVisible();
+  await expect(office.locator(`a[href="/services/${SAMPLE_ID}/"]`)).toBeVisible();
+  // The phone is stored but never rendered, so check the HTML, not only the text.
+  expect(await page.content()).not.toContain('0900-000-0000');
+  await expect(page.locator('#officials')).toContainText('Sample Person');
+});
+
+test('/fil/offices/: the sample office guide link goes to the Filipino guide', async ({ page }) => {
+  await page.goto('/fil/offices/');
+  await expect(
+    page.locator(`${SAMPLE_OFFICE} a[href="/fil/services/${SAMPLE_ID}/"]`),
+  ).toBeVisible();
+});
+
+test('/about/: the sample barangay shows its population and census year', async ({ page }) => {
+  await page.goto('/about/');
+  const table = page.locator('#barangays');
+  await expect(table).toContainText('Sample Barangay');
+  await expect(table).toContainText('1,234');
+  await expect(table).toContainText('2024');
+  // One sample barangay of 33, so the partial note shows.
+  await expect(page.locator('#barangays-partial')).toBeVisible();
+});
+
+test('/resources/: the sample links show in their groups with a date and no pending note', async ({
+  page,
+}) => {
+  await page.goto('/resources/');
+  const official = page.locator('#resources-official a[rel="external"][href$="/official"]');
+  await expect(official).toBeVisible();
+  await expect(official.locator('time[datetime="2026-01-01"]')).toBeVisible();
+  const agency = page.locator('#resources-other a[rel="external"][href$="/agency"]');
+  await expect(agency).toBeVisible();
+  await expect(agency.locator('time[datetime="2026-01-01"]')).toBeVisible();
+  await expect(page.locator('#resources-official-pending')).toHaveCount(0);
+  await expect(page.locator('#resources-other-pending')).toHaveCount(0);
+});
+
+test('/fil/resources/: the official card shows the Filipino label', async ({ page }) => {
+  await page.goto('/fil/resources/');
+  await expect(page.locator('#resources-official')).toContainText('Halimbawang opisyal na site');
+});
+
+test('/: the home sources card lists the verified featured resource', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#sources')).toContainText('Sample official site');
+});
+
+for (const path of [
+  '/offices/',
+  '/fil/offices/',
+  '/about/',
+  '/fil/about/',
+  '/resources/',
+  '/fil/resources/',
+]) {
+  test(`${path}: one h1, no "undefined" or "{", no axe violations, no sideways scroll at 360 px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 360, height: 720 });
+    await page.goto(path);
+
+    await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
+
+    const text = await page.locator('body').innerText();
+    expect(text).not.toContain('undefined');
+    expect(text, 'a placeholder was not filled').not.toContain('{');
+
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    expect(overflow, 'page scrolls sideways').toBeLessThanOrEqual(0);
+
+    const results = await new AxeBuilder({ page }).analyze();
+    expect(results.violations.map((v) => v.id)).toEqual([]);
+  });
+}

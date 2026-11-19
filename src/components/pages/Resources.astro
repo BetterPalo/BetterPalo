@@ -3,6 +3,10 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../PageHero.astro';
 import SectionHead from '../SectionHead.astro';
 import { t, type Lang } from '../../i18n/ui';
+import { listResources, type Resource } from '../../lib/data';
+import { formatDate, isoDate } from '../../lib/guide';
+import { textIn } from '../../lib/schemas/resource';
+import { officialLinks } from '../../lib/site';
 
 interface Props {
   lang: Lang;
@@ -10,45 +14,39 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const resources = [
-  {
-    name: t(lang, 'resources.r1.name'),
-    desc: t(lang, 'resources.r1.desc'),
-    href: 'http://210.213.142.34/home/?page=home',
-  },
-  {
-    name: t(lang, 'resources.r2.name'),
-    desc: t(lang, 'resources.r2.desc'),
-    href: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf',
-  },
-  {
-    name: t(lang, 'resources.r3.name'),
-    desc: t(lang, 'resources.r3.desc'),
-    href: 'http://210.213.142.34/home/?page=home',
-  },
-  {
-    name: t(lang, 'resources.r4.name'),
-    desc: t(lang, 'resources.r4.desc'),
-    href: 'https://psa.gov.ph',
-  },
-  {
-    name: t(lang, 'resources.r5.name'),
-    desc: t(lang, 'resources.r5.desc'),
-    href: 'https://www.philhealth.gov.ph',
-  },
-  {
-    name: t(lang, 'resources.r6.name'),
-    desc: t(lang, 'resources.r6.desc'),
-    href: 'https://www.sss.gov.ph',
-  },
-];
+/** One link card. Config fallback links have no check date and no agency. */
+interface Card {
+  href: string;
+  label: { text: string; pending: boolean };
+  purpose: { text: string; pending: boolean };
+  agency: string | null;
+  checked: Date | null;
+}
 
-const notHandled = [
-  t(lang, 'resources.notHandled.1'),
-  t(lang, 'resources.notHandled.2'),
-  t(lang, 'resources.notHandled.3'),
-  t(lang, 'resources.notHandled.4'),
-];
+const toCard = (r: Resource): Card => ({
+  href: r.url,
+  label: textIn(r.label, lang),
+  purpose: textIn(r.purpose, lang),
+  agency: r.agency,
+  checked: r.last_verified,
+});
+
+const all = await listResources();
+const official = all.filter((r) => r.group === 'official');
+const other = all.filter((r) => r.group === 'other-agency');
+
+// Until a verified official link exists, show the config links the footer also shows (plan D2).
+const officialCards: Card[] =
+  official.length > 0
+    ? official.map(toCard)
+    : officialLinks.map((l) => ({
+        href: l.href,
+        label: { text: t(lang, l.key), pending: false },
+        purpose: { text: t(lang, l.noteKey), pending: false },
+        agency: null,
+        checked: null,
+      }));
+const otherCards = other.map(toCard);
 ---
 
 <Base
@@ -71,21 +69,39 @@ const notHandled = [
       highlight=""
     />
     <p class="mt-2 text-fg-soft">{t(lang, 'resources.officialBody')}</p>
-    <ul class="mt-6 grid gap-3 sm:grid-cols-2">
-      {resources.map((r) => (
+    <ul id="resources-official" class="mt-6 grid gap-3 sm:grid-cols-2">
+      {officialCards.map((c) => (
         <li>
           <a
-            href={r.href}
+            href={c.href}
             rel="external"
             class="flex h-full flex-col border border-edge bg-surface p-5 no-underline hover:border-accent"
           >
-            <b class="font-display tracking-title">{r.name}</b>
-            <small class="mt-1 text-sm text-fg-soft">{r.desc}</small>
-            <span class="mt-3 text-xs text-accent">{t(lang, 'resources.open')} →</span>
+            <b class="font-display tracking-title" lang={c.label.pending ? 'en' : undefined}>
+              {c.label.text}
+            </b>
+            <small class="mt-1 text-sm text-fg-soft" lang={c.purpose.pending ? 'en' : undefined}>
+              {c.purpose.text}
+            </small>
+            {c.agency !== null && <span class="text-xs text-fg-soft">{c.agency}</span>}
+            <span class="mt-3 text-xs text-accent">
+              {t(lang, 'resources.open')} {new URL(c.href).host} →
+            </span>
+            {c.checked !== null && (
+              <span class="mt-1 text-xs text-fg-soft">
+                {t(lang, 'resources.lastChecked')}{' '}
+                <time datetime={isoDate(c.checked)}>{formatDate(c.checked, lang)}</time>
+              </span>
+            )}
           </a>
         </li>
       ))}
     </ul>
+    {official.length === 0 && (
+      <p id="resources-official-pending" class="mt-4 text-sm text-fg-soft">
+        {t(lang, 'resources.officialPending')}
+      </p>
+    )}
   </section>
 
   <section class="border-t border-edge bg-canvas-alt py-section">
@@ -96,11 +112,43 @@ const notHandled = [
         highlight=""
       />
       <p class="mt-3 text-fg-soft">{t(lang, 'resources.notHandledBody')}</p>
-      <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
-        {notHandled.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
+      {otherCards.length > 0 ? (
+        <ul id="resources-other" class="mt-4 grid gap-3 sm:grid-cols-2">
+          {otherCards.map((c) => (
+            <li>
+              <a
+                href={c.href}
+                rel="external"
+                class="flex h-full flex-col border border-edge bg-surface p-5 no-underline hover:border-accent"
+              >
+                <b class="font-display tracking-title" lang={c.label.pending ? 'en' : undefined}>
+                  {c.label.text}
+                </b>
+                <small
+                  class="mt-1 text-sm text-fg-soft"
+                  lang={c.purpose.pending ? 'en' : undefined}
+                >
+                  {c.purpose.text}
+                </small>
+                {c.agency !== null && <span class="text-xs text-fg-soft">{c.agency}</span>}
+                <span class="mt-3 text-xs text-accent">
+                  {t(lang, 'resources.open')} {new URL(c.href).host} →
+                </span>
+                {c.checked !== null && (
+                  <span class="mt-1 text-xs text-fg-soft">
+                    {t(lang, 'resources.lastChecked')}{' '}
+                    <time datetime={isoDate(c.checked)}>{formatDate(c.checked, lang)}</time>
+                  </span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p id="resources-other-pending" class="mt-4 text-sm text-fg-soft">
+          {t(lang, 'resources.notHandledPending')}
+        </p>
+      )}
     </div>
   </section>
 </Base>

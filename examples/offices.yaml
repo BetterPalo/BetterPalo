@@ -1,0 +1,14 @@
+# FICTIONAL SAMPLE. Loaded only with SAMPLE_CONTENT=true. Never copy into src/content/.
+# Field rules: src/lib/schemas/office.ts
+- id: sample-office
+  name: Sample City Business Permits Office (fictional)
+  description: 'Fictional office for testing (betterlgu-sample-content).'
+  phone: '0900-000-0000'
+  source: https://example.org/betterlgu-sample-content
+  source_level: 1
+  source_pages: '1'
+  retrieved: 2026-01-01
+  verified_by: sample-checker
+  last_verified: 2026-01-01
+  status: verified
+  notes: null

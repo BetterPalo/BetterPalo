@@ -3,14 +3,21 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../PageHero.astro';
 import SectionHead from '../SectionHead.astro';
 import IconWell from '../home/IconWell.astro';
+import SourceNote from '../SourceNote.astro';
+import NotStated from '../guide/NotStated.astro';
 import { t, type Lang } from '../../i18n/ui';
 import { census, charter, formatNumber } from '../../lib/site-facts';
+import { listBarangays } from '../../lib/data';
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
+const dataLang = lang === 'en' ? undefined : 'en';
+const barangays = await listBarangays();
+// One source note per distinct source; the verified barangays share one PSA table.
+const sources = [...new Map(barangays.map((b) => [b.source, b])).values()];
 
 const stats = [
   {
@@ -71,7 +78,61 @@ const stats = [
   <section class="py-section" aria-labelledby="barangays-title">
     <div class="wrap max-w-3xl">
       <SectionHead id="barangays-title" title={t(lang, 'about.barangaysTitle')} highlight="" />
-      <p class="text-fg-soft">{t(lang, 'about.barangaysBody')}</p>
+      {barangays.length === 0 ? (
+        <p id="barangays-pending" class="text-fg-soft">
+          {t(lang, 'about.barangaysBody')}
+        </p>
+      ) : (
+        <>
+          {barangays.length < census.barangays && (
+            <p id="barangays-partial" class="text-fg-soft">
+              {t(lang, 'about.brgy.partial')}
+            </p>
+          )}
+          <div class="overflow-x-auto">
+            <table id="barangays" class="mt-4 w-full text-sm">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-b border-edge py-2 text-left">
+                    {t(lang, 'about.brgy.name')}
+                  </th>
+                  <th scope="col" class="border-b border-edge py-2 text-left">
+                    {t(lang, 'about.brgy.population')}
+                  </th>
+                  <th scope="col" class="border-b border-edge py-2 text-left">
+                    {t(lang, 'about.brgy.censusYear')}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {barangays.map((b) => (
+                  <tr>
+                    <td class="border-b border-edge py-2" lang={dataLang}>
+                      {b.name}
+                    </td>
+                    <td class="border-b border-edge py-2 tabular-nums">
+                      {b.population !== null && b.census_year !== null ? (
+                        formatNumber(b.population)
+                      ) : (
+                        <NotStated lang={lang} />
+                      )}
+                    </td>
+                    <td class="border-b border-edge py-2 tabular-nums">{b.census_year ?? ''}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {sources.map((b) => (
+            <SourceNote
+              lang={lang}
+              source={b.source!}
+              pages={b.source_pages}
+              lastVerified={b.last_verified!}
+            />
+          ))}
+        </>
+      )}
     </div>
   </section>
 

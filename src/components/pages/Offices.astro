@@ -3,7 +3,11 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../PageHero.astro';
 import SectionHead from '../SectionHead.astro';
 import IconWell from '../home/IconWell.astro';
+import SourceNote from '../SourceNote.astro';
+import NotStated from '../guide/NotStated.astro';
 import { t, type Lang } from '../../i18n/ui';
+import { listOffices, listOfficials, listServices } from '../../lib/data';
+import { localizedPath } from '../../lib/routes';
 import { census, charter, formatNumber, offices } from '../../lib/site-facts';
 
 interface Props {
@@ -11,6 +15,13 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+// Office and official names are English data on the Filipino page (D6).
+const dataLang = lang === 'en' ? undefined : 'en';
+const [verifiedOffices, officials, services] = await Promise.all([
+  listOffices(),
+  listOfficials(),
+  listServices(),
+]);
 ---
 
 <Base
@@ -56,6 +67,103 @@ const { lang } = Astro.props;
         ))}
       </ol>
     </div>
+  </section>
+
+  <section class="wrap pb-section" aria-labelledby="offices-details-title">
+    <SectionHead id="offices-details-title" title={t(lang, 'offices.detailsTitle')} highlight="" />
+    {verifiedOffices.length === 0 ? (
+      <p id="offices-details-pending" class="text-fg-soft">
+        {t(lang, 'offices.detailsPending')}
+      </p>
+    ) : (
+      <>
+        {lang !== 'en' && (
+          <p class="mb-4 border border-edge bg-canvas-alt p-4">
+            <b>{t(lang, 'guide.pending.label')}</b> {t(lang, 'directory.pending.body')}
+          </p>
+        )}
+        <ul id="offices-details" class="grid gap-4 min-[40rem]:grid-cols-2">
+          {verifiedOffices.map((o) => {
+            const guides = services.filter((s) => s.office === o.name);
+            return (
+              <li id={`office-${o.id}`} class="border border-edge bg-surface p-5">
+                <h3 class="font-display text-lg tracking-title" lang={dataLang}>
+                  {o.name}
+                </h3>
+                <p class="mt-1 text-sm">
+                  {o.description !== null ? (
+                    <span lang={dataLang}>{o.description}</span>
+                  ) : (
+                    <NotStated lang={lang} />
+                  )}
+                </p>
+                {guides.length > 0 && (
+                  <div class="mt-3 text-sm">
+                    <b>{t(lang, 'offices.guides')}</b>
+                    <ul class="mt-1 grid gap-1">
+                      {guides.map((s) => (
+                        <li>
+                          <a
+                            href={localizedPath(lang, `/services/${s.id}/`)}
+                            class="text-accent underline"
+                            lang={dataLang}
+                          >
+                            {s.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <SourceNote
+                  lang={lang}
+                  source={o.source!}
+                  pages={o.source_pages}
+                  lastVerified={o.last_verified!}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    )}
+    <p class="mt-4 text-sm text-fg-soft">{t(lang, 'offices.contactsNote')}</p>
+  </section>
+
+  <section class="wrap pb-section" aria-labelledby="offices-officials-title">
+    <SectionHead
+      id="offices-officials-title"
+      title={t(lang, 'offices.officialsTitle')}
+      highlight=""
+    />
+    <p class="mb-4 text-fg-soft">{t(lang, 'offices.officialsBody')}</p>
+    {officials.length === 0 ? (
+      <p id="officials-pending" class="text-fg-soft">
+        {t(lang, 'offices.officialsPending')}
+      </p>
+    ) : (
+      <ul id="officials">
+        {officials.map((official) => (
+          <li class="border-b border-edge py-3">
+            <span class="block text-sm text-fg-soft">
+              {t(lang, `offices.position.${official.position}`)}
+            </span>
+            <b lang={dataLang}>{official.name}</b>
+            {official.term !== null && (
+              <span class="block text-sm text-fg-soft">
+                {t(lang, 'offices.term')}: {official.term}
+              </span>
+            )}
+            <SourceNote
+              lang={lang}
+              source={official.source!}
+              pages={official.source_pages}
+              lastVerified={official.last_verified!}
+            />
+          </li>
+        ))}
+      </ul>
+    )}
   </section>
 
   <section class="border-t border-edge bg-canvas-alt py-section">

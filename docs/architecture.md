@@ -24,6 +24,10 @@ src/
   content/
     services/            one YAML file per service guide; _template.yaml to copy
     tourism/             one YAML file per tourist spot; _template.yaml to copy
+    offices.yaml         one list per dataset, read with Astro's file() loader:
+    officials.yaml       offices, elected officials, barangays, and official
+    barangays.yaml       resources (each item has the same provenance fields)
+    resources.yaml
   content.config.ts      content collections and their Zod schemas
   lib/
     lgu.ts               config type, derived terms, placeholder values
@@ -42,6 +46,10 @@ src/
   styles/global.css      Tailwind import, design tokens, print styles
 examples/
   services/              fictional sample guide, loaded only with SAMPLE_CONTENT=true
+  offices.yaml           fictional sample lists for the directory pages (one
+  officials.yaml         verified item each), loaded only with SAMPLE_CONTENT=true
+  barangays.yaml
+  resources.yaml
 public/                  _headers, favicon; copied as is
 scripts/                 smoke-test.mjs, check-no-sample.mjs, init-lgu.mjs
 tests/
@@ -63,6 +71,12 @@ src/content/tourism/*.yaml
   → Zod schema (tourismSpotSchema; categories must share one visitor group)
   → src/lib/data.ts (listSpots())
   → /tourism/ and /fil/tourism/ (one page, with group and type filters)
+
+src/content/offices.yaml, officials.yaml, barangays.yaml, resources.yaml
+  → Zod schemas (officeSchema, officialSchema, barangaySchema, resourceSchema)
+  → src/lib/data.ts (listOffices(), listOfficials(), listBarangays(),
+    listResources(): verified items only)
+  → /offices/, /about/, /resources/ (and /fil/ twins) and the home sources card
 ```
 
 Tourist spots carry one or more place types (`categories:`). The first type
@@ -124,6 +138,13 @@ Never write a place name or a figure in `src/i18n/ui.ts`. Add a placeholder in
 - A tourist spot's `categories` list must not be empty, must not repeat a type,
   and must not mix visitor groups: a cafe inside a heritage house takes the
   dominant group and keeps the other type as a secondary label.
+- Offices, officials, barangays, and resources are published only when verified.
+  Each item carries `source`, `source_level` (1 to 6, as in
+  `docs/data-sources.md`), `source_pages`, `retrieved`, `verified_by`,
+  `last_verified`, `status`, and `notes`. A verified item needs a level 1 to 3
+  source; the schema refuses `status: verified` when `source_level` is 4 or
+  higher. A barangay population needs its census year and a level 2 source (the
+  PSA table). Office phone numbers are stored but not rendered.
 - A `null` field means the official source does not say. Pages show "Not
   stated in the official source. Ask the office." instead.
 - The file name must match `id` (`cedula.yaml` has `id: cedula`).

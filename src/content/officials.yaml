@@ -1,0 +1,131 @@
+# Elected officials of Palo, 2025 to 2028. Names and positions only. Every item
+# stays needs_confirmation until a person checks it against a level 1 to 3 source.
+- id: mayor
+  name: 'Remedios Matin L. Petilla'
+  position: mayor
+  term: '2025–2028'
+  source: 'http://210.213.142.34/home/'
+  source_level: 1
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name as on the LGU site home page. DILG lists Hon. Remedios L. Petilla. COMELEC results not read; LGU site address not yet confirmed by the LGU (#24).'
+
+- id: vice-mayor
+  name: 'Jonathan P. Chiquillo'
+  position: vice-mayor
+  term: '2025–2028'
+  source: 'https://sites.google.com/view/dilg-province-of-leyte/lgus/palo'
+  source_level: 3
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
+
+- id: sb-uy
+  name: 'Chiqui Ruth C. Uy'
+  position: sb-member
+  term: '2025–2028'
+  source: 'https://sites.google.com/view/dilg-province-of-leyte/lgus/palo'
+  source_level: 3
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
+
+- id: sb-sevilla
+  name: 'Andres Ian R. Sevilla'
+  position: sb-member
+  term: '2025–2028'
+  source: 'https://sites.google.com/view/dilg-province-of-leyte/lgus/palo'
+  source_level: 3
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
+
+- id: sb-ygrubay
+  name: 'Felipe T. Ygrubay, Jr.'
+  position: sb-member
+  term: '2025–2028'
+  source: 'https://sites.google.com/view/dilg-province-of-leyte/lgus/palo'
+  source_level: 3
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
+
+- id: sb-parado
+  name: 'Casimero B. Parado II'
+  position: sb-member
+  term: '2025–2028'
+  source: 'https://sites.google.com/view/dilg-province-of-leyte/lgus/palo'
+  source_level: 3
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
+
+- id: sb-hernit
+  name: 'Antonino C. Hernit'
+  position: sb-member
+  term: '2025–2028'
+  source: 'https://sites.google.com/view/dilg-province-of-leyte/lgus/palo'
+  source_level: 3
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
+
+- id: sb-villas
+  name: 'Casimero P. Villas, Jr.'
+  position: sb-member
+  term: '2025–2028'
+  source: 'https://sites.google.com/view/dilg-province-of-leyte/lgus/palo'
+  source_level: 3
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
+
+- id: sb-cortez
+  name: 'Panchito M. Cortez'
+  position: sb-member
+  term: '2025–2028'
+  source: 'https://sites.google.com/view/dilg-province-of-leyte/lgus/palo'
+  source_level: 3
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
+
+- id: sb-roca
+  name: 'Aaron H. Roca'
+  position: sb-member
+  term: '2025–2028'
+  source: 'https://sites.google.com/view/dilg-province-of-leyte/lgus/palo'
+  source_level: 3
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'

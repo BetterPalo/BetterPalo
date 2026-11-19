@@ -4,6 +4,8 @@ import Button from '../Button.astro';
 import Icon from '../Icon.astro';
 import SectionHead from '../SectionHead.astro';
 import { t, type Lang } from '../../i18n/ui';
+import { listResources } from '../../lib/data';
+import { textIn } from '../../lib/schemas/resource';
 import { officialLinks } from '../../lib/site';
 
 interface Props {
@@ -17,6 +19,22 @@ const checks = [
   'home.sources.check.census',
   'home.sources.check.lgu',
 ] as const;
+
+// Verified resources marked featured. Until there are some, show the config links
+// the footer also shows (plan D2).
+const featured = (await listResources()).filter((r) => r.featured);
+const links =
+  featured.length > 0
+    ? featured.map((r) => ({
+        href: r.url,
+        label: textIn(r.label, lang),
+        note: textIn(r.purpose, lang),
+      }))
+    : officialLinks.map((l) => ({
+        href: l.href,
+        label: { text: t(lang, l.key), pending: false },
+        note: { text: t(lang, l.noteKey), pending: false },
+      }));
 ---
 
 <section id="sources" class="py-section" aria-labelledby="src-title">
@@ -52,7 +70,7 @@ const checks = [
         {t(lang, 'home.sources.card')}
       </h3>
       <ul>
-        {officialLinks.map((link) => (
+        {links.map((link) => (
           <li class="border-b border-edge last:border-b-0">
             <a
               href={link.href}
@@ -60,10 +78,18 @@ const checks = [
               class="group flex items-center gap-4 px-6 py-5 text-fg no-underline"
             >
               <span class="min-w-0">
-                <b class="block font-display text-[1.2rem] tracking-title group-hover:text-accent">
-                  {t(lang, link.key)}
+                <b
+                  class="block font-display text-[1.2rem] tracking-title group-hover:text-accent"
+                  lang={link.label.pending ? 'en' : undefined}
+                >
+                  {link.label.text}
                 </b>
-                <span class="text-[0.9rem] text-fg-soft">{t(lang, link.noteKey)}</span>
+                <span
+                  class="text-[0.9rem] text-fg-soft"
+                  lang={link.note.pending ? 'en' : undefined}
+                >
+                  {link.note.text}
+                </span>
               </span>
               <Icon
                 name="ne"
