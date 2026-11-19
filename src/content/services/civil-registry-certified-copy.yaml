@@ -1,0 +1,100 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 107-108 (service L)
+# and 255. Needs a second check before it is published.
+id: civil-registry-certified-copy
+name: Request of Issuance of Certified True Copy of Birth, Marriage and Death Certificate
+category: civil-registry
+office: Office of the Municipal Civil Registrar
+classification: simple
+transaction_type: G2C – Government to Client
+description: >
+  This is the process of acquiring the certified true Copy (CTC) of the
+  Certificates registered in Palo, Leyte.
+eligibility: All clients who was born, married or died in Palo, Leyte
+requirements:
+  - document: Photocopy of Certificate of Live Birth, Marriage or Death (regardless of the number of photocopies)
+    copies: null
+    form: photocopy
+    where_to_get: Client
+    conditions: null
+  - document: Authorization Letter, if applicable
+    copies: 1
+    form: photocopy
+    where_to_get: Document Owner
+    conditions: null
+  - document: Valid ID of the Document owner and the requester
+    copies: 1
+    form: photocopy
+    where_to_get: Client and Document Owner
+    conditions: null
+steps:
+  - step: 1
+    applicant_action: >
+      1. Approach a frontline staff and submit the Xerox Copy of the Document.
+    office_action: >
+      1. Receive and verifies the document.
+    responsible: Clerk, Office of the Municipal Civil Registrar
+    max_time: 2 minutes
+  - step: 2
+    applicant_action: >
+      2. Pay at the Treasurer's office the corresponding fees.
+    office_action: >
+      2. Issues order of payment.
+      2.1. Certify the document as a true copy by stamping it, submit to the LCR
+      for signature and sealed it.
+    responsible: >
+      Collector Windows 1 to 4, Municipal Treasurer's Office (2); Clerk, Office of
+      the Municipal Civil Registrar (2.1)
+    max_time: 10 minutes (2); 2 minutes (2.1)
+  - step: 3
+    applicant_action: 3. Receive Document/s
+    office_action: 3. Release the document
+    responsible: Clerk, Office of the Municipal Civil Registrar
+    max_time: 1 minutes
+fees:
+  - amount: PHP 100.00
+    purpose: Certified True Copy (CTC)
+    where_to_pay: Municipal Treasurer's Office (Collector Windows 1 to 4)
+    conditions: null
+    basis: null
+processing_time: 15 Minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Office of the Municipal Civil Registrar
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. At the LGU's levels, immediate action is assured. You may visit the
+  Administrative Office and secure a complaint form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  The Charter's approval date has not been confirmed by the LGU.
+  Transcribed from PDF page 107 (requirements, office, classification, who may
+  avail) and page 108 (client steps, fee, times, and the total), service L only.
+  Service M (Local Civil Registry copy, pages 108-109) is a different service and
+  is not included. Printed page numbers are the same as the PDF page numbers.
+  The Charter's tables were read from page images. Step 2 combines the Charter's
+  sub-step 2.1 (certification, 2 minutes, Clerk) with step 2 (order of payment,
+  10 minutes, Collector Windows 1 to 4); each keeps its own time and position.
+  The Charter lists the person responsible per step by individual staff name,
+  which is not published here; only the position and office are kept. The
+  Charter gives no online channel, so only the walk-in route is listed. The
+  Charter does not state a number of copies for the Certificate of Live Birth,
+  Marriage or Death (it says "regardless of the number of photocopies").
+
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '107–108, 255'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation
