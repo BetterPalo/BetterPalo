@@ -3,9 +3,10 @@
 A community-run, unofficial portal that makes Palo's government information and public services easier to find, understand, and verify.
 
 > **Status:** early development. The site is live and the pages, search index,
-> English and Filipino routing, and the deploy pipeline work. One service guide
-> is published (the cedula); each guide is added only after a second person has
-> verified it against the Citizen's Charter.
+> English and Filipino routing, and the deploy pipeline work. No service guides
+> are published yet; each one is added only after a second person has verified
+> it against the Citizen's Charter. The cedula guide is transcribed and waits for
+> its second check (#26).
 
 ## Use this as a template for your own LGU
 
