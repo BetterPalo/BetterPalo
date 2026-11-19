@@ -42,8 +42,8 @@
           "decisions/0012-deploy-after-ci",
           "decisions/0013-display-web-font",
           "decisions/0014-lgu-configuration-seam",
-          "decisions/0016-one-approval-for-every-change"
-          "decisions/0017-verification-by-data-risk"
+          "decisions/0016-one-approval-for-every-change",
+          "decisions/0017-verification-by-data-risk",
           "decisions/0015-wider-scope"
         ]
       }

@@ -13,7 +13,7 @@ allowed to touch it". Anyone can contribute anywhere.
 | Frontend development | Frontend developer | `@khalmahi` | Astro pages and components, content collections and schemas, Pagefind search, EN/FIL routing |
 | Design and accessibility | Designer | `@jaimedesu` | Figma wireframes, design tokens for Tailwind, print sheet with QR code, WCAG 2.1 AA checks, visual identity |
 | Infrastructure and DevOps | Infrastructure | `@Rurur8` | Cloudflare (Workers, DNS, analytics), Workers Builds previews, GitHub Actions and the production deploy job, Playwright, Lighthouse CI, Renovate |
-| Infrastructure, second reviewer, and second checker | Infrastructure | `@STR4T-coder` | Co-owns infrastructure and CI; optional second approval on charter, licence, governance, and data-policy changes; second check of every transcribed guide |
+| Infrastructure, second reviewer, second checker, and backup maintainer | Infrastructure | `@STR4T-coder` | Co-owns infrastructure and CI; optional second approval on charter, licence, governance, and data-policy changes; second check of every transcribed guide; merges into `main` when the lead is away |
 | Translation and QA | Not yet assigned | TBD | Filipino (and Waray pilot) translation, phone and browser testing. Until assigned, the lead asks the frontend developer or designer for translation review |
 
 Replace `TBD` in the table and in [`.github/CODEOWNERS`](https://github.com/betterpalo/betterpalo/blob/main/.github/CODEOWNERS)
@@ -21,8 +21,9 @@ when the translation and QA owner is named.
 
 ## Merging
 
-- The project lead merges into `main`. Nobody else merges until a backup
-  maintainer is named (see [maintainers.md](maintainers.md)).
+- The project lead, `@Zyxavy`, merges into `main`. The backup maintainer,
+  `@STR4T-coder`, merges when the lead is away (see
+  [maintainers.md](maintainers.md)).
 - The second reviewer, `@STR4T-coder`, is the default second approval on
   charter, licence, governance, and data-policy changes. It is welcome, not
   required.

@@ -10,10 +10,8 @@ are listed in [team.md](team.md).
 - **Second reviewer** (`@STR4T-coder`): the default optional second approval on
   charter, licence, governance, and data-policy changes, and the default
   second checker of the lead's data.
-  Does not merge unless named as a backup maintainer below.
-- **Backup maintainer:** not yet named. Until one is, `main` has no merge
-  cover when the lead is away; the lead should plan around this. Add the name
-  here and in `docs/team.md` when decided.
+- **Backup maintainer** (`@STR4T-coder`): merges into `main` when the lead is
+  away. This is the same person as the second reviewer.
 
 No one else merges into `main`.
 
