@@ -7,10 +7,10 @@ const optionalStated = stated.default(null);
 const date = z.coerce.date().nullable();
 
 // PDF page numbers: "225", "225–227", "225-227", or a comma list "7, 9–10" (ADR 0007).
-const pageNumbers = /^\d+(?:[–-]\d+)?(?:, ?\d+(?:[–-]\d+)?)*$/;
+export const pageNumbers = /^\d+(?:[–-]\d+)?(?:, ?\d+(?:[–-]\d+)?)*$/;
 
 /** Every page is 1 or more, and every range runs upward ("225–227", not "227–225"). Only call on text that matches pageNumbers. */
-function pagesRunUpward(pages: string): boolean {
+export function pagesRunUpward(pages: string): boolean {
   return pages.split(',').every((part) => {
     const numbers = part.trim().split(/[–-]/).map(Number);
     const first = numbers[0] ?? 0;

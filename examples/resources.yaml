@@ -1,0 +1,40 @@
+# FICTIONAL SAMPLE. Loaded only with SAMPLE_CONTENT=true. Never copy into src/content/.
+# Field rules: src/lib/schemas/resource.ts
+- id: sample-official-link
+  group: official
+  featured: true
+  label:
+    en: 'Sample official site (betterlgu-sample-content)'
+    fil: 'Halimbawang opisyal na site (betterlgu-sample-content)'
+  purpose:
+    en: Fictional link for testing
+    fil: null
+  agency: null
+  url: https://example.org/betterlgu-sample-content/official
+  source: https://example.org/betterlgu-sample-content
+  source_level: 1
+  source_pages: null
+  retrieved: 2026-01-01
+  verified_by: sample-checker
+  last_verified: 2026-01-01
+  status: verified
+  notes: null
+- id: sample-agency-link
+  group: other-agency
+  featured: false
+  label:
+    en: 'Sample agency service (betterlgu-sample-content)'
+    fil: null
+  purpose:
+    en: Fictional link for testing
+    fil: null
+  agency: Sample Agency
+  url: https://example.org/betterlgu-sample-content/agency
+  source: https://example.org/betterlgu-sample-content
+  source_level: 1
+  source_pages: null
+  retrieved: 2026-01-01
+  verified_by: sample-checker
+  last_verified: 2026-01-01
+  status: verified
+  notes: null

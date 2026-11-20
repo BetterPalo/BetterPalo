@@ -1,0 +1,251 @@
+# Official and other-agency links the site points to. A link stays needs_confirmation
+# until a person has opened it; BPLS and Facebook links stay off the site.
+- id: lgu-website
+  group: official
+  featured: true
+  label: { en: 'Palo LGU website', fil: 'Website ng LGU ng Palo' }
+  purpose: { en: 'Official announcements', fil: 'Mga opisyal na anunsyo' }
+  url: 'http://210.213.142.34/home/'
+  source: 'http://210.213.142.34/home/'
+  source_level: 1
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Bare IP over HTTP; the LGU has not confirmed this address (#24). palo-leyte.gov.ph did not respond on 2026-11-18.'
+
+- id: citizens-charter
+  group: official
+  featured: true
+  label: { en: "Citizen's Charter 2026 (PDF)", fil: "Citizen's Charter 2026 (PDF)" }
+  purpose: { en: 'The source for every guide', fil: 'Ang sanggunian ng bawat gabay' }
+  url: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: '2nd Edition. Same host as the LGU site.'
+
+- id: sangguniang-bayan
+  group: official
+  featured: false
+  label: { en: 'Sangguniang Bayan of Palo', fil: 'Sangguniang Bayan ng Palo' }
+  purpose: { en: 'Ordinances and sessions', fil: 'Mga ordinansa at sesyon' }
+  url: 'https://palosb.com/official_website/'
+  source: 'https://palosb.com/official_website/'
+  source_level: 1
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Not a .gov.ph domain. Its hotlines are placeholders; never use them.'
+
+- id: psa
+  group: official
+  featured: false
+  label: { en: 'Philippine Statistics Authority', fil: 'Philippine Statistics Authority' }
+  purpose: { en: 'Population and census data', fil: 'Datos ng populasyon at census' }
+  url: 'https://psa.gov.ph'
+  source: 'https://psa.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Cloudflare challenge (403) to curl and the test browser on 2026-11-18; open it by hand before verifying.'
+
+- id: psa-certificates
+  group: other-agency
+  featured: false
+  label:
+    { en: 'PSA birth and marriage certificates', fil: 'Birth at marriage certificate mula sa PSA' }
+  purpose: { en: 'Order copies online', fil: 'Umorder ng kopya online' }
+  agency: 'PSA'
+  url: 'https://psahelpline.ph/'
+  source: 'https://psahelpline.ph/'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: "Confirm against psa.gov.ph that psahelpline.ph is PSA's own service before verifying."
+
+- id: national-id
+  group: other-agency
+  featured: false
+  label: { en: 'National ID', fil: 'National ID' }
+  purpose: { en: 'Register for the PhilSys ID', fil: 'Magparehistro sa PhilSys ID' }
+  agency: 'PSA (PhilSys)'
+  url: 'https://philsys.gov.ph'
+  source: 'https://philsys.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: '200 in the test browser on 2026-11-18 (curl got 403).'
+
+- id: passport
+  group: other-agency
+  featured: false
+  label: { en: 'Passport', fil: 'Pasaporte' }
+  purpose: { en: 'Passport appointments', fil: 'Appointment para sa pasaporte' }
+  agency: 'DFA'
+  url: 'https://passport.gov.ph'
+  source: 'https://passport.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Cloudflare challenge (403) on 2026-11-18; open it by hand before verifying.'
+
+- id: lto
+  group: other-agency
+  featured: false
+  label:
+    {
+      en: "Driver's licence and vehicle registration",
+      fil: 'Lisensya sa pagmamaneho at rehistro ng sasakyan',
+    }
+  purpose: { en: 'LTMS online portal', fil: 'LTMS online portal' }
+  agency: 'LTO'
+  url: 'https://portal.lto.gov.ph'
+  source: 'https://portal.lto.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: philhealth
+  group: other-agency
+  featured: false
+  label: { en: 'PhilHealth', fil: 'PhilHealth' }
+  purpose: { en: 'Health insurance', fil: 'Health insurance' }
+  agency: 'PhilHealth'
+  url: 'https://www.philhealth.gov.ph'
+  source: 'https://www.philhealth.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: sss
+  group: other-agency
+  featured: false
+  label: { en: 'SSS', fil: 'SSS' }
+  purpose: { en: 'Social security', fil: 'Social security' }
+  agency: 'SSS'
+  url: 'https://www.sss.gov.ph'
+  source: 'https://www.sss.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: gsis
+  group: other-agency
+  featured: false
+  label: { en: 'GSIS', fil: 'GSIS' }
+  purpose:
+    { en: 'Social insurance for government workers', fil: 'Seguro ng mga kawani ng gobyerno' }
+  agency: 'GSIS'
+  url: 'https://www.gsis.gov.ph'
+  source: 'https://www.gsis.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: pag-ibig
+  group: other-agency
+  featured: false
+  label: { en: 'Pag-IBIG Fund', fil: 'Pag-IBIG Fund' }
+  purpose: { en: 'Housing savings and loans', fil: 'Ipon at pautang sa pabahay' }
+  agency: 'Pag-IBIG Fund'
+  url: 'https://www.pagibigfund.gov.ph'
+  source: 'https://www.pagibigfund.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: nbi-clearance
+  group: other-agency
+  featured: false
+  label: { en: 'NBI clearance', fil: 'NBI clearance' }
+  purpose: { en: 'Apply for an NBI clearance', fil: 'Mag-apply ng NBI clearance' }
+  agency: 'NBI'
+  url: 'https://clearance.nbi.gov.ph'
+  source: 'https://clearance.nbi.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: bir
+  group: other-agency
+  featured: false
+  label: { en: 'TIN and taxes', fil: 'TIN at buwis' }
+  purpose:
+    {
+      en: 'Tax identification number and national taxes',
+      fil: 'Tax identification number at pambansang buwis',
+    }
+  agency: 'BIR'
+  url: 'https://www.bir.gov.ph'
+  source: 'https://www.bir.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: dswd
+  group: other-agency
+  featured: false
+  label: { en: 'DSWD', fil: 'DSWD' }
+  purpose:
+    {
+      en: 'National social welfare programs',
+      fil: 'Mga pambansang programa sa kapakanang panlipunan',
+    }
+  agency: 'DSWD'
+  url: 'https://www.dswd.gov.ph'
+  source: 'https://www.dswd.gov.ph'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null

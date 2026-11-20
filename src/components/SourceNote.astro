@@ -1,0 +1,26 @@
+---
+// Source link and last-verified date for one verified item (offices, officials, barangays).
+import { t, type Lang } from '../i18n/ui';
+import { formatDate, isoDate, isSinglePage, sourceHref } from '../lib/guide';
+
+interface Props {
+  lang: Lang;
+  source: string;
+  /** Pages in the source, e.g. "256" or "224, 256"; null when none are recorded. */
+  pages: string | null;
+  lastVerified: Date;
+}
+
+const { lang, source, pages, lastVerified } = Astro.props;
+---
+
+<p class="mt-2 text-[0.8125rem] text-fg-soft">
+  <a href={sourceHref(source, pages)} rel="external" class="text-accent underline wrap-anywhere">
+    {t(lang, 'source.label')}
+    {pages !== null &&
+      ` (${t(lang, isSinglePage(pages) ? 'guide.source.page' : 'guide.source.pages')} ${pages})`}
+  </a>
+  <span aria-hidden="true"> · </span>
+  {t(lang, 'guide.lastVerified')}{' '}
+  <time datetime={isoDate(lastVerified)}>{formatDate(lastVerified, lang)}</time>
+</p>

@@ -180,6 +180,11 @@ const en = {
   'notFound.nav': 'Next steps',
   'missing.stated': 'Not stated in the official source. Ask the office.',
 
+  // Shared by SourceNote.astro and the directory pending notices
+  'source.label': 'Source',
+  'directory.pending.body':
+    'Names and descriptions below are in English until their Filipino translation is reviewed.',
+
   // Landing page (Home.astro)
 
   // How it works (/how-it-works/)
@@ -287,24 +292,13 @@ const en = {
   'resources.officialBody':
     'These are the sources we cite. {brand} complements them; it does not replace them.',
   'resources.open': 'Open',
-  'resources.r1.name': '{place} LGU website',
-  'resources.r1.desc': 'Official announcements',
-  'resources.r2.name': "Citizen's Charter {charterYear} (PDF)",
-  'resources.r2.desc': 'The source for every guide',
-  'resources.r3.name': '{council} of {place}',
-  'resources.r3.desc': 'Ordinances and sessions',
-  'resources.r4.name': 'Philippine Statistics Authority',
-  'resources.r4.desc': 'Population and census data',
-  'resources.r5.name': 'PhilHealth',
-  'resources.r5.desc': 'Health insurance',
-  'resources.r6.name': 'SSS',
-  'resources.r6.desc': 'Social security',
   'resources.notHandledTitle': 'Not handled by the {lguKind}',
   'resources.notHandledBody': 'Some services people expect from the LGU are run by other agencies.',
-  'resources.notHandled.1': 'National ID registration (PSA)',
-  'resources.notHandled.2': 'Passport applications (DFA)',
-  'resources.notHandled.3': 'Driver\u2019s licences (LTO)',
-  'resources.notHandled.4': 'Voter registration (COMELEC)',
+  'resources.lastChecked': 'Last checked',
+  'resources.officialPending':
+    'More official links are being checked. Only checked links appear here.',
+  'resources.notHandledPending':
+    'The links to other agencies are being checked. Only checked links appear here.',
 
   // About (/about/)
   'about.title': 'About {place}',
@@ -312,7 +306,7 @@ const en = {
   'about.lead': '{place}, {province}: facts from the official sources, not guesses.',
   'about.factsTitle': '{place} at a glance',
   'about.stat.pop': 'Population',
-  'about.stat.pop.src': '{censusSource}',
+  'about.stat.pop.src': '{censusSource}, reference date {censusDate}',
   'about.stat.brgy': 'Barangays',
   'about.stat.brgy.src': 'Full list on About {place}',
   'about.stat.services': 'Public services',
@@ -326,6 +320,11 @@ const en = {
   'about.sourcesBody': 'Every fact on this page is cited to an official document.',
   'about.sources.li1': '{censusSource}, reference date {censusDate}',
   'about.sources.li2': '{charterTitle}, {charterEdition}',
+  'about.brgy.name': 'Barangay',
+  'about.brgy.population': 'Population',
+  'about.brgy.censusYear': 'Census year',
+  'about.brgy.partial':
+    'These barangays have been checked so far. The rest are still being checked against the official source.',
 
   // Offices (/offices/)
   'offices.title': 'Offices',
@@ -338,6 +337,19 @@ const en = {
   'offices.noteTitle': 'About this list',
   'offices.noteBody':
     'Office names are taken verbatim from the Citizen\u2019s Charter. Only verified details are published.',
+  'offices.detailsTitle': 'What each office does',
+  'offices.detailsPending':
+    "Each office's description and source are being checked against the Citizen\u2019s Charter. Only checked offices appear here.",
+  'offices.guides': 'Guides for this office',
+  'offices.contactsNote': 'Office phone numbers are not published until they have been confirmed.',
+  'offices.officialsTitle': 'Elected officials',
+  'offices.officialsBody': 'Names and positions only, from official sources.',
+  'offices.officialsPending':
+    'The list of elected officials is being checked against official sources.',
+  'offices.term': 'Term',
+  'offices.position.mayor': '{lguAdj} Mayor',
+  'offices.position.vice-mayor': '{lguAdj} Vice Mayor',
+  'offices.position.sb-member': '{council} Member',
 
   // Services directory (/services/)
   'servicesDir.title': 'Services',
@@ -646,6 +658,11 @@ const fil: Partial<Record<Key, string>> = {
   'notFound.nav': 'Mga susunod na hakbang',
   'missing.stated': 'Hindi nakasaad sa opisyal na sanggunian. Magtanong sa opisina.',
 
+  // Shared by SourceNote.astro and the directory pending notices
+  'source.label': 'Sanggunian',
+  'directory.pending.body':
+    'Nasa Ingles ang mga pangalan at paglalarawan sa ibaba hanggang masuri ang salin sa Filipino.',
+
   // Landing page (Home.astro)
 
   // How it works
@@ -718,6 +735,20 @@ const fil: Partial<Record<Key, string>> = {
   'offices.noteTitle': 'Tungkol sa listahang ito',
   'offices.noteBody':
     'Ang mga pangalan ng opisina ay kinopya nang tuwiran mula sa Citizen\u2019s Charter. Inilalathala lamang ang mga napapatunayang detalye.',
+  'offices.detailsTitle': 'Ano ang ginagawa ng bawat opisina',
+  'offices.detailsPending':
+    'Sinusuri pa ang paglalarawan at sanggunian ng bawat opisina laban sa Citizen\u2019s Charter. Ang mga nasuri lamang ang lumalabas dito.',
+  'offices.guides': 'Mga gabay para sa opisinang ito',
+  'offices.contactsNote':
+    'Hindi muna inilalathala ang mga numero ng opisina hangga\u2019t hindi nakukumpirma.',
+  'offices.officialsTitle': 'Mga halal na opisyal',
+  'offices.officialsBody': 'Pangalan at posisyon lamang, mula sa mga opisyal na sanggunian.',
+  'offices.officialsPending':
+    'Sinusuri pa ang listahan ng mga halal na opisyal laban sa mga opisyal na sanggunian.',
+  'offices.term': 'Termino',
+  'offices.position.mayor': 'Alkalde',
+  'offices.position.vice-mayor': 'Bise Alkalde',
+  'offices.position.sb-member': 'Kagawad ng {council}',
 
   // Services directory
   'servicesDir.title': 'Mga serbisyo',
@@ -857,24 +888,13 @@ const fil: Partial<Record<Key, string>> = {
   'accessibility.feature.print.body':
     'Malinis na nagpi-print ang mga sheet ng serbisyo bilang isang pahina.',
   'resources.open': 'Buksan',
-  'resources.r1.name': 'Website ng LGU ng {place}',
-  'resources.r1.desc': 'Mga opisyal na anunsyo',
-  'resources.r2.name': "Citizen's Charter {charterYear} (PDF)",
-  'resources.r2.desc': 'Ang sanggunian ng bawat gabay',
-  'resources.r3.name': '{council} ng {place}',
-  'resources.r3.desc': 'Mga ordinansa at sesyon',
-  'resources.r4.name': 'Philippine Statistics Authority',
-  'resources.r4.desc': 'Datos ng populasyon at census',
-  'resources.r5.name': 'PhilHealth',
-  'resources.r5.desc': 'Health insurance',
-  'resources.r6.name': 'SSS',
-  'resources.r6.desc': 'Social security',
-  'resources.notHandled.1': 'Pagpaparehistro sa National ID (PSA)',
-  'resources.notHandled.2': 'Aplikasyon sa passport (DFA)',
-  'resources.notHandled.3': 'Lisensya sa pagmamaneho (LTO)',
-  'resources.notHandled.4': 'Pagpaparehistro bilang botante (COMELEC)',
+  'resources.lastChecked': 'Huling sinuri',
+  'resources.officialPending':
+    'Sinusuri pa ang iba pang opisyal na link. Ang mga nasuri lamang ang lumalabas dito.',
+  'resources.notHandledPending':
+    'Sinusuri pa ang mga link sa ibang ahensya. Ang mga nasuri lamang ang lumalabas dito.',
   'about.stat.pop': 'Populasyon',
-  'about.stat.pop.src': '{censusSource}',
+  'about.stat.pop.src': '{censusSource}, petsa ng sanggunian: {censusDate}',
   'about.stat.brgy': 'Mga barangay',
   'about.stat.brgy.src': 'Buong listahan sa Tungkol sa {place}',
   'about.stat.services': 'Mga serbisyong pampubliko',
@@ -883,6 +903,11 @@ const fil: Partial<Record<Key, string>> = {
   'about.stat.offices.src': "Citizen's Charter, {charterEdition}",
   'about.sources.li1': '{censusSource}, petsa ng sanggunian: {censusDate}',
   'about.sources.li2': '{charterTitle}, {charterEdition}',
+  'about.brgy.name': 'Barangay',
+  'about.brgy.population': 'Populasyon',
+  'about.brgy.censusYear': 'Taon ng census',
+  'about.brgy.partial':
+    'Ito ang mga barangay na nasuri na. Sinusuri pa ang iba laban sa opisyal na sanggunian.',
   'offices.placeSub':
     "Nakalista ayon sa opisina ang mga serbisyo ng {lguKind} sa Citizen's Charter.",
   'offices.brgy': 'Mga barangay',

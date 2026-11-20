@@ -1,0 +1,352 @@
+# Offices as printed in the Palo Citizen's Charter 2026. Every item stays
+# needs_confirmation until a person checks it. Phones are stored but never rendered.
+- id: office-of-the-mayor
+  name: 'Office of the Mayor'
+  description: 'Administers and supervises municipal operations; approves ordinances for execution (Charter p. 9)'
+  phone: null
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '8–9'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: "Description from the Charter's mandate text, p. 9. The Charter list of offices prints no number."
+
+- id: admin-hr
+  name: 'Administrative & Human Resource Management Section'
+  description: "Special Mayor's permit, mayor's certification, tree cutting/pruning no-objection, blood unit requests, research authority; internal leave and records"
+  phone: '0906-561-0464'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '8, 235, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'The DILG Leyte profile lists the same number as the municipal contact.'
+
+- id: business-permits
+  name: 'Business Permits & Licensing Office'
+  description: 'Business permits, motorcab and pedicab franchises, retirement and related certifications'
+  phone: '0961-750-2858'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '20, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: public-market
+  name: 'Economic Enterprise Management Unit - Palo Public Market'
+  description: 'Market stall awards and transfers, rentals, market clearance, tabo vendor registration'
+  phone: '0951-852-7748'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '31, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: peso
+  name: 'Public Employment Service Office'
+  description: 'Local and special recruitment activities'
+  phone: '0953-377-7838'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '43, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: tourism
+  name: 'Tourism, Culture, Arts and Media Office'
+  description: 'Tourism information and tourism data requests'
+  phone: '0962-109-3652'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '46, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: sangguniang-bayan
+  name: 'Office of the Sangguniang Bayan'
+  description: 'Issues SB documents and related certifications'
+  phone: null
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '49'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: accountant
+  name: 'Office of the Municipal Accountant'
+  description: 'Barangay supplemental budget processing; clearance and BIR 2316 (internal)'
+  phone: '0963-691-2605'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '52, 244, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: agriculture
+  name: 'Office of the Municipal Agriculturist'
+  description: 'Technical help for farmers and fisherfolk, certifications, RSBSA, fisherfolk and boat registration, crop and livestock insurance'
+  phone: '0963-949-9854'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '55, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: assessor
+  name: 'Office of the Municipal Assessor'
+  description: 'Tax declarations (transfer, revision, first issue), assessment of buildings and machinery, property certificates'
+  phone: '0975-852-9392'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '63, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: budget
+  name: 'Office of the Municipal Budget Officer'
+  description: 'Review of barangay and SK budgets; annual budget and CAFOA (internal)'
+  phone: '0993-490-0601'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '86, 248, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: civil-registrar
+  name: 'Office of the Municipal Civil Registrar'
+  description: 'Birth, marriage, death registration, marriage license, corrections, certified copies'
+  phone: '0967-139-6601'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '90, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: mdrrmo
+  name: 'Office of the Municipal Disaster Risk Reduction & Management Officer'
+  description: 'IEC materials, DRR trainings, emergency response, MDRRMO certification, CCTV review'
+  phone: '0910-042-6565'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '110, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: traffic
+  name: 'Traffic & Security Management Unit'
+  description: 'Motorcab and pedicab seminar and inspection; traffic penalties ordinance'
+  phone: '0930-091-7799'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '118, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'The Charter places this unit under the MDRRMO.'
+
+- id: engineering
+  name: 'Office of the Municipal Engineer'
+  description: 'Electrical, water connection/excavation, building, occupancy, fencing, demolition permits; annual inspection'
+  phone: '0915-909-3786'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '123, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: health
+  name: 'Office of the Municipal Health Officer'
+  description: 'Outpatient care, medical and health certificates, sanitation certification, maternal, family planning, immunization, TB, leprosy, rabies, dental, mental health'
+  phone: '0909-810-9308'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '139, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Charter p. 256 prints the same number for the Municipal Health Officer and the One Stop Health Shop.'
+
+- id: health-shop
+  name: 'Municipal Health Officer - Palo One Stop Health Shop'
+  description: 'Diagnostic procedures for pay and indigent patients, including partner LGUs'
+  phone: '0909-810-9308'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '165, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Charter p. 256 prints the same number for the Municipal Health Officer and the One Stop Health Shop.'
+
+- id: planning
+  name: 'Office of the Municipal Planning & Development Coordinator'
+  description: 'Zoning certification, locational clearance, subdivision and development permits, statistical data and maps, barangay certification'
+  phone: '0998-953-5546'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '174, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: social-welfare
+  name: 'Office of the Municipal Social Welfare & Development Officer'
+  description: 'Aid to individuals in crisis, referrals, solo parent and PWD IDs, shelter assistance, child development centers'
+  phone: '0918-209-3819'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '197, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: osca
+  name: 'MSWDO - Office of the Senior Citizens Affairs (OSCA)'
+  description: 'Senior citizen IDs, social pension, PhilHealth application, helpdesk'
+  phone: null
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '215'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: treasurer
+  name: 'Office of the Municipal Treasurer'
+  description: 'Cedula, real property tax collection and clearances, official receipts'
+  phone: '0955-301-6416'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '224, 256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
+
+- id: investment-promotion
+  name: 'Economic Development & Investment Promotion Unit'
+  description: null
+  phone: '0965-599-0075'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: general-services
+  name: 'General Services Section'
+  description: null
+  phone: '0962-963-8705'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: it-sound-system
+  name: 'Information Technology & Sound System Management Section'
+  description: null
+  phone: '0936-412-2152'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: livelihood-cooperatives
+  name: 'Livelihood & Cooperatives Development Section'
+  description: null
+  phone: '0906-748-0765'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: environment-solid-waste
+  name: 'Environment & Solid Waste Management Office'
+  description: null
+  phone: '0992-681-3065'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null
+
+- id: population
+  name: 'Population Office'
+  description: null
+  phone: '0907-546-5715'
+  source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
+  source_level: 1
+  source_pages: '256'
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: null

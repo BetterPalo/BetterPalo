@@ -69,7 +69,7 @@ describe('a city', () => {
       "Sample City Citizen's Charter 2025 (1st Edition)",
     );
     expect(tFor(c, 'fil', 'footer.about')).toContain('Lungsod ng Sample');
-    expect(tFor(c, 'en', 'resources.r3.name')).toBe('Sangguniang Panlungsod of Sample');
+    expect(tFor(c, 'en', 'offices.position.sb-member')).toBe('Sangguniang Panlungsod Member');
     expect(tFor(c, 'en', 'resources.notHandledTitle')).toBe('Not handled by the city');
     expect(tFor(c, 'fil', 'resources.notHandledTitle')).toBe('Hindi sakop ng pamahalaang lungsod');
     expect(tFor(c, 'en', 'home.sheet.where.val')).toBe('City Treasurer');
@@ -94,6 +94,8 @@ describe('the live config', () => {
 
 // Palo's built site must not change. Each row is a key whose text changed when the
 // placeholders were added; the value is the old literal from git HEAD's src/i18n/ui.ts.
+// The two about.stat.pop.src rows are the exception: they hold the new text that adds the
+// reference date, not the HEAD literal.
 // Only Palo's config has these words, so the block is skipped in a copy for another LGU.
 const before: Array<[Lang, Key, string]> = [
   ['en', 'site.name', 'BetterPalo'],
@@ -171,14 +173,11 @@ const before: Array<[Lang, Key, string]> = [
     'resources.officialBody',
     'These are the sources we cite. BetterPalo complements them; it does not replace them.',
   ],
-  ['en', 'resources.r1.name', 'Palo LGU website'],
-  ['en', 'resources.r2.name', "Citizen's Charter 2026 (PDF)"],
-  ['en', 'resources.r3.name', 'Sangguniang Bayan of Palo'],
   ['en', 'resources.notHandledTitle', 'Not handled by the municipality'],
   ['en', 'about.title', 'About Palo'],
   ['en', 'about.lead', 'Palo, Leyte: facts from the official sources, not guesses.'],
   ['en', 'about.factsTitle', 'Palo at a glance'],
-  ['en', 'about.stat.pop.src', 'PSA 2024 Census'],
+  ['en', 'about.stat.pop.src', 'PSA 2024 Census, reference date July 1, 2024'],
   ['en', 'about.stat.brgy.src', 'Full list on About Palo'],
   ['en', 'about.stat.services.src', "Citizen's Charter, 2nd Edition"],
   ['en', 'about.stat.offices.src', "Citizen's Charter, 2nd Edition"],
@@ -288,10 +287,7 @@ const before: Array<[Lang, Key, string]> = [
     'howItWorks.step.1.body',
     "Nagsisimula ang bawat serbisyo sa pahina nito sa Palo Citizen's Charter 2026.",
   ],
-  ['fil', 'resources.r1.name', 'Website ng LGU ng Palo'],
-  ['fil', 'resources.r2.name', "Citizen's Charter 2026 (PDF)"],
-  ['fil', 'resources.r3.name', 'Sangguniang Bayan ng Palo'],
-  ['fil', 'about.stat.pop.src', 'PSA 2024 Census'],
+  ['fil', 'about.stat.pop.src', 'PSA 2024 Census, petsa ng sanggunian: Hulyo 1, 2024'],
   ['fil', 'about.stat.brgy.src', 'Buong listahan sa Tungkol sa Palo'],
   ['fil', 'about.stat.services.src', "Citizen's Charter, 2nd Edition"],
   ['fil', 'about.stat.offices.src', "Citizen's Charter, 2nd Edition"],

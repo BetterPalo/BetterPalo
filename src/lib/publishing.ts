@@ -11,6 +11,15 @@ export function isPublishable(service: ServiceData): boolean {
   );
 }
 
+/** The gate for offices, officials, barangays, and resources (plan T1). */
+export function isPublished(item: {
+  status: string;
+  source: string | null;
+  last_verified: Date | null;
+}): boolean {
+  return item.status === 'verified' && item.source !== null && item.last_verified !== null;
+}
+
 /** True when a tourist spot carries a source and a verification date. */
 export function isVerifiedSpot(spot: TourismSpotData): boolean {
   return spot.status === 'verified' && spot.source !== null && spot.last_verified !== null;
