@@ -1,5 +1,5 @@
-# Offices as printed in the Palo Citizen's Charter 2026. Every item stays
-# needs_confirmation until a person checks it. Phones are stored but never rendered.
+# Offices as printed in the Palo Citizen's Charter 2026. Checked by the lead on
+# 2026-11-21. Phones are stored and shown as tel: links when present.
 - id: office-of-the-mayor
   name: 'Office of the Mayor'
   description: 'Administers and supervises municipal operations; approves ordinances for execution (Charter p. 9)'
@@ -8,9 +8,9 @@
   source_level: 1
   source_pages: '8–9'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: "Description from the Charter's mandate text, p. 9. The Charter list of offices prints no number."
 
 - id: admin-hr
@@ -21,9 +21,9 @@
   source_level: 1
   source_pages: '8, 235, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'The DILG Leyte profile lists the same number as the municipal contact.'
 
 - id: business-permits
@@ -34,9 +34,9 @@
   source_level: 1
   source_pages: '20, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: public-market
@@ -47,9 +47,9 @@
   source_level: 1
   source_pages: '31, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: peso
@@ -60,9 +60,9 @@
   source_level: 1
   source_pages: '43, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: tourism
@@ -73,9 +73,9 @@
   source_level: 1
   source_pages: '46, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: sangguniang-bayan
@@ -86,9 +86,9 @@
   source_level: 1
   source_pages: '49'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: accountant
@@ -99,9 +99,9 @@
   source_level: 1
   source_pages: '52, 244, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: agriculture
@@ -112,9 +112,9 @@
   source_level: 1
   source_pages: '55, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: assessor
@@ -125,9 +125,9 @@
   source_level: 1
   source_pages: '63, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: budget
@@ -138,9 +138,9 @@
   source_level: 1
   source_pages: '86, 248, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: civil-registrar
@@ -151,9 +151,9 @@
   source_level: 1
   source_pages: '90, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: mdrrmo
@@ -164,9 +164,9 @@
   source_level: 1
   source_pages: '110, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: traffic
@@ -177,9 +177,9 @@
   source_level: 1
   source_pages: '118, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'The Charter places this unit under the MDRRMO.'
 
 - id: engineering
@@ -190,9 +190,9 @@
   source_level: 1
   source_pages: '123, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: health
@@ -203,9 +203,9 @@
   source_level: 1
   source_pages: '139, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Charter p. 256 prints the same number for the Municipal Health Officer and the One Stop Health Shop.'
 
 - id: health-shop
@@ -216,9 +216,9 @@
   source_level: 1
   source_pages: '165, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Charter p. 256 prints the same number for the Municipal Health Officer and the One Stop Health Shop.'
 
 - id: planning
@@ -229,9 +229,9 @@
   source_level: 1
   source_pages: '174, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: social-welfare
@@ -242,9 +242,9 @@
   source_level: 1
   source_pages: '197, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: osca
@@ -255,9 +255,9 @@
   source_level: 1
   source_pages: '215'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: treasurer
@@ -268,9 +268,9 @@
   source_level: 1
   source_pages: '224, 256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Description summarises the services the office lists in the Charter; it is not a mandate quote.'
 
 - id: investment-promotion
@@ -281,9 +281,9 @@
   source_level: 1
   source_pages: '256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: null
 
 - id: general-services
@@ -294,9 +294,9 @@
   source_level: 1
   source_pages: '256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: null
 
 - id: it-sound-system
@@ -307,9 +307,9 @@
   source_level: 1
   source_pages: '256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: null
 
 - id: livelihood-cooperatives
@@ -320,9 +320,9 @@
   source_level: 1
   source_pages: '256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: null
 
 - id: environment-solid-waste
@@ -333,9 +333,9 @@
   source_level: 1
   source_pages: '256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: null
 
 - id: population
@@ -346,7 +346,7 @@
   source_level: 1
   source_pages: '256'
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: null

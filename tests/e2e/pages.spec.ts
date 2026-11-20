@@ -61,17 +61,47 @@ function readList<T extends { status: string }>(name: string): T[] {
 
 const isVerified = (item: { status: string }) => item.status === 'verified';
 
-test('/offices/ and /fil/offices/ never show an office phone', async ({ page }) => {
-  const phones = readList<{ status: string; phone: string | null }>('offices').flatMap((o) =>
-    o.phone === null ? [] : [o.phone],
+test('every verified office with a phone shows it as a tel: link on /offices/ and /fil/offices/', async ({
+  page,
+}) => {
+  const offices = readList<{ status: string; id: string; phone: string | null }>('offices').flatMap(
+    (o) => (isVerified(o) && o.phone !== null ? [{ id: o.id, phone: o.phone }] : []),
   );
+  test.skip(offices.length === 0, 'no verified office has a phone');
 
   for (const path of ['/offices/', '/fil/offices/']) {
     await page.goto(path);
-    // The whole HTML, so a tel: link or a title attribute counts as well as visible text.
-    const html = await page.content();
-    for (const phone of phones) {
-      expect(html, `${path} shows ${phone}`).not.toContain(phone);
+    for (const o of offices) {
+      // The same digits rule as Offices.astro: keep the digits and a leading +.
+      const tel = `tel:${o.phone.replace(/(?!^\+)\D/g, '')}`;
+      await expect(
+        page.locator(`#office-${o.id} a[href="${tel}"]`),
+        `${path} ${o.id}`,
+      ).toContainText(o.phone);
+    }
+  }
+});
+
+test('every verified office and official is listed on /offices/ and /fil/offices/', async ({
+  page,
+}) => {
+  const offices = readList<{ status: string; id: string }>('offices').filter(isVerified);
+  const officials = readList<{ status: string; name: string }>('officials').filter(isVerified);
+  test.skip(offices.length + officials.length === 0, 'nothing verified');
+
+  for (const path of ['/offices/', '/fil/offices/']) {
+    await page.goto(path);
+    for (const o of offices) {
+      await expect(page.locator(`#office-${o.id}`), path).toBeVisible();
+    }
+    for (const official of officials) {
+      await expect(page.locator('#officials'), path).toContainText(official.name);
+    }
+    if (offices.length > 0) {
+      await expect(page.locator('#offices-details-pending'), path).toHaveCount(0);
+    }
+    if (officials.length > 0) {
+      await expect(page.locator('#officials-pending'), path).toHaveCount(0);
     }
   }
 });
