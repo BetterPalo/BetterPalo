@@ -316,8 +316,8 @@ test('/about/: the sample barangay shows its population and census year', async 
   await expect(table).toContainText('Sample Barangay');
   await expect(table).toContainText('1,234');
   await expect(table).toContainText('2024');
-  // One sample barangay of 33, so the partial note shows.
-  await expect(page.locator('#barangays-partial')).toBeVisible();
+  // All 33 real barangays are published, so with the sample there is no partial note.
+  await expect(page.locator('#barangays-partial')).toHaveCount(0);
 });
 
 test('/resources/: the sample links show in their groups with a date and no pending note', async ({
