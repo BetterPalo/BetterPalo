@@ -1,0 +1,147 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 74-76 and 255.
+# Not yet checked against the PDF by a second person; needs_confirmation.
+id: certified-copy-tax-declaration
+name: Issuance of Certified Photocopy of Tax Declaration
+category: property
+office: Office of the Municipal Assessor
+classification: simple
+transaction_type: G2C – government to the transacting public
+description: >
+  Certified photocopy of a tax declaration, issued by the Office of the
+  Municipal Assessor.
+eligibility: All Citizens with property/ies in Palo
+requirements:
+  - document: Proof of ownership
+    copies: 1
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: Government Issued Identification Card/ or any valid Identification Card
+    copies: 1
+    form: photocopy
+    where_to_get: >
+      Bureau of Internal Revenue, Philippine Statistic Authority, Government
+      Service Insurance System, Social Security System, Pag-IBIG Fund, POST
+      OFFICE, Senior Citizen, Department of Foreign Affairs, Private Agency
+    conditions: null
+  - document: Deed of Conveyance
+    copies: 1
+    form: null
+    where_to_get: Lawyer
+    conditions: null
+  - document: Affidavit of Heirship or Kinship
+    copies: 1
+    form: null
+    where_to_get: Lawyer
+    conditions: null
+  - document: SPA or Authorization from the owner
+    copies: 1
+    form: null
+    where_to_get: Lawyer/ Lot Owner
+    conditions: null
+  - document: Live-birth/Death Certificate
+    copies: 1
+    form: null
+    where_to_get: Philippine Statistics Authority (PSA)/Municipal Civil Registrar (MCR)
+    conditions: null
+  - document: Marriage Certificate
+    copies: 1
+    form: null
+    where_to_get: Philippine Statistics Authority/Municipal Civil Registrar
+    conditions: null
+  - document: Barangay Certification
+    copies: 2
+    form: original
+    where_to_get: Barangay Chairman
+    conditions: null
+  - document: Official Receipt & Documentary stamp
+    copies: null
+    form: null
+    where_to_get: Office of the Municipal Treasurer (Windows 1 to 4)
+    conditions: null
+steps:
+  - step: 1
+    applicant_action: >
+      1. Fill-up request slip at front desk, complete the forms and affix
+      signature.
+    office_action: >
+      1.1. Verification of record.
+    responsible: >
+      Administrative Aide I, Assessment Clerk I, Clerk, Office of the Municipal
+      Assessor
+    max_time: 10 minutes
+  - step: 2
+    applicant_action: >
+      2. Pay the required fees at the Treasurer's Office.
+    office_action: >
+      2.1. Preparation Tax Declaration
+    responsible: >
+      Assessment Clerk I, Clerk, Administrative Aide I, Office of the Municipal
+      Assessor
+    max_time: 5 minutes
+  - step: 3
+    applicant_action: >
+      3. Present Official Receipt
+    office_action: >
+      3.1. Review and sign Tax Declaration.
+    responsible: >
+      Municipal Assessor, LAOO I, Office of the Municipal Assessor
+    max_time: 3 minutes
+  - step: 4
+    applicant_action: >
+      4. Receive Tax Declaration or Certification
+    office_action: >
+      4.1. Release Tax Declaration.
+    responsible: >
+      Administrative Aide I, Assessment Clerk I, Clerk, Office of the Municipal
+      Assessor
+    max_time: 2 minutes
+fees:
+  - amount: PHP 50.00 per copy
+    purpose: null
+    where_to_pay: Office of the Municipal Treasurer
+    conditions: null
+    basis: null
+processing_time: 20 minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Office of the Municipal Assessor
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. At the LGU's levels, immediate action is assured. You may visit the
+  Administrative Office and secure a complaint form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  Transcribed from PDF pages 74-76 and 255 (Feedback and Complaint Mechanism);
+  printed page numbers are the same as the PDF page numbers. The section starts
+  at the foot of page 74 (office and classification), and its header continues
+  on page 75. The steps table was read from page images. The Charter lists an
+  individual staff name for each step; the names are left out and "responsible"
+  shows positions and office only. The Charter prints no description paragraph
+  for this service, so the description above only restates the title. The
+  nine-item checklist on page 75 is the same as the checklist of service G on
+  pages 76-77, so it should be confirmed with the office. The Charter does not
+  say whether items 1 and 3 to 7 are originals or photocopies, so form is null
+  for them. The fee of PHP 50.00 per copy is printed beside step 1 (page 75);
+  the Charter does not name the fee, and step 2 says the required fees are paid
+  at the Treasurer's Office. The Charter's total is "20 minutes" (page 76),
+  copied as printed; the step times add up to 20 minutes (10 + 5 + 3 + 2).
+
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '74–76, 255'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation

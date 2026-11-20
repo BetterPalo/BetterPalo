@@ -1,0 +1,149 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 203-205 and 255.
+# Not yet checked against the PDF by a second person; needs_confirmation.
+id: solo-parent-id-ra-8972
+name: Application of Solo Parents ID (in compliance with RA 8972)
+category: social-welfare
+office: Office of the Municipal Social Welfare & Development Officer
+classification: simple
+transaction_type: G2C – government to the transacting public
+description: >
+  A parent who provides sole parental care and support of the child or children
+  due to birth as a consequence of rape, even without final conviction: Provided,
+  that the mother has the sole parental care and support of the child or children,
+  death of spouse, Detention of the spouse for at least three (3) months or service
+  of sentence for a criminal conviction; Physical or mental incapacity of the spouse
+  as certified by a public or private medical practitioner; Legal separation or de
+  facto separation for at least six (6) months, and the solo parent is entrusted
+  with the sole parental care and support of the child or children, Declaration of
+  nullity or annulment of marriage, as decreed by a court recognized by law, or due
+  to divorce, subject to existing laws, and the solo parent is entrusted with the
+  sole parental care and support of the child or children.
+
+  It aims to provide assistance to solo parents in various services such as health,
+  education, housing and parental leave.
+eligibility: Citizen
+requirements:
+  - document: Registration Form (duly filled up)
+    copies: null
+    form: null
+    where_to_get: MSWDO
+    conditions: null
+  - document: Certification of Punong Barangay that he/she is a solo parent and state the reason of being a solo parent
+    copies: 1
+    form: original
+    where_to_get: Barangay
+    conditions: null
+  - document: Photocopy of Latest Income Tax Return (if a tax filer)
+    copies: 1
+    form: photocopy
+    where_to_get: Bureau of Internal Revenue
+    conditions: null
+  - document: 1x1 ID picture
+    copies: 1
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: A personal interview with solo parent to determine one’s eligibility
+    copies: null
+    form: null
+    where_to_get: MSWDO
+    conditions: null
+  - document: Applicant must have minor dependents (below 22 years old)
+    copies: null
+    form: null
+    where_to_get: null
+    conditions: null
+  - document: Affidavit of applicant that he/she is not cohabiting with his/her spouse and that he/she is taking the full custody and support of children
+    copies: 1
+    form: original
+    where_to_get: Applicant
+    conditions: null
+steps:
+  - step: 1
+    applicant_action: 1. Client requests for the service
+    office_action: 1. Get initial information and refer client to staff in-charge.
+    responsible: Staff, MSWDO
+    max_time: 5 minutes
+  - step: 2
+    applicant_action: 2. Submits for intake/interview and fills-up registration form.
+    office_action: >
+      2.1. Request client to fill up registration form & validate information through
+      personal interview. 2.2. Request client to submit required documents and conduct
+      home visit to gather collateral information and further validation of client's
+      eligibility.
+    responsible: Staff, MSWDO
+    max_time: 15 minutes (2.1); 20 days (2.2)
+  - step: 3
+    applicant_action: 3. Client submit required documents
+    office_action: >
+      3.1. Prepare social case study report. 3.2. Review, approve and sign social case
+      study report. 3.3. Prepare solo parent ID.
+    responsible: Staff, MSWDO (3.1 and 3.3); MSWDO (3.2)
+    max_time: 2 weeks (14 days) (3.1); 10 minutes (3.2); 15 minutes (3.3)
+  - step: 4
+    applicant_action: 4. Client receives solo parent ID
+    office_action: 4.1. Release solo parent IDs signed by LCE to solo parent applicants
+    responsible: Staff, MSWDO
+    max_time: 5 minutes
+  - step: 5
+    applicant_action: 5. Request for Certification pending issuance of Solo Parent ID
+    office_action: 5.1. Interviewed client and verify his/her requirements submitted.
+    responsible: MSWDO
+    max_time: 5 minutes
+  - step: 6
+    applicant_action: 6. Prepare solo parent certification
+    office_action: 6.1. Solo Parent Focal submitted to MSWDO the required documents needed
+    responsible: Office of the Municipal Social Welfare & Development Officer
+    max_time: 5 minutes
+  - step: 7
+    applicant_action: 7. Issuance and acceptance of Certification as Solo Parent
+    office_action: 7.1. Client accepts the certification
+    responsible: MSWDO
+    max_time: 5 minutes
+fees:
+  - amount: None
+    purpose: null
+    where_to_pay: null
+    conditions: null
+    basis: null
+processing_time: 34 days, 1 hour & 5 minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Office of the Municipal Social Welfare & Development Officer
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. At the LGU's levels, immediate action is assured. You may visit the
+  Administrative Office and secure a complaint form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  Transcribed from PDF pages 203 to 205 (service E, Application of Solo Parents ID)
+  and 255 (Feedback and Complaint Mechanism); printed page numbers are the same as the
+  PDF page numbers. The step table has merged cells, so it was read from the page
+  images. The Charter lists individual staff names for each step; they are left out,
+  and "responsible" shows the position or the office only. Step 6.1 prints a name with
+  no position, so the office is written there. Sub-steps 1 to 7 are combined into one
+  entry per client step, each sub-step keeping its own number and time in max_time.
+  The fee column prints "None" beside steps 1, 2 and 3; the layout does not line each
+  "None" up with one sub-step, so it is recorded once. The fee cells for 3.3 to 7.1 are
+  blank in the Charter. Requirement 6 (minor dependents below 22 years old) has no
+  WHERE TO SECURE entry in the Charter, so where_to_get is null. The Charter's total is
+  "34 days, 1 hour & 5 minutes" (page 205), copied as printed; the step times add up
+  to 34 days, 1 hour and 5 minutes (20 days and 2 weeks, plus 65 minutes), so they agree.
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '203–205, 255'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation
