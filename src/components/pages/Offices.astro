@@ -97,6 +97,17 @@ const [verifiedOffices, officials, services] = await Promise.all([
                     <NotStated lang={lang} />
                   )}
                 </p>
+                {o.phone !== null && (
+                  <p class="mt-2 text-sm">
+                    <b>{t(lang, 'offices.phone')}</b>{' '}
+                    <a
+                      href={`tel:${o.phone.replace(/(?!^\+)\D/g, '')}`}
+                      class="inline-flex min-h-11 items-center text-accent underline"
+                    >
+                      {o.phone}
+                    </a>
+                  </p>
+                )}
                 {guides.length > 0 && (
                   <div class="mt-3 text-sm">
                     <b>{t(lang, 'offices.guides')}</b>

@@ -11,8 +11,8 @@ export const officeSchema = z
     /** One line summarising the services the office lists in the Charter; null when the Charter has no section for it. */
     description: stated,
     /**
-     * As printed on Charter p. 256. Never rendered: local numbers stay unpublished
-     * until a test call (lead's rule, 2026-11-18; see docs/data-sources.md).
+     * As printed on Charter p. 256. Shown as a tel: link on verified offices; the
+     * lead checked the numbers on 2026-11-21.
      */
     phone: stated,
     ...provenanceFields,

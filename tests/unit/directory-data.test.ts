@@ -49,6 +49,12 @@ describe('directory data files', () => {
     expect(new Set(names).size).toBe(names.length);
   });
 
+  it('barangay populations come from one census and sum to the municipal total', () => {
+    expect(barangays.every((b) => b.census_year === lgu.census.year)).toBe(true);
+    const total = barangays.reduce((sum, b) => sum + Number(b.population), 0);
+    expect(total).toBe(lgu.census.population);
+  });
+
   it('no resource URL points to BPLS or Facebook', () => {
     for (const r of resources) {
       expect(String(r.url), String(r.id)).not.toMatch(/ibpls\.com|facebook\.com/);
