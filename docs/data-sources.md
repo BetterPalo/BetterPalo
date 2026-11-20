@@ -22,7 +22,7 @@ processing time, or contact number.
 
 | Dataset | Fields published | Source | Source URL | Retrieved | Verified by | Terms | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Palo Citizen's Charter 2026 (2nd Edition): cedula service | Requirements, steps, fees, processing time, complaint procedure | Level 1: official LGU PDF | [Charter PDF](http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf) | 2026-11-06 | Zyxavy (transcriber); second checker not recorded | Public official document | PDF pages 225-227 and 255 (#26). `verified_by` must name the second checker before the guide claims `verified`. |
+| Palo Citizen's Charter 2026 (2nd Edition): cedula service | Requirements, steps, fees, processing time, complaint procedure | Level 1: official LGU PDF | [Charter PDF](http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf) | 2026-11-06 | Not verified yet. Transcribed by Zyxavy; second checker pending | Public official document | PDF pages 225-227 and 255 (#26). The transcriber re-read it against the PDF on 2026-11-18 (same file as the LGU server copy), no mismatches. Not published until a second checker is named in `verified_by` (ADR 0017). |
 
 ## Source leads
 
