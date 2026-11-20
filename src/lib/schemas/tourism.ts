@@ -31,6 +31,10 @@ export const tourismCategories = [
   'festival',
   'tour',
   'adventure',
+  'school',
+  'salon',
+  'computer-shop',
+  'bakery',
 ] as const;
 export type TourismCategory = (typeof tourismCategories)[number];
 
@@ -56,6 +60,10 @@ export const tourismCategoryGroups: Record<TourismCategory, TourismGroup> = {
   festival: 'do',
   tour: 'do',
   adventure: 'do',
+  school: 'see',
+  salon: 'do',
+  'computer-shop': 'do',
+  bakery: 'eat',
 };
 
 export function tourismGroupOf(category: TourismCategory): TourismGroup {

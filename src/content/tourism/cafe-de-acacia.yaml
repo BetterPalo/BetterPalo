@@ -1,0 +1,17 @@
+id: cafe-de-acacia
+name: Café de Acacia
+categories: [cafe]
+description: >
+  A classic café with a cozy atmosphere, Wi-Fi, and a menu of coffee, pastries,
+  and light meals. It’s a common spot for studying or casual meetings.
+address: null
+offer: null
+image: null
+image_alt: null
+
+source: null
+edition: null
+retrieved: null
+verified_by: null
+last_verified: null
+status: needs_confirmation

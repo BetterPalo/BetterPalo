@@ -22,7 +22,7 @@ processing time, or contact number.
 
 | Dataset | Fields published | Source | Source URL | Retrieved | Verified by | Terms | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Palo Citizen's Charter 2026 (2nd Edition): cedula service | Requirements, steps, fees, processing time, complaint procedure | Level 1: official LGU PDF | [Charter PDF](http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf) | 2026-11-06 | Zyxavy (transcriber); second checker not recorded | Public official document | PDF pages 225-227 and 255 (#26). `verified_by` must name the second checker before the guide claims `verified`. |
+| Palo Citizen's Charter 2026 (2nd Edition): cedula service | Requirements, steps, fees, processing time, complaint procedure | Level 1: official LGU PDF | [Charter PDF](http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf) | 2026-11-06 | Not verified yet. Transcribed by Zyxavy; second checker pending | Public official document | PDF pages 225-227 and 255 (#26). The transcriber re-read it against the PDF on 2026-11-18 (same file as the LGU server copy), no mismatches. Not published until a second checker is named in `verified_by` (ADR 0017). |
 
 ## Source leads
 
@@ -31,11 +31,11 @@ entries and nothing from them is published until it reaches the register.
 
 | Lead | Location | Level | What to check | Status |
 | --- | --- | --- | --- | --- |
-| Official LGU of Palo website | [http://210.213.142.34/home/?page=home](http://210.213.142.34/home/?page=home) | 1 (once confirmed) | Whether it hosts the current Citizen's Charter, officials, offices, and hotlines; confirm with the LGU that this address is official | Reported by the team, 2026-11-06 |
-| `palo-leyte.gov.ph` | [https://www.palo-leyte.gov.ph](https://www.palo-leyte.gov.ph) | 1 (once confirmed) | Listed on Wikipedia as the official site; check whether it is live or replaced by the address above | Did not resolve in an automated check, 2026-11-12; recheck from a normal connection before dropping it |
-| Palo BPLS (iBPLS) | [https://bpbc.ibpls.com/paloleyte/](https://bpbc.ibpls.com/paloleyte/) | 1 (once confirmed) | Which transactions work end to end; see the BPLS caution below | Page identifies as Palo, 2026-11-06 |
+| Official LGU of Palo website | [http://210.213.142.34/home/?page=home](http://210.213.142.34/home/?page=home) | 1 (unconfirmed by the LGU) | Whether it hosts the current Citizen's Charter, officials, offices, and hotlines; the LGU has not confirmed that this address is official, so record the retrieval date of each document | Reported by the team, 2026-11-06 |
+| `palo-leyte.gov.ph` | [https://www.palo-leyte.gov.ph](https://www.palo-leyte.gov.ph) | 1 (unconfirmed by the LGU) | Listed on Wikipedia as the official site; check whether it is live or replaced by the address above | Did not resolve in an automated check, 2026-11-12; recheck from a normal connection before dropping it |
+| Palo BPLS (iBPLS) | [https://bpbc.ibpls.com/paloleyte/](https://bpbc.ibpls.com/paloleyte/) | 1 (unconfirmed by the LGU) | Which transactions work end to end; see the BPLS caution below | Page identifies as Palo, 2026-11-06 |
 | Sangguniang Bayan of Palo | [https://palosb.com/official_website/](https://palosb.com/official_website/) | 1 | Ordinance texts and COA report downloads; hotlines look like placeholders | Unverified |
-| DILG Province of Leyte, Palo profile | [https://sites.google.com/view/dilg-province-of-leyte/lgus/palo](https://sites.google.com/view/dilg-province-of-leyte/lgus/palo) | 3 | No visible update date; confirm officials and contacts with the LGU | Unverified |
+| DILG Province of Leyte, Palo profile | [https://sites.google.com/view/dilg-province-of-leyte/lgus/palo](https://sites.google.com/view/dilg-province-of-leyte/lgus/palo) | 3 | No visible update date; cross-check officials and contacts against the LGU site and the Charter | Unverified |
 | PSA 2024 Census of Population | PSA release for Palo (exact table to be recorded) | 2 | Record the table title, release date, and reference date (July 1, 2024) | Headline total (80,291) matches a secondary source |
 | Palo Citizen's Charter (PDF) | [http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf](http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf) | 1 | Cover says "2026 (2nd Edition)"; approval date still unconfirmed by the LGU; see [the service inventory](research/citizens-charter-2026-inventory.md) and [Verifying without an LGU reply](#verifying-without-an-lgu-reply) | Downloaded and inventoried, 2026-11-06; accepted as the source for service guides, 2026-11-12 |
 | Palo Tourism Portal | Project copy of the portal (no public URL recorded) | 5 | Spot names, descriptions, and offers; confirm each with the tourism office. Place types are the team's classification, not the portal's | Ported 2026-11-14; the portal cited no official sources |
@@ -79,8 +79,9 @@ tracks cleared photos.
 
 ## Verifying without an LGU reply
 
-Decided 2026-11-12 in issue #24. The LGU of Palo has not answered the team's
-letter, so M1 does not wait for a reply.
+Decided 2026-11-12 in issue #24. The team is not coordinating with the LGU of Palo for
+now (as of 2026-11-19). Working with the LGU takes many process steps, and the
+project stays independent. No confirmation is coming, so nothing waits for one.
 
 - A service guide may be marked `verified` when a second checker, who did not
   transcribe it, has compared it page by page against the Citizen's Charter PDF
@@ -96,18 +97,19 @@ letter, so M1 does not wait for a reply.
     agency page, or an official directory), a team member may publish the
     number without a test call. Show the source and an "as of" date.
   - From level 4 or lower (a Facebook post, a mirror, a third-party site, word
-    of mouth), the number stays unpublished until a test call or the LGU
-    confirms it.
+    of mouth), the number stays unpublished until a test call confirms it.
   - Contacts of national agencies that the Charter itself prints (for example
     ARTA, PCC, and CCB on its Feedback and Complaint Mechanism page) may be
     published as printed, with the page cited. Decided 2026-11-14 for the cedula
     guide (#26) by the lead and the second checker.
 - Claims that a transaction can be completed online through the BPLS stay
-  unpublished until the permits office or an end-to-end test confirms it.
+  unpublished until an end-to-end test confirms it.
 - Anything the Charter does not state stays `null`.
-- If the LGU replies, record the confirmed approval date and official website
-  address here and in the source leads, and recheck published guides against
-  any newer Charter edition.
+- The LGU has not confirmed the Charter's approval date or its official website
+  address, and the team is not asking for now. Record the retrieval date of every document, and recheck published
+  guides when a newer Charter edition appears on the LGU's server. If the LGU
+  ever answers, record the confirmed date and address here and in the source
+  leads.
 - Keep following up with the LGU (issue #24). A reply is still wanted, but it no
   longer blocks publishing.
 
@@ -118,14 +120,14 @@ letter, so M1 does not wait for a reply.
   as the Municipality of Palo BPLS and is run on DICT's iBPLS (its privacy
   notice names DICT's Data Protection Officer). As of 2026-11-06, Business
   Permit and Working Permit lead to a login page, and Building Permit and
-  Occupancy Permit are marked "Soon". Confirm with the permits office which
-  transactions can be completed online before a service guide says so.
+  Occupancy Permit are marked "Soon". Test which transactions can be completed
+  online, end to end, before a service guide says so.
   The Citizen's Charter's business permit service points to a different host,
   `bpbc4.ibpls.com/paloleyte/`; test both and confirm which is current.
 - **Official website address.** The LGU site the team found is served from a
   bare IP address over plain HTTP. Addresses like this can change without
-  notice and browsers may show a "not secure" warning. Confirm with the LGU that
-  it is the official site, record the retrieval date for every document taken
+  notice and browsers may show a "not secure" warning. The LGU has not
+  confirmed that it is the official site, so record the retrieval date for every document taken
   from it, and save the document's own title and date so it can be found again
   if the address moves.
 - **Census editions.** The PSA Region VIII special release for Palo found in

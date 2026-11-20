@@ -1,0 +1,18 @@
+id: coffee-project-leyte
+name: Coffee Project Leyte
+categories: [cafe]
+description: >
+  A branch of the popular coffee chain located in Phase 1, Camella Homes,
+  Barangay Campetic. It operates daily from 7:00 AM to 11:00 PM and is praised
+  for its cappuccino.
+address: null
+offer: null
+image: null
+image_alt: null
+
+source: null
+edition: null
+retrieved: null
+verified_by: null
+last_verified: null
+status: needs_confirmation

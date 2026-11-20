@@ -1,0 +1,17 @@
+id: mister-bread
+name: Mister Bread
+categories: [heritage]
+description: >
+  A bakery located near the Palo Public Market, convenient for shoppers and
+  locals.
+address: null
+offer: null
+image: null
+image_alt: null
+
+source: null
+edition: null
+retrieved: null
+verified_by: null
+last_verified: null
+status: needs_confirmation

@@ -1,0 +1,16 @@
+id: benedict-s-villa
+name: Benedict's Villa
+categories: [villa]
+description: >
+  A villa accommodation in Palo (details from your original list).
+address: null
+offer: null
+image: null
+image_alt: null
+
+source: null
+edition: null
+retrieved: null
+verified_by: null
+last_verified: null
+status: needs_confirmation

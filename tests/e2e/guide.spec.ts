@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 
@@ -6,6 +7,13 @@ import { expect, test, type Page } from '@playwright/test';
 // missing interface strings, no accessibility violations, no sideways scroll at
 // 360 px, a source link that opens the Charter at page 225, and a print sheet
 // without the site chrome.
+
+// The cedula is published only while its status is verified (ADR 0017). Until the
+// second check is recorded (#26) there is no page to test, so skip, don't fail.
+test.skip(
+  !/^status: verified$/m.test(readFileSync('src/content/services/cedula.yaml', 'utf8')),
+  'the cedula guide is not published yet',
+);
 
 const EN = '/services/cedula/';
 const FIL = '/fil/services/cedula/';

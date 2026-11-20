@@ -1,0 +1,14 @@
+# FICTIONAL SAMPLE. Loaded only with SAMPLE_CONTENT=true. Never copy into src/content/.
+# Field rules: src/lib/schemas/barangay.ts
+- id: sample-barangay
+  name: 'Sample Barangay (betterlgu-sample-content)'
+  population: 1234
+  census_year: 2024
+  source: https://example.org/betterlgu-sample-content
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-01-01
+  verified_by: sample-checker
+  last_verified: 2026-01-01
+  status: verified
+  notes: null

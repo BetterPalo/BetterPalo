@@ -1,5 +1,10 @@
 import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
+import type { z } from 'astro/zod';
+import { barangaySchema } from './lib/schemas/barangay';
+import { officeSchema } from './lib/schemas/office';
+import { officialSchema } from './lib/schemas/official';
+import { resourceSchema } from './lib/schemas/resource';
 import { serviceSchema } from './lib/schemas/service';
 import { tourismSpotSchema } from './lib/schemas/tourism';
 import { SAMPLE_CONTENT_ENABLED } from './lib/sample-content';
@@ -25,4 +30,30 @@ const samples = defineCollection({
   schema: serviceSchema,
 });
 
-export const collections = { services, tourism, samples };
+// One YAML list per dataset (plan D5). The samples work the same way as `samples`.
+function list<S extends z.ZodType>(name: string, schema: S) {
+  return defineCollection({ loader: file(`src/content/${name}.yaml`), schema });
+}
+
+function sampleList<S extends z.ZodType>(name: string, schema: S) {
+  return defineCollection({
+    loader: SAMPLE_CONTENT_ENABLED
+      ? file(`examples/${name}.yaml`)
+      : { name: 'samples-off', load: async ({ store }) => store.clear() },
+    schema,
+  });
+}
+
+export const collections = {
+  services,
+  tourism,
+  samples,
+  offices: list('offices', officeSchema),
+  officials: list('officials', officialSchema),
+  barangays: list('barangays', barangaySchema),
+  resources: list('resources', resourceSchema),
+  sampleOffices: sampleList('offices', officeSchema),
+  sampleOfficials: sampleList('officials', officialSchema),
+  sampleBarangays: sampleList('barangays', barangaySchema),
+  sampleResources: sampleList('resources', resourceSchema),
+};

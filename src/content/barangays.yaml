@@ -1,0 +1,430 @@
+# The 33 barangays of Palo. Names only: populations stay null until a PSA table is
+# read (the 2020 figures are not copied). Every item stays needs_confirmation until checked.
+- id: anahaway
+  name: 'Anahaway'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: arado
+  name: 'Arado'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: baras
+  name: 'Baras'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: barayong
+  name: 'Barayong'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: buri
+  name: 'Buri (Poblacion)'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas omits (Poblacion).'
+
+- id: cabarasan-daku
+  name: 'Cabarasan Daku'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: cabarasan-guti
+  name: 'Cabarasan Guti'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: campetic
+  name: 'Campetic'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas spells it Campetik.'
+
+- id: candahug
+  name: 'Candahug'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: cangumbang
+  name: 'Cangumbang'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: canhidoc
+  name: 'Canhidoc'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: capirawan
+  name: 'Capirawan'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: castilla
+  name: 'Castilla'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: cavite-east
+  name: 'Cavite East (Poblacion)'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. Research lists it as Cavite East (Pob.).'
+
+- id: cavite-west
+  name: 'Cavite West (Poblacion)'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: cogon
+  name: 'Cogon'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: gacao
+  name: 'Gacao'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: guindapunan
+  name: 'Guindapunan'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: libertad
+  name: 'Libertad'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: luntad
+  name: 'Luntad (Poblacion)'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas omits (Poblacion).'
+
+- id: naga-naga
+  name: 'Naga-naga'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: pawing
+  name: 'Pawing'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: salvacion
+  name: 'Salvacion'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: san-agustin
+  name: 'San Agustin'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: san-antonio
+  name: 'San Antonio'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: san-fernando
+  name: 'San Fernando'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: san-isidro
+  name: 'San Isidro'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: san-joaquin
+  name: 'San Joaquin'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: san-jose
+  name: 'San Jose'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: st-michael
+  name: 'St. Michael (Poblacion)'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas lists San Miguel.'
+
+- id: santa-cruz
+  name: 'Santa Cruz (Poblacion)'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas omits (Poblacion).'
+
+- id: tacuranga
+  name: 'Tacuranga'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+
+- id: teraza
+  name: 'Teraza'
+  population: null
+  census_year: null
+  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
+  source_level: 5
+  source_pages: null
+  retrieved: 2026-11-18
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
