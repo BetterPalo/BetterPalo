@@ -1,0 +1,91 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 107-108.
+# Unverified: needs a second checker before status becomes verified.
+id: certified-true-copy-birth-marriage-death
+name: Request of Issuance of Certified True Copy of Birth, Marriage and Death Certificate
+category: Civil registry
+office: Office of the Municipal Civil Registrar
+classification: simple
+transaction_type: G2C – Government to Client
+description: >
+  The process of acquiring the certified true copy (CTC) of the certificates
+  registered in Palo, Leyte.
+eligibility: All clients who were born, married, or died in Palo, Leyte.
+requirements:
+  - document: Photocopy of Certificate of Live Birth, Marriage, or Death
+    copies: null
+    form: photocopy
+    where_to_get: Client / Document owner
+    conditions: Regardless of the number of photocopies.
+  - document: Authorization letter, if applicable
+    copies: 1
+    form: photocopy
+    where_to_get: Client and document owner
+    conditions: If applicable.
+  - document: Valid ID of the document owner and the requester
+    copies: 1
+    form: photocopy
+    where_to_get: null
+    conditions: null
+steps:
+  - step: 1
+    applicant_action: >
+      Approach a frontline staff and submit the photocopy of the document.
+    office_action: >
+      Receive and verify the document.
+    responsible: Clerk, Office of the Municipal Civil Registrar
+    max_time: 2 minutes
+  - step: 2
+    applicant_action: >
+      Pay at the Treasurer's office the corresponding fees.
+    office_action: >
+      Issue the order of payment. Certify the document as a true copy by
+      stamping it, then submit it to the Local Civil Registrar for signature
+      and sealing.
+    responsible: >
+      Collector, Municipal Treasurer's Office; Clerk, Office of the Municipal
+      Civil Registrar
+    max_time: 12 minutes
+  - step: 3
+    applicant_action: >
+      Receive the document.
+    office_action: >
+      Release the document.
+    responsible: Clerk, Office of the Municipal Civil Registrar
+    max_time: 1 minute
+fees:
+  - amount: PHP 100.00
+    purpose: Certified True Copy (CTC)
+    where_to_pay: Municipal Treasurer's Office
+    conditions: null
+    basis: null
+processing_time: 15 minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Office of the Municipal Civil Registrar
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. You may visit the Administrative Office and secure a complaint
+  form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  Transcribed from PDF pages 107-108. Fees are paid at the Municipal
+  Treasurer's Office. Staff names in the Charter are not published here; only
+  office and position are shown.
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '107–108'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation

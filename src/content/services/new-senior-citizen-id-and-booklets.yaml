@@ -1,0 +1,146 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 216-217.
+# Unverified: needs a second checker before status becomes verified.
+id: new-senior-citizen-id-and-booklets
+name: New Senior Citizen ID and Booklets
+category: Senior citizens
+office: Office of the Senior Citizens Affairs (OSCA)
+classification: complex
+transaction_type: G2C – Government to the Transacting Public
+description: >
+  Assistance to senior citizens in terms of issuance and replacement of OSCA ID
+  as well as in the processing of Social Pension and PhilHealth and other
+  related support and services intended for the senior citizens in the
+  Municipality of Palo, Leyte. This service provides Senior Citizen
+  Identification cards and booklets for discounts and other privileges.
+eligibility: Senior citizens in Palo, Leyte (60 years old and above).
+requirements:
+  - document: Application / Senior Citizens Registration and Information System (SCRIS) Intake Sheet
+    copies: 1
+    form: original
+    where_to_get: OSCA / Barangay Senior Citizen President
+    conditions: null
+  - document: BASCA (Barangay Senior Citizens Association) Membership Registration
+    copies: 1
+    form: original
+    where_to_get: Barangay Senior Citizens Association (BASCA)
+    conditions: null
+  - document: 3 pieces of 1x1 pictures
+    copies: 3
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: Certificate of Residency
+    copies: 1
+    form: original
+    where_to_get: Office of the Barangay
+    conditions: null
+  - document: Proof of age (live birth, baptismal certificate, or any valid ID)
+    copies: 1
+    form: photocopy
+    where_to_get: Applicant
+    conditions: null
+steps:
+  - step: 1
+    applicant_action: >
+      Fill up the Application / SCRIS Intake Form.
+    office_action: >
+      The president of the Senior Citizen Barangay Chapter reviews and signs the
+      SCRIS form.
+    responsible: OSCA and president of the Senior Citizen Barangay Chapter
+    max_time: 20 minutes
+  - step: 2
+    applicant_action: >
+      Barangay Senior Citizens Association (BASCA) membership registration.
+    office_action: >
+      Register the senior citizen in the association.
+    responsible: BASCA president
+    max_time: 15 minutes
+  - step: 3
+    applicant_action: >
+      Submit the needed requirements to OSCA.
+    office_action: >
+      Check and review the requirements.
+    responsible: OSCA staff
+    max_time: 5 minutes
+  - step: 4
+    applicant_action: >
+      Record the data to the record book.
+    office_action: >
+      Encode the data in the computer.
+    responsible: OSCA staff
+    max_time: 15 minutes
+  - step: 5
+    applicant_action: >
+      Printing of the Senior Citizen ID and Purchase Booklet.
+    office_action: >
+      Process the Senior Citizen ID and Purchase Booklet.
+    responsible: OSCA staff
+    max_time: 10 minutes
+  - step: 6
+    applicant_action: >
+      The applicant signs the Senior Citizen ID.
+    office_action: >
+      Approve and sign the Senior Citizen ID.
+    responsible: OSCA staff
+    max_time: 5 minutes
+  - step: 7
+    applicant_action: >
+      Submit the Senior Citizen ID and Purchase Booklet to the OSCA Head for
+      approval.
+    office_action: >
+      Approve and sign the Senior Citizen ID and Purchase Booklet.
+    responsible: OSCA Head
+    max_time: 1 day
+  - step: 8
+    applicant_action: >
+      Submit the Senior Citizen ID and Purchase Booklet to the Mayor's Office
+      for approval.
+    office_action: >
+      Process the release of the Senior Citizen ID and Purchase Booklet.
+    responsible: OSCA staff
+    max_time: 1 day
+  - step: 9
+    applicant_action: >
+      Senior citizen is informed of the release of the Senior Citizen ID and
+      Purchase Booklet.
+    office_action: >
+      Release the Senior Citizen ID and Purchase Booklet.
+    responsible: OSCA staff
+    max_time: 3 days, 1 hour, and 10 minutes
+fees:
+  - amount: PHP 70.00
+    purpose: Senior Citizen ID and Purchase Booklet
+    where_to_pay: Office of the Senior Citizens Affairs (OSCA)
+    conditions: null
+    basis: null
+processing_time: 3 days, 1 hour, and 10 minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Office of the Senior Citizens Affairs (OSCA)
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. You may visit the Administrative Office and secure a complaint
+  form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  Transcribed from PDF pages 216-217. The Charter lists individual staff names
+  for each step, which are not published here. The fee of PHP 70.00 is the only
+  amount stated.
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '216–217'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation

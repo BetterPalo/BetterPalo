@@ -1,0 +1,199 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 128-131.
+# Unverified: needs a second checker before status becomes verified.
+id: building-permit
+name: Issuance of Building Permit
+category: Building permits
+office: Office of the Municipal Engineer
+classification: complex
+transaction_type: G2C – Government to the Transacting Public
+description: >
+  A building permit is required prior to the construction, erection, alteration,
+  repair, conversion, use, occupancy, moving, or demolition of any building or
+  structure by private persons, firms, or corporations, including agencies or
+  instrumentalities of the government (P.D. 1096, the National Building Code).
+  The permit becomes null and void if work is not commenced within one year from
+  the date of issuance, or if the building work is suspended or abandoned at any
+  time after it has been commenced for a period of 120 days.
+eligibility: >
+  Any person who intends to construct, erect, alter, repair, convert, move, or
+  demolish any building within the Municipality.
+requirements:
+  - document: Unified Application Form for Building Permit (5 sets, original, signed and sealed, notarized)
+    copies: 5
+    form: original
+    where_to_get: Office of the Municipal Engineer
+    conditions: null
+  - document: Electrical Permit application form (5 sets, original)
+    copies: 5
+    form: original
+    where_to_get: Office of the Municipal Engineer
+    conditions: null
+  - document: Sanitary/Plumbing Permit application form (5 sets, original, signed and sealed)
+    copies: 5
+    form: original
+    where_to_get: Office of the Municipal Engineer
+    conditions: null
+  - document: Mechanical Permit application form (5 sets, original, signed and sealed)
+    copies: 5
+    form: original
+    where_to_get: Office of the Municipal Engineer
+    conditions: null
+  - document: Sets of plans (5 sets, original, signed and sealed)
+    copies: 5
+    form: original
+    where_to_get: Office of the Municipal Engineer
+    conditions: null
+  - document: Bill of Materials and Cost Estimates (5 sets)
+    copies: 5
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: Specifications (5 sets)
+    copies: 5
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: Land Title or TCT (certified by the Register of Deeds) (3 sets)
+    copies: 3
+    form: null
+    where_to_get: Office of the Municipal Assessor / Register of Deeds
+    conditions: null
+  - document: Latest Tax Receipt / Tax Clearance (3 sets)
+    copies: 3
+    form: null
+    where_to_get: Office of the Municipal Treasurer
+    conditions: null
+  - document: Lot plan certified by a Geodetic Engineer (3 sets)
+    copies: 3
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: Deed of Sale / Contract of Lease, if the applicant's name is not the registered owner on the TCT (3 sets)
+    copies: 3
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: Structural analysis for one-storey buildings in excess of 20 sq.m. and all buildings of two storeys and above, with seismic analysis (3 sets)
+    copies: 3
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: Certification of structural engineer in case of an additional floor (structural stability) (3 sets)
+    copies: 3
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: Soil boring test result, for buildings of three storeys and above (2 copies)
+    copies: 2
+    form: null
+    where_to_get: Applicant
+    conditions: null
+  - document: Clearance from government agencies exercising regulatory functions (2 copies)
+    copies: 2
+    form: null
+    where_to_get: >
+      Zoning Certification / Locational Clearance (Municipal Planning and
+      Development Office); Fire Department Clearance (Bureau of Fire
+      Protection); Environmental Compliance Certificate (ECC) or Certificate of
+      Non-Coverage (CNC) for commercial, institutional, and industrial buildings
+      and cell sites; clearance for tourist-oriented projects (Philippine
+      Tourism Authority); clearance for water refilling and similar facilities
+      as required
+    conditions: >
+      The Charter lists these clearances as coming from the agencies exercising
+      regulatory functions. All documents must be signed by the owner; forms,
+      plans, specifications, bill of materials, cost estimates, and other
+      pertinent documents must be signed and sealed by the designer with a
+      current Professional Tax Receipt (PTR) and PRC ID. A Special Power of
+      Attorney is required if the owner is not the signatory.
+steps:
+  - step: 1
+    applicant_action: >
+      Request a Building Permit application form and inquire about the
+      requirements.
+    office_action: >
+      Issue the application permit forms (Building, Electrical,
+      Sanitary/Plumbing, Mechanical) with the checklist of requirements.
+    responsible: Administrative Aide I, Municipal Engineer's Office
+    max_time: 15 minutes
+  - step: 2
+    applicant_action: >
+      Submit the duly accomplished application form with other supporting
+      documents.
+    office_action: >
+      2.1 Receive, verify, review, and process the application form and other
+      supporting documents. 2.2 Endorse the application to the Bureau of Fire
+      Protection. 2.3 Issue the Fire Safety Evaluation Clearance. 2.4 Actual
+      site inspection. 2.5 Compute the assessment of corresponding fees and
+      issue the order of payment.
+    responsible: >
+      Municipal Engineer; Administrative Aide I; Architect 1; Bureau of Fire
+      Protection (BFP)
+    max_time: 11 days
+  - step: 3
+    applicant_action: >
+      Receive the assessment form / order of payment.
+    office_action: >
+      Release the assessment form / order of payment and instruct the client to
+      proceed to the Municipal Treasurer's Office for payment of fees and
+      charges.
+    responsible: Administrative Aide I, Municipal Engineer's Office
+    max_time: 30 minutes
+  - step: 4
+    applicant_action: >
+      Submit all documents with the Official Receipt to the Municipal
+      Engineer's Office.
+    office_action: >
+      4.1 Record the Official Receipt. 4.2 Signature and approval of the
+      building permit and other documents.
+    responsible: >
+      Administrative Aide I; Municipal Engineer; Municipal Engineer's Office
+    max_time: 1 day
+  - step: 5
+    applicant_action: >
+      Receive the approved building permit and other documents.
+    office_action: >
+      Issue, segregate, and release the owner's copy of the building permit.
+    responsible: Administrative Aide I, Municipal Engineer's Office
+    max_time: 20 minutes
+fees:
+  - amount: null
+    purpose: Building permit fees and charges
+    where_to_pay: Municipal Treasurer's Office
+    conditions: null
+    basis: >
+      New Schedule of Fees and other Charges of the Revised Implementing Rules
+      and Regulations (IRR) of the National Building Code of the Philippines
+      (PD 1096), National Building Code Development Office (NBCDO) Memorandum
+      Circular No. 03, Series of 2016
+processing_time: 12 days, 1 hour, and 5 minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Office of the Municipal Engineer
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. You may visit the Administrative Office and secure a complaint
+  form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  Transcribed from PDF pages 128-131. Fees are assessed based on the National
+  Building Code schedule; no fixed amount is stated in the Charter. The Charter
+  lists individual staff names for each step, which are not published here.
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '128–131'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation
