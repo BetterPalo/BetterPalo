@@ -8,9 +8,7 @@
         "http://localhost/tourism/index.html",
         "http://localhost/fil/tourism/index.html",
         "http://localhost/services/index.html",
-        "http://localhost/fil/services/index.html",
-        "http://localhost/services/cedula/index.html",
-        "http://localhost/fil/services/cedula/index.html"
+        "http://localhost/fil/services/index.html"
       ],
       "numberOfRuns": 3,
       "settings": {
