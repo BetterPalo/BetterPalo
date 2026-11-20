@@ -2,7 +2,7 @@
 title: "0015: Wider scope for v1"
 ---
 
-- Status: Proposed
+- Status: Accepted (2026-11-21)
 - Date: 2026-11-17
 - Approval: only @Zyxavy and @STR4T-coder are actively working on the
   project, so both approve. @STR4T-coder approves on GitHub; @Zyxavy records

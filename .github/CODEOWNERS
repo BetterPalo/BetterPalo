@@ -2,8 +2,6 @@
 #
 # The last matching line wins. Each line lists the lead plus the area owner,
 # so the lead's own pull requests can still be approved by someone else.
-# Translation and QA owner is not yet named; translation lines use the lead
-# and the frontend owner until one is.
 
 # Default: lead and second reviewer
 *                                   @Zyxavy @STR4T-coder
@@ -21,8 +19,8 @@
 /src/styles/                        @jaimedesu @khalmahi @Zyxavy
 /public/                            @jaimedesu @khalmahi @Zyxavy
 
-# Translation (owner TBD; interim reviewers)
-/src/i18n/                          @khalmahi @Zyxavy
+# Translation and QA
+/src/i18n/                          @Rurur8 @khalmahi @Zyxavy
 
 # Infrastructure and CI. Workflow and CI changes need @Rurur8 as first reviewer,
 # @STR4T-coder as second reviewer; the project lead merges.

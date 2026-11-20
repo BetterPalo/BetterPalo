@@ -2,7 +2,7 @@
 title: "0016: One approval for every change"
 ---
 
-- Status: Proposed
+- Status: Accepted (2026-11-21)
 - Date: 2026-11-17
 - Approval: only @Zyxavy and @STR4T-coder are actively working on the
   project, so both approve. @STR4T-coder approves on GitHub; @Zyxavy records
