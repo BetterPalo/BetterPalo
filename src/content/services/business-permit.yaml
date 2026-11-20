@@ -1,0 +1,317 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 21-24 and 255.
+# Needs a second check against the PDF before it can be verified.
+id: business-permit
+name: Granting of New and Renewal of Existing Business Permits
+category: business
+office: Business Permits and Licensing Office
+classification: complex
+transaction_type: G2C – Government to the Transacting Public
+description: >
+  All businesses in the Municipality of Palo are required to secure a Business
+  License and Mayor's Permit before operating a new business or to continue
+  operating an existing one. This service covers granting new business permits
+  and renewing existing ones.
+eligibility: Any citizen doing business or plan to do business within the Municipality of Palo, Leyte.
+requirements:
+  - document: Application Form for New/Renewal of Business Permit
+    copies: 1
+    form: original
+    where_to_get: Business Permits and Licensing Office (BPLO)
+    conditions: Primary Requirements
+  - document: Barangay Business Clearance or Barangay Business Clearance Approval Slip
+    copies: 1
+    form: photocopy
+    where_to_get: Concerned Barangay
+    conditions: Primary Requirements
+  - document: Community Tax Certificate
+    copies: 1
+    form: photocopy
+    where_to_get: Concerned Barangay/Office of the Municipal Treasurer
+    conditions: Primary Requirements
+  - document: Certificate of Registration from DTI
+    copies: 1
+    form: photocopy
+    where_to_get: Department of Trade and Industry (DTI)
+    conditions: Primary Requirements; if sole proprietorship
+  - document: Certificate of Incorporation from SEC
+    copies: 1
+    form: photocopy
+    where_to_get: Securities and Exchange Commission (SEC)
+    conditions: Primary Requirements; if corporation
+  - document: Certificate of Registration from CDA
+    copies: 1
+    form: photocopy
+    where_to_get: Cooperative Development Authority (CDA)
+    conditions: Primary Requirements; if cooperative
+  - document: Notarized Sworn Statement
+    copies: 1
+    form: original
+    where_to_get: BPLO and Notary Public
+    conditions: Primary Requirements
+  - document: Sanitary Permit
+    copies: 1
+    form: photocopy
+    where_to_get: Office of the Municipal Health Officer (MHO)
+    conditions: Primary Requirements
+  - document: Health Card (Food and Non-food Related Business)
+    copies: 1
+    form: photocopy
+    where_to_get: Office of the Municipal Health Officer (MHO)
+    conditions: Primary Requirements
+  - document: Local Fire Assessment for New Business
+    copies: 1
+    form: original
+    where_to_get: Business Permit and Licensing Office (BPLO)
+    conditions: Primary Requirements
+  - document: Notarized Affidavit of Undertaking (for Engineering requirements)
+    copies: 1
+    form: original
+    where_to_get: Business Permit and Licensing Office (BPLO)
+    conditions: Primary Requirements
+  - document: Fire Safety Inspection Certificate (FSIC) for Renewal of Business (for Renewal)
+    copies: 1
+    form: original
+    where_to_get: Bureau of Fire Protection (Palo – BFP)
+    conditions: Primary Requirements
+  - document: After Inspection Report (AIR) (for Renewal)
+    copies: 1
+    form: original
+    where_to_get: Bureau of Fire Protection (Palo – BFP)
+    conditions: Primary Requirements
+  - document: Special Power of Attorney (SPA)
+    copies: 1
+    form: original
+    where_to_get: Business Owner
+    conditions: Primary Requirements; if representative
+  - document: Proof of Owner Ship (e.g., Land Title, Tax Declaration, or Contract of Lease)
+    copies: 1
+    form: photocopy
+    where_to_get: Lessor/Property Owner
+    conditions: Primary Requirements
+  - document: Occupancy Permit
+    copies: 1
+    form: photocopy
+    where_to_get: Office of the Municipal Engineer (MEO)
+    conditions: Secondary Requirements
+  - document: Building Permit
+    copies: 1
+    form: photocopy
+    where_to_get: Office of the Municipal Engineer (MEO)
+    conditions: Secondary Requirements
+  - document: Lessor's Business Permit
+    copies: 1
+    form: photocopy
+    where_to_get: Lessor/Property Owner
+    conditions: Secondary Requirements; if the business establishment id rented
+  - document: Property Holdings & Tax Payments
+    copies: 1
+    form: original
+    where_to_get: Office of the Municipal Assessor (MASSO)
+    conditions: Secondary Requirements
+  - document: Certificate of Potability for Water Refilling Station
+    copies: 1
+    form: photocopy
+    where_to_get: Office of the Municipal Health Officer (MHO)
+    conditions: Other requirements as may be appropriate
+  - document: Certificate of Compliance to operate for Gasoline and LPG dealers
+    copies: 1
+    form: photocopy
+    where_to_get: Department of Energy (DOE)
+    conditions: Other requirements as may be appropriate
+  - document: Affidavit of undertaking and Police Certification for Entertainment and Videoke Bars
+    copies: 1
+    form: photocopy
+    where_to_get: Philippine National Police (Palo – PNP)
+    conditions: Other requirements as may be appropriate
+  - document: Clearance for Recruitment Agencies
+    copies: 1
+    form: photocopy
+    where_to_get: Department of Labor and Employment (DOLE)
+    conditions: Other requirements as may be appropriate
+  - document: Bangko Sentral ng Pilipinas for Banks, Remittance Centers & Other Lending Institutions
+    copies: 1
+    form: photocopy
+    where_to_get: Bangko Sentral ng Pilipinas (BSP)
+    conditions: Other requirements as may be appropriate
+  - document: Environmental Clearance Certificate (ECC) for Junkshops and Mining Industries
+    copies: 1
+    form: photocopy
+    where_to_get: Department of Environment and Natural Resources (DENR)
+    conditions: Other requirements as may be appropriate
+  - document: Environmental Clearance Certificate (ECC), Barangay and SB Resolution, Quarry Permit (Province of Leyte) for Quarrying
+    copies: 1
+    form: photocopy
+    where_to_get: Department of Environment and Natural Resources (DENR); Concerned Barangay; Sangguniang Bayan
+    conditions: Other requirements as may be appropriate
+  - document: License to Operate for Pharmaceutical Stores and Distributors and Food Manufacturers
+    copies: 1
+    form: photocopy
+    where_to_get: Food and Drug Administration (FDA)
+    conditions: Other requirements as may be appropriate
+  - document: License for Insecticides and Pest Control Services
+    copies: 1
+    form: photocopy
+    where_to_get: Department of Agriculture (DA)
+    conditions: Other requirements as may be appropriate
+  - document: Video Regulatory Board/Optical Media Board Permit in case of Video Rental Services
+    copies: 1
+    form: photocopy
+    where_to_get: Video Regulatory Board/Optical Media Board
+    conditions: Other requirements as may be appropriate
+  - document: LTFRB Franchise Certificate for Rent-a-car and Transportation Services with Transport Contract of more than 3 years
+    copies: 1
+    form: photocopy
+    where_to_get: Land Transportation Franchising and Regulatory Board (LTFRB)
+    conditions: Other requirements as may be appropriate
+  - document: PCSUCIA National License for Security Agencies
+    copies: 1
+    form: photocopy
+    where_to_get: Philippine Constabulary Supervisory Office for Security and Investigation Agencies (PCSUCIA)
+    conditions: Other requirements as may be appropriate
+  - document: Approved Resolution from Barangay and SB Municipal Council on the designation of the area as a wet market (Talipapa)
+    copies: 1
+    form: photocopy
+    where_to_get: Concerned Barangay & Sangguniang Bayan
+    conditions: Other requirements as may be appropriate
+  - document: Approved Resolution Interposing No Objection from Barangay and SB Municipal Council for Firing/Shooting Range
+    copies: 1
+    form: photocopy
+    where_to_get: Concerned Barangay & Sangguniang Bayan
+    conditions: Other requirements as may be appropriate
+  - document: Approved Resolution from Barangay Interposing No Objection for the operation of the Billiard Hall
+    copies: 1
+    form: photocopy
+    where_to_get: Concerned Barangay & Sangguniang Bayan
+    conditions: Other requirements as may be appropriate
+  - document: Other documents on a case-to-case basis (e.g. Income Tax Returns of Previous Year)
+    copies: 1
+    form: photocopy
+    where_to_get: Bureau of Internal Revenue (BIR)
+    conditions: Other requirements as may be appropriate
+  - document: PCAB (Philippine Contractors Accreditation Board) license for contractor
+    copies: 1
+    form: photocopy
+    where_to_get: Philippine Contractors Accreditation Board (PCAB)
+    conditions: Other requirements as may be appropriate
+steps:
+  - step: 1
+    applicant_action: >
+      1. Fill out all information and upload all necessary requirement to our
+      Electronic Business Permit and Licensing System thru:
+      https://bpbc4.ibpls.com/paloleyte/
+    office_action: >
+      1.1 Check completeness of documents. 1.2 Encode and upload all necessary
+      requirements. 1.3 Verify Online Application. 1.4 Endorsement of the verified
+      application. 1.5 Issue Tax Order of Payment.
+    responsible: >
+      BPLO Staff, Business Permits and Licensing Office; endorsing offices: Office
+      of the Municipal Engineer, Office of the Municipal Health Officer, Bureau of
+      Fire Protection
+    max_time: 35 minutes
+  - step: 2
+    applicant_action: 2. Schedule a Local Fire Assessment (New)
+    office_action: 2.1 Conduct an inspection and assessment on the business establishment
+    responsible: BPLO Staff, Business Permits and Licensing Office
+    max_time: 30 minutes
+  - step: 3
+    applicant_action: 3. Payment/Validated Payment (if online)
+    office_action: >
+      3.1 Shall receive payment of taxes, fees and charges, and issue corresponding
+      official receipts
+    responsible: Windows 1 – 4 Office of the Municipal Treasurer
+    max_time: 15 minutes
+  - step: 4
+    applicant_action: >
+      4. Submit a photocopy of the Receipt, Assessment, and Property Holdings to the
+      Business Permit and Licensing Office
+    office_action: >
+      4. Prepare, print, and have the Business Permit signed by the Officer-in-Charge
+      and the Local Chief Executive
+    responsible: BPLO Staff, Business Permits and Licensing Office
+    max_time: 1 day
+  - step: 5
+    applicant_action: >
+      5. Claim Business Permit. Submit a photocopy of the official receipts and a
+      Special Power of Attorney (if representative) upon release of business permit
+    office_action: 5. Release of Business Permit
+    responsible: BPLO Staff, Business Permits and Licensing Office
+    max_time: 5 minutes
+fees:
+  - amount: null
+    purpose: Taxes, fees and charges (Step 3)
+    where_to_pay: Windows 1 – 4 Office of the Municipal Treasurer
+    conditions: null
+    basis: Based on the Municipal Tax and Revenue Code of 2022 of the Municipality of Palo, Province of Leyte
+processing_time: 1 day, 1 hour, and 25 minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Business Permits and Licensing Office
+    supports: null
+    account_required: null
+    last_tested: null
+  - type: online
+    url: https://bpbc4.ibpls.com/paloleyte/
+    location: null
+    supports:
+      - Fill out the application and upload the requirements (Charter page 23, step 1)
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. At the LGU's levels, immediate action is assured. You may visit the
+  Administrative Office and secure a complaint form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  The Charter's approval date has not been confirmed by the LGU.
+  Transcribed from PDF pages 21 to 24 (service A only; page 24 also starts service
+  B, Motorcab Franchise, which is left out) and page 255 (Feedback and Complaint
+  Mechanism). Printed page numbers are the same as the PDF page numbers. Steps 1
+  and 2 are on page 23; steps 3 to 5 and the TOTAL are on page 24. The steps table
+  was read from page images. The TOTAL is copied as printed; it equals the five
+  step times added up.
+  The Charter lists the person responsible for each step by individual staff
+  name (page 23). Those names are left out; "responsible" shows "BPLO Staff" and
+  the endorsing offices only.
+  Each step combines the Charter's sub-steps (1.1 to 1.5, 2.1, 3.1) into one
+  entry. The Charter labels step 2 "(New)" and step 3 "(if online)"; both labels
+  are kept as printed.
+  Step 1 names the Electronic Business Permit and Licensing System (BPLS) and
+  prints its web address (page 23), which is recorded as the online channel. The
+  lead decided on 2026-11-19 to list it. What was tested: both iBPLS hosts
+  (bpbc.ibpls.com and bpbc4.ibpls.com) serve the same Palo system, and an account
+  can be registered online. No business permit transaction has been tried, so it
+  is not confirmed which transactions complete online end to end (see
+  docs/data-sources.md, BPLS caution).
+  Fees: the only fee the Charter states is in step 3 (page 24), "Based on the
+  Municipal Tax and Revenue Code of 2022 of the Municipality of Palo, Province of
+  Leyte". The Charter gives no amount, so amount is null and the code is recorded
+  in basis. Steps 1, 2, 4 and 5 show "None" in the fees column and are not listed.
+  Requirements are in three groups: Primary (page 21 to 22, items 1 to 15),
+  Secondary (page 22, items 1 to 4) and Other requirements as may be appropriate
+  (page 22 to 23, items a to q). The Charter gives "1 photocopy" once, in the Other
+  group header (page 22); it is applied to each item in that group, and the
+  per-item copies and forms are otherwise not stated. Where to get is copied as
+  printed; no web addresses are added. The Charter's spelling is kept, for example
+  "Proof of Owner Ship" and "if the business establishment id rented".
+  The page 21 introduction mentions an Electronic-Business-One-Stop-Shop (EBOSS)
+  at the Municipal Hall and a "Business Permit and Licensing Section of the
+  Municipal Mayor's Office" for renewals. Neither is recorded as a channel or as
+  the office, which is the "Office or Division" line on page 21. The Charter gives
+  no street address for the BPLO.
+  Complaint procedure (page 255): the Charter-wide text, the same in every guide.
+
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '21–24, 255'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation

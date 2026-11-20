@@ -103,15 +103,16 @@ project stays independent. No confirmation is coming, so nothing waits for one.
     published as printed, with the page cited. Decided 2026-11-14 for the cedula
     guide (#26) by the lead and the second checker.
 - Claims that a transaction can be completed online through the BPLS stay
-  unpublished until an end-to-end test confirms it.
+  unpublished until an end-to-end test confirms it. Exception, decided by the
+  lead on 2026-11-19: the business permit guide lists the BPLS address the
+  Charter prints (page 23) as an online channel, without any claim about which
+  transactions finish online. See the BPLS caution below.
 - Anything the Charter does not state stays `null`.
 - The LGU has not confirmed the Charter's approval date or its official website
   address, and the team is not asking for now. Record the retrieval date of every document, and recheck published
   guides when a newer Charter edition appears on the LGU's server. If the LGU
   ever answers, record the confirmed date and address here and in the source
   leads.
-- Keep following up with the LGU (issue #24). A reply is still wanted, but it no
-  longer blocks publishing.
 
 ## Verification cautions
 
@@ -123,7 +124,14 @@ project stays independent. No confirmation is coming, so nothing waits for one.
   Occupancy Permit are marked "Soon". Test which transactions can be completed
   online, end to end, before a service guide says so.
   The Citizen's Charter's business permit service points to a different host,
-  `bpbc4.ibpls.com/paloleyte/`; test both and confirm which is current.
+  `bpbc4.ibpls.com/paloleyte/`. Checked 2026-11-19: both hosts answer and serve
+  the same Palo page. The lead confirmed they are the same real system and that
+  an account can be registered online. Registration is all that was tested: the
+  team has no business to apply for, so no business permit transaction was tried.
+  Whether a business permit can be completed online, end to end, is not
+  confirmed. The lead decided on 2026-11-19 that the business permit guide
+  lists the Charter's printed address (`bpbc4.ibpls.com/paloleyte/`) as an online
+  channel, with no claim about what finishes online.
 - **Official website address.** The LGU site the team found is served from a
   bare IP address over plain HTTP. Addresses like this can change without
   notice and browsers may show a "not secure" warning. The LGU has not
