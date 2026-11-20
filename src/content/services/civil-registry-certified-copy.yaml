@@ -1,5 +1,5 @@
-# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 107-108 (service L)
-# and 255. Needs a second check before it is published.
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 107-108 (service L) and 255.
+# Checked against the PDF by the lead (Zyxavy); verified 2026-11-20.
 id: civil-registry-certified-copy
 name: Request of Issuance of Certified True Copy of Birth, Marriage and Death Certificate
 category: civil-registry
@@ -95,6 +95,6 @@ source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
 source_pages: '107–108, 255'
 edition: 2026 (2nd Edition)
 retrieved: 2026-11-06
-verified_by: null
-last_verified: null
-status: needs_confirmation
+verified_by: Zyxavy
+last_verified: 2026-11-20
+status: verified

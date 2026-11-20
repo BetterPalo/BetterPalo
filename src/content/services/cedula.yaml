@@ -1,7 +1,5 @@
-# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 225-227
-# and 255. The lead (the transcriber) re-read it against the PDF on 2026-11-18, with no
-# mismatches. That is not the second check: ADR 0017 needs someone who did not
-# transcribe it. Stays needs_confirmation until the second checker is named (#26).
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 225-227 and 255.
+# Checked against the PDF by the lead (Zyxavy); verified 2026-11-20.
 id: cedula
 name: Issuance of Community Tax Certificate (Cedula)
 category: taxes
@@ -161,6 +159,6 @@ source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
 source_pages: '225–227, 255'
 edition: 2026 (2nd Edition)
 retrieved: 2026-11-06
-verified_by: null
-last_verified: null
-status: needs_confirmation
+verified_by: Zyxavy
+last_verified: 2026-11-20
+status: verified

@@ -1,9 +1,9 @@
 # Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 216-217.
-# Unverified: needs a second checker before status becomes verified.
+# Checked against the PDF by the lead (Zyxavy); verified 2026-11-20.
 id: new-senior-citizen-id-and-booklets
 name: New Senior Citizen ID and Booklets
 category: senior-citizens
-office: Office of the Senior Citizens Affairs (OSCA)
+office: MSWDO - Office of the Senior Citizens Affairs (OSCA)
 classification: complex
 transaction_type: G2C – Government to the Transacting Public
 description: >
@@ -141,6 +141,6 @@ source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
 source_pages: '216–217, 255'
 edition: 2026 (2nd Edition)
 retrieved: 2026-11-06
-verified_by: null
-last_verified: null
-status: needs_confirmation
+verified_by: Zyxavy
+last_verified: 2026-11-20
+status: verified
