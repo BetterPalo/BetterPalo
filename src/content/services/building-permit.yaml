@@ -2,7 +2,7 @@
 # Unverified: needs a second checker before status becomes verified.
 id: building-permit
 name: Issuance of Building Permit
-category: Building permits
+category: building-permits
 office: Office of the Municipal Engineer
 classification: complex
 transaction_type: G2C – Government to the Transacting Public
@@ -178,8 +178,8 @@ complaint_procedure: >
   Redress for complaints may be addressed in the office concerned at the lowest
   possible level, if not resolved, to the immediate supervisor or to the
   Municipal Mayor or to other concerned offices which have jurisdiction over the
-  complaint. You may visit the Administrative Office and secure a complaint
-  form, fill up the same and submit to the said office for immediate and prompt
+  complaint. At the LGU's levels, immediate action is assured. You may visit the
+  Administrative Office and secure a complaint form, fill up the same and submit to the said office for immediate and prompt
   action. A complaint form is available at the Administrative Office wherein the
   client states his/her specific complaint. Feedback form is dropped in a
   Suggestion Box located in conspicuous places of the Municipal Building.
@@ -190,8 +190,9 @@ notes: >
   Transcribed from PDF pages 128-131. Fees are assessed based on the National
   Building Code schedule; no fixed amount is stated in the Charter. The Charter
   lists individual staff names for each step, which are not published here.
+  The Charter's approval date has not been confirmed by the LGU.
 source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
-source_pages: '128–131'
+source_pages: '128–131, 255'
 edition: 2026 (2nd Edition)
 retrieved: 2026-11-06
 verified_by: null
