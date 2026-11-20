@@ -1,0 +1,222 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 145-147 and 255.
+# Not yet checked against the PDF by a second person; needs_confirmation.
+id: medical-and-health-certificate
+name: Provision of Issuance of Medical and Health Certificate
+category: health
+office: Office of the Municipal Health Officer
+classification: simple
+transaction_type: G2C – government to the transacting public
+description: >
+  Various firms, schools, and government agencies may require individuals to
+  secure Medical or Health Certificates as part of their application or compliance
+  requirements. This is commonly required for individuals applying for a driver’s
+  license with the Land Transportation Office (LTO), employment applicants,
+  students enrolling in educational institutions, and individuals applying for or
+  renewing a business permit. The Office of the Municipal Health Officer provides
+  the issuance of the following certificates: a. Medical Certificate – A
+  certification issued to an individual after medical evaluation indicating that
+  the person is physically fit or medically cleared for a specific purpose. b.
+  Health Certificate – A certification issued to individuals, particularly food
+  handlers and business workers, as part of the requirements for securing or
+  renewing a business permit. Medical and Health Certificates are issued by the
+  Office of the Municipal Health Officer after proper medical assessment and
+  evaluation.
+eligibility: All interested parties requesting for medical certification.
+requirements:
+  - document: Complete Blood Count (CBC)
+    copies: null
+    form: null
+    where_to_get: Hospital/ RHU/ Private Laboratory/ Clinic
+    conditions: For Medical Certification for School Requirement and Employment and other purposes
+  - document: Urinalysis
+    copies: null
+    form: null
+    where_to_get: Hospital/ RHU/ Private Laboratory/ Clinic
+    conditions: For Medical Certification for School Requirement and Employment and other purposes
+  - document: Chest x-ray result
+    copies: null
+    form: null
+    where_to_get: Hospital/ RHU/ Private Laboratory/ Clinic
+    conditions: For Medical Certification for School Requirement and Employment and other purposes
+  - document: Hepa B result
+    copies: null
+    form: null
+    where_to_get: Hospital/ RHU/ Private Laboratory/ Clinic
+    conditions: For Medical Certification for School Requirement and Employment and other purposes
+  - document: Drug test
+    copies: null
+    form: null
+    where_to_get: Hospital/ RHU/ Private Laboratory/ Clinic
+    conditions: For Medical Certification for School Requirement and Employment and other purposes
+  - document: Electrocardiogram (ECG) when indicated
+    copies: null
+    form: null
+    where_to_get: Hospital/ RHU/ Private Laboratory/ Clinic
+    conditions: For Medical Certification for School Requirement and Employment and other purposes
+  - document: Community Tax Certificate (for employment purposes)
+    copies: null
+    form: null
+    where_to_get: Office of the Municipal Treasurer (MTO)
+    conditions: For Medical Certification for School Requirement and Employment and other purposes
+  - document: Identification Card
+    copies: null
+    form: null
+    where_to_get: Applicant
+    conditions: For Medical Certification for School Requirement and Employment and other purposes
+  - document: Community Tax Certificate
+    copies: null
+    form: null
+    where_to_get: null
+    conditions: For Health Certification (for business establishments)
+  - document: Chest x-ray result
+    copies: null
+    form: null
+    where_to_get: null
+    conditions: For Health Certification (for business establishments)
+  - document: Stool Exam
+    copies: null
+    form: null
+    where_to_get: null
+    conditions: For Health Certification (for business establishments)
+  - document: Picture 1 x 1
+    copies: null
+    form: null
+    where_to_get: null
+    conditions: For Health Certification (for business establishments)
+  - document: Hepa B result
+    copies: null
+    form: null
+    where_to_get: null
+    conditions: For Health Certification (for business establishments)
+  - document: Sputum Result
+    copies: null
+    form: null
+    where_to_get: null
+    conditions: For Health Certification (for business establishments)
+steps:
+  - step: 1
+    applicant_action: >
+      1. Proceed to frontline desk for registration, taking vital signs and priority
+      number.
+    office_action: >
+      1.1 Clerk provides priority number and take vital signs.
+    responsible: Clerk, Office of the Municipal Health Officer
+    max_time: 10 minutes
+  - step: 2
+    applicant_action: >
+      2. Present the laboratory/radiologic request to the Med. Tech./RadTech.
+    office_action: >
+      2.1 Med. Tech. provides the client short briefing.
+    responsible: Med. Tech. / RadTech, Office of the Municipal Health Officer
+    max_time: 10 minutes
+  - step: 3
+    applicant_action: >
+      3. Follow instructions for specimen collection and submit specimen.
+    office_action: Receive and examine specimen.
+    responsible: Med. Tech. / RadTech, Office of the Municipal Health Officer
+    max_time: 2 hours
+  - step: 4
+    applicant_action: >
+      4. Take note of the date of release of the results.
+    office_action: Sputum examination; CBC and platelet count.
+    responsible: null
+    max_time: 24 hours
+  - step: 5
+    applicant_action: >
+      5. Get laboratory/radiologic results.
+    office_action: >
+      CBC and platelet count; Blood Typing; Blood Sugar; HBS Ag Test/RPR; Urinalysis;
+      Pregnancy Test; Stool Exam; Gram Staining/Xray & ultrasound; Give results to
+      patient and advise to proceed to MHO for assessment of result.
+    responsible: Med. Tech. / RadTech, Office of the Municipal Health Officer
+    max_time: >
+      1 hour (CBC and platelet count); 10 minutes (Blood Typing); 10 minutes (Blood
+      Sugar); 10 minutes (HBS Ag Test/RPR); 30 minutes (Urinalysis); 30 minutes
+      (Pregnancy Test); 20 minutes (Stool Exam); 40 minutes (Gram Staining/Xray &
+      ultrasound); 40 minutes (give results to patient)
+  - step: 6
+    applicant_action: >
+      6. Proceed to the Municipal Health Officer and submit the laboratory/radiologic
+      results required for medical certification.
+    office_action: >
+      Physician reviews laboratory results, performs medical evaluation if necessary,
+      and prepares the medical certificate.
+    responsible: Physician, Office of the Municipal Health Officer
+    max_time: 10 minutes
+  - step: 7
+    applicant_action: >
+      7. Proceed to the assigned RSI and submit the laboratory result for health card
+      recording.
+    office_action: >
+      RSI records the health certificate and updates the health card record when
+      applicable.
+    responsible: Rural Sanitary Inspector (S.I. 1), Office of the Municipal Health Officer
+    max_time: 10 minutes
+  - step: 8
+    applicant_action: >
+      8. Receive certification.
+    office_action: Give health certificate to MHO for signature.
+    responsible: Municipal Health Officer
+    max_time: 3 minutes
+fees:
+  - amount: None
+    purpose: Fees to be paid for steps 1, 2 and 4 to 7 as printed; steps 3 and 8 print no fee
+    where_to_pay: null
+    conditions: null
+    basis: null
+processing_time: 1 day, 6 hours and 53 minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Office of the Municipal Health Officer
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. At the LGU's levels, immediate action is assured. You may visit the
+  Administrative Office and secure a complaint form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  Transcribed from PDF pages 145-147 and 255 (Feedback and Complaint Mechanism);
+  printed page numbers are the same as the PDF page numbers. The step table is on
+  pages 146 and 147 and was read from page images. The Charter's office (page 146)
+  is the same as the office above.
+  The Charter names a staff member for each step; those names are left out. The
+  responsible column gives the office with the position named in the step text:
+  Clerk (step 1), Med. Tech. (step 2), Physician (step 6), RSI (step 7, with S.I. 1
+  taken from the name cell), and MHO for the Municipal Health Officer (step 8).
+  Two positions are inferred, not printed in the step text: steps 3 and 5 give
+  Med. Tech. / RadTech because the name cells there carry the RMT and RRT
+  credentials and step 2 names the Med. Tech. Step 4 has no person printed, so
+  responsible is null.
+  The Charter's sub-steps of steps 3 to 5 are not numbered; step 5 lists its nine
+  printed items in order, each with its time in max_time.
+  Both checklists are kept: Medical Certification (items 1 to 8) and Health
+  Certification for business establishments (items 1 to 6). Each requirement
+  carries its checklist heading as conditions. In the medical list, the WHERE TO
+  SECURE entry "Hospital/ RHU/ Private Laboratory/ Clinic" is printed beside item 1
+  with no line before item 7, so it is applied to items 1 to 6. In the health list,
+  "MTO/ Barangay" and "RHU/ Private Laboratory/Clinic" sit beside items 3 and 4 with
+  no lines between items, so the layout does not show which item each applies to
+  and where_to_get is null for all six.
+  The fee column prints None for steps 1, 2 and 4 to 7 and is blank for steps 3 and
+  8. The Charter prints no amount for the laboratory tests and does not say where
+  they are paid. No copies or forms are printed for any requirement.
+  The step times add up to 1 day, 6 hours and 53 minutes (1,853 minutes), the same
+  as the printed TOTAL on page 147.
+
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '145–147, 255'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation

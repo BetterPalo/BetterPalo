@@ -1,0 +1,142 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 99–100 and 255.
+# Not yet checked against the PDF by a second person; needs_confirmation.
+id: marriage-license
+name: Application and Issuance of Marriage License
+category: civil-registry
+office: Office of the Municipal Civil Registrar
+classification: highly_technical
+transaction_type: G2C – Government to Client
+description: >
+  The process of applying for and issuance of Marriage License to a couple, wherein
+  one should be a resident of Palo, Leyte.
+eligibility: 'All bona-fide resident of Palo, Leyte. *Marriageable Age: 18 years old'
+requirements:
+  - document: Marriage License Application Form
+    copies: 4
+    form: null
+    where_to_get: Office of the Municipal Civil Registrar
+    conditions: null
+  - document: CENOMAR (1 original & 1 photocopy each couple)
+    copies: null
+    form: null
+    where_to_get: Philippine Statistic Authority
+    conditions: null
+  - document: Birth Certificate (2 photocopy of each couple)
+    copies: 2
+    form: photocopy
+    where_to_get: Philippine Statistic Authority
+    conditions: null
+  - document: Barangay Certificate (1 original & 1 photocopy each couple)
+    copies: null
+    form: null
+    where_to_get: Respective Barangay where he/she reside
+    conditions: null
+  - document: CEDULA / Valid ID (2 photocopy of each couple)
+    copies: 2
+    form: photocopy
+    where_to_get: TIN, Philhealth ID, National ID, Driver's License, Passport, Pag-ibig ID, UMID, or SSS ID
+    conditions: null
+  - document: Parent's Advice (22–25 yr. old) / Parent's Consent (18–21 yr. old)
+    copies: null
+    form: null
+    where_to_get: Office of the Municipal Civil Registrar
+    conditions: null
+  - document: Marriage Counseling
+    copies: null
+    form: null
+    where_to_get: Office of the Municipal Planning & Development Coordinator
+    conditions: null
+  - document: Birth Certificate (2 Photocopies)
+    copies: 2
+    form: photocopy
+    where_to_get: Client
+    conditions: For Foreigners
+  - document: Passport (2 Photocopies)
+    copies: 2
+    form: photocopy
+    where_to_get: Client
+    conditions: For Foreigners
+  - document: Legal Capacity to Contract Marriage (2 original copy)
+    copies: 2
+    form: original
+    where_to_get: Department of Foreign Affairs; Embassy of Country of Origin
+    conditions: For Foreigners
+  - document: Copy of final decree or absolute divorce (2 original copy)
+    copies: 2
+    form: original
+    where_to_get: Court where the divorce was decided
+    conditions: For Foreigners, if divorced
+steps:
+  - step: 1
+    applicant_action: Approach a frontline staff for the requirements for the issuance of Marriage License.
+    office_action: Provide list of the requirements needed for the issuance of marriage license.
+    responsible: Clerk, Office of the Municipal Civil Registrar
+    max_time: 2 minutes
+  - step: 2
+    applicant_action: Submit needed requirements for the application of marriage license.
+    office_action: Receive, verify and evaluate submitted documents.
+    responsible: Administrative Aide I and Clerk, Office of the Municipal Civil Registrar
+    max_time: 5 minutes
+  - step: 3
+    applicant_action: Pay at the Treasurer's office the corresponding fees.
+    office_action: Issues order of payment.
+    responsible: Collector Windows 1 to 4, Municipal Treasurer's Office
+    max_time: 15 minutes
+  - step: 4
+    applicant_action: Fill out the draft application for marriage license.
+    office_action: Encode the application for marriage license.
+    responsible: Clerk, Office of the Municipal Civil Registrar
+    max_time: 5 minutes
+  - step: 5
+    applicant_action: Submit official receipt to person in-charge.
+    office_action: Receive official receipt. If documents are in order and complete, advise client to return after 10 days posting.
+    responsible: Administrative Aide I and Clerk, Office of the Municipal Civil Registrar
+    max_time: 11 days
+  - step: 6
+    applicant_action: Request issuance of marriage license.
+    office_action: Issuance of marriage license.
+    responsible: Administrative Aide I, Office of the Municipal Civil Registrar
+    max_time: 1 minute
+fees:
+  - amount: PHP 950.00
+    purpose: Application for Marriage License
+    where_to_pay: Municipal Treasurer's Office (Collector Windows 1 to 4)
+    conditions: null
+    basis: null
+processing_time: 11 Days & 28 Minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Office of the Municipal Civil Registrar
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. At the LGU's levels, immediate action is assured. You may visit the
+  Administrative Office and secure a complaint form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  Transcribed from PDF pages 99 and 100 (service F, Application and Issuance of Marriage License) and 255 (Feedback and Complaint Mechanism). Printed page numbers are the same as the PDF page numbers. The PHP 300.00 and "11 days and 46 Minutes" TOTAL at the top of page 99 belongs to the death certificate service above it and is not used.
+  The "For Foreigners" requirements on page 100 are a separate group. The divorce decree is also under "If Divorced", so its condition is "For Foreigners, if divorced". The WHERE TO SECURE cell "Client" is printed once, between the Birth Certificate and Passport lines; it is applied to both.
+  Requirements 3 and 5 are printed as 2 photocopies of each couple, so copies: 2 is the printed per-person count. Requirements 2 and 4 (1 original and 1 photocopy each couple) and requirement 6 (Parent's Advice for ages 22 to 25, Parent's Consent for ages 18 to 21, as printed) name more than one form or case, which the copies and form fields cannot hold; their wording is kept in document, with copies and form null. Requirement 1 is printed "4 copies / 1 set"; only the 4 copies is recorded.
+  Requirement 7 (Marriage Counseling) names the Office of the Municipal Planning & Development Coordinator as where to secure it; copied as printed.
+  The Charter prints one fee: PHP 950.00 for the Application for Marriage License (page 100). It matches the fee in the TOTAL.
+  The Charter's total is "11 Days & 28 Minutes" (page 100), copied as printed. The step times add up to 28 minutes plus 11 days (2 + 5 + 15 + 5 + 1 minutes, and step 5 printed as 11 days). Step 5's agency action says to return after 10 days posting, while its time is printed as 11 days; both are copied as printed.
+  The Charter prints an individual staff name for each step. Those names are left out; only the positions and office are kept.
+  The Charter gives no online channel, so only the walk-in route is listed.
+
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '99–100, 255'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation
