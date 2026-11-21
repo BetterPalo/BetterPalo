@@ -9,11 +9,11 @@
   source: 'http://210.213.142.34/home/'
   source_level: 1
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: 'Bare IP over HTTP; the LGU has not confirmed this address (#24). palo-leyte.gov.ph did not respond on 2026-11-18.'
+  notes: 'Bare IP over HTTP; the LGU has not confirmed this address (#24). palo-leyte.gov.ph did not respond on 2026-11-18. Checked 2026-11-21 with curl: 200.'
 
 - id: citizens-charter
   group: official
@@ -24,11 +24,11 @@
   source: 'http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf'
   source_level: 1
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: '2nd Edition. Same host as the LGU site.'
+  notes: '2nd Edition. Same host as the LGU site. Checked 2026-11-21 with curl: 200.'
 
 - id: sangguniang-bayan
   group: official
@@ -39,11 +39,11 @@
   source: 'https://palosb.com/official_website/'
   source_level: 1
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: 'Not a .gov.ph domain. Its hotlines are placeholders; never use them.'
+  notes: 'Not a .gov.ph domain. Its hotlines are placeholders; never use them. Checked 2026-11-21 with curl: 200.'
 
 - id: psa
   group: official
@@ -58,7 +58,37 @@
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: 'Cloudflare challenge (403) to curl and the test browser on 2026-11-18; open it by hand before verifying.'
+  notes: 'Cloudflare challenge (403) to curl and the test browser on 2026-11-18; open it by hand before verifying. Checked 2026-11-21 with curl: 403 (bot challenge; open by hand before verifying).'
+
+- id: compass
+  group: official
+  featured: false
+  label: { en: 'COMPASS', fil: 'COMPASS' }
+  purpose: { en: 'COMPASS page for quarter Q2', fil: null }
+  url: 'https://compass.gov.ph/?quarter=Q2'
+  source: 'https://compass.gov.ph/?quarter=Q2'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-21
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'URL supplied by the lead. Checked 2026-11-21 with curl: 200.'
+
+- id: compass-palo
+  group: official
+  featured: false
+  label: { en: 'COMPASS Palo (2026)', fil: 'COMPASS Palo (2026)' }
+  purpose: { en: 'COMPASS snapshot for Palo, 2026', fil: null }
+  url: 'https://compass.gov.ph/lgu-snapshot?province=Leyte&snapFy=2026&city=Palo'
+  source: 'https://compass.gov.ph/lgu-snapshot?province=Leyte&snapFy=2026&city=Palo'
+  source_level: 2
+  source_pages: null
+  retrieved: 2026-11-21
+  verified_by: null
+  last_verified: null
+  status: needs_confirmation
+  notes: 'URL supplied by the lead. Checked 2026-11-21 with curl: 200.'
 
 - id: psa-certificates
   group: other-agency
@@ -71,11 +101,11 @@
   source: 'https://psahelpline.ph/'
   source_level: 2
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: "Confirm against psa.gov.ph that psahelpline.ph is PSA's own service before verifying."
+  notes: "Confirm against psa.gov.ph that psahelpline.ph is PSA's own service before verifying. Checked 2026-11-21 with curl: 200."
 
 - id: national-id
   group: other-agency
@@ -91,7 +121,7 @@
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: '200 in the test browser on 2026-11-18 (curl got 403).'
+  notes: '200 in the test browser on 2026-11-18 (curl got 403). Checked 2026-11-21 with curl: 403 (bot challenge; open by hand before verifying).'
 
 - id: passport
   group: other-agency
@@ -107,7 +137,7 @@
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: 'Cloudflare challenge (403) on 2026-11-18; open it by hand before verifying.'
+  notes: 'Cloudflare challenge (403) on 2026-11-18; open it by hand before verifying. Checked 2026-11-21 with curl: 403 (bot challenge; open by hand before verifying).'
 
 - id: lto
   group: other-agency
@@ -123,11 +153,11 @@
   source: 'https://portal.lto.gov.ph'
   source_level: 2
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: null
+  notes: 'Checked 2026-11-21 with curl: 200, redirects to https://portal.lto.gov.ph/ords/f?p=1200:HOME::::::.'
 
 - id: philhealth
   group: other-agency
@@ -139,11 +169,11 @@
   source: 'https://www.philhealth.gov.ph'
   source_level: 2
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: null
+  notes: 'Checked 2026-11-21 with curl: 200.'
 
 - id: sss
   group: other-agency
@@ -155,11 +185,11 @@
   source: 'https://www.sss.gov.ph'
   source_level: 2
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: null
+  notes: 'Checked 2026-11-21 with curl: 200.'
 
 - id: gsis
   group: other-agency
@@ -172,11 +202,11 @@
   source: 'https://www.gsis.gov.ph'
   source_level: 2
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: null
+  notes: 'Checked 2026-11-21 with curl: 200.'
 
 - id: pag-ibig
   group: other-agency
@@ -188,11 +218,11 @@
   source: 'https://www.pagibigfund.gov.ph'
   source_level: 2
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: null
+  notes: 'Checked 2026-11-21 with curl: 200.'
 
 - id: nbi-clearance
   group: other-agency
@@ -204,11 +234,11 @@
   source: 'https://clearance.nbi.gov.ph'
   source_level: 2
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: null
+  notes: 'Checked 2026-11-21 with curl: 200.'
 
 - id: bir
   group: other-agency
@@ -224,11 +254,11 @@
   source: 'https://www.bir.gov.ph'
   source_level: 2
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: null
+  notes: 'Checked 2026-11-21 with curl: 200.'
 
 - id: dswd
   group: other-agency
@@ -244,8 +274,8 @@
   source: 'https://www.dswd.gov.ph'
   source_level: 2
   source_pages: null
-  retrieved: 2026-11-18
+  retrieved: 2026-11-21
   verified_by: null
   last_verified: null
   status: needs_confirmation
-  notes: null
+  notes: 'Checked 2026-11-21 with curl: 200.'

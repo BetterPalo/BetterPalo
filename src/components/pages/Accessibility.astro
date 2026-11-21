@@ -15,6 +15,7 @@ const { lang } = Astro.props;
 const features = [
   { icon: 'right', key: 'skip' },
   { icon: 'flag', key: 'contrast' },
+  { icon: 'book', key: 'text' },
   { icon: 'grid', key: 'keyboard' },
   { icon: 'pulse', key: 'motion' },
   { icon: 'globe', key: 'lang' },
@@ -71,7 +72,26 @@ const features = [
   </section>
 
   <section class="border-t border-edge bg-canvas-alt py-section">
-    <div class="wrap max-w-2xl">
+    <div class="wrap max-w-3xl">
+      <SectionHead
+        id="accessibility-gapstitle"
+        title={t(lang, 'accessibility.gapsTitle')}
+        highlight=""
+      />
+      <ul class="mt-4 list-disc pl-5 text-sm text-fg-soft">
+        <li>{t(lang, 'accessibility.gaps.li2')}</li>
+        <li>{t(lang, 'accessibility.gaps.li3')}</li>
+        <li>{t(lang, 'accessibility.gaps.li4')}</li>
+      </ul>
+      <h3 class="mt-8 font-display text-lg">{t(lang, 'accessibility.reviewTitle')}</h3>
+      <p id="accessibility-review" class="mt-2 text-fg-soft">
+        {t(lang, 'accessibility.reviewBody')}
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap py-section">
+    <div class="max-w-2xl">
       <SectionHead
         id="accessibility-feedbacktitle"
         title={t(lang, 'accessibility.feedbackTitle')}

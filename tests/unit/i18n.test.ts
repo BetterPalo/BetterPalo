@@ -150,7 +150,7 @@ const before: Array<[Lang, Key, string]> = [
   [
     'en',
     'howItWorks.lead',
-    'Every guide on BetterPalo follows the same four steps, so you can trust what you read.',
+    'Every guide on BetterPalo goes through the same four steps, so you can trust what you read.',
   ],
   [
     'en',
@@ -160,12 +160,12 @@ const before: Array<[Lang, Key, string]> = [
   [
     'en',
     'contribute.lead',
-    'BetterPalo is community-built. You do not need to write code to contribute.',
+    'BetterPalo is built by its community. You do not need to know code to help.',
   ],
   [
     'en',
     'accessibility.lead',
-    'BetterPalo aims to be usable by everyone, on any device, on a slow connection.',
+    'BetterPalo aims to be easy to use for everyone, on any phone or computer, even on a slow connection.',
   ],
   ['en', 'resources.lead', 'The documents and sites behind every guide on BetterPalo.'],
   [
@@ -248,7 +248,7 @@ const before: Array<[Lang, Key, string]> = [
   [
     'fil',
     'howItWorks.lead',
-    'Bawat gabay sa BetterPalo ay sumusunod sa parehong apat na hakbang, kaya mapagkakatiwalaan mo ang binabasa mo.',
+    'Dumadaan ang bawat gabay sa BetterPalo sa parehong apat na hakbang, kaya mapagkakatiwalaan mo ang binabasa mo.',
   ],
   [
     'fil',
@@ -258,7 +258,7 @@ const before: Array<[Lang, Key, string]> = [
   [
     'fil',
     'accessibility.lead',
-    'Layunin ng BetterPalo na magamit ng lahat, sa anumang device, sa mabagal na koneksyon.',
+    'Layunin ng BetterPalo na magamit ng lahat, sa anumang telepono o computer, kahit mabagal ang koneksyon.',
   ],
   ['fil', 'resources.lead', 'Mga dokumento at site sa likod ng bawat gabay sa BetterPalo.'],
   [

@@ -191,98 +191,145 @@ const en = {
   'howItWorks.title': 'How a guide gets made',
   'howItWorks.eyebrow': 'Behind the scenes',
   'howItWorks.lead':
-    'Every guide on {brand} follows the same four steps, so you can trust what you read.',
+    'Every guide on {brand} goes through the same four steps, so you can trust what you read.',
   'howItWorks.stepsTitle': 'The four steps',
-  'howItWorks.principlesTitle': 'The principles behind them',
+  'howItWorks.principlesTitle': 'The rules we follow',
   'howItWorks.volunteerTitle': 'Help write the next guide',
   'howItWorks.volunteerBody':
-    'Volunteers read the Charter, write each service in plain language, and check each other\u2019s work. No coding needed.',
+    "Volunteers read the Charter, write each service in plain words, and check each other's work. No coding needed.",
   'howItWorks.volunteerCta': 'Volunteer on GitHub',
   'howItWorks.step.1': 'Step 1',
   'howItWorks.step.1.title': 'Find the Charter page',
   'howItWorks.step.1.body': 'Each service starts from its page in the {charterTitle}.',
   'howItWorks.step.2': 'Step 2',
   'howItWorks.step.2.title': 'Write it in plain words',
-  'howItWorks.step.2.body': 'A volunteer transcribes it by hand, in English and Filipino.',
+  'howItWorks.step.2.body': 'A volunteer copies it by hand, in English and Filipino.',
   'howItWorks.step.3': 'Step 3',
   'howItWorks.step.3.title': 'Check it twice',
   'howItWorks.step.3.body':
-    'A second person reads the same page and confirms every requirement, fee, and step.',
+    'A second person reads the same page and checks every requirement, fee, and step.',
   'howItWorks.step.4': 'Step 4',
   'howItWorks.step.4.title': 'Publish with dates',
   'howItWorks.step.4.body':
-    'The guide shows its Charter edition and the date it was last verified.',
+    'The guide shows which Charter edition it follows and the date it was last checked.',
   'howItWorks.principle.accuracy.title': 'Accuracy first',
   'howItWorks.principle.accuracy.body':
-    'A missing page is better than a wrong one. Unconfirmed details stay off the site.',
-  'howItWorks.principle.source.title': 'Cite the source',
-  'howItWorks.principle.source.body':
-    'Every fact links or cites from the official document it came from.',
+    'A missing page is better than a wrong one. Details that are not confirmed stay off the site.',
+  'howItWorks.principle.source.title': 'Show where it came from',
+  'howItWorks.principle.source.body': 'Every fact points to the official document it came from.',
   'howItWorks.principle.plain.title': 'Plain language',
   'howItWorks.principle.plain.body':
     'Written for someone in a hurry, on a phone, on a slow connection.',
   'howItWorks.principle.open.title': 'Open and community-built',
   'howItWorks.principle.open.body': 'Anyone can contribute. The code and the data are open.',
+  'howItWorks.notDoTitle': 'What this site does not do',
+  'howItWorks.notDo.li1': 'It takes no payments.',
+  'howItWorks.notDo.li2': 'It takes no applications. You still apply at the office.',
+  'howItWorks.notDo.li3': 'It has no accounts and asks for no personal details.',
+  'howItWorks.notDo.li4': 'It is not an official website of the {place} local government.',
+  'howItWorks.statusTitle': 'What the labels mean',
+  'howItWorks.statusBody':
+    'Every guide has one of three labels. Only "verified" guides appear on {brand}.',
+  'howItWorks.status.verified':
+    'Checked against the {charterTitle} by a person who did not write it. It matches the official document. The local government has not confirmed it.',
+  'howItWorks.status.needsConfirmation':
+    'Written from the official document, but not checked yet. It is not published.',
+  'howItWorks.status.outdated':
+    'It was checked before, but the official document may have changed. It is not published until it is checked again.',
+  'howItWorks.secondChecker':
+    'Every service guide is checked by a second person, who did not write it, before it is published.',
+  'howItWorks.reportTitle': 'Found a wrong detail?',
+  'howItWorks.reportBody':
+    'Use the report form on GitHub. You need a free GitHub account. Say what is wrong and link the official document that shows the right detail.',
+  'howItWorks.reportNext':
+    'A team member compares your report with the official document. If the guide is wrong, it is fixed, and the change is checked before it goes live.',
 
   // Contribute (/contribute/)
   'contribute.title': 'Contribute',
   'contribute.eyebrow': 'Get involved',
-  'contribute.lead': '{brand} is community-built. You do not need to write code to contribute.',
-  'contribute.waysTitle': 'Ways to contribute',
-  'contribute.way.data.title': 'Data correction',
-  'contribute.way.data.body': 'Fix a wrong office, service, fee, official, or contact.',
+  'contribute.lead': '{brand} is built by its community. You do not need to know code to help.',
+  'contribute.waysTitle': 'Ways to help',
+  'contribute.way.data.title': 'Correct the details',
+  'contribute.way.data.body':
+    'For data volunteers: fix a wrong office, service, fee, official, or contact details.',
   'contribute.way.translation.title': 'Translation',
-  'contribute.way.translation.body': 'Turn English content into Filipino, or the reverse.',
+  'contribute.way.translation.body': 'Turn English text into Filipino, or Filipino into English.',
   'contribute.way.design.title': 'Design and accessibility',
   'contribute.way.design.body':
-    'Improve layout, contrast, keyboard use, and screen-reader support.',
-  'contribute.way.code.title': 'Code',
-  'contribute.way.code.body': 'Build pages, components, search, and tooling for the site.',
-  'contribute.dataTitle': 'Data contributions',
+    'Improve the layout, the text colours, and how well the site works for people with disabilities.',
+  'contribute.way.code.title': 'Code (for developers)',
+  'contribute.way.code.body': 'Build pages, search, and tools for the site.',
+  'contribute.way.report.title': 'Report a wrong detail',
+  'contribute.way.report.body':
+    'Use the form to tell us about a wrong or old detail. Add a link to the official document if you can.',
+  'contribute.way.check.title': 'Check a written guide',
+  'contribute.way.check.body':
+    'Open a guide next to its page in the {charterTitle}. Report any difference you find.',
+  'contribute.noCode': 'No coding needed',
+  'contribute.secondChecker':
+    'Before a service guide goes online, a second team member who did not write it checks it against the official document.',
+  'contribute.dataTitle': 'For data volunteers',
   'contribute.dataBody':
-    'Every fact needs an official source URL, a retrieval date, and a verification date.',
-  'contribute.data.li1': 'an official source URL',
-  'contribute.data.li2': 'a retrieval date',
-  'contribute.data.li3': 'a verification date',
-  'contribute.data.cta': 'Read the contributing guide',
-  'contribute.workflowTitle': 'The workflow',
+    'Every fact needs a link to its official source, the date you looked it up, and the date it was checked.',
+  'contribute.data.li1': 'a link to the official source',
+  'contribute.data.li2': 'the date you looked it up',
+  'contribute.data.li3': 'the date it was checked',
+  'contribute.data.cta': 'Read the full how-to guide',
+  'contribute.workflowTitle': 'For developers: how changes go in',
   'contribute.workflowBody':
-    'One topic per pull request, kept small. CI must pass and one code-owner approval is required.',
-  'contribute.workflow.1': 'Branch from main and make your change.',
+    'Keep each change small and on one topic. Automatic checks must pass, and a reviewer must approve it.',
+  'contribute.workflow.1': 'Start a branch (your own copy) from main and make your change.',
   'contribute.workflow.2': 'Run pnpm format, lint, check, test, and build.',
-  'contribute.workflow.3': 'Open a pull request and fill in the template.',
-  'contribute.workflow.4': 'A maintainer reviews and merges.',
+  'contribute.workflow.3': 'Open a pull request (a proposed change) and fill in the form.',
+  'contribute.workflow.4': 'A maintainer checks it and adds it to the site.',
 
   // Accessibility (/accessibility/)
   'accessibility.title': 'Accessibility statement',
   'accessibility.eyebrow': 'Accessibility',
   'accessibility.lead':
-    '{brand} aims to be usable by everyone, on any device, on a slow connection.',
-  'accessibility.standardTitle': 'Our standard',
-  'accessibility.standardBody':
-    'We target WCAG 2.1 AA as the floor, and test with keyboard and screen readers.',
-  'accessibility.standard.li1': 'Semantic HTML and landmarks on every page.',
-  'accessibility.standard.li2': 'Sufficient contrast and visible focus states.',
-  'accessibility.standard.li3': 'Works without JavaScript where possible.',
+    '{brand} aims to be easy to use for everyone, on any phone or computer, even on a slow connection.',
+  'accessibility.standardTitle': 'The standard we aim for',
+  'accessibility.standardBody': 'We aim for an international accessibility standard (WCAG 2.1 AA).',
+  'accessibility.standard.li1':
+    'Every page has clear headings and sections, so tools that read pages aloud should be able to follow them.',
+  'accessibility.standard.li2':
+    'Text is easy to see against its background. The link or button you are on is clearly marked. An automatic check of text colours runs on every update.',
+  'accessibility.standard.li3':
+    'Works even if scripts are turned off in your browser, where possible.',
   'accessibility.featuresTitle': 'What we do',
-  'accessibility.feature.skip.title': 'Skip link',
+  'accessibility.feature.skip.title': 'Jump to main text',
   'accessibility.feature.skip.body':
-    'A skip link at the top of every page moves focus to the main content.',
-  'accessibility.feature.contrast.title': 'Contrast',
-  'accessibility.feature.contrast.body': 'Text and controls meet WCAG AA contrast ratios.',
-  'accessibility.feature.keyboard.title': 'Keyboard',
+    'A "skip" link at the top of every page jumps straight to the main content.',
+  'accessibility.feature.contrast.title': 'Easy-to-read colours',
+  'accessibility.feature.contrast.body':
+    'Colours are chosen to be easy to read. An automatic checker tests them.',
+  'accessibility.feature.text.title': 'Text size',
+  'accessibility.feature.text.body':
+    'Text follows the size you set in your browser, and you can zoom in. An automatic check looks for sideways scrolling on a narrow screen.',
+  'accessibility.feature.keyboard.title': 'Keyboard use',
   'accessibility.feature.keyboard.body':
-    'All interactive elements are reachable and operable by keyboard.',
-  'accessibility.feature.motion.title': 'Motion',
-  'accessibility.feature.motion.body': 'Animations respect prefers-reduced-motion.',
+    'Links and buttons can be reached with a keyboard. A full keyboard test has not been done yet.',
+  'accessibility.feature.motion.title': 'Movement',
+  'accessibility.feature.motion.body':
+    'The site follows your phone\'s "reduce motion" setting for its animations.',
   'accessibility.feature.lang.title': 'Language',
   'accessibility.feature.lang.body':
-    'Pages are marked up with the correct lang attribute, and Filipino is available.',
+    'Each page tells the browser which language it is in. Filipino is available.',
   'accessibility.feature.print.title': 'Print',
-  'accessibility.feature.print.body': 'Service sheets print cleanly as a single page.',
+  'accessibility.feature.print.body':
+    'Service guides have a print version with the four key answers and the source, on one or two pages.',
+  'accessibility.gapsTitle': 'What is still missing',
+  'accessibility.gaps.li2':
+    'We have not yet tested the site with apps that read pages aloud, or on real phones.',
+  'accessibility.gaps.li3': 'The Filipino text is a draft. A translator has not checked it yet.',
+  'accessibility.gaps.li4':
+    'Automatic checks find only some problems. They cannot tell whether a page is clear or makes sense when read aloud.',
+  'accessibility.reviewTitle': 'How we check the site',
+  'accessibility.reviewBody':
+    'An automatic checker runs on the main pages, in English and Filipino, on every update to the site.',
   'accessibility.feedbackTitle': 'Feedback',
-  'accessibility.feedbackBody': 'Found an accessibility problem? Tell us and we will fix it.',
-  'accessibility.feedbackCta': 'Report an issue',
+  'accessibility.feedbackBody': 'Found something hard to use? Tell us and we will fix it.',
+  'accessibility.feedbackCta': 'Report a problem',
 
   // Resources (/resources/)
   'resources.title': 'Official resources',
@@ -357,7 +404,10 @@ const en = {
   'servicesDir.lead': 'Every verified service guide, grouped by office.',
   'servicesDir.empty': 'No verified service guides yet.',
   'servicesDir.emptyBody':
-    'Guides are published only after they pass the verified-only gate. Check back soon.',
+    'A guide goes online only after a second person checks it against the {charterTitle}.',
+  'servicesDir.stat.published': 'Verified guides online',
+  'servicesDir.stat.charterServices': 'Services in the Charter',
+  'servicesDir.emptyCta': 'Help check a guide',
 
   // Tourism (/tourism/)
   'tourism.title': 'Tourism in {place}',
@@ -669,39 +719,39 @@ const fil: Partial<Record<Key, string>> = {
   'howItWorks.title': 'Paano ginagawa ang isang gabay',
   'howItWorks.eyebrow': 'Sa likod ng eksena',
   'howItWorks.lead':
-    'Bawat gabay sa {brand} ay sumusunod sa parehong apat na hakbang, kaya mapagkakatiwalaan mo ang binabasa mo.',
+    'Dumadaan ang bawat gabay sa {brand} sa parehong apat na hakbang, kaya mapagkakatiwalaan mo ang binabasa mo.',
   'howItWorks.stepsTitle': 'Ang apat na hakbang',
-  'howItWorks.principlesTitle': 'Mga prinsipyo sa likod nito',
+  'howItWorks.principlesTitle': 'Mga patakarang sinusunod namin',
   'howItWorks.volunteerTitle': 'Tumulong sumulat ng susunod na gabay',
   'howItWorks.volunteerBody':
-    'Binabasa ng mga boluntaryo ang Charter, isinusulat ang bawat serbisyo sa simpleng wika, at nagtitiwalaan ng gawa ng isa\u2019t isa. Hindi kailangan ng coding.',
+    "Binabasa ng mga boluntaryo ang Charter, isinusulat ang bawat serbisyo sa simpleng wika, at tinitingnan ang gawa ng isa't isa. Hindi kailangan ng coding.",
   'howItWorks.volunteerCta': 'Makipagboluntaryo sa GitHub',
 
   // Contribute
   'contribute.title': 'Makibahagi',
   'contribute.eyebrow': 'Sumali',
   'contribute.lead': 'Gawa ng komunidad ang {brand}. Hindi kailangan ng coding para makibahagi.',
-  'contribute.waysTitle': 'Mga paraan ng paglahok',
-  'contribute.dataTitle': 'Mga kontribusyon sa datos',
+  'contribute.waysTitle': 'Mga paraan para makatulong',
+  'contribute.dataTitle': 'Para sa mga data volunteer',
   'contribute.dataBody':
-    'Bawat katotohanan ay nangangailangan ng opisyal na source URL, petsa ng pagkuha, at petsa ng pagpapatunay.',
-  'contribute.workflowTitle': 'Ang daloy ng gawain',
+    'Bawat detalye ay kailangan ng link sa opisyal na sanggunian, ang petsa ng paghahanap nito, at ang petsa ng pagsusuri.',
+  'contribute.workflowTitle': 'Para sa mga developer: paano napupunta sa site ang mga pagbabago',
   'contribute.workflowBody':
-    'Isang paksa bawat pull request, panatilihing maliit. Dapat pumasa ang CI at isang code-owner approval ang kailangan.',
+    'Panatilihing maliit at iisa ang paksa ng bawat pagbabago. Dapat pumasa ang mga awtomatikong pagsusuri, at kailangan ng approval ng isang reviewer.',
 
   // Accessibility
   'accessibility.title': 'Pahayag ng accessibility',
   'accessibility.eyebrow': 'Accessibility',
   'accessibility.lead':
-    'Layunin ng {brand} na magamit ng lahat, sa anumang device, sa mabagal na koneksyon.',
-  'accessibility.standardTitle': 'Ang aming pamantayan',
+    'Layunin ng {brand} na magamit ng lahat, sa anumang telepono o computer, kahit mabagal ang koneksyon.',
+  'accessibility.standardTitle': 'Ang pamantayang gusto naming abutin',
   'accessibility.standardBody':
-    'Target namin ang WCAG 2.1 AA bilang minimum, at sinusubok gamit ang keyboard at screen reader.',
+    'Target namin ang isang internasyonal na pamantayan sa accessibility (WCAG 2.1 AA).',
   'accessibility.featuresTitle': 'Ang ginagawa namin',
   'accessibility.feedbackTitle': 'Feedback',
   'accessibility.feedbackBody':
-    'May nakita kang problema sa accessibility? Sabihin mo sa amin at aayusin namin.',
-  'accessibility.feedbackCta': 'Iulat ang isyu',
+    'May nahirapan ka ba sa paggamit ng site? Sabihin mo sa amin at aayusin namin.',
+  'accessibility.feedbackCta': 'Iulat ang problema',
 
   // Resources
   'resources.title': 'Mga opisyal na sanggunian',
@@ -756,7 +806,10 @@ const fil: Partial<Record<Key, string>> = {
   'servicesDir.lead': 'Bawat napapatunayang gabay sa serbisyo, nakagrupo ayon sa opisina.',
   'servicesDir.empty': 'Wala pang napapatunayang gabay sa serbisyo.',
   'servicesDir.emptyBody':
-    'Inilalathala lamang ang mga gabay pagkatapos pumasa sa verified-only gate. Bumalik ka na lang mamaya.',
+    'Ilalathala lang ang gabay kapag nasuri na ito ng pangalawang tao laban sa {charterTitle}.',
+  'servicesDir.stat.published': 'Nailathalang verified na gabay',
+  'servicesDir.stat.charterServices': 'Mga serbisyo sa Charter',
+  'servicesDir.emptyCta': 'Tumulong sumuri ng gabay',
 
   // Service guide page (draft; translation owner reviews, #59)
   'guide.eyebrow': 'Gabay sa serbisyo',
@@ -830,7 +883,7 @@ const fil: Partial<Record<Key, string>> = {
   'howItWorks.step.2': 'Hakbang 2',
   'howItWorks.step.2.title': 'Isulat sa payak na salita',
   'howItWorks.step.2.body':
-    'Isang volunteer ang mano-manong nagta-transcribe nito, sa Ingles at Filipino.',
+    'Isang volunteer ang kumokopya nito nang mano-mano, sa Ingles at Filipino.',
   'howItWorks.step.3': 'Hakbang 3',
   'howItWorks.step.3.title': 'Suriin nang dalawang beses',
   'howItWorks.step.3.body':
@@ -838,55 +891,63 @@ const fil: Partial<Record<Key, string>> = {
   'howItWorks.step.4': 'Hakbang 4',
   'howItWorks.step.4.title': 'I-publish na may petsa',
   'howItWorks.step.4.body':
-    'Makikita sa gabay ang edisyon ng Charter at ang petsa ng huling beripikasyon.',
+    'Makikita sa gabay ang edisyon ng Charter na sinusundan nito, at ang petsa ng huling pagsusuri.',
   'howItWorks.principle.accuracy.title': 'Katumpakan muna',
   'howItWorks.principle.accuracy.body':
     'Mas mabuti ang walang pahina kaysa sa maling pahina. Hindi inilalagay sa site ang mga detalyeng hindi pa nakukumpirma.',
-  'howItWorks.principle.source.title': 'Banggitin ang sanggunian',
+  'howItWorks.principle.source.title': 'Ipakita kung saan galing',
   'howItWorks.principle.source.body':
-    'Ang bawat katotohanan ay may link o pagbanggit sa opisyal na dokumentong pinagmulan nito.',
+    'Ang bawat katotohanan ay tumuturo sa opisyal na dokumentong pinagmulan nito.',
   'howItWorks.principle.plain.title': 'Payak na wika',
   'howItWorks.principle.plain.body':
     'Isinulat para sa taong nagmamadali, gumagamit ng cellphone, at mabagal ang koneksyon.',
   'howItWorks.principle.open.title': 'Bukas at gawa ng komunidad',
   'howItWorks.principle.open.body': 'Kahit sino ay maaaring tumulong. Bukas ang code at ang data.',
-  'contribute.way.data.title': 'Pagwawasto ng data',
-  'contribute.way.data.body': 'Itama ang maling opisina, serbisyo, bayarin, opisyal, o contact.',
+  'contribute.way.data.title': 'Itama ang mga detalye',
+  'contribute.way.data.body':
+    'Para sa mga data volunteer: itama ang maling opisina, serbisyo, bayarin, opisyal, o contact details.',
   'contribute.way.translation.title': 'Pagsasalin',
-  'contribute.way.translation.body': 'Isalin ang nilalamang Ingles sa Filipino, o kabaligtaran.',
+  'contribute.way.translation.body':
+    'Isalin ang tekstong Ingles sa Filipino, o Filipino sa Ingles.',
   'contribute.way.design.title': 'Disenyo at accessibility',
   'contribute.way.design.body':
-    'Pagandahin ang layout, contrast, paggamit ng keyboard, at suporta sa screen reader.',
-  'contribute.way.code.title': 'Code',
-  'contribute.way.code.body': 'Gumawa ng mga pahina, component, search, at mga tool para sa site.',
-  'contribute.data.li1': 'isang URL ng opisyal na sanggunian',
-  'contribute.data.li2': 'petsa ng pagkuha',
-  'contribute.data.li3': 'petsa ng beripikasyon',
-  'contribute.data.cta': 'Basahin ang gabay sa pag-ambag',
-  'contribute.workflow.1': 'Mag-branch mula sa main at gawin ang iyong pagbabago.',
+    'Pagandahin ang layout, mga kulay ng teksto, at kung paano magagamit ng mga taong may kapansanan ang site.',
+  'contribute.way.code.title': 'Code (para sa mga developer)',
+  'contribute.way.code.body': 'Gumawa ng mga pahina, search, at tool para sa site.',
+  'contribute.data.li1': 'link sa opisyal na sanggunian',
+  'contribute.data.li2': 'petsa ng paghahanap',
+  'contribute.data.li3': 'petsa ng pagsusuri',
+  'contribute.data.cta': 'Basahin ang buong gabay kung paano tumulong',
+  'contribute.workflow.1':
+    'Gumawa ng branch (sarili mong kopya) mula sa main at gawin ang iyong pagbabago.',
   'contribute.workflow.2': 'Patakbuhin ang pnpm format, lint, check, test, at build.',
-  'contribute.workflow.3': 'Magbukas ng pull request at punan ang template.',
-  'contribute.workflow.4': 'Susuriin at i-merge ito ng isang maintainer.',
-  'accessibility.standard.li1': 'Semantic HTML at mga landmark sa bawat pahina.',
-  'accessibility.standard.li2': 'Sapat na contrast at nakikitang focus state.',
-  'accessibility.standard.li3': "Gumagana kahit walang JavaScript hangga't maaari.",
-  'accessibility.feature.skip.title': 'Skip link',
+  'contribute.workflow.3':
+    'Magbukas ng pull request (isang panukalang pagbabago) at punan ang form.',
+  'contribute.workflow.4': 'Titingnan at idadagdag ito sa site ng isang maintainer.',
+  'accessibility.standard.li1':
+    'May malinaw na heading at seksyon ang bawat pahina, kaya dapat masundan ito ng mga tool na nagbabasa ng pahina nang malakas.',
+  'accessibility.standard.li2':
+    'Madaling basahin ang teksto sa kulay ng background nito. Malinaw ang marka sa link o button na pinupuntahan mo. Awtomatikong sinusuri ang kulay ng teksto sa bawat update.',
+  'accessibility.standard.li3':
+    "Gumagana kahit naka-off ang mga script sa browser mo, hangga't maaari.",
+  'accessibility.feature.skip.title': 'Lumaktaw sa pangunahing teksto',
   'accessibility.feature.skip.body':
-    'May skip link sa itaas ng bawat pahina na naglilipat ng focus sa pangunahing nilalaman.',
-  'accessibility.feature.contrast.title': 'Contrast',
+    'May link na "skip" sa itaas ng bawat pahina na dumidiretso sa pangunahing nilalaman.',
+  'accessibility.feature.contrast.title': 'Madaling basahing kulay',
   'accessibility.feature.contrast.body':
-    'Pasok ang teksto at mga kontrol sa contrast ratio ng WCAG AA.',
-  'accessibility.feature.keyboard.title': 'Keyboard',
+    'Pinili ang mga kulay para madaling basahin. Sinusubok ito ng isang awtomatikong checker.',
+  'accessibility.feature.keyboard.title': 'Paggamit ng keyboard',
   'accessibility.feature.keyboard.body':
-    'Maaabot at magagamit gamit ang keyboard ang lahat ng interactive na elemento.',
+    'Maaabot gamit ang keyboard ang mga link at button. Hindi pa naisasagawa ang buong pagsusuri gamit ang keyboard.',
   'accessibility.feature.motion.title': 'Galaw',
-  'accessibility.feature.motion.body': 'Iginagalang ng mga animation ang prefers-reduced-motion.',
+  'accessibility.feature.motion.body':
+    'Sinusunod ng site ang setting na "reduce motion" ng telepono mo para sa mga animation.',
   'accessibility.feature.lang.title': 'Wika',
   'accessibility.feature.lang.body':
-    'May tamang lang attribute ang mga pahina, at available ang Filipino.',
+    'Sinasabi ng bawat pahina sa browser kung anong wika ito. Available ang Filipino.',
   'accessibility.feature.print.title': 'Pag-print',
   'accessibility.feature.print.body':
-    'Malinis na nagpi-print ang mga sheet ng serbisyo bilang isang pahina.',
+    'May bersyong pang-print ang mga gabay sa serbisyo, kasama ang apat na pangunahing sagot at ang sanggunian, sa isa o dalawang pahina.',
   'resources.open': 'Buksan',
   'resources.lastChecked': 'Huling sinuri',
   'resources.officialPending':
@@ -970,6 +1031,49 @@ const fil: Partial<Record<Key, string>> = {
   'tourism.cat.salon': 'Mga salon',
   'tourism.cat.computer-shop': 'Mga computer shop',
   'tourism.cat.bakery': 'Mga panaderya',
+  // How it works, Contribute, Accessibility additions (draft; translation owner reviews, #59)
+  'howItWorks.notDoTitle': 'Ang hindi ginagawa ng site na ito',
+  'howItWorks.notDo.li1': 'Hindi ito tumatanggap ng bayad.',
+  'howItWorks.notDo.li2': 'Hindi ito tumatanggap ng aplikasyon. Sa opisina ka pa rin mag-a-apply.',
+  'howItWorks.notDo.li3': 'Wala itong account at hindi humihingi ng personal na detalye.',
+  'howItWorks.notDo.li4': 'Hindi ito opisyal na website ng pamahalaang lokal ng {place}.',
+  'howItWorks.statusTitle': 'Ang ibig sabihin ng mga label',
+  'howItWorks.statusBody':
+    'May isa sa tatlong label ang bawat gabay. Ang mga "verified" na gabay lamang ang lumalabas sa {brand}.',
+  'howItWorks.status.verified':
+    'Sinuri laban sa {charterTitle} ng taong hindi sumulat nito. Tugma ito sa opisyal na dokumento. Hindi pa ito kinukumpirma ng pamahalaang lokal.',
+  'howItWorks.status.needsConfirmation':
+    'Isinulat mula sa opisyal na dokumento, pero hindi pa nasusuri. Hindi ito inilalathala.',
+  'howItWorks.status.outdated':
+    'Nasuri na ito noon, pero maaaring nagbago ang opisyal na dokumento. Hindi ito inilalathala hanggang muling masuri.',
+  'howItWorks.secondChecker':
+    'Sinusuri ng pangalawang tao, na hindi sumulat nito, ang bawat gabay sa serbisyo bago ito ilathala.',
+  'howItWorks.reportTitle': 'May nakitang mali?',
+  'howItWorks.reportBody':
+    'Gamitin ang form ng ulat sa GitHub. Kailangan ng libreng GitHub account. Sabihin kung ano ang mali at ilakip ang link ng opisyal na dokumentong nagpapakita ng tamang detalye.',
+  'howItWorks.reportNext':
+    'Ikukumpara ng isang miyembro ng team ang ulat mo sa opisyal na dokumento. Kung mali ang gabay, itatama ito, at susuriin ang pagbabago bago ito mailabas.',
+  'contribute.way.report.title': 'Iulat ang maling detalye',
+  'contribute.way.report.body':
+    'Gamitin ang form para sabihin sa amin ang maling o lumang detalye. Ilakip ang link ng opisyal na dokumento kung kaya mo.',
+  'contribute.way.check.title': 'Suriin ang isang gabay',
+  'contribute.way.check.body':
+    'Buksan ang isang gabay sa tabi ng pahina nito sa {charterTitle}. Iulat ang anumang pagkakaiba na makita mo.',
+  'contribute.noCode': 'Hindi kailangan ng coding',
+  'contribute.secondChecker':
+    'Bago mailathala ang isang gabay sa serbisyo, sinusuri ito ng isang miyembro ng team na hindi sumulat nito, laban sa opisyal na dokumento.',
+  'accessibility.feature.text.title': 'Laki ng teksto',
+  'accessibility.feature.text.body':
+    'Sumusunod ang teksto sa laki na itinakda mo sa browser, at puwede kang mag-zoom. May awtomatikong pagsusuri kung may pag-scroll sa gilid sa makitid na screen.',
+  'accessibility.gapsTitle': 'Ano pa ang kulang',
+  'accessibility.gaps.li2':
+    'Hindi pa namin nasusubok ang site gamit ang mga app na nagbabasa ng pahina nang malakas, o sa totoong telepono.',
+  'accessibility.gaps.li3': 'Draft pa ang tekstong Filipino. Hindi pa ito nasusuri ng tagasalin.',
+  'accessibility.gaps.li4':
+    'Iilang problema lang ang nahahanap ng awtomatikong pagsusuri. Hindi nito masasabi kung malinaw ang pahina o may saysay ito kapag binasa nang malakas.',
+  'accessibility.reviewTitle': 'Paano namin sinusuri ang site',
+  'accessibility.reviewBody':
+    'May awtomatikong checker na tumatakbo sa mga pangunahing pahina, sa Ingles at Filipino, sa bawat update ng site.',
 };
 
 const ui: Record<Lang, Partial<Record<Key, string>>> = { en, fil };

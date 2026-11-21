@@ -32,7 +32,7 @@ entries and nothing from them is published until it reaches the register.
 | Lead | Location | Level | What to check | Status |
 | --- | --- | --- | --- | --- |
 | Official LGU of Palo website | [http://210.213.142.34/home/?page=home](http://210.213.142.34/home/?page=home) | 1 (unconfirmed by the LGU) | Whether it hosts the current Citizen's Charter, officials, offices, and hotlines; the LGU has not confirmed that this address is official, so record the retrieval date of each document | Reported by the team, 2026-11-06 |
-| `palo-leyte.gov.ph` | [https://www.palo-leyte.gov.ph](https://www.palo-leyte.gov.ph) | 1 (unconfirmed by the LGU) | Listed on Wikipedia as the official site; check whether it is live or replaced by the address above | Did not resolve in an automated check, 2026-11-12; recheck from a normal connection before dropping it |
+| `palo-leyte.gov.ph` | [https://www.palo-leyte.gov.ph](https://www.palo-leyte.gov.ph) | 1 (unconfirmed by the LGU) | Listed on Wikipedia as the official site; check whether it is live or replaced by the address above | Did not resolve in an automated check, 2026-11-12; recheck from a normal connection before dropping it; 2026-11-21: did not resolve (curl error 6; no DNS record for the www or apex host, over http or https) |
 | Palo BPLS (iBPLS) | [https://bpbc.ibpls.com/paloleyte/](https://bpbc.ibpls.com/paloleyte/) | 1 (unconfirmed by the LGU) | Which transactions work end to end; see the BPLS caution below | Page identifies as Palo, 2026-11-06 |
 | Sangguniang Bayan of Palo | [https://palosb.com/official_website/](https://palosb.com/official_website/) | 1 | Ordinance texts and COA report downloads; hotlines look like placeholders | Unverified |
 | DILG Province of Leyte, Palo profile | [https://sites.google.com/view/dilg-province-of-leyte/lgus/palo](https://sites.google.com/view/dilg-province-of-leyte/lgus/palo) | 3 | No visible update date; cross-check officials and contacts against the LGU site and the Charter | Unverified |
@@ -41,6 +41,31 @@ entries and nothing from them is published until it reaches the register.
 | Palo Tourism Portal | Project copy of the portal (no public URL recorded) | 5 | Spot names, descriptions, and offers; confirm each with the tourism office. Place types are the team's classification, not the portal's | Ported 2026-11-14; the portal cited no official sources |
 | Citizen's Charter announcement | LGU Facebook page (via Govserv mirror) | 4 / 5 | The linked download goes to a third-party PDFfiller page; do not use it | Rejected as a source |
 | Scribd upload "PALO-Leyte" | [https://www.scribd.com/document/566303202/PALO-Leyte](https://www.scribd.com/document/566303202/PALO-Leyte) | 5 | Unknown content and date; open it to see whether it is an older Charter edition. Research lead only | Found in web search, 2026-11-12; not opened |
+
+## Link checks
+
+Automated reachability checks of the links in `src/content/resources.yaml`. A check is not a verification.
+
+| Resource | URL | Result | Checked | Notes |
+| --- | --- | --- | --- | --- |
+| `lgu-website` | [http://210.213.142.34/home/](http://210.213.142.34/home/) | 200 | 2026-11-21 | No redirect |
+| `citizens-charter` | [http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf](http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf) | 200 | 2026-11-21 | No redirect |
+| `sangguniang-bayan` | [https://palosb.com/official_website/](https://palosb.com/official_website/) | 200 | 2026-11-21 | No redirect |
+| `psa` | [https://psa.gov.ph](https://psa.gov.ph) | 403 | 2026-11-21 | Bot challenge to curl; open by hand before verifying |
+| `psa-certificates` | [https://psahelpline.ph/](https://psahelpline.ph/) | 200 | 2026-11-21 | No redirect |
+| `national-id` | [https://philsys.gov.ph](https://philsys.gov.ph) | 403 | 2026-11-21 | Bot challenge to curl; open by hand before verifying |
+| `passport` | [https://passport.gov.ph](https://passport.gov.ph) | 403 | 2026-11-21 | Bot challenge to curl; open by hand before verifying |
+| `lto` | [https://portal.lto.gov.ph](https://portal.lto.gov.ph) | 200 | 2026-11-21 | Redirects to [https://portal.lto.gov.ph/ords/f?p=1200:HOME::::::](https://portal.lto.gov.ph/ords/f?p=1200:HOME::::::) |
+| `philhealth` | [https://www.philhealth.gov.ph](https://www.philhealth.gov.ph) | 200 | 2026-11-21 | No redirect |
+| `sss` | [https://www.sss.gov.ph](https://www.sss.gov.ph) | 200 | 2026-11-21 | No redirect |
+| `gsis` | [https://www.gsis.gov.ph](https://www.gsis.gov.ph) | 200 | 2026-11-21 | No redirect |
+| `pag-ibig` | [https://www.pagibigfund.gov.ph](https://www.pagibigfund.gov.ph) | 200 | 2026-11-21 | No redirect |
+| `nbi-clearance` | [https://clearance.nbi.gov.ph](https://clearance.nbi.gov.ph) | 200 | 2026-11-21 | No redirect |
+| `bir` | [https://www.bir.gov.ph](https://www.bir.gov.ph) | 200 | 2026-11-21 | No redirect |
+| `dswd` | [https://www.dswd.gov.ph](https://www.dswd.gov.ph) | 200 | 2026-11-21 | No redirect |
+| `compass` | [https://compass.gov.ph/?quarter=Q2](https://compass.gov.ph/?quarter=Q2) | 200 | 2026-11-21 | URL supplied by the lead |
+| `compass-palo` | [https://compass.gov.ph/lgu-snapshot?province=Leyte&snapFy=2026&city=Palo](https://compass.gov.ph/lgu-snapshot?province=Leyte&snapFy=2026&city=Palo) | 200 | 2026-11-21 | URL supplied by the lead |
+| `palo-leyte.gov.ph` | [https://www.palo-leyte.gov.ph](https://www.palo-leyte.gov.ph) | No response | 2026-11-21 | No DNS record for the www or apex host; http:// also fails |
 
 ## Rules
 

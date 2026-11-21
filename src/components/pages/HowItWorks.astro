@@ -4,7 +4,7 @@ import PageHero from '../PageHero.astro';
 import SectionHead from '../SectionHead.astro';
 import IconWell from '../home/IconWell.astro';
 import { t, type Lang } from '../../i18n/ui';
-import { REPO_URL } from '../../lib/site';
+import { REPO_URL, REPORT_URL } from '../../lib/site';
 
 interface Props {
   lang: Lang;
@@ -34,6 +34,12 @@ const steps = [
     t(lang, 'howItWorks.step.4.body'),
   ],
 ];
+
+const statuses = [
+  ['verified', 'verified'],
+  ['needs_confirmation', 'needsConfirmation'],
+  ['outdated', 'outdated'],
+] as const;
 
 const principles = [
   { icon: 'check', key: 'accuracy' },
@@ -92,6 +98,50 @@ const principles = [
         </article>
       ))}
     </div>
+  </section>
+
+  <section class="border-y border-edge bg-canvas-alt py-section">
+    <div class="wrap max-w-2xl">
+      <SectionHead
+        id="howitworks-notdotitle"
+        title={t(lang, 'howItWorks.notDoTitle')}
+        highlight=""
+      />
+      <ul class="mt-4 list-disc pl-5 text-fg-soft">
+        <li>{t(lang, 'howItWorks.notDo.li1')}</li>
+        <li>{t(lang, 'howItWorks.notDo.li2')}</li>
+        <li>{t(lang, 'howItWorks.notDo.li3')}</li>
+        <li>{t(lang, 'howItWorks.notDo.li4')}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap py-section">
+    <SectionHead
+      id="howitworks-statustitle"
+      title={t(lang, 'howItWorks.statusTitle')}
+      highlight=""
+    />
+    <p class="mt-3 max-w-2xl text-fg-soft">{t(lang, 'howItWorks.statusBody')}</p>
+    <dl class="mt-4 grid max-w-2xl gap-4">
+      {statuses.map(([status, key]) => (
+        <div>
+          <dt class="font-bold">
+            <code>{status}</code>
+          </dt>
+          <dd class="text-sm text-fg-soft">{t(lang, `howItWorks.status.${key}`)}</dd>
+        </div>
+      ))}
+    </dl>
+    <p class="mt-4 max-w-2xl text-fg-soft">{t(lang, 'howItWorks.secondChecker')}</p>
+    <h3 class="mt-8 font-display text-lg">{t(lang, 'howItWorks.reportTitle')}</h3>
+    <p class="mt-2 max-w-2xl text-fg-soft">{t(lang, 'howItWorks.reportBody')}</p>
+    <p class="mt-2 max-w-2xl text-fg-soft">{t(lang, 'howItWorks.reportNext')}</p>
+    <p class="mt-4">
+      <a href={REPORT_URL} rel="external" class="font-bold text-accent underline">
+        {t(lang, 'report.link')} →
+      </a>
+    </p>
   </section>
 
   <section class="border-t border-edge bg-canvas-alt py-section">

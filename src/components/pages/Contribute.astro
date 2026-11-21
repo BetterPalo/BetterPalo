@@ -4,7 +4,7 @@ import PageHero from '../PageHero.astro';
 import SectionHead from '../SectionHead.astro';
 import IconWell from '../home/IconWell.astro';
 import { t, type Lang } from '../../i18n/ui';
-import { CONTRIBUTING_URL } from '../../lib/site';
+import { CONTRIBUTING_URL, REPORT_URL } from '../../lib/site';
 
 interface Props {
   lang: Lang;
@@ -13,10 +13,17 @@ interface Props {
 const { lang } = Astro.props;
 
 const ways = [
-  { icon: 'doc', key: 'data' },
-  { icon: 'globe', key: 'translation' },
-  { icon: 'grid', key: 'design' },
-  { icon: 'code', key: 'code' },
+  { icon: 'flag', key: 'report', href: REPORT_URL, noCode: true },
+  { icon: 'check', key: 'check', href: `${CONTRIBUTING_URL}#data-contributions`, noCode: true },
+  {
+    icon: 'doc',
+    key: 'data',
+    href: `${CONTRIBUTING_URL}#using-github-without-a-local-setup`,
+    noCode: true,
+  },
+  { icon: 'globe', key: 'translation', href: `${CONTRIBUTING_URL}#translation`, noCode: true },
+  { icon: 'grid', key: 'design', href: CONTRIBUTING_URL, noCode: false },
+  { icon: 'code', key: 'code', href: `${CONTRIBUTING_URL}#development`, noCode: false },
 ] as const;
 ---
 
@@ -37,16 +44,26 @@ const ways = [
     <div class="wrap">
       <SectionHead id="contribute-waystitle" title={t(lang, 'contribute.waysTitle')} highlight="" />
       <div class="mt-8 grid gap-4 sm:grid-cols-2">
-        {ways.map(({ icon, key }) => (
+        {ways.map(({ icon, key, href, noCode }) => (
           <article class="flex gap-4 border border-edge bg-surface p-6">
             <IconWell name={icon} />
             <div>
-              <h3 class="font-display text-lg">{t(lang, `contribute.way.${key}.title`)}</h3>
+              {noCode && (
+                <b class="text-xs font-bold tracking-label text-accent uppercase">
+                  {t(lang, 'contribute.noCode')}
+                </b>
+              )}
+              <h3 class="font-display text-lg">
+                <a href={href} rel="external" class="text-accent underline">
+                  {t(lang, `contribute.way.${key}.title`)}
+                </a>
+              </h3>
               <p class="mt-1 text-sm text-fg-soft">{t(lang, `contribute.way.${key}.body`)}</p>
             </div>
           </article>
         ))}
       </div>
+      <p class="mt-6 max-w-2xl text-fg-soft">{t(lang, 'contribute.secondChecker')}</p>
     </div>
   </section>
 

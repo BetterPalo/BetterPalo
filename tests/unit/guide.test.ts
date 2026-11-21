@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   firstSourcePage,
   formatDate,
+  groupByOffice,
   isSinglePage,
   isoDate,
   sourceHref,
@@ -33,6 +34,20 @@ describe('guide helpers', () => {
     expect(isSinglePage('225')).toBe(true);
     expect(isSinglePage('225–227')).toBe(false);
     expect(isSinglePage('7, 9')).toBe(false);
+  });
+
+  it('groups items by office, A to Z, keeping the input order inside each group', () => {
+    const items = [
+      { name: 'Zoning', office: 'Zoning Office' },
+      { name: 'Permit', office: 'Business Office' },
+      { name: 'Renewal', office: 'Business Office' },
+      { name: 'Unknown', office: null },
+    ];
+    expect(groupByOffice(items)).toEqual([
+      ['', [items[3]]],
+      ['Business Office', [items[1], items[2]]],
+      ['Zoning Office', [items[0]]],
+    ]);
   });
 
   it('formats a UTC date in English', () => {
