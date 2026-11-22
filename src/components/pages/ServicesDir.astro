@@ -2,8 +2,10 @@
 import Base from '../../layouts/Base.astro';
 import PageHero from '../PageHero.astro';
 import { listServices } from '../../lib/data';
+import { formatDate, groupByOffice, isoDate } from '../../lib/guide';
 import { t, type Lang } from '../../i18n/ui';
-import { localizedPath } from '../../lib/routes';
+import { localizedPath, routeExists } from '../../lib/routes';
+import { charter } from '../../lib/site-facts';
 
 interface Props {
   lang: Lang;
@@ -12,6 +14,9 @@ interface Props {
 const { lang } = Astro.props;
 
 const services = await listServices();
+const groups = groupByOffice(services);
+// Guide names and offices are English source text on the Filipino page.
+const srcLang = lang === 'fil' ? 'en' : undefined;
 ---
 
 <Base
@@ -29,24 +34,73 @@ const services = await listServices();
 
   <section class="wrap pb-section">
     {services.length === 0 ? (
-      <div class="border border-edge bg-surface p-8 text-center">
+      <div id="services-empty" class="border border-edge bg-surface p-8 text-center">
         <p class="font-display text-xl">{t(lang, 'servicesDir.empty')}</p>
         <p class="mt-2 text-sm text-fg-soft">{t(lang, 'servicesDir.emptyBody')}</p>
+        <dl class="mx-auto mt-4 grid max-w-sm gap-2 text-sm">
+          <div class="flex justify-between">
+            <dt>{t(lang, 'servicesDir.stat.published')}</dt>
+            <dd class="font-bold">{services.length}</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>{t(lang, 'servicesDir.stat.charterServices')}</dt>
+            <dd class="font-bold">{charter.services}</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>{t(lang, 'home.offices.inCharter')}</dt>
+            <dd class="font-bold">{charter.offices}</dd>
+          </div>
+        </dl>
+        {routeExists('/contribute/') && (
+          <a
+            href={localizedPath(lang, '/contribute/')}
+            class="mt-4 inline-block font-bold text-accent underline"
+          >
+            {t(lang, 'servicesDir.emptyCta')} →
+          </a>
+        )}
       </div>
     ) : (
-      <ul class="grid gap-3 sm:grid-cols-2">
-        {services.map((service) => (
-          <li>
-            <a
-              href={localizedPath(lang, `/services/${service.id}/`)}
-              class="block border border-edge bg-canvas p-4 no-underline hover:border-accent"
-            >
-              <b class="font-display tracking-title">{service.name}</b>
-              <p class="mt-1 text-sm text-fg-soft">{service.description}</p>
-            </a>
-          </li>
-        ))}
-      </ul>
+      groups.map(([office, guides], index) => (
+        <section
+          class="mt-10 first:mt-0"
+          data-office={office}
+          aria-labelledby={`services-office-${index}`}
+        >
+          <h2
+            id={`services-office-${index}`}
+            class="font-display text-xl"
+            lang={office ? srcLang : undefined}
+          >
+            {office || t(lang, 'missing.stated')}
+          </h2>
+          <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+            {guides.map((service) => (
+              <li>
+                <a
+                  href={localizedPath(lang, `/services/${service.id}/`)}
+                  class="block border border-edge bg-canvas p-4 no-underline hover:border-accent"
+                >
+                  <b class="font-display tracking-title" lang={srcLang}>
+                    {service.name}
+                  </b>
+                  <span class="mt-1 block text-sm text-fg-soft" lang={srcLang}>
+                    {service.office}
+                  </span>
+                  {service.last_verified && (
+                    <span class="mt-1 block text-xs text-fg-soft">
+                      {t(lang, 'guide.lastVerified')}{' '}
+                      <time datetime={isoDate(service.last_verified)}>
+                        {formatDate(service.last_verified, lang)}
+                      </time>
+                    </span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
     )}
   </section>
 </Base>

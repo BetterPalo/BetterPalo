@@ -1,4 +1,4 @@
-# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 205-208
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 207-208
 # and 255.
 # Checked against the PDF by the lead (Zyxavy); verified 2026-11-20.
 id: pwd-id-ra-9442
@@ -83,8 +83,9 @@ complaint_procedure: >
   (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
 effective_date: null
 notes: >
-  Transcribed from PDF pages 205-208 (the PWD ID section, service G; the same
-  pages also contain the referral for adoption service and service H). The
+  Transcribed from PDF pages 207-208 (service G, the PWD ID section; page 207
+  also holds the end of service F, referral for adoption, and page 208 the
+  start of service H, referral for residential care). The
   Charter lists individual staff names for each step; they are left out and
   "responsible" shows office and position only. The Charter's sub-steps 1.1 to
   1.8 are combined into step 1, each keeping its own time in max_time. The fees
@@ -93,7 +94,7 @@ notes: >
   add up to 8 days and 47 minutes. The Charter's approval date has not been
   confirmed by the LGU.
 source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
-source_pages: '205–208, 255'
+source_pages: '207–208, 255'
 edition: 2026 (2nd Edition)
 retrieved: 2026-11-06
 verified_by: Zyxavy

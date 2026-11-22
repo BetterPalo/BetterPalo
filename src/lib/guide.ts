@@ -31,3 +31,15 @@ export function formatDate(date: Date, lang: Lang): string {
 export function isoDate(date: Date): string {
   return date.toISOString().slice(0, 10);
 }
+
+/** Items grouped by office, offices A–Z; each group keeps the input order. */
+export function groupByOffice<T extends { office: string | null }>(items: T[]): [string, T[]][] {
+  const groups = new Map<string, T[]>();
+  for (const item of items) {
+    const key = item.office ?? '';
+    const group = groups.get(key);
+    if (group) group.push(item);
+    else groups.set(key, [item]);
+  }
+  return [...groups].sort(([a], [b]) => a.localeCompare(b));
+}

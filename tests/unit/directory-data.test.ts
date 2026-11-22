@@ -23,7 +23,7 @@ describe('directory data files', () => {
     expect(offices).toHaveLength(27);
     expect(officials).toHaveLength(10);
     expect(barangays).toHaveLength(lgu.census.barangays);
-    expect(resources).toHaveLength(15);
+    expect(resources).toHaveLength(17);
   });
 
   it('every item passes its schema', () => {
