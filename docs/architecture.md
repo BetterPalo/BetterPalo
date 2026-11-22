@@ -144,7 +144,7 @@ Never write a place name or a figure in `src/i18n/ui.ts`. Add a placeholder in
   `last_verified`, `status`, and `notes`. A verified item needs a level 1 to 3
   source; the schema refuses `status: verified` when `source_level` is 4 or
   higher. A barangay population needs its census year and a level 2 source (the
-  PSA table). Office phone numbers are stored but not rendered.
+  PSA table). Office phone numbers are shown as `tel:` links on verified offices.
 - A `null` field means the official source does not say. Pages show "Not
   stated in the official source. Ask the office." instead.
 - The file name must match `id` (`cedula.yaml` has `id: cedula`).

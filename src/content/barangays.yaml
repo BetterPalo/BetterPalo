@@ -1,430 +1,431 @@
-# The 33 barangays of Palo. Names only: populations stay null until a PSA table is
-# read (the 2020 figures are not copied). Every item stays needs_confirmation until checked.
+# The 33 barangays of Palo: names and 2024 populations from PSA 2024 POPCEN Table 4
+# (reference date 1 July 2024). Checked by the lead on 2026-11-21.
+
 - id: anahaway
   name: 'Anahaway'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 1620
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: arado
   name: 'Arado'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 2624
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: baras
   name: 'Baras'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 3725
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: barayong
   name: 'Barayong'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 3005
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: buri
-  name: 'Buri (Poblacion)'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas omits (Poblacion).'
+  name: 'Buri'
+  population: 1283
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3. Earlier lists name it a Poblacion barangay.'
 
 - id: cabarasan-daku
   name: 'Cabarasan Daku'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 924
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: cabarasan-guti
   name: 'Cabarasan Guti'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 330
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
-- id: campetic
-  name: 'Campetic'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas spells it Campetik.'
+- id: campetik
+  name: 'Campetik'
+  population: 3695
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3. Wikipedia spelled it Campetic.'
 
 - id: candahug
   name: 'Candahug'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 2109
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: cangumbang
   name: 'Cangumbang'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 1334
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: canhidoc
   name: 'Canhidoc'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 1268
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: capirawan
   name: 'Capirawan'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 1980
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: castilla
   name: 'Castilla'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 3198
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: cavite-east
-  name: 'Cavite East (Poblacion)'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. Research lists it as Cavite East (Pob.).'
+  name: 'Cavite East'
+  population: 2592
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3. Earlier lists name it a Poblacion barangay.'
 
 - id: cavite-west
-  name: 'Cavite West (Poblacion)'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  name: 'Cavite West'
+  population: 2020
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3. Earlier lists name it a Poblacion barangay.'
 
 - id: cogon
   name: 'Cogon'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 2974
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: gacao
   name: 'Gacao'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 3534
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: guindapunan
   name: 'Guindapunan'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 6420
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: libertad
   name: 'Libertad'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 4272
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: luntad
-  name: 'Luntad (Poblacion)'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas omits (Poblacion).'
+  name: 'Luntad'
+  population: 453
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3. Earlier lists name it a Poblacion barangay.'
 
 - id: naga-naga
   name: 'Naga-naga'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 2674
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: pawing
   name: 'Pawing'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 4480
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: salvacion
   name: 'Salvacion'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 2753
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: san-agustin
   name: 'San Agustin'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 1171
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: san-antonio
   name: 'San Antonio'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 1202
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: san-fernando
   name: 'San Fernando'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 1767
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: san-isidro
   name: 'San Isidro'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 1469
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: san-joaquin
   name: 'San Joaquin'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 2845
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: san-jose
   name: 'San Jose'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 5870
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
-- id: st-michael
-  name: 'St. Michael (Poblacion)'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas lists San Miguel.'
+- id: san-miguel
+  name: 'San Miguel'
+  population: 1655
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: santa-cruz
-  name: 'Santa Cruz (Poblacion)'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying. PhilAtlas omits (Poblacion).'
+  name: 'Santa Cruz'
+  population: 1046
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3. Earlier lists name it a Poblacion barangay.'
 
 - id: tacuranga
   name: 'Tacuranga'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 2100
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'
 
 - id: teraza
   name: 'Teraza'
-  population: null
-  census_year: null
-  source: 'https://en.wikipedia.org/wiki/Palo,_Leyte'
-  source_level: 5
-  source_pages: null
-  retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
-  notes: 'Name from Wikipedia; check the spelling against the PSA PSGC list before verifying.'
+  population: 1899
+  census_year: 2024
+  source: 'https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf'
+  source_level: 2
+  source_pages: '3'
+  retrieved: 2026-11-21
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
+  notes: 'PSA 2024 POPCEN special release 25SR0837-137, Table 4 (released 29 December 2025), PDF page 3.'

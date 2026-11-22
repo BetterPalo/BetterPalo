@@ -388,7 +388,9 @@ const en = {
   'offices.detailsPending':
     "Each office's description and source are being checked against the Citizen\u2019s Charter. Only checked offices appear here.",
   'offices.guides': 'Guides for this office',
-  'offices.contactsNote': 'Office phone numbers are not published until they have been confirmed.',
+  'offices.phone': 'Phone',
+  'offices.contactsNote':
+    'Office phone numbers are from the Citizen\u2019s Charter and were checked on the date shown.',
   'offices.officialsTitle': 'Elected officials',
   'offices.officialsBody': 'Names and positions only, from official sources.',
   'offices.officialsPending':
@@ -789,8 +791,9 @@ const fil: Partial<Record<Key, string>> = {
   'offices.detailsPending':
     'Sinusuri pa ang paglalarawan at sanggunian ng bawat opisina laban sa Citizen\u2019s Charter. Ang mga nasuri lamang ang lumalabas dito.',
   'offices.guides': 'Mga gabay para sa opisinang ito',
+  'offices.phone': 'Telepono',
   'offices.contactsNote':
-    'Hindi muna inilalathala ang mga numero ng opisina hangga\u2019t hindi nakukumpirma.',
+    'Ang mga numero ng telepono ng opisina ay mula sa Citizen\u2019s Charter at sinuri sa petsang nakasaad.',
   'offices.officialsTitle': 'Mga halal na opisyal',
   'offices.officialsBody': 'Pangalan at posisyon lamang, mula sa mga opisyal na sanggunian.',
   'offices.officialsPending':

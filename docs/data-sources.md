@@ -36,7 +36,7 @@ entries and nothing from them is published until it reaches the register.
 | Palo BPLS (iBPLS) | [https://bpbc.ibpls.com/paloleyte/](https://bpbc.ibpls.com/paloleyte/) | 1 (unconfirmed by the LGU) | Which transactions work end to end; see the BPLS caution below | Page identifies as Palo, 2026-11-06 |
 | Sangguniang Bayan of Palo | [https://palosb.com/official_website/](https://palosb.com/official_website/) | 1 | Ordinance texts and COA report downloads; hotlines look like placeholders | Unverified |
 | DILG Province of Leyte, Palo profile | [https://sites.google.com/view/dilg-province-of-leyte/lgus/palo](https://sites.google.com/view/dilg-province-of-leyte/lgus/palo) | 3 | No visible update date; cross-check officials and contacts against the LGU site and the Charter | Unverified |
-| PSA 2024 Census of Population | PSA release for Palo (exact table to be recorded) | 2 | Record the table title, release date, and reference date (July 1, 2024) | Headline total (80,291) matches a secondary source |
+| PSA 2024 Census of Population | PSA RSSO 08, "Highlights of the 2024 Census of Population (2024 POPCEN) in the Municipality of Palo", special release 25SR0837-137, released 29 December 2025, Table 4 "Total Population by Barangay, Palo, Leyte: 2024" (PDF page 3); [PDF](https://rsso08.psa.gov.ph/system/files/attachment-dir/2024POPCEN_Palo.pdf); [Leyte releases page](https://rsso08.psa.gov.ph/rsso08/leyte/all-releases) | 2 | Reference date 01 July 2024; declared official under Proclamation No. 973 dated 11 July 2025 | Table 4 transcribed into `barangays.yaml`, 2026-11-21; verified by Zyxavy, 2026-11-21; 33 rows sum to 80,291 |
 | Palo Citizen's Charter (PDF) | [http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf](http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf) | 1 | Cover says "2026 (2nd Edition)"; approval date still unconfirmed by the LGU; see [the service inventory](research/citizens-charter-2026-inventory.md) and [Verifying without an LGU reply](#verifying-without-an-lgu-reply) | Downloaded and inventoried, 2026-11-06; accepted as the source for service guides, 2026-11-12 |
 | Palo Tourism Portal | Project copy of the portal (no public URL recorded) | 5 | Spot names, descriptions, and offers; confirm each with the tourism office. Place types are the team's classification, not the portal's | Ported 2026-11-14; the portal cited no official sources |
 | Citizen's Charter announcement | LGU Facebook page (via Govserv mirror) | 4 / 5 | The linked download goes to a third-party PDFfiller page; do not use it | Rejected as a source |
@@ -113,8 +113,6 @@ project stays independent. No confirmation is coming, so nothing waits for one.
   published on the LGU's own server (the 2026, 2nd Edition entry in the source
   leads). `verified` means "matches the published official source", not
   "confirmed by the LGU".
-- Each guide's `notes` says that the Charter's approval date has not been
-  confirmed by the LGU.
 - The unofficial-site banner and the "report a wrong detail" link stay on every
   page.
 - Phone numbers and hotlines follow the source level:
