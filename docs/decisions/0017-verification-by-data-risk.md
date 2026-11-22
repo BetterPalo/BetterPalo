@@ -2,7 +2,7 @@
 title: "0017: Verification by data risk"
 ---
 
-- Status: Proposed
+- Status: Approved
 - Date: 2026-11-17
 - Approval: only @Zyxavy and @STR4T-coder are actively working on the
   project, so both approve. @STR4T-coder approves on GitHub; @Zyxavy records
