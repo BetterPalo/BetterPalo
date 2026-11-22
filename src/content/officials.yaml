@@ -1,5 +1,5 @@
-# Elected officials of Palo, 2025 to 2028. Names and positions only. Every item
-# stays needs_confirmation until a person checks it against a level 1 to 3 source.
+# Elected officials of Palo, 2025 to 2028. Names and positions only. Checked by
+# the lead on 2026-11-21 against the level 1 to 3 sources below.
 - id: mayor
   name: 'Remedios Matin L. Petilla'
   position: mayor
@@ -8,9 +8,9 @@
   source_level: 1
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'Name as on the LGU site home page. DILG lists Hon. Remedios L. Petilla. COMELEC results not read; LGU site address not yet confirmed by the LGU (#24).'
 
 - id: vice-mayor
@@ -21,9 +21,9 @@
   source_level: 3
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
 
 - id: sb-uy
@@ -34,9 +34,9 @@
   source_level: 3
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
 
 - id: sb-sevilla
@@ -47,9 +47,9 @@
   source_level: 3
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
 
 - id: sb-ygrubay
@@ -60,9 +60,9 @@
   source_level: 3
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
 
 - id: sb-parado
@@ -73,9 +73,9 @@
   source_level: 3
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
 
 - id: sb-hernit
@@ -86,9 +86,9 @@
   source_level: 3
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
 
 - id: sb-villas
@@ -99,9 +99,9 @@
   source_level: 3
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
 
 - id: sb-cortez
@@ -112,9 +112,9 @@
   source_level: 3
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'
 
 - id: sb-roca
@@ -125,7 +125,7 @@
   source_level: 3
   source_pages: null
   retrieved: 2026-11-18
-  verified_by: null
-  last_verified: null
-  status: needs_confirmation
+  verified_by: Zyxavy
+  last_verified: 2026-11-21
+  status: verified
   notes: 'DILG Leyte profile, no update date. Matches the Rappler 2025 partial count (level 5) by surname only; COMELEC results not read.'

@@ -286,7 +286,7 @@ test('a long guide still prints the four questions and the source', async ({ pag
 const SAMPLE_SOURCE = 'https://example.org/betterlgu-sample-content';
 const SAMPLE_OFFICE = '#office-sample-office';
 
-test('/offices/: the sample office shows its marker, source, date, and guide link', async ({
+test('/offices/: the sample office shows its marker, phone, source, date, and guide link', async ({
   page,
 }) => {
   await page.goto('/offices/');
@@ -296,8 +296,10 @@ test('/offices/: the sample office shows its marker, source, date, and guide lin
   await expect(office.locator(`a[rel="external"][href="${SAMPLE_SOURCE}#page=1"]`)).toBeVisible();
   await expect(office.locator('time[datetime="2026-01-01"]')).toBeVisible();
   await expect(office.locator(`a[href="/services/${SAMPLE_ID}/"]`)).toBeVisible();
-  // The phone is stored but never rendered, so check the HTML, not only the text.
-  expect(await page.content()).not.toContain('0900-000-0000');
+  // The sample phone is verified, so it is a tap-to-call link with digits only in the href.
+  const phone = office.locator('a[href="tel:09000000000"]');
+  await expect(phone).toBeVisible();
+  await expect(phone).toHaveText('0900-000-0000');
   await expect(page.locator('#officials')).toContainText('Sample Person');
 });
 
@@ -314,8 +316,8 @@ test('/about/: the sample barangay shows its population and census year', async 
   await expect(table).toContainText('Sample Barangay');
   await expect(table).toContainText('1,234');
   await expect(table).toContainText('2024');
-  // One sample barangay of 33, so the partial note shows.
-  await expect(page.locator('#barangays-partial')).toBeVisible();
+  // All 33 real barangays are published, so with the sample there is no partial note.
+  await expect(page.locator('#barangays-partial')).toHaveCount(0);
 });
 
 test('/resources/: the sample links show in their groups with a date and no pending note', async ({
