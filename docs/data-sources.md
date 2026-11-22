@@ -88,8 +88,6 @@ project stays independent. No confirmation is coming, so nothing waits for one.
   published on the LGU's own server (the 2026, 2nd Edition entry in the source
   leads). `verified` means "matches the published official source", not
   "confirmed by the LGU".
-- Each guide's `notes` says that the Charter's approval date has not been
-  confirmed by the LGU.
 - The unofficial-site banner and the "report a wrong detail" link stay on every
   page.
 - Phone numbers and hotlines follow the source level:

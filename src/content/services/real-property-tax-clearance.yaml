@@ -1,0 +1,214 @@
+# Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 228-230 and 255.
+# Not yet checked against the PDF by a second person; needs_confirmation.
+id: real-property-tax-clearance
+name: Issuance of Real Property Tax Clearance and/or Certification
+category: taxes
+office: Office of the Municipal Treasurer
+classification: simple
+transaction_type: G2C – government to the transacting public
+description: >
+  Any individual or his/her representative who has property holdings in the
+  municipality and wishes to secure a Real Property Tax Clearance and/or
+  Certification for whatever purpose it may serve him/her. The Real Property
+  Records Section of the Office of the Municipal Treasurer (MTO) facilitates
+  the process any time during office hours.
+eligibility: Any citizen who plans to secure a property clearance and or Certification.
+requirements:
+  - document: Cedula
+    copies: null
+    form: null
+    where_to_get: MTO (Window 1-4)/Barangay
+    conditions: For Electrical & Water connection
+  - document: Current Real Property Tax Payments
+    copies: null
+    form: null
+    where_to_get: MTO (Window 1-4)
+    conditions: For Electrical & Water connection
+  - document: Documentary Stamp (DST) / Constructive Affixture of DST*
+    copies: null
+    form: null
+    where_to_get: BIR/MTO (Window 1-4)
+    conditions: For Electrical & Water connection
+  - document: Barangay Certification
+    copies: null
+    form: null
+    where_to_get: Barangay
+    conditions: For Electrical & Water connection
+  - document: Tax Declaration
+    copies: null
+    form: null
+    where_to_get: Office of the Municipal Assessor (Window 13-15)
+    conditions: For Electrical & Water connection
+  - document: Consent from Land Owner if the applicant is not the owner
+    copies: null
+    form: null
+    where_to_get: Land Owner
+    conditions: For Electrical & Water connection
+  - document: Cedula
+    copies: null
+    form: null
+    where_to_get: MTO (Window 1-4)/Barangay
+    conditions: For Land Transfer
+  - document: Current Real Property Tax Payments
+    copies: null
+    form: null
+    where_to_get: MTO (Window 1-4)/Barangay
+    conditions: For Land Transfer
+  - document: DST/ Constructive Affixture of DST
+    copies: null
+    form: null
+    where_to_get: BIR/MTO (Window 1-4)
+    conditions: For Land Transfer
+  - document: Photocopy of Deed of Sale or Adjudication
+    copies: null
+    form: photocopy
+    where_to_get: Applicant
+    conditions: For Land Transfer
+  - document: Barangay Certification
+    copies: null
+    form: null
+    where_to_get: Barangay
+    conditions: For Land Transfer
+  - document: Tax Declaration
+    copies: null
+    form: null
+    where_to_get: Office of the Municipal Assessor (Window 13-15)
+    conditions: For Land Transfer
+  - document: Cedula
+    copies: null
+    form: null
+    where_to_get: MTO(Window 1-4)/Barangay
+    conditions: For any other purposes
+  - document: Current Real Property Tax Payments
+    copies: null
+    form: null
+    where_to_get: MTO(Window 1-4)
+    conditions: For any other purposes
+  - document: DST/ Constructive Affixture of Documentary Stamp
+    copies: null
+    form: null
+    where_to_get: BIR/MTO (Window 1-4)
+    conditions: For any other purposes
+  - document: Barangay Certification
+    copies: null
+    form: null
+    where_to_get: Barangay
+    conditions: For any other purposes
+  - document: Tax Declaration
+    copies: null
+    form: null
+    where_to_get: Office of the Municipal Assessor (Window 13-15)
+    conditions: For any other purposes
+  - document: Cedula
+    copies: null
+    form: null
+    where_to_get: MTO(Window 1-4)/Barangay
+    conditions: For Certification
+  - document: Documentary Stamp
+    copies: null
+    form: null
+    where_to_get: BIR/MTO (Window 1-4)
+    conditions: For Certification
+  - document: Barangay Certification
+    copies: null
+    form: null
+    where_to_get: Barangay
+    conditions: For Certification
+  - document: Tax Declaration
+    copies: null
+    form: null
+    where_to_get: Office of the Municipal Assessor (Window 13-15)
+    conditions: For Certification
+steps:
+  - step: 1
+    applicant_action: >
+      1. Make clarificatory inquiries.
+    office_action: >
+      1. Provide the client with a short briefing on the service and its
+      requirements.
+    responsible: >
+      Admin Aide III, Office of the Municipal Treasurer (MTO Window 08)
+    max_time: 2 minutes
+  - step: 2
+    applicant_action: >
+      2. Proceed to the teller/RCC to pay for the Fees & Charges.
+    office_action: >
+      2. Issue OR
+    responsible: >
+      Revenue Collection Clerk 1 (MTO Windows 1, 3 and 4) and Ticket Checker (MTO
+      Window 2), Office of the Municipal Treasurer
+    max_time: 5 minutes
+  - step: 3
+    applicant_action: >
+      3. Present OR to Window 7, 8 or 10 of MTO.
+    office_action: >
+      3. Prepare Tax Clearance/Certification
+    responsible: >
+      Admin Aide III, Office of the Municipal Treasurer (MTO Window 8)
+    max_time: 5 minutes
+  - step: 4
+    applicant_action: >
+      4. Receive approved clearances.
+    office_action: >
+      4. Segregate file copy, record date, release client's copy to the applicant
+    responsible: >
+      Admin Aide III, Office of the Municipal Treasurer (MTO Window 8)
+    max_time: 2 minutes
+fees:
+  - amount: P100.00 per Copy
+    purpose: Fees & Charges (client step 2)
+    where_to_pay: Teller/RCC
+    conditions: null
+    basis: null
+processing_time: 14 minutes
+application_channels:
+  - type: walk-in
+    url: null
+    location: Office of the Municipal Treasurer
+    supports: null
+    account_required: null
+    last_tested: null
+complaint_procedure: >
+  Redress for complaints may be addressed in the office concerned at the lowest
+  possible level, if not resolved, to the immediate supervisor or to the
+  Municipal Mayor or to other concerned offices which have jurisdiction over the
+  complaint. At the LGU's levels, immediate action is assured. You may visit the
+  Administrative Office and secure a complaint form, fill up the same and submit to the said office for immediate and prompt
+  action. A complaint form is available at the Administrative Office wherein the
+  client states his/her specific complaint. Feedback form is dropped in a
+  Suggestion Box located in conspicuous places of the Municipal Building.
+  Contact information of CCB, PCC, ARTA - ARTA - complaints@arta.gov.ph, 1-ARTA
+  (2782); PCC - 8888; CCB - 0908-881-6565 (SMS).
+effective_date: null
+notes: >
+  Transcribed
+  from PDF pages 228, 229 and 230 (service C, Issuance of Real Property Tax
+  Clearance and/or Certification) and 255 (Feedback and Complaint Mechanism);
+  printed page numbers are the same as the PDF page numbers. The client steps
+  table (pages 229 and 230) was read from page images, because the text layer
+  mixes its columns. The Charter lists individual staff names for each step;
+  they are left out and "responsible" shows office and position only. The
+  Charter prints four checklists, one for each purpose ("For Electrical &
+  Water connection", "For Land Transfer", "For any other purposes" and "For
+  Certification"); each is kept as its own group in "conditions", with its
+  items and where-to-secure cells as printed. The Charter prints no number of
+  copies for any checklist item; the "Photocopy of Deed of Sale or
+  Adjudication" is recorded as form photocopy, and every other form is left
+  null. The documentary stamp (DST) item carries an asterisk on page 228, and
+  the footnote printed on page 230 reads: "Acceptance of payment for the DST
+  and usage of Constructive Affixture of DST as proof of payment of DST for
+  certificates issued by Government Agencies or Instrumentalities based of
+  Revenue Regulation no. 2-2023 dated March 29, 2023." The Charter prints no
+  amount for the DST. The fee of P100.00 per copy is printed at client step 2
+  (page 229) and copied as printed; the Charter does not say what the copies
+  are. The fees column says None for steps 1, 3 and 4. The Charter's total is
+  "14 minutes" (page 230), copied as printed; the step times (2, 5, 5 and 2
+  minutes) add up to 14 minutes, so they match.
+
+source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
+source_pages: '228–230, 255'
+edition: 2026 (2nd Edition)
+retrieved: 2026-11-06
+verified_by: null
+last_verified: null
+status: needs_confirmation
