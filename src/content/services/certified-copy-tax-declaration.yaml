@@ -1,5 +1,5 @@
 # Transcribed from the Palo Citizen's Charter 2026 (2nd Edition), PDF pages 74-76 and 255.
-# Not yet checked against the PDF by a second person; needs_confirmation.
+# Checked against the PDF by the lead (Zyxavy); verified 2026-11-24.
 id: certified-copy-tax-declaration
 name: Issuance of Certified Photocopy of Tax Declaration
 category: property
@@ -142,6 +142,6 @@ source: http://210.213.142.34/home/homepage_data/pdf_chart/20260512/20260512.pdf
 source_pages: '74–76, 255'
 edition: 2026 (2nd Edition)
 retrieved: 2026-11-06
-verified_by: null
-last_verified: null
-status: needs_confirmation
+verified_by: Zyxavy
+last_verified: 2026-11-24
+status: verified

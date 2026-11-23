@@ -92,10 +92,10 @@ describe('the live config', () => {
   });
 });
 
-// Palo's built site must not change. Each row is a key whose text changed when the
-// placeholders were added; the value is the old literal from git HEAD's src/i18n/ui.ts.
-// The two about.stat.pop.src rows are the exception: they hold the new text that adds the
-// reference date, not the HEAD literal.
+// Palo's built site must not change. Each row is Palo's exact output for a key: either the old
+// literal from git HEAD's src/i18n/ui.ts, or the current copy after a plain-language edit (copy
+// edits update their rows). The two about.stat.pop.src rows hold the text that adds the
+// reference date.
 // Only Palo's config has these words, so the block is skipped in a copy for another LGU.
 const before: Array<[Lang, Key, string]> = [
   ['en', 'site.name', 'BetterPalo'],
@@ -171,9 +171,14 @@ const before: Array<[Lang, Key, string]> = [
   [
     'en',
     'resources.officialBody',
-    'These are the sources we cite. BetterPalo complements them; it does not replace them.',
+    'These are the sources we use. BetterPalo adds to them; it does not replace them.',
   ],
   ['en', 'resources.notHandledTitle', 'Not handled by the municipality'],
+  [
+    'en',
+    'resources.notHandledBody',
+    'Some services people expect from the municipality are run by other agencies.',
+  ],
   ['en', 'about.title', 'About Palo'],
   ['en', 'about.lead', 'Palo, Leyte: facts from the official sources, not guesses.'],
   ['en', 'about.factsTitle', 'Palo at a glance'],
@@ -185,7 +190,7 @@ const before: Array<[Lang, Key, string]> = [
   [
     'en',
     'about.barangaysBody',
-    'The full list of the 33 barangays is being transcribed from the official source.',
+    'The full list of the 33 barangays is still being copied from the official source.',
   ],
   ['en', 'about.sources.li1', 'PSA 2024 Census, reference date July 1, 2024'],
   ['en', 'about.sources.li2', "Palo Citizen's Charter 2026, 2nd Edition"],
@@ -264,9 +269,14 @@ const before: Array<[Lang, Key, string]> = [
   [
     'fil',
     'resources.officialBody',
-    'Ito ang mga sanggunian na tinutukoy namin. Kaagapay ang BetterPalo; hindi nito pinapalitan ang mga ito.',
+    'Ito ang mga sanggunian na ginagamit namin. Nakadagdag lang ang BetterPalo; hindi nito pinapalitan ang mga ito.',
   ],
   ['fil', 'resources.notHandledTitle', 'Hindi sakop ng pamahalaang bayan'],
+  [
+    'fil',
+    'resources.notHandledBody',
+    'May mga serbisyong inaasahan natin sa bayan, pero ibang ahensya ang nagpapatakbo ng mga ito.',
+  ],
   ['fil', 'about.title', 'Tungkol sa Palo'],
   [
     'fil',
@@ -278,7 +288,7 @@ const before: Array<[Lang, Key, string]> = [
   [
     'fil',
     'about.barangaysBody',
-    'Isinusulat pa ang kumpletong listahan ng 33 barangay mula sa opisyal na sanggunian.',
+    'Kinokopya pa ang kumpletong listahan ng 33 barangay mula sa opisyal na sanggunian.',
   ],
   ['fil', 'offices.lead', 'Saan pupunta para sa mga serbisyo ng Bayan ng Palo.'],
   ['fil', 'offices.place', 'Palo, Leyte'],

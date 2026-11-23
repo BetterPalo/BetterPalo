@@ -71,7 +71,7 @@ What else was considered, and why was it rejected?
   — Proposed.
 - [0014: LGU configuration seam for template reuse](0014-lgu-configuration-seam.md) — Proposed.
 - [0016: One approval for every change](0016-one-approval-for-every-change.md) — Accepted.
-- [0017: Verification by data risk](0017-verification-by-data-risk.md) — Proposed.
+- [0017: Verification by data risk](0017-verification-by-data-risk.md) — Accepted.
 - [0015: Wider scope for v1](0015-wider-scope.md) — Accepted.
 
 Number 0003 was reserved for the technology stack decision, which was later

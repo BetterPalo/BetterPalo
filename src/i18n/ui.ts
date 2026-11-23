@@ -71,7 +71,7 @@ const en = {
   'home.sheet.a': 'One errand,',
   'home.sheet.b': 'one clear sheet.',
   'home.sheet.body':
-    'Every guide prints on its own sheet: where to go, what to bring, how much, and how long, with its Charter page at the bottom. Some guides run to two pages. Bring it with you, or print it for someone who is not online.',
+    'Each guide prints on its own sheet: where to go, what to bring, how much, and how long. Its Charter page is at the bottom. Some run to two pages. Bring it with you, or print it for someone without internet.',
   'home.sheet.sample': 'See a sample sheet',
   'home.sheet.pick': 'Pick a service',
   'home.sheet.printable': 'Printable',
@@ -86,7 +86,7 @@ const en = {
   'home.popular.a': 'Popular',
   'home.popular.b': 'services.',
   'home.popular.sub':
-    "Grouped by the offices that handle them, with the number of services each covers in the Citizen's Charter. Guides are added as they are verified.",
+    "Grouped by the offices that handle them. Each number is how many services that office has in the Citizen's Charter. Guides are added as they are verified.",
   'home.tile.certificates': 'Certificates',
   'home.tile.certificates.d': 'Birth, marriage, and death records',
   'home.tile.business': 'Business Permits',
@@ -121,16 +121,17 @@ const en = {
   'home.step.1.title': 'Find the Charter page',
   'home.step.1.body': 'Each service starts from its page in the {charterTitle}.',
   'home.step.2.title': 'Write it in plain words',
-  'home.step.2.body': 'A volunteer transcribes it by hand, in English and Filipino.',
+  'home.step.2.body': 'A volunteer copies it by hand, in English and Filipino.',
   'home.step.3.title': 'Check it twice',
   'home.step.3.body':
-    'A second person reads the same page and confirms every requirement, fee, and step.',
+    'A second person reads the same page and checks every requirement, fee, and step.',
   'home.step.4.title': 'Publish with dates',
-  'home.step.4.body': 'The guide shows its Charter edition and the date it was last verified.',
+  'home.step.4.body':
+    'The guide shows which Charter edition it follows and the date it was last checked.',
   'home.principle.accuracy.title': 'Accuracy first',
   'home.principle.accuracy.body':
     'A missing page is better than a wrong one. Unconfirmed details stay off the site.',
-  'home.principle.source.title': 'Cite the source',
+  'home.principle.source.title': 'Show the source',
   'home.principle.source.body': 'Every fact is two clicks from the official document it came from.',
   'home.principle.plain.title': 'Plain language',
   'home.principle.plain.body': 'Written for someone in a hurry, on a phone, on a slow connection.',
@@ -154,7 +155,8 @@ const en = {
   'home.help.fix.link': 'Report it',
   'home.help.build.k': 'Contribute',
   'home.help.build.title': 'Help build {brand}',
-  'home.help.build.body': 'Transcribe a service, review a translation, or improve the site.',
+  'home.help.build.body':
+    'Copy a service from the Charter, review a translation, or improve the site.',
   'home.help.build.link': 'Start here',
   'home.help.lgu.k': 'Official channel',
   'home.help.lgu.title': '{place} LGU',
@@ -337,10 +339,11 @@ const en = {
   'resources.lead': 'The documents and sites behind every guide on {brand}.',
   'resources.officialTitle': 'Official resources',
   'resources.officialBody':
-    'These are the sources we cite. {brand} complements them; it does not replace them.',
+    'These are the sources we use. {brand} adds to them; it does not replace them.',
   'resources.open': 'Open',
   'resources.notHandledTitle': 'Not handled by the {lguKind}',
-  'resources.notHandledBody': 'Some services people expect from the LGU are run by other agencies.',
+  'resources.notHandledBody':
+    'Some services people expect from the {lguKind} are run by other agencies.',
   'resources.lastChecked': 'Last checked',
   'resources.officialPending':
     'More official links are being checked. Only checked links appear here.',
@@ -362,9 +365,9 @@ const en = {
   'about.stat.offices.src': "Citizen's Charter, {charterEdition}",
   'about.barangaysTitle': 'The {barangays} barangays',
   'about.barangaysBody':
-    'The full list of the {barangays} barangays is being transcribed from the official source.',
+    'The full list of the {barangays} barangays is still being copied from the official source.',
   'about.sourcesTitle': 'Sources',
-  'about.sourcesBody': 'Every fact on this page is cited to an official document.',
+  'about.sourcesBody': 'Every fact on this page comes from an official document.',
   'about.sources.li1': '{censusSource}, reference date {censusDate}',
   'about.sources.li2': '{charterTitle}, {charterEdition}',
   'about.brgy.name': 'Barangay',
@@ -383,7 +386,7 @@ const en = {
   'offices.charter': 'Offices in the Charter',
   'offices.noteTitle': 'About this list',
   'offices.noteBody':
-    'Office names are taken verbatim from the Citizen\u2019s Charter. Only verified details are published.',
+    'Office names are copied word for word from the Citizen\u2019s Charter. Only verified details are published.',
   'offices.detailsTitle': 'What each office does',
   'offices.detailsPending':
     "Each office's description and source are being checked against the Citizen\u2019s Charter. Only checked offices appear here.",
@@ -475,7 +478,7 @@ const en = {
   'guide.sheet.a': 'Four answers,',
   'guide.sheet.b': 'ready to print.',
   'guide.sheet.sub':
-    'Where to go, what to bring, how much, and how long. This part is laid out for print.',
+    'Where to go, what to bring, how much, and how long. This part is set up for printing.',
   'guide.where.office': 'Office',
   'guide.where.walkIn': 'Walk-in location',
   'guide.req.copies': 'Copies',
@@ -502,7 +505,7 @@ const en = {
   'guide.step': 'Step',
   'guide.step.applicant': 'You',
   'guide.step.office': 'The office',
-  'guide.step.responsible': 'Responsible',
+  'guide.step.responsible': 'Who handles it',
   'guide.step.maxTime': 'Maximum time',
   'guide.channels': 'Ways to apply',
   'guide.channel.walkIn': 'In person',
@@ -524,11 +527,11 @@ const en = {
   'guide.source.pagesLabel': 'Pages',
   'guide.source.page': 'p.',
   'guide.source.pages': 'pp.',
-  'guide.source.retrieved': 'Retrieved',
+  'guide.source.retrieved': 'Source downloaded on',
   'guide.source.verifiedBy': 'Verified by',
-  'guide.source.effective': 'Effective',
+  'guide.source.effective': 'In effect from',
   'guide.print.online': 'Latest version online:',
-  'guide.print.omitted': 'Rows not shown here are not stated in the official source.',
+  'guide.print.omitted': 'Anything not shown here is not stated in the official source.',
   'guide.report.lead': 'Something wrong or out of date?',
 } as const;
 
@@ -597,7 +600,7 @@ const fil: Partial<Record<Key, string>> = {
   'home.sheet.a': 'Isang lakad,',
   'home.sheet.b': 'isang malinaw na pahina.',
   'home.sheet.body':
-    'Ang bawat gabay ay may sariling sheet: saan pupunta, ano ang dadalhin, magkano, at gaano katagal, kasama ang pahina nito sa Charter sa ibaba. May mga gabay na umabot sa dalawang pahina. Dalhin ito, o i-print para sa taong walang internet.',
+    'Ang bawat gabay ay may sariling sheet: saan pupunta, ano ang dadalhin, magkano, at gaano katagal. Nasa ibaba ang pahina nito sa Charter. May mga gabay na umabot sa dalawang pahina. Dalhin ito, o i-print para sa taong walang internet.',
   'home.sheet.sample': 'Tingnan ang sample na sheet',
   'home.sheet.pick': 'Pumili ng serbisyo',
   'home.sheet.printable': 'Maipi-print',
@@ -612,7 +615,7 @@ const fil: Partial<Record<Key, string>> = {
   'home.popular.a': 'Mga sikat',
   'home.popular.b': 'na serbisyo.',
   'home.popular.sub':
-    "Nakagrupo ayon sa mga opisinang humahawak sa mga ito, kasama ang bilang ng serbisyong saklaw ng bawat isa sa Citizen's Charter. Idinadagdag ang mga gabay kapag na-verify na.",
+    "Nakagrupo ayon sa mga opisinang humahawak sa mga ito. Ang bawat bilang ay kung ilang serbisyo ang nasa Citizen's Charter para sa opisinang iyon. Idinadagdag ang mga gabay kapag na-verify na.",
   'home.tile.certificates': 'Mga sertipiko',
   'home.tile.certificates.d': 'Talaan ng kapanganakan, kasal, at kamatayan',
   'home.tile.business': 'Business permit',
@@ -647,18 +650,18 @@ const fil: Partial<Record<Key, string>> = {
   'home.step': 'Hakbang',
   'home.step.1.title': 'Hanapin ang pahina sa Charter',
   'home.step.1.body': 'Nagsisimula ang bawat serbisyo sa pahina nito sa {charterTitle}.',
-  'home.step.2.title': 'Isulat sa simpleng salita',
-  'home.step.2.body': 'Isang boluntaryo ang nagta-transcribe nito, sa English at Filipino.',
+  'home.step.2.title': 'Isulat sa payak na salita',
+  'home.step.2.body': 'Isang volunteer ang kumokopya nito nang mano-mano, sa Ingles at Filipino.',
   'home.step.3.title': 'Suriin nang dalawang beses',
   'home.step.3.body':
-    'Binabasa ng pangalawang tao ang parehong pahina at kinukumpirma ang bawat requirement, bayad, at hakbang.',
+    'Binabasa ng pangalawang tao ang parehong pahina at kinukumpirma ang bawat requirement, bayarin, at hakbang.',
   'home.step.4.title': 'I-publish na may petsa',
   'home.step.4.body':
-    'Ipinapakita ng gabay ang edisyon ng Charter at ang petsa ng huling pag-verify.',
+    'Makikita sa gabay ang edisyon ng Charter na sinusundan nito, at ang petsa ng huling pagsusuri.',
   'home.principle.accuracy.title': 'Katumpakan muna',
   'home.principle.accuracy.body':
     'Mas mabuti ang kulang na pahina kaysa mali. Hindi inilalagay sa site ang mga detalyeng hindi pa kumpirmado.',
-  'home.principle.source.title': 'Banggitin ang sanggunian',
+  'home.principle.source.title': 'Ipakita ang pinagmulan',
   'home.principle.source.body':
     'Dalawang click lang ang bawat datos mula sa opisyal na dokumentong pinagmulan nito.',
   'home.principle.plain.title': 'Simpleng wika',
@@ -684,7 +687,8 @@ const fil: Partial<Record<Key, string>> = {
   'home.help.fix.link': 'Iulat ito',
   'home.help.build.k': 'Tumulong',
   'home.help.build.title': 'Tumulong sa pagbuo ng {brand}',
-  'home.help.build.body': 'Mag-transcribe ng serbisyo, mag-review ng salin, o pagandahin ang site.',
+  'home.help.build.body':
+    'Kopyahin ang isang serbisyo mula sa Charter, suriin ang salin, o pagandahin ang site.',
   'home.help.build.link': 'Magsimula rito',
   'home.help.lgu.k': 'Opisyal na daluyan',
   'home.help.lgu.title': 'LGU ng {place}',
@@ -761,10 +765,10 @@ const fil: Partial<Record<Key, string>> = {
   'resources.lead': 'Mga dokumento at site sa likod ng bawat gabay sa {brand}.',
   'resources.officialTitle': 'Mga opisyal na sanggunian',
   'resources.officialBody':
-    'Ito ang mga sanggunian na tinutukoy namin. Kaagapay ang {brand}; hindi nito pinapalitan ang mga ito.',
+    'Ito ang mga sanggunian na ginagamit namin. Nakadagdag lang ang {brand}; hindi nito pinapalitan ang mga ito.',
   'resources.notHandledTitle': 'Hindi sakop ng pamahalaang {lguKind}',
   'resources.notHandledBody':
-    'May mga serbisyong inaasahan sa LGU ngunit pinapatakbo ng ibang ahensya.',
+    'May mga serbisyong inaasahan natin sa {lguKind}, pero ibang ahensya ang nagpapatakbo ng mga ito.',
 
   // About
   'about.title': 'Tungkol sa {place}',
@@ -774,10 +778,9 @@ const fil: Partial<Record<Key, string>> = {
   'about.factsTitle': '{place} sa isang tingin',
   'about.barangaysTitle': 'Ang {barangays} barangay',
   'about.barangaysBody':
-    'Isinusulat pa ang kumpletong listahan ng {barangays} barangay mula sa opisyal na sanggunian.',
+    'Kinokopya pa ang kumpletong listahan ng {barangays} barangay mula sa opisyal na sanggunian.',
   'about.sourcesTitle': 'Mga sanggunian',
-  'about.sourcesBody':
-    'Bawat katotohanan sa pahinang ito ay tinutukoy sa isang opisyal na dokumento.',
+  'about.sourcesBody': 'Bawat katotohanan sa pahinang ito ay galing sa isang opisyal na dokumento.',
 
   // Offices
   'offices.title': 'Mga opisina',
@@ -786,7 +789,7 @@ const fil: Partial<Record<Key, string>> = {
   'offices.place': '{place}, {province}',
   'offices.noteTitle': 'Tungkol sa listahang ito',
   'offices.noteBody':
-    'Ang mga pangalan ng opisina ay kinopya nang tuwiran mula sa Citizen\u2019s Charter. Inilalathala lamang ang mga napapatunayang detalye.',
+    'Ang mga pangalan ng opisina ay kinopya nang eksakto mula sa Citizen\u2019s Charter. Inilalathala lamang ang mga napapatunayang detalye.',
   'offices.detailsTitle': 'Ano ang ginagawa ng bawat opisina',
   'offices.detailsPending':
     'Sinusuri pa ang paglalarawan at sanggunian ng bawat opisina laban sa Citizen\u2019s Charter. Ang mga nasuri lamang ang lumalabas dito.',
@@ -850,7 +853,7 @@ const fil: Partial<Record<Key, string>> = {
   'guide.step': 'Hakbang',
   'guide.step.applicant': 'Ikaw',
   'guide.step.office': 'Ang opisina',
-  'guide.step.responsible': 'Responsable',
+  'guide.step.responsible': 'Namamahala',
   'guide.step.maxTime': 'Pinakamatagal na oras',
   'guide.channels': 'Mga paraan ng pag-apply',
   'guide.channel.walkIn': 'Personal',
