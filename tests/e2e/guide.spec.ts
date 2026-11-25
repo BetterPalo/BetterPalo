@@ -2,6 +2,8 @@ import { readFileSync } from 'node:fs';
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 
+import { lgu } from '../../src/config/lgu';
+
 // The published cedula guide, in both languages. Unlike sample.spec.ts this runs
 // against the real build, so it guards the pages production serves: one h1, no
 // missing interface strings, no accessibility violations, no sideways scroll at
@@ -17,6 +19,7 @@ test.skip(
 
 const EN = '/services/cedula/';
 const FIL = '/fil/services/cedula/';
+const pageUrl = (path: string) => new URL(path, lgu.siteUrl).href;
 const SECTIONS = [
   'guide-where',
   'guide-bring',
@@ -33,7 +36,7 @@ const SECTIONS = [
 // The four questions on the printed sheet.
 const ANSWERS = ['guide-where', 'guide-bring', 'guide-cost', 'guide-time'];
 // The site chrome that the printed sheet hides.
-const CHROME = ['body > header', 'body > aside', 'body > footer', '#guide-details'];
+const CHROME = ['body > header', 'body > aside', 'body > footer', '#guide-details', '#guide-share'];
 
 // `toBeHidden()` also passes when nothing matches, so check on screen first that each
 // piece exists and is shown. Then a markup change cannot make the print checks pass on nothing.
@@ -57,6 +60,7 @@ async function expectSheetOnly(page: Page) {
   await expect(page.locator('#guide-source')).toBeVisible();
   await expect(page.locator('#guide-source-link')).toBeVisible();
   await expect(page.locator('#guide-print-url')).toBeVisible();
+  await expect(page.locator('#guide-qr')).toBeVisible();
 }
 
 for (const path of [EN, FIL]) {
@@ -121,9 +125,58 @@ test('print shows the sheet and hides the site chrome', async ({ page }) => {
   await expectChromeOnScreen(page);
   await page.emulateMedia({ media: 'print' });
   await expectSheetOnly(page);
+  expect(await page.locator('#guide-qr path').getAttribute('d')).toMatch(/^M\d/);
   // The sheet never promises a page count.
   await expect(page.locator('#guide-sheet')).not.toContainText('Page 1 of 1');
 
   await page.emulateMedia({ media: 'screen' });
   await expect(page.locator('#guide-print-url')).toBeHidden();
+  await expect(page.locator('#guide-qr')).toBeHidden();
+});
+
+for (const path of [EN, FIL]) {
+  test(`${path}: share links carry the encoded page URL`, async ({ page }) => {
+    await page.goto(path);
+    const url = encodeURIComponent(pageUrl(path));
+    const facebook = page.locator('#guide-share a[href^="https://www.facebook.com/sharer/"]');
+    await expect(facebook).toHaveAttribute(
+      'href',
+      `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+    );
+    await expect(facebook).toHaveAttribute('target', '_blank');
+    await expect(facebook).toHaveAttribute('rel', /noopener/);
+    await expect(page.locator('#guide-share a[href^="fb-messenger:"]')).toHaveAttribute(
+      'href',
+      `fb-messenger://share/?link=${url}`,
+    );
+  });
+}
+
+test('the print button shows with JS and calls window.print', async ({ page }) => {
+  await page.goto(EN);
+  await page.evaluate(() => {
+    (window as unknown as { printed: boolean }).printed = false;
+    window.print = () => {
+      (window as unknown as { printed: boolean }).printed = true;
+    };
+  });
+  const button = page.locator('#guide-share [data-share-print] button');
+  await expect(button).toBeVisible();
+  await button.click();
+  expect(await page.evaluate(() => (window as unknown as { printed: boolean }).printed)).toBe(true);
+});
+
+test.describe('with JavaScript off', () => {
+  test.use({ javaScriptEnabled: false });
+
+  test('the print and native share buttons stay hidden, the Facebook link shows', async ({
+    page,
+  }) => {
+    await page.goto(EN);
+    await expect(page.locator('#guide-share [data-share-print] button')).toBeHidden();
+    await expect(page.locator('#guide-share [data-share-native] button')).toBeHidden();
+    await expect(
+      page.locator('#guide-share a[href^="https://www.facebook.com/sharer/"]'),
+    ).toBeVisible();
+  });
 });

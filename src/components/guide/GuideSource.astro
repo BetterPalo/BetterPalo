@@ -9,6 +9,7 @@ import { t, type Lang } from '../../i18n/ui';
 import { formatDate, isSinglePage, sourceHref } from '../../lib/guide';
 import { REPORT_URL } from '../../lib/site';
 import type { Service } from '../../lib/data';
+import { encode } from 'uqr';
 
 interface Props {
   lang: Lang;
@@ -19,6 +20,12 @@ interface Props {
 
 const { lang, service, pageUrl } = Astro.props;
 const dataLang = lang === 'en' ? undefined : 'en';
+// QR for the printed sheet, drawn at build time: one 1x1 square per dark module.
+const qr = encode(pageUrl, { ecc: 'M', border: 0 });
+const qrSize = qr.data.length;
+const qrPath = qr.data
+  .flatMap((row, y) => row.flatMap((dark, x) => (dark ? [`M${x} ${y}h1v1h-1z`] : [])))
+  .join('');
 ---
 
 <section id="guide-source" class="wrap py-section" aria-labelledby="guide-source-title">
@@ -84,10 +91,21 @@ const dataLang = lang === 'en' ? undefined : 'en';
       )}
     </dl>
 
-    <p id="guide-print-url" class="mt-4 hidden text-sm print:block">
-      {t(lang, 'guide.print.online')} <span class="wrap-anywhere">{pageUrl}</span>
-    </p>
-    {/* The QR code for this page goes next to this line (#5). */}
+    <div class="mt-4 hidden items-center gap-4 print:flex">
+      <svg
+        id="guide-qr"
+        viewBox={`-4 -4 ${qrSize + 8} ${qrSize + 8}`}
+        class="size-[25mm] shrink-0 bg-paper fill-ink"
+        shape-rendering="crispEdges"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d={qrPath}></path>
+      </svg>
+      <p id="guide-print-url" class="text-sm">
+        {t(lang, 'guide.print.online')} <span class="wrap-anywhere">{pageUrl}</span>
+      </p>
+    </div>
 
     <p class="no-print mt-4 text-sm">
       {t(lang, 'guide.report.lead')}{' '}

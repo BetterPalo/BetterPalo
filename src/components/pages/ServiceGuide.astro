@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../PageHero.astro';
 import GuideDetails from '../guide/GuideDetails.astro';
 import GuideSheet from '../guide/GuideSheet.astro';
+import GuideShare from '../guide/GuideShare.astro';
 import GuideSource from '../guide/GuideSource.astro';
 import NotStated from '../guide/NotStated.astro';
 import { lgu } from '../../config/lgu';
@@ -54,6 +55,7 @@ const ogDescription = [
           <NotStated lang={lang} />
         )}
       </p>
+      <GuideShare lang={lang} pageUrl={pageUrl} />
     </PageHero>
 
     {lang !== 'en' && (

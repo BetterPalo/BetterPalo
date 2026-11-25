@@ -1,0 +1,56 @@
+---
+// Share and print bar under the guide hero. The links work with JS off; print and
+// native share render hidden and the script below reveals them.
+import Button from '../Button.astro';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  /** Absolute address of this page in the current language. */
+  pageUrl: string;
+}
+
+const { lang, pageUrl } = Astro.props;
+const url = encodeURIComponent(pageUrl);
+const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+const messengerHref = `fb-messenger://share/?link=${url}`;
+---
+
+<div id="guide-share" class="no-print mt-6" data-url={pageUrl}>
+  <div class="flex flex-wrap gap-3">
+    <Button href={facebookHref} variant="line" icon="ne" target="_blank" rel="external noopener">
+      {t(lang, 'guide.share.facebook')}
+      <span class="sr-only"> {t(lang, 'guide.share.newTab')}</span>
+    </Button>
+    <Button href={messengerHref} variant="line">
+      {t(lang, 'guide.share.messenger')}
+    </Button>
+    <div hidden class="contents" data-share-native>
+      <Button variant="line">{t(lang, 'guide.share.native')}</Button>
+    </div>
+    <div hidden class="contents" data-share-print>
+      <Button variant="flag" icon="print">
+        {t(lang, 'guide.share.print')}
+      </Button>
+    </div>
+  </div>
+  <p class="mt-2 text-sm text-fg-soft">{t(lang, 'guide.share.messengerHint')}</p>
+</div>
+
+<script>
+  // Print and native share need JS, so their buttons render hidden and show here.
+  const bar = document.querySelector<HTMLElement>('#guide-share');
+  const print = bar?.querySelector<HTMLElement>('[data-share-print]');
+  if (print) {
+    print.hidden = false;
+    print.querySelector('button')?.addEventListener('click', () => window.print());
+  }
+  const native = bar?.querySelector<HTMLElement>('[data-share-native]');
+  if (native && 'share' in navigator) {
+    native.hidden = false;
+    native.querySelector('button')?.addEventListener('click', () => {
+      // A cancelled share rejects with AbortError; nothing to do.
+      navigator.share({ title: document.title, url: bar?.dataset.url }).catch(() => {});
+    });
+  }
+</script>

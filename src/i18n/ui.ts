@@ -533,6 +533,12 @@ const en = {
   'guide.print.online': 'Latest version online:',
   'guide.print.omitted': 'Anything not shown here is not stated in the official source.',
   'guide.report.lead': 'Something wrong or out of date?',
+  'guide.share.facebook': 'Share on Facebook',
+  'guide.share.messenger': 'Send in Messenger',
+  'guide.share.messengerHint': 'Messenger opens on phones only.',
+  'guide.share.native': 'Share…',
+  'guide.share.print': 'Print or save as PDF',
+  'guide.share.newTab': '(opens in a new tab)',
 } as const;
 
 export type Key = keyof typeof en;
@@ -881,6 +887,12 @@ const fil: Partial<Record<Key, string>> = {
   'guide.print.online': 'Pinakabagong bersyon online:',
   'guide.print.omitted': 'Ang mga detalyeng wala rito ay hindi nakasaad sa opisyal na sanggunian.',
   'guide.report.lead': 'May mali o luma na ba rito?',
+  'guide.share.facebook': 'Ibahagi sa Facebook',
+  'guide.share.messenger': 'Ipadala sa Messenger',
+  'guide.share.messengerHint': 'Sa phone lang bumubukas ang Messenger.',
+  'guide.share.native': 'Ibahagi…',
+  'guide.share.print': 'I-print o i-save bilang PDF',
+  'guide.share.newTab': '(bubukas sa bagong tab)',
 
   // Remaining Filipino for the secondary pages (draft; translation owner reviews).
   'howItWorks.step.1': 'Hakbang 1',
