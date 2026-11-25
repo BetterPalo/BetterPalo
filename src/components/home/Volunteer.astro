@@ -1,8 +1,6 @@
 ---
 // Closing call to action: a flag-and-sun poster beside the volunteer pitch.
 import Button from '../Button.astro';
-import Sun from '../Sun.astro';
-import { lgu } from '../../config/lgu';
 import { t, type Lang } from '../../i18n/ui';
 import { localizedPath, routeExists } from '../../lib/routes';
 import { REPO_URL } from '../../lib/site';
@@ -22,10 +20,7 @@ const href = routeExists('/contribute/') ? localizedPath(lang, '/contribute/') :
       class="relative mx-auto grid aspect-square w-full max-w-88 place-items-center overflow-hidden bg-flag"
       aria-hidden="true"
     >
-      <Sun class="absolute w-[140%] text-sun opacity-90" />
-      <span class="relative -rotate-4 bg-sun px-2.5 py-0.5 font-display text-4xl font-extrabold tracking-display text-flag-deep">
-        {lgu.name}
-      </span>
+      <img src="/favicon.svg" alt="" width="512" height="512" class="w-[86%]" />
     </div>
     <div>
       <h2 id="cta-title" class="text-[clamp(2rem,4.6vw,3.75rem)] leading-[0.98] tracking-display">

@@ -1,7 +1,6 @@
 ---
 // Ink footer on every page (DESIGN.md "Navigation" → Footer). Always dark.
 import Icon from './Icon.astro';
-import Sun from './Sun.astro';
 import { t, type Lang } from '../i18n/ui';
 import { localizedPath, routeExists } from '../lib/routes';
 import { BETTERGOV_URL, REPO_URL, REPORT_URL, navItems, officialLinks } from '../lib/site';
@@ -28,7 +27,7 @@ const headingClass = 'mb-4 text-[0.8125rem] font-bold tracking-label text-stone 
   <div class="mx-auto grid max-w-wrap gap-10 px-gutter min-[60rem]:grid-cols-[1.4fr_0.8fr_0.8fr]">
     <div>
       <p class="flex items-center gap-2 font-display text-[1.6rem] font-extrabold tracking-display text-paper">
-        <Sun mark class="size-10.5 text-sun" />
+        <img src="/favicon.svg" alt="" width="512" height="512" class="size-14" />
         {t(lang, 'site.name')}
       </p>
       <p class="mt-5 mb-3 font-display text-[1.3rem] font-extrabold tracking-headline text-flag-bright">
