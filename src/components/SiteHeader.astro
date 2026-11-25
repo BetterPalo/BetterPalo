@@ -4,7 +4,6 @@
 // no JavaScript; from 66rem the same list shows inline.
 import Button from './Button.astro';
 import Icon from './Icon.astro';
-import Sun from './Sun.astro';
 import { languages, t, type Lang } from '../i18n/ui';
 import { alternateOf, localizedPath, normalizePath, routeExists } from '../lib/routes';
 import { SEARCH_PATH, navItems } from '../lib/site';
@@ -40,7 +39,7 @@ const findHref = localizedPath(lang, SEARCH_PATH);
   <div class="mx-auto flex min-h-17 max-w-wrap items-center gap-2 px-gutter sm:gap-4">
     <a href={home} class="flex shrink-0 items-center gap-4 text-paper no-underline">
       <span class="flex items-center gap-2 font-display text-[1.15rem] font-extrabold tracking-display">
-        <Sun mark class="size-7.5 text-sun" />
+        <img src="/favicon.svg" alt="" width="512" height="512" class="size-10" />
         {t(lang, 'site.name')}
       </span>
       <span class="hidden border-l border-paper/30 pl-4 font-display text-[1.15rem] font-extrabold tracking-display text-sun min-[40rem]:block">
